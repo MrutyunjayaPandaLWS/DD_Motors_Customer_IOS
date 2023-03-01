@@ -1,0 +1,69 @@
+PODS:
+  - Alamofire (4.9.1)
+  - AlamofireImage (3.6.0):
+    - Alamofire (~> 4.9)
+  - EasyTipView (2.0.4)
+  - GSMessages (1.7.5)
+  - ImageSlideshow/Alamofire (1.8.3):
+    - AlamofireImage (~> 3.0)
+    - ImageSlideshow/Core
+  - ImageSlideshow/Core (1.8.3)
+  - IQKeyboardManagerSwift (6.5.11)
+  - Kingfisher (7.5.0)
+  - lottie-ios (4.0.1)
+  - SDWebImage (5.14.3):
+    - SDWebImage/Core (= 5.14.3)
+  - SDWebImage/Core (5.14.3)
+  - SlideMenuControllerSwift (4.0.0)
+  - SRScratchView (1.0.0)
+  - SVPinView (1.0.11)
+  - Toast-Swift (5.0.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.0)
+  - EasyTipView (~> 2.0.4)
+  - GSMessages
+  - ImageSlideshow/Alamofire
+  - IQKeyboardManagerSwift
+  - Kingfisher (~> 7.0)
+  - lottie-ios
+  - SDWebImage
+  - SlideMenuControllerSwift
+  - SRScratchView
+  - SVPinView (~> 1.0)
+  - Toast-Swift (~> 5.0.1)
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - AlamofireImage
+    - EasyTipView
+    - GSMessages
+    - ImageSlideshow
+    - IQKeyboardManagerSwift
+    - Kingfisher
+    - lottie-ios
+    - SDWebImage
+    - SlideMenuControllerSwift
+    - SRScratchView
+    - SVPinView
+    - Toast-Swift
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
+  EasyTipView: 4f8beae0a82db2ca4a9b5fd658785fc5f61d296b
+  GSMessages: ff0397d30b804fa38c6026fb080b8ad6f7454ab6
+  ImageSlideshow: 4694d7d699a1549582e7cc631fb392d8f91630f3
+  IQKeyboardManagerSwift: c7955c0bdbf7b2eb29bb7daaa44e3d90f55a9a85
+  Kingfisher: b9c2a4a4af2990a768445c277359b27bde287d71
+  lottie-ios: 54d22edf55b839f0929cabbfe609c9aa548b1145
+  SDWebImage: 9c36e66c8ce4620b41a7407698dda44211a96764
+  SlideMenuControllerSwift: 021d6318201c53d4d4d3710517d43d6c556c7dd0
+  SRScratchView: 75cac075964f569bb3dc411cd14636a42e0cc48c
+  SVPinView: 9b538d0ba68cdb092afe4f0f67ec84cbed079466
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
+
+PODFILE CHECKSUM: 8138d353be7b66108ba6a697fd7bd1e4d1eae83b
+
+COCOAPODS: 1.11.3

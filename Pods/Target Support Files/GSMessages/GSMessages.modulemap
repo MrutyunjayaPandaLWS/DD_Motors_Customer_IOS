@@ -1,0 +1,6 @@
+module GSMessages {
+  umbrella header "GSMessages-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+module SRScratchView {
+  umbrella header "SRScratchView-umbrella.h"
+
+  export *
+  module * { export * }
+}
