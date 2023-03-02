@@ -20,12 +20,15 @@ class DD_TermsandconditionVC: BaseViewController {
     var username = ""
     var password = ""
     var VM = DD_TermsandconditionVM()
+    var tcListingArray = [LstTermsAndCondition]()
+    var requestAPIs = RestAPI_Requests()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.VM.VC = self
         self.loaderView.isHidden = false
         self.playAnimation2()
         self.checkBoxBtn.setImage(UIImage(named: "CheckBox 2"), for: .normal)
+        self.dashboardTCApi()
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -57,17 +60,64 @@ class DD_TermsandconditionVC: BaseViewController {
 //            self.checkBoxBtn.setImage(UIImage(named: "CheckBox 2"), for: .normal)
 //        }else{
         
-            self.checkBoxBtn.setImage(UIImage(named: "CheckedBox"), for: .normal)
+        
+        if checkBoxBtn.currentImage == UIImage(named:"CheckBox 2"){
+            self.view.makeToast("Select Terms and Condition", duration: 2.0, position: .center)
+            
+        }else{
+            //self.checkBoxBtn.setImage(UIImage(named: "CheckedBox"), for: .normal)
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                 self.VM.loginSubmissionApi(username: self.username)
             })
-        //}
-        
+        }
     }
     func loadHTMLStringImage(htmlString:String) -> Void {
            let htmlString = "\(htmlString)"
 //        webview1.loadHTMLString(htmlString, baseURL: nil)
         termsandContionsWebKit.loadHTMLString(htmlString, baseURL: Bundle.main.bundleURL)
+       }
+    
+    func dashboardTCApi(){
+           DispatchQueue.main.async {
+               self.loaderView.isHidden = false
+               self.playAnimation2()
+           }
+           let parameters = [
+               "ActionType": 1,
+                "ActorId": 2
+           ] as [String: Any]
+           print(parameters)
+           self.requestAPIs.termsAndCondion_API(parameters: parameters) { (result, error) in
+               if error == nil{
+                   if result != nil{
+                       DispatchQueue.main.async {
+                           self.loaderView.isHidden = true
+                           self.tcListingArray = result?.lstTermsAndCondition ?? []
+                           if self.tcListingArray.count == 0{
+                               DispatchQueue.main.async{
+                                   self.view.makeToast("No terms and Conditions Found", duration: 2.0, position: .center)
+                               }
+                           }else{
+                                   for item in self.tcListingArray{
+                                       if item.language == "English"{
+                                           
+                                           self.loadHTMLStringImage(htmlString: item.html ?? "")
+                                           return
+                                       }
+                                   }
+                               }
+                           }
+                   }else{
+                       DispatchQueue.main.async {
+                           self.loaderView.isHidden = true
+                       }
+                   }
+               }else{
+                   DispatchQueue.main.async {
+                       self.loaderView.isHidden = true
+                   }
+               }
+           }
        }
     func playAnimation2(){
            loaderAnimationView = .init(name: "loader")

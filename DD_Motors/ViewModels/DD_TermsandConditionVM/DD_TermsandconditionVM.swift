@@ -61,7 +61,7 @@ class DD_TermsandconditionVM {
                                         
                                         DispatchQueue.main.async {
                                             if #available(iOS 13.0, *) {
-                                                let sceneDelegate = self.VC!.view.window!.windowScene!.delegate as! SceneDelegate
+                                                let sceneDelegate = self.VC?.view.window?.windowScene?.delegate as! SceneDelegate
                                                 sceneDelegate.setHomeAsRootViewController()
                                             } else {
                                                 let appDelegate = UIApplication.shared.delegate as! AppDelegate

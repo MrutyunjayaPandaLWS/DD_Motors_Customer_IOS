@@ -12,11 +12,13 @@ protocol InfoDelegate: AnyObject{
 }
 class DD_MyOffersCVC: UICollectionViewCell {
     
-    @IBOutlet weak var enableOfferImage: UIImageView!
+    @IBOutlet weak var enableRedImage: UIImageView!
+    @IBOutlet weak var enableBlueImage: UIImageView!
+    @IBOutlet weak var lockedRedImage: UIImageView!
+    @IBOutlet weak var lockedBlueImage: UIImageView!
     @IBOutlet weak var scratchView: UIView!
     @IBOutlet weak var lockerView: UIView!
     @IBOutlet weak var bottomSpaceConstraint: NSLayoutConstraint!
-    @IBOutlet weak var lockedImage: UIImageView!
     @IBOutlet weak var detailsBtb: UIButton!
     
     @IBOutlet weak var cartNumberLbl: UILabel!

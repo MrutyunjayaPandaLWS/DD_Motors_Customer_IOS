@@ -40,6 +40,7 @@ class DD_DashboardVC: BaseViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.VM.VC = self
+        self.tokendata()
         self.bannerImageApi()
      
         myVehicleCollectionView.delegate = self

@@ -170,7 +170,7 @@ class ChatListViewController: BaseViewController,UITextFieldDelegate,UITableView
                 var secondaryIMG = self.VM.chatListingArray[indexPath.item].imageUrl ?? ""
                 let splited = secondaryIMG.components(separatedBy: "~")
                 print("\(PROMO_IMG1)\(splited[1])")
-                cell?.itemimage.kf.setImage(with: URL(string: "\(PROMO_IMG1)\(splited[1])"), placeholder: UIImage(named: "icons8-life-cycle-96"))
+                cell?.itemimage.kf.setImage(with: URL(string: "\(PROMO_IMG1)\(splited[1])"), placeholder: UIImage(named: "LaunchImage"))
                 return cell!
             }else if self.VM.chatListingArray[indexPath.row].queryResponseInfo != nil  && self.VM.chatListingArray[indexPath.row].imageUrl != nil || self.VM.chatListingArray[indexPath.row].queryResponseInfo != ""  && self.VM.chatListingArray[indexPath.row].imageUrl != ""{
                 print("Check Again")
@@ -181,7 +181,8 @@ class ChatListViewController: BaseViewController,UITextFieldDelegate,UITableView
                 var secondaryIMG = self.VM.chatListingArray[indexPath.item].imageUrl ?? ""
                 let splited = secondaryIMG.components(separatedBy: "~")
                 print("\(PROMO_IMG1)\(splited[1])")
-                cell?.itemimage.kf.setImage(with: URL(string: "\(PROMO_IMG1)\(splited[1])"), placeholder: UIImage(named: "icons8-life-cycle-96"))
+                cell?.itemimage.kf.setImage(with: URL(string: "\(PROMO_IMG1)\(splited[1])"), placeholder: UIImage(named: "LaunchImage"))
+                
                 return cell!
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "senderInfoTableViewCell") as? senderInfoTableViewCell
@@ -204,7 +205,7 @@ class ChatListViewController: BaseViewController,UITextFieldDelegate,UITableView
                 cell?.itemtext.text = self.VM.chatListingArray[indexPath.row].queryResponseInfo ?? ""
                 var secondaryIMG = self.VM.chatListingArray[indexPath.item].imageUrl ?? ""
                 let splited = secondaryIMG.components(separatedBy: "~")
-                cell?.itemimage.kf.setImage(with: URL(string: "\(PROMO_IMG1)\(splited[1])"), placeholder: UIImage(named: "icons8-life-cycle-96"))
+                cell?.itemimage.kf.setImage(with: URL(string: "\(PROMO_IMG1)\(splited[1])"), placeholder: UIImage(named: "LaunchImage"))
                 return cell!
             }else if self.VM.chatListingArray[indexPath.row].queryResponseInfo == nil  && self.VM.chatListingArray[indexPath.row].imageUrl != nil{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "otherImageTableViewCell") as? otherImageTableViewCell
@@ -212,7 +213,7 @@ class ChatListViewController: BaseViewController,UITextFieldDelegate,UITableView
                 cell?.itemcustomer.text = self.VM.chatListingArray[indexPath.row].repliedBy ?? ""
                 var secondaryIMG = self.VM.chatListingArray[indexPath.item].imageUrl ?? ""
                 let splited = secondaryIMG.components(separatedBy: "~")
-                cell?.itemimage.kf.setImage(with: URL(string: "\(PROMO_IMG1)\(splited[1])"), placeholder: UIImage(named: "icons8-life-cycle-96"))
+                cell?.itemimage.kf.setImage(with: URL(string: "\(PROMO_IMG1)\(splited[1])"), placeholder: UIImage(named: "LaunchImage"))
                 return cell!
             }else{
                 let cell = tableView.dequeueReusableCell(withIdentifier: "otherInfoTableViewCell") as? otherInfoTableViewCell

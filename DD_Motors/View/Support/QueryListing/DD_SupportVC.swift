@@ -72,6 +72,8 @@ class DD_SupportVC: BaseViewController, SendTopicDelegate{
         
         subView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
+    
+    
     @objc func navigateToNext(){
         let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_SubmitQueryVC") as! DD_SubmitQueryVC
         vc.selectedTopic = self.selectedQueryTopic
@@ -105,6 +107,7 @@ class DD_SupportVC: BaseViewController, SendTopicDelegate{
             "HelpTopicID": queryTopic,
             "TicketStatusId": statusId,
         ] as [String: Any]
+        print(parameter)
         self.VM.querListsApi(parameter: parameter)
     }
     
@@ -148,6 +151,19 @@ extension DD_SupportVC: UITableViewDelegate, UITableViewDataSource{
             }
             cell.customerTicketRefNoLbl.text = self.VM.queryListArray[indexPath.row].customerTicketRefNo ?? ""
             cell.ticketStatusLbl.text = self.VM.queryListArray[indexPath.row].ticketStatus ?? ""
+            
+            
+            if cell.ticketStatusLbl.text == "Pending"{
+                cell.ticketStatusLbl.backgroundColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 0.1495978123)
+                cell.ticketStatusLbl.textColor = .red
+            }else if cell.ticketStatusLbl.text == "Resolved" {
+                cell.ticketStatusLbl.backgroundColor = #colorLiteral(red: 0.1294117719, green: 0.2156862766, blue: 0.06666667014, alpha: 0.1629260739)
+                cell.ticketStatusLbl.textColor = .green
+            }else{
+                cell.ticketStatusLbl.backgroundColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 0.1495978123)
+                cell.ticketStatusLbl.textColor = .black
+            }
+            
             return cell
         }
         

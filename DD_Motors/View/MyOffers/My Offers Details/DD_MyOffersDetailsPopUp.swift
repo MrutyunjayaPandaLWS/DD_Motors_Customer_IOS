@@ -1,18 +1,18 @@
 //
-//  DD_SubscribePopUp.swift
+//  DD_MyOffersDetailsPopUp.swift
 //  DD_Motors
 //
-//  Created by ADMIN on 26/12/2022.
+//  Created by ADMIN on 14/02/2023.
 //
 
 import UIKit
 
-class DD_SubscribePopUp: BaseViewController {
+class DD_MyOffersDetailsPopUp: BaseViewController {
 
-    var selectedImage = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(selectedImage, "Selected Image")
+
+        // Do any additional setup after loading the view.
     }
     override func touchesBegan(_ touchscreen: Set<UITouch>, with event: UIEvent?)
     {
@@ -23,9 +23,12 @@ class DD_SubscribePopUp: BaseViewController {
 
         }
     }
-    @IBAction func subscribeBtn(_ sender: Any) {
-        
-        NotificationCenter.default.post(name: .navigateSubscription, object: nil)
+
+    
+    @IBAction func navigateToSubscription(_ sender: Any) {
+        NotificationCenter.default.post(name: .navigateToSubscription, object: nil)
         self.dismiss(animated: true)
     }
+    
+
 }

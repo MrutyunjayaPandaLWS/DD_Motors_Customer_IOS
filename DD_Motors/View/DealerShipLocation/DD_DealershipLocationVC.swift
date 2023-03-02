@@ -71,6 +71,7 @@ class DD_DealershipLocationVC: BaseViewController, LocationRedirectDelegate, CLL
             "ActionType": "248",
             "ActorId":"\(self.userID )"
         ] as [String: Any]
+        print(parameter)
         self.VM.dealerShipLocationAPi(parameter: parameter)
     }
     
@@ -94,7 +95,7 @@ extension DD_DealershipLocationVC: UITableViewDelegate,UITableViewDataSource {
         cell.managerHeadMobilenumberLbl.text = self.VM.dealerShipListArray[indexPath.row].ccMobile3 ?? "-"
         cell.redirectBtn.tag = indexPath.row
         
-        cell.addressLbl.text = "\(self.VM.dealerShipListArray[indexPath.row].objLocationAddressInfo?.address1 ?? "-"), \(self.VM.dealerShipListArray[indexPath.row].objLocationAddressInfo?.address2 ?? "-"), \(self.VM.dealerShipListArray[indexPath.row].objLocationAddressInfo?.landmark ?? "-"), \(self.VM.dealerShipListArray[indexPath.row].objLocationAddressInfo?.zip ?? "-")"
+        cell.addressLbl.text = "\(self.VM.dealerShipListArray[indexPath.row].objLocationAddressInfo?.address1 ?? "-"), \(self.VM.dealerShipListArray[indexPath.row].objLocationAddressInfo?.zip ?? "-")"
     
         return cell
     }

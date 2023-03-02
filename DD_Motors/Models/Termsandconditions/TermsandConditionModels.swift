@@ -13,25 +13,25 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 import Foundation
 struct TermsandConditionModels : Codable {
-	let lstTermsAndCondition : [String]?
-	let returnValue : Int?
-	let returnMessage : String?
-	let totalRecords : Int?
+    let lstTermsAndCondition : [LstTermsAndCondition]?
+    let returnValue : Int?
+    let returnMessage : String?
+    let totalRecords : Int?
 
-	enum CodingKeys: String, CodingKey {
+    enum CodingKeys: String, CodingKey {
 
-		case lstTermsAndCondition = "lstTermsAndCondition"
-		case returnValue = "returnValue"
-		case returnMessage = "returnMessage"
-		case totalRecords = "totalRecords"
-	}
+        case lstTermsAndCondition = "lstTermsAndCondition"
+        case returnValue = "returnValue"
+        case returnMessage = "returnMessage"
+        case totalRecords = "totalRecords"
+    }
 
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		lstTermsAndCondition = try values.decodeIfPresent([String].self, forKey: .lstTermsAndCondition)
-		returnValue = try values.decodeIfPresent(Int.self, forKey: .returnValue)
-		returnMessage = try values.decodeIfPresent(String.self, forKey: .returnMessage)
-		totalRecords = try values.decodeIfPresent(Int.self, forKey: .totalRecords)
-	}
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        lstTermsAndCondition = try values.decodeIfPresent([LstTermsAndCondition].self, forKey: .lstTermsAndCondition)
+        returnValue = try values.decodeIfPresent(Int.self, forKey: .returnValue)
+        returnMessage = try values.decodeIfPresent(String.self, forKey: .returnMessage)
+        totalRecords = try values.decodeIfPresent(Int.self, forKey: .totalRecords)
+    }
 
 }

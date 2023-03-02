@@ -48,6 +48,11 @@ class DD_RegisterVC: BaseViewController, SelectedItemDelegate{
         super.viewDidLoad()
         self.VM.VC = self
         self.loaderView.isHidden = true
+        NotificationCenter.default.addObserver(self, selector: #selector(goBackToLogin), name: Notification.Name.goToLogin, object: nil)
+    }
+    
+    @objc func goBackToLogin(){
+        self.navigationController?.popViewController(animated: true)
     }
 
     @IBAction func backToLogin(_ sender: Any) {

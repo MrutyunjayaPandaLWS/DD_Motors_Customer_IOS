@@ -52,7 +52,14 @@ class DD_QueryTopicVC: BaseViewController {
         self.VM.helpTopiceListAPi(parameter: parameter)
     }
     
-    
+    override func touchesBegan(_ touchscreen: Set<UITouch>, with event: UIEvent?)
+    {
+        let touch = touchscreen.first
+        if touch?.view != self.presentingViewController
+        {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
 
     @IBAction func backBtn(_ sender: Any) {
         self.dismiss(animated: true)

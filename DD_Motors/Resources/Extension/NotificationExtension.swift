@@ -33,8 +33,15 @@ extension Notification.Name{
     static let goToDashBoardAPI = Notification.Name(rawValue: "goToDashBoardAPI")
     static let sendToClaimStatusVC = Notification.Name(rawValue: "sendToClaimStatusVC")
     static let navigateToNewQuery = Notification.Name(rawValue: "navigateToNewQuery")
+    static let goToDashBoard = Notification.Name(rawValue: "goToDashBoard")
+    
+    static let goToLogin = Notification.Name(rawValue: "goToLogin")
     
     static let navigateSubscription = Notification.Name(rawValue: "navigateSubscription")
     static let navigateDetails = Notification.Name(rawValue: "navigateDetails")
+    
+    static let hitMyOffersApi = Notification.Name(rawValue: "hitMyOffersApi")
+    
+    static let navigateToSubscription = Notification.Name(rawValue: "navigateToSubscription")
     
 }

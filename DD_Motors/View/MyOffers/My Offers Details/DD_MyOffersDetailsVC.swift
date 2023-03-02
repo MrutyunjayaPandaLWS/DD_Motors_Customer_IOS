@@ -10,9 +10,13 @@ import WebKit
 import Lottie
 class DD_MyOffersDetailsVC: BaseViewController {
 
+    @IBOutlet weak var offerBtn: UIButton!
+    @IBOutlet weak var termsandConditionBtn: UIButton!
+    @IBOutlet weak var descriptionBtn: UIButton!
     @IBOutlet weak var detailsWebViewKit: WKWebView!
     @IBOutlet weak var offersTitleLbl: UILabel!
     
+    @IBOutlet weak var offerCategoryLbl: UILabel!
     @IBOutlet weak var offerIdTF: UITextField!
     
     @IBOutlet weak var redeemButton: UIButton!
@@ -22,6 +26,7 @@ class DD_MyOffersDetailsVC: BaseViewController {
     @IBOutlet weak var loaderAnimation: LottieAnimationView! 
     private var loaderAnimationView : LottieAnimationView?
     
+    @IBOutlet weak var offerrefernID: UILabel!
     var VM = DD_MyOffersDetailsVM()
     var cardNumber = 0
     let userID = UserDefaults.standard.string(forKey: "UserID") ?? ""
@@ -31,14 +36,37 @@ class DD_MyOffersDetailsVC: BaseViewController {
     var desc = ""
     var expiredStatus = ""
     var itsFrom = "Description"
-    
+    var offerId = ""
+    var categoryId = -1
     override func viewDidLoad() {
         super.viewDidLoad()
         self.VM.VC = self
         self.loaderView.isHidden = true
+        self.itsFrom = "Description"
         self.offersDetailsApi(cardNo: "\(cardNumber)")
+        self.descriptionBtn.setTitleColor(.white, for: .normal)
+        self.descriptionBtn.backgroundColor = UIColor(hexString: "204FA4")
+        self.termsandConditionBtn.setTitleColor(.lightGray, for: .normal)
+        self.termsandConditionBtn.backgroundColor = .white
+        self.offerBtn.setTitleColor(.lightGray, for: .normal)
+        self.offerBtn.backgroundColor = .white
+        self.offerrefernID.text = self.offerId
+        NotificationCenter.default.addObserver(self, selector: #selector(navigateToNext), name: Notification.Name.navigateToSubscription, object: nil)
+        if self.categoryId == 1{
+            self.offerCategoryLbl.text = "Offers / Sales"
+        }else if self.categoryId == 2{
+            self.offerCategoryLbl.text = "Offers / Body Shop"
+        }else if self.categoryId == 3{
+            self.offerCategoryLbl.text = "Offers / Service"
+        }else if self.categoryId == 4{
+            self.offerCategoryLbl.text = "Offers / Insurance"
+        }
     }
 
+    @objc func navigateToNext(){
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_DealershipLocationVC") as! DD_DealershipLocationVC
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
 
     @IBAction func backBtn(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -46,21 +74,40 @@ class DD_MyOffersDetailsVC: BaseViewController {
     
     @IBAction func descriptionBtn(_ sender: Any) {
         self.itsFrom = "Description"
-        offersDetailsApi(cardNo: "\(self.cardNumber)")
+        self.offersDetailsApi(cardNo: "\(cardNumber)")
+        self.descriptionBtn.setTitleColor(.white, for: .normal)
+        self.descriptionBtn.backgroundColor = UIColor(hexString: "204FA4")
+        self.termsandConditionBtn.setTitleColor(.lightGray, for: .normal)
+        self.termsandConditionBtn.backgroundColor = .white
+        self.offerBtn.setTitleColor(.lightGray, for: .normal)
+        self.offerBtn.backgroundColor = .white
+        
     }
     
     
     @IBAction func termsandConditions(_ sender: Any) {
         self.itsFrom = "TC"
-        offersDetailsApi(cardNo: "\(self.cardNumber)")
+        self.offersDetailsApi(cardNo: "\(self.cardNumber)")
+        self.descriptionBtn.setTitleColor(.lightGray, for: .normal)
+        self.descriptionBtn.backgroundColor = .white
+        self.termsandConditionBtn.setTitleColor(.white, for: .normal)
+        self.termsandConditionBtn.backgroundColor = UIColor(hexString: "204FA4")
+        self.offerBtn.setTitleColor(.lightGray, for: .normal)
+        self.offerBtn.backgroundColor = .white
     }
     @IBAction func useThisOfferBtn(_ sender: Any) {
         self.itsFrom = "Use"
-        offersDetailsApi(cardNo: "\(self.cardNumber)")
+        self.offersDetailsApi(cardNo: "\(self.cardNumber)")
+        self.descriptionBtn.setTitleColor(.lightGray, for: .normal)
+        self.descriptionBtn.backgroundColor = .white
+        self.termsandConditionBtn.setTitleColor(.lightGray, for: .normal)
+        self.termsandConditionBtn.backgroundColor = .white
+        self.offerBtn.setTitleColor(.white, for: .normal)
+        self.offerBtn.backgroundColor = UIColor(hexString: "204FA4")
     }
     
     @IBAction func redeemNowBtn(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_SuccessPopUp") as! DD_SuccessPopUp
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_MyOffersDetailsPopUp") as! DD_MyOffersDetailsPopUp
         vc.modalTransitionStyle = .crossDissolve
         vc.modalPresentationStyle = .overFullScreen
         self.present(vc, animated: true)

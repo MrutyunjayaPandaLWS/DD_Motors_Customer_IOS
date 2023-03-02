@@ -33,11 +33,13 @@ class DD_ScratchSubmissionVM {
                                 self.VC?.playAnimation()
                                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
                                     self.VC?.successAnimation.isHidden = true
+                                    NotificationCenter.default.post(name: .hitMyOffersApi, object: nil)
                                 })
                                 
                                 
                             }else{
                                 self.VC?.view.makeToast("Something went wrong! Please try later", duration: 1.0, position: .bottom)
+                                NotificationCenter.default.post(name: .hitMyOffersApi, object: nil)
                             }
                             
                         }

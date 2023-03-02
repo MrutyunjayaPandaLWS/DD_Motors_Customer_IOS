@@ -27,6 +27,7 @@
 		8409055B295A0D3E002DBBEE /* TokenModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409055A295A0D3E002DBBEE /* TokenModels.swift */; };
 		8409055E295A0D5B002DBBEE /* OTPModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409055D295A0D5B002DBBEE /* OTPModels.swift */; };
 		84090561295A0D72002DBBEE /* TermsandConditionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84090560295A0D72002DBBEE /* TermsandConditionModels.swift */; };
+		8415DC2C29961DF400B7EB69 /* LstTermsAndCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8415DC2B29961DF400B7EB69 /* LstTermsAndCondition.swift */; };
 		8418265D297A677D0066DD2F /* ObjImageGalleryList1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418265B297A677C0066DD2F /* ObjImageGalleryList1.swift */; };
 		8418265E297A677D0066DD2F /* BannerImageListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418265C297A677D0066DD2F /* BannerImageListModel.swift */; };
 		8418799A2959A1D200240F5A /* DD_SubmitQueryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841879992959A1D200240F5A /* DD_SubmitQueryVC.swift */; };
@@ -153,6 +154,9 @@
 		84C1E3EA297573BC00D188C5 /* LstUserVehicleDetails1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C1E3E8297573BC00D188C5 /* LstUserVehicleDetails1.swift */; };
 		84C1E3EB297573BC00D188C5 /* ServiceHistoryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C1E3E9297573BC00D188C5 /* ServiceHistoryModels.swift */; };
 		84C1E3EE29757E2800D188C5 /* DD_ServiceHistoryVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84C1E3ED29757E2800D188C5 /* DD_ServiceHistoryVM.swift */; };
+		84DD7840299B6EA3009F7704 /* DD_MyOffersDetailsPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DD783F299B6EA3009F7704 /* DD_MyOffersDetailsPopUp.swift */; };
+		84DF6B25299A66E700E3FD3F /* DD_SubscriptionSuccessPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DF6B24299A66E700E3FD3F /* DD_SubscriptionSuccessPopUp.swift */; };
+		84DF6B27299A703E00E3FD3F /* DD_RegistrationSubmissionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DF6B26299A703E00E3FD3F /* DD_RegistrationSubmissionVC.swift */; };
 		84ED675C2966B3F700E0A546 /* ObjLocationAddressInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED67592966B3F600E0A546 /* ObjLocationAddressInfo.swift */; };
 		84ED675D2966B3F700E0A546 /* DealershipLocationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED675A2966B3F600E0A546 /* DealershipLocationModels.swift */; };
 		84ED675E2966B3F700E0A546 /* LstLocationDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84ED675B2966B3F700E0A546 /* LstLocationDetails.swift */; };
@@ -224,6 +228,7 @@
 		8409055A295A0D3E002DBBEE /* TokenModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TokenModels.swift; sourceTree = "<group>"; };
 		8409055D295A0D5B002DBBEE /* OTPModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OTPModels.swift; sourceTree = "<group>"; };
 		84090560295A0D72002DBBEE /* TermsandConditionModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermsandConditionModels.swift; sourceTree = "<group>"; };
+		8415DC2B29961DF400B7EB69 /* LstTermsAndCondition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstTermsAndCondition.swift; sourceTree = "<group>"; };
 		8418265B297A677C0066DD2F /* ObjImageGalleryList1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjImageGalleryList1.swift; sourceTree = "<group>"; };
 		8418265C297A677D0066DD2F /* BannerImageListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BannerImageListModel.swift; sourceTree = "<group>"; };
 		841879992959A1D200240F5A /* DD_SubmitQueryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_SubmitQueryVC.swift; sourceTree = "<group>"; };
@@ -355,6 +360,9 @@
 		84C1E3E9297573BC00D188C5 /* ServiceHistoryModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceHistoryModels.swift; sourceTree = "<group>"; };
 		84C1E3ED29757E2800D188C5 /* DD_ServiceHistoryVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_ServiceHistoryVM.swift; sourceTree = "<group>"; };
 		84CFACC8295C475B001E442C /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		84DD783F299B6EA3009F7704 /* DD_MyOffersDetailsPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_MyOffersDetailsPopUp.swift; sourceTree = "<group>"; };
+		84DF6B24299A66E700E3FD3F /* DD_SubscriptionSuccessPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_SubscriptionSuccessPopUp.swift; sourceTree = "<group>"; };
+		84DF6B26299A703E00E3FD3F /* DD_RegistrationSubmissionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_RegistrationSubmissionVC.swift; sourceTree = "<group>"; };
 		84ED67592966B3F600E0A546 /* ObjLocationAddressInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjLocationAddressInfo.swift; sourceTree = "<group>"; };
 		84ED675A2966B3F600E0A546 /* DealershipLocationModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DealershipLocationModels.swift; sourceTree = "<group>"; };
 		84ED675B2966B3F700E0A546 /* LstLocationDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstLocationDetails.swift; sourceTree = "<group>"; };
@@ -502,6 +510,7 @@
 			isa = PBXGroup;
 			children = (
 				84090560295A0D72002DBBEE /* TermsandConditionModels.swift */,
+				8415DC2B29961DF400B7EB69 /* LstTermsAndCondition.swift */,
 			);
 			path = Termsandconditions;
 			sourceTree = "<group>";
@@ -527,6 +536,7 @@
 			isa = PBXGroup;
 			children = (
 				841ADA7D295723A600CA8632 /* DD_MyOffersDetailsVC.swift */,
+				84DD783F299B6EA3009F7704 /* DD_MyOffersDetailsPopUp.swift */,
 			);
 			path = "My Offers Details";
 			sourceTree = "<group>";
@@ -553,6 +563,7 @@
 			isa = PBXGroup;
 			children = (
 				84668D822954774F000491FE /* DD_SubscriptionVC.swift */,
+				84DF6B24299A66E700E3FD3F /* DD_SubscriptionSuccessPopUp.swift */,
 				845B9D95296EE59600D8DD04 /* DD_SubscriptionSubmissionPopUpVC.swift */,
 			);
 			path = Subscriptions;
@@ -1099,6 +1110,7 @@
 			isa = PBXGroup;
 			children = (
 				8498EC1B295458ED0019A0D5 /* DD_RegisterVC.swift */,
+				84DF6B26299A703E00E3FD3F /* DD_RegistrationSubmissionVC.swift */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -1603,6 +1615,7 @@
 				84F33FFB2956D1BB00B1E428 /* DD_SubscriptionHistoryTVC.swift in Sources */,
 				84F33FDC2956C2D300B1E428 /* DD_SideMenuTVC.swift in Sources */,
 				8467E3E72957093600176AAE /* DD_MyOffersCVC.swift in Sources */,
+				8415DC2C29961DF400B7EB69 /* LstTermsAndCondition.swift in Sources */,
 				84769356295AC21D008DD594 /* DD_TermsandconditionVM.swift in Sources */,
 				84EF2462297BE981006E9EA1 /* DD_MyOffersDetailsVM.swift in Sources */,
 				84090561295A0D72002DBBEE /* TermsandConditionModels.swift in Sources */,
@@ -1618,6 +1631,7 @@
 				84F33FF12956CB6900B1E428 /* DD_DealershipLocationVC.swift in Sources */,
 				848EA5BC2967F2B7004B6620 /* LstCustomerFeedBackJsonApi.swift in Sources */,
 				84B3FC5F295C1BB10090563D /* DD_QueryListVM.swift in Sources */,
+				84DD7840299B6EA3009F7704 /* DD_MyOffersDetailsPopUp.swift in Sources */,
 				25BF2ABF298D2BB7008B1DAC /* SubscriptionPopup.swift in Sources */,
 				84668D862954776A000491FE /* DD_SupportVC.swift in Sources */,
 				84AF555C296BE13800D52E44 /* DD_SubscriptionHistoryVM.swift in Sources */,
@@ -1651,6 +1665,7 @@
 				84B452A2295498B400C8EC0C /* DD_MyVehicleCVC.swift in Sources */,
 				84EF2459297BAE52006E9EA1 /* MyOffersCategoryModels.swift in Sources */,
 				84C1E3EE29757E2800D188C5 /* DD_ServiceHistoryVM.swift in Sources */,
+				84DF6B25299A66E700E3FD3F /* DD_SubscriptionSuccessPopUp.swift in Sources */,
 				8467E3E32956E19F00176AAE /* DD_MyProfileVC.swift in Sources */,
 				8467E3E02956E04A00176AAE /* DD_DropDownTVC.swift in Sources */,
 				848A10C92959652E00B1589E /* DD_SubscribePopUp.swift in Sources */,
@@ -1698,6 +1713,7 @@
 				84ED675D2966B3F700E0A546 /* DealershipLocationModels.swift in Sources */,
 				25F17012298B93DB00A02535 /* ProfileModels.swift in Sources */,
 				8409054D2959DE6B002DBBEE /* WebClient.swift in Sources */,
+				84DF6B27299A703E00E3FD3F /* DD_RegistrationSubmissionVC.swift in Sources */,
 				840905522959DE6B002DBBEE /* RequestMethod.swift in Sources */,
 				8498EC0829542E010019A0D5 /* ImageExtension.swift in Sources */,
 				8418799C2959A80100240F5A /* DD_QueryTopicVC.swift in Sources */,

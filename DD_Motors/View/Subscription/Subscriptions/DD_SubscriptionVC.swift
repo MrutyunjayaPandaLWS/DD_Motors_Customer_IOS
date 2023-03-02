@@ -59,6 +59,7 @@ class DD_SubscriptionVC: BaseViewController, SelectedItemDelegate {
         super.viewDidLoad()
         self.VM.VC = self
         self.amountLbl.isEnabled = false
+        self.selectedStatusId = 1
         subView.clipsToBounds = false
         subView.layer.cornerRadius = 36
         subView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -75,6 +76,19 @@ class DD_SubscriptionVC: BaseViewController, SelectedItemDelegate {
         }else{
             self.backButton.isHidden = true
         }
+        NotificationCenter.default.addObserver(self, selector: #selector(goToDashBoard), name: Notification.Name.goToDashBoard, object: nil)
+        
+    }
+    @objc func goToDashBoard(){
+        if self.itsFrom == "SideMenu"{
+            self.navigationController?.popToRootViewController(animated: true)
+        }else{
+            tabBarController?.selectedIndex = 0
+        }
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.selectedDealerTitle.text = "Select Type"
     }
 
     @IBAction func selectYourBookingId(_ sender: Any) {
@@ -107,7 +121,7 @@ class DD_SubscriptionVC: BaseViewController, SelectedItemDelegate {
     }
     
     @IBAction func onlineSubscriptionBnt(_ sender: Any) {
-        self.selectedSourceId = 1
+        self.selectedSourceId = 2
         self.onlineSubscriptionImage.image = UIImage(named: "selected")
         self.offlineSubscriptionImage.image = UIImage(named: "Ellipse 105")
         self.onlineSubscriptionView.backgroundColor = #colorLiteral(red: 0.9523764253, green: 0.9772849679, blue: 0.9983460307, alpha: 1)
@@ -115,7 +129,7 @@ class DD_SubscriptionVC: BaseViewController, SelectedItemDelegate {
     }
     
     @IBAction func offlineSubscriptionBnt(_ sender: Any) {
-        self.selectedSourceId = 2
+        self.selectedSourceId = 1
         self.offlineSubscriptionImage.image = UIImage(named: "selected")
         self.onlineSubscriptionImage.image = UIImage(named: "Ellipse 105")
         self.offlineSubscriptionView.backgroundColor = #colorLiteral(red: 0.9523764253, green: 0.9772849679, blue: 0.9983460307, alpha: 1)
@@ -129,23 +143,25 @@ class DD_SubscriptionVC: BaseViewController, SelectedItemDelegate {
             self.view.makeToast("Select Subscription type", duration: 2.0, position: .bottom)
         }else if self.selectedSourceId == -1{
             self.view.makeToast("Select Mode", duration: 2.0, position: .bottom)
-        }else if self.amountLbl.text == "0"{
-            self.view.makeToast("Insufficient balance", duration: 2.0, position: .bottom)
         }else{
             let parameter = [
                 "ActionType":"1",
                 "ActorId":"\(self.userID)",
-                "LoyaltY_ID":"\(self.loyaltyId)",
-                "SourceType":"\(self.selectedStatusId)",
-                "SourceId":"\(self.selectedSourceId)",
+                "LoyaltY_ID":"\(UserDefaults.standard.string(forKey: "LoyaltyId") ?? "")",
+                "SourceType":"\(self.selectedSourceId)",
+                "SourceId":"\(self.selectedStatusId)",
                 "SourceValue":"\(self.selectedTitle)",
-                "Amount":"20"
+                "Amount":"999"
             ] as [String: Any]
             print(parameter)
             self.VM.subscriptionSubmission(parameter: parameter)
         }
     }
     
+    @IBAction func myDescriptionbtn(_ sender: Any) {
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_SubscriptionHistoryVC") as! DD_SubscriptionHistoryVC
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     @IBAction func backBtn(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)
     }

@@ -31,10 +31,14 @@ class DD_RegistrationVM {
                         if returnMessage.count != 0{
                             print(returnMessage[0])
                             if returnMessage[0] == "1"{
-                                    self.VC?.view.makeToast("Registration Success", duration: 3.0, position: .center)
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
-                                        self.VC?.navigationController?.popViewController(animated: true)
-                                    })
+//                                    self.VC?.view.makeToast("Registration Success", duration: 3.0, position: .center)
+//                                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+//                                        self.VC?.navigationController?.popViewController(animated: true)
+//                                    })
+                                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_RegistrationSubmissionVC") as! DD_RegistrationSubmissionVC
+                                vc.modalTransitionStyle = .coverVertical
+                                vc.modalPresentationStyle = .overFullScreen
+                                self.VC!.present(vc, animated: true)
                                 }else{
                                     self.VC?.view.makeToast("Registration Failed", duration: 3.0, position: .center)
                                 }

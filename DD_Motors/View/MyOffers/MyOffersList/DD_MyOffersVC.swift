@@ -30,6 +30,7 @@ class DD_MyOffersVC: BaseViewController, InfoDelegate {
     var categoryId = -1
     var cardNumber = 0
     var offersID = ""
+    var isGiftID = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,14 +51,21 @@ class DD_MyOffersVC: BaseViewController, InfoDelegate {
         NotificationCenter.default.addObserver(self, selector: #selector(moveToSubscribe), name: Notification.Name.navigateSubscription, object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(moveToDetails), name: Notification.Name.navigateDetails, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(myOffersApi), name: Notification.Name.hitMyOffersApi, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+   
         self.myOffersListAPI(categoryId: self.categoryId)
         self.myOffersCategoryApi()
     }
     
+    @objc func myOffersApi(){
+      
+        self.myOffersListAPI(categoryId: self.categoryId)
+        self.myOffersCategoryApi()
+    }
     @objc func moveToSubscribe(){
         let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_SubscriptionVC") as! DD_SubscriptionVC
         vc.itsFrom = "SideMenu"
@@ -68,6 +76,8 @@ class DD_MyOffersVC: BaseViewController, InfoDelegate {
         let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_MyOffersDetailsVC") as! DD_MyOffersDetailsVC
         vc.itsFrom = "SideMenu"
         vc.cardNumber = Int(self.cardNumber)
+        vc.categoryId = self.categoryId
+        vc.offerId = "\(self.offersID)"
         self.navigationController?.pushViewController(vc, animated: true)
        }
 
@@ -99,9 +109,11 @@ class DD_MyOffersVC: BaseViewController, InfoDelegate {
         guard let tappedIndexPath = myOffersListCollectionView.indexPath(for: cell) else{return}
         
         if cell.detailsBtb.tag == tappedIndexPath.row{
-            if self.VM.myOffersListArray[tappedIndexPath.row].subscriptionStatus ?? "0" == "1" && self.VM.myOffersListArray[tappedIndexPath.row].is_Gifited ?? 0 == 1{
+            if self.VM.myOffersListArray1[tappedIndexPath.row].subscriptionStatus ?? "0" == "1" && self.VM.myOffersListArray1[tappedIndexPath.row].is_Gifited ?? 0 == 1{
                 let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_MyOffersDetailsVC") as! DD_MyOffersDetailsVC
-                vc.cardNumber = Int(self.VM.myOffersListArray[tappedIndexPath.row].cardNumber ?? "") ?? 0
+                vc.cardNumber = Int(self.VM.myOffersListArray1[tappedIndexPath.row].cardNumber ?? "") ?? 0
+                vc.offerId = self.VM.myOffersListArray1[tappedIndexPath.row].offerReferenceID ?? ""
+                vc.categoryId = self.categoryId
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         }
@@ -115,7 +127,7 @@ extension DD_MyOffersVC: UICollectionViewDelegate, UICollectionViewDataSource{
         if collectionView == categoryCollectionView{
             return self.VM.myOffersCategoryListArray.count
         }else{
-            return self.VM.myOffersListArray.count
+            return self.VM.myOffersListArray1.count
         }
     }
     
@@ -153,28 +165,35 @@ extension DD_MyOffersVC: UICollectionViewDelegate, UICollectionViewDataSource{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DD_MyOffersCVC", for: indexPath) as! DD_MyOffersCVC
             cell.delegate = self
             
-            cell.cartNumberLbl.text = "Offer ID \(self.VM.myOffersListArray[indexPath.row].cardNumber ?? "")"
-            cell.offersTitleLbl.text = self.VM.myOffersListArray[indexPath.row].giftCardTypeName ?? ""
+            cell.cartNumberLbl.text = "\(self.VM.myOffersListArray1[indexPath.row].cardNumber ?? "")"
+            cell.offersTitleLbl.text = self.VM.myOffersListArray1[indexPath.row].giftCardTypeName ?? ""
             cell.expiredLbl.text = "Expired"
             cell.expiredLbl.textColor = UIColor.red
             cell.detailsBtb.tag = indexPath.row
-            if self.VM.myOffersListArray[indexPath.row].subscriptionStatus ?? "0" == "1"{
+            if self.VM.myOffersListArray1[indexPath.row].subscriptionStatus ?? "0" == "1"{
                 cell.scratchView.isHidden = false
-                if self.VM.myOffersListArray[indexPath.row].is_Gifited ?? 0 == 0{
-                    cell.enableOfferImage.isHidden = false
-                    for data in self.unlockedImageArray{
-                        if data == "EnableRed" || data == "EnableBlue" || data == "EnableBlue 1" || data == "EnableRed 1"{
-                            cell.enableOfferImage.image = UIImage(named: "\(self.unlockedImageArray[indexPath.row])")
-                        }
+                if self.VM.myOffersListArray1[indexPath.row].is_Gifited ?? 0 == 0{
+                    if self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" == "EnableOfferBlue" || self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" == "EnableOfferBlue1"{
+                        cell.enableBlueImage.isHidden = false
+                        cell.enableRedImage.isHidden = true
+                    }else{
+                        cell.enableBlueImage.isHidden = true
+                        cell.enableRedImage.isHidden = false
                     }
-                 
+                    
+                    
                 }else{
-                    cell.enableOfferImage.isHidden = true
+                    if self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" != "EnableOfferRed" || self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" != "EnableOfferBlue" || self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" != "EnableOfferBlue1" || self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" != "EnableOfferRed1"{
+                        
+                        cell.scratchView.borderWidth = 1
+                        cell.scratchView.borderColor = .red
+                    }
+                    cell.enableRedImage.isHidden = true
+                    cell.enableBlueImage.isHidden = true
                     
                 }
-                
                 cell.lockerView.isHidden = true
-                if self.VM.myOffersListArray[indexPath.row].expiry ?? -1 == 1{
+                if self.VM.myOffersListArray1[indexPath.row].expiry ?? -1 == 1{
                     cell.expiredLbl.isHidden = false
                     cell.bottomSpaceConstraint.constant = 26
                 }else{
@@ -185,35 +204,39 @@ extension DD_MyOffersVC: UICollectionViewDelegate, UICollectionViewDataSource{
             }else{
                 cell.scratchView.isHidden = true
                 cell.lockerView.isHidden = false
-                    for data in self.unlockedImageArray{
-                        if data == "LockedRed" || data == "LockedBlue" || data == "LockedRed 1" || data == "LockedBlue 1"{
-                            cell.lockedImage.image = UIImage(named: "\(self.unlockedImageArray[indexPath.row])")
-                        }
-                    }
-              
+                cell.lockedBlueImage.isHidden = false
+                cell.lockedRedImage.isHidden = true
+                if self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" == "LockedBlue" || self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" == "LockedBlue 1"{
+                    cell.lockedBlueImage.isHidden = false
+                    cell.lockedRedImage.isHidden = true
+                }else{
+                    cell.lockedBlueImage.isHidden = true
+                    cell.lockedRedImage.isHidden = false
+                }
             }
-            
-          
-            
             return cell
         }
         
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         if collectionView == myOffersListCollectionView{
-            if self.VM.myOffersListArray[indexPath.row].subscriptionStatus ?? "0" != "1"{
+            
+            if self.VM.myOffersListArray1[indexPath.row].subscriptionStatus ?? "0" != "1"{
                 let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_SubscribePopUp") as! DD_SubscribePopUp
+                vc.selectedImage = "\(self.VM.myOffersListArray1[indexPath.row].offerImage ?? "")"
                 vc.modalTransitionStyle = .crossDissolve
                 vc.modalPresentationStyle = .overFullScreen
                 self.present(vc, animated: true)
-            }else if self.VM.myOffersListArray[indexPath.row].subscriptionStatus ?? "0" == "1" && self.VM.myOffersListArray[indexPath.row].is_Gifited ?? 0 == 0{
+            }else if self.VM.myOffersListArray1[indexPath.row].subscriptionStatus ?? "0" == "1" && self.VM.myOffersListArray1[indexPath.row].is_Gifited ?? 0 == 0{
                 let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_SuccessPopUp") as! DD_SuccessPopUp
-                vc.cardNumber = self.VM.myOffersListArray[indexPath.row].cardNumber ?? ""
-                vc.offerReferenceID = self.VM.myOffersListArray[indexPath.row].offerReferenceID ?? ""
-                vc.isGiftID = self.VM.myOffersListArray[indexPath.row].is_Gifited ?? 0
-                self.cardNumber = Int(self.VM.myOffersListArray[indexPath.row].cardNumber ?? "") ?? 0
-                self.offersID = self.VM.myOffersListArray[indexPath.row].offerReferenceID ?? ""
+                vc.cardNumber = self.VM.myOffersListArray1[indexPath.row].cardNumber ?? ""
+                vc.offerReferenceID = self.VM.myOffersListArray1[indexPath.row].offerReferenceID ?? ""
+                vc.isGiftID = self.VM.myOffersListArray1[indexPath.row].is_Gifited ?? 0
+                vc.offerTitle = self.VM.myOffersListArray1[indexPath.row].giftCardTypeName ?? ""
+                self.cardNumber = Int(self.VM.myOffersListArray1[indexPath.row].cardNumber ?? "") ?? 0
+                self.offersID = self.VM.myOffersListArray1[indexPath.row].offerReferenceID ?? ""
                 vc.modalTransitionStyle = .coverVertical
                 vc.modalPresentationStyle = .overFullScreen
                 self.present(vc, animated: true)
@@ -251,5 +274,27 @@ class MyCategoryListModels: NSObject{
         self.attributeType = attributeType
         self.attributeId = attributeId
         self.attributeValue = attributeValue
+    }
+}
+
+class MyOffersModels: NSObject{
+    
+    var cardNumber: String!
+    var giftCardTypeName: String!
+    var subscriptionStatus: String!
+    var is_Gifited: Int!
+    var expiry: Int!
+    var offerImage: String!
+    var offerReferenceID: String!
+    
+    init(cardNumber:String!, giftCardTypeName: String!, subscriptionStatus: String!, is_Gifited: Int!, expiry: Int!, offerImage: String!, offerReferenceID: String!){
+        
+        self.cardNumber = cardNumber
+        self.giftCardTypeName = giftCardTypeName
+        self.subscriptionStatus = subscriptionStatus
+        self.is_Gifited = is_Gifited
+        self.expiry = expiry
+        self.offerImage = offerImage
+        self.offerReferenceID = offerReferenceID
     }
 }

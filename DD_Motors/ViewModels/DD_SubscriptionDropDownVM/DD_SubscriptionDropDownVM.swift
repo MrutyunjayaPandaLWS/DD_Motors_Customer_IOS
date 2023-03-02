@@ -27,9 +27,10 @@ class DD_SubscriptionDropDownVM {
                         print(response, "asdfhjasdhfasdhjfasdf")
                         if response != "-1" {
                             if "\(response)" == self.VC!.loyaltyId{
-                                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_SubscriptionSubmissionPopUpVC") as! DD_SubscriptionSubmissionPopUpVC
-                                
-                                self.VC?.navigationController?.pushViewController(vc, animated: true)
+                                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_SubscriptionSuccessPopUp") as! DD_SubscriptionSuccessPopUp
+                                vc.modalTransitionStyle = .coverVertical
+                                vc.modalPresentationStyle = .overFullScreen
+                                self.VC!.present(vc, animated: true)
 //                                self.VC!.view.makeToast("Subscription Submission Success", duration: 2.0, position:  .bottom)
 //                                self.VC!.bookingIdImg.image = UIImage(named: "selected")
 //                                self.VC!.yourVINImg.image = UIImage(named: "Ellipse 105")

@@ -53,6 +53,7 @@ struct LstGiftCardType : Codable {
     let instruction : String?
     let is_Gifited : Int?
     let offerReferenceID : String?
+    var offerImage: String?
 
     enum CodingKeys: String, CodingKey {
 

@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="307" height="126"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A9L-an-D09">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A9L-an-D09">
                         <rect key="frame" x="12" y="8" width="283" height="110"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXXX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DLH-Y6-Egh">
@@ -28,7 +28,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nWn-dx-Y9G">
-                                <rect key="frame" x="8" y="37" width="267" height="61"/>
+                                <rect key="frame" x="8" y="37" width="267" height="65"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpf-0e-S4K">
                                         <rect key="frame" x="234.33333333333334" y="38" width="24.666666666666657" height="20"/>
@@ -40,7 +40,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXXXXXXXXX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8wZ-xP-tZ9">
-                                        <rect key="frame" x="8" y="22" width="184" height="17"/>
+                                        <rect key="frame" x="8" y="24" width="184" height="17"/>
                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="14"/>
                                         <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
@@ -81,24 +81,33 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.95703262089999996" green="0.97605735059999998" blue="0.99608141179999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.95294117647058818" green="0.97647058823529409" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="nWn-dx-Y9G" secondAttribute="trailing" constant="8" id="0Lo-8g-LWR"/>
                             <constraint firstItem="nWn-dx-Y9G" firstAttribute="top" secondItem="DLH-Y6-Egh" secondAttribute="bottom" constant="12" id="Beh-TQ-IV0"/>
                             <constraint firstItem="DLH-Y6-Egh" firstAttribute="top" secondItem="A9L-an-D09" secondAttribute="top" constant="8" id="Z8w-bj-GS2"/>
                             <constraint firstItem="DLH-Y6-Egh" firstAttribute="leading" secondItem="A9L-an-D09" secondAttribute="leading" constant="8" id="fZx-m0-vnC"/>
                             <constraint firstItem="nWn-dx-Y9G" firstAttribute="leading" secondItem="A9L-an-D09" secondAttribute="leading" constant="8" id="vrC-mE-7bO"/>
-                            <constraint firstAttribute="bottom" secondItem="nWn-dx-Y9G" secondAttribute="bottom" constant="12" id="zY3-gD-aYi"/>
+                            <constraint firstAttribute="bottom" secondItem="nWn-dx-Y9G" secondAttribute="bottom" constant="8" id="zY3-gD-aYi"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <real key="value" value="12"/>
                             </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                <real key="value" value="0.29999999999999999"/>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                <real key="value" value="0.40000000000000002"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                <size key="value" width="0.10000000000000001" height="0.10000000000000001"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="0.40000000000000002"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                <color key="value" red="0.95703262089999996" green="0.97605735059999998" blue="0.99608141179999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="value" red="0.95294117649999999" green="0.97647058819999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>

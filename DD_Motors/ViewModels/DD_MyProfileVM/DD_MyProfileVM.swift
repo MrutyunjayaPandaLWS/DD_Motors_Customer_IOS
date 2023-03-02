@@ -34,9 +34,8 @@ class DD_MyProfileVM{
                         self.VC?.stateTF.text = profileDetails[0].stateName ?? "Select State"
                         self.VC?.cityTF.text = profileDetails[0].cityName ?? "Select City"
                         self.VC?.pinCodeTF.text = profileDetails[0].zip ?? ""
-                        print(String(profileDetails[0].jdob ?? ""))
+                        //print(String(profileDetails[0].jdob ?? ""))
                         let dob = String(profileDetails[0].jdob ?? "").split(separator: " ")
-                        print(dob[0], "Selected DOB")
                         if dob.count != 0 {
                             self.VC?.dobTF.text = "\(dob[0])"
                         }else{

@@ -31,6 +31,7 @@ class DD_SuccessPopUp: UIViewController, SRScratchViewDelegate {
     var requestAPIs = RestAPI_Requests()
     var cardNumber = ""
     var offerReferenceID = ""
+    var offerTitle = ""
     var isGiftID = 0
     var VM = DD_ScratchSubmissionVM()
     override func viewDidLoad() {
@@ -44,6 +45,7 @@ class DD_SuccessPopUp: UIViewController, SRScratchViewDelegate {
         self.scratchImageView.lineType = .round
         self.scratchImageView.backgroundColor = UIColor.clear
         self.successAnimation.isHidden = true
+        self.infoLbl.text = self.offerTitle
     //    self.offerIdLbl.text = ""
         print(self.offerReferenceID)
         print(self.cardNumber)
@@ -118,7 +120,7 @@ class DD_SuccessPopUp: UIViewController, SRScratchViewDelegate {
             "LoyaltyId":"\(self.loyaltyId)" ,
             "CardNumber":"\(self.cardNumber)",
             "OfferReferenceID":"\(self.offerReferenceID)",
-            "Is_Gifited": "\(isGiftID)"
+            "Is_Gifited": "1"
         ] as [String: Any]
         print(parameter)
         self.VM.scratchStatusApi(parameter: parameter)

@@ -37,6 +37,11 @@ class DD_SubmitQueryVC: BaseViewController, SelectedItemDelegate, UITextViewDele
     @IBOutlet weak var loaderAnimation: LottieAnimationView!
    private var loaderAnimationView : LottieAnimationView?
     
+    @IBOutlet var heightOfImage: NSLayoutConstraint!
+    
+    
+    
+    @IBOutlet var imageViewStack: UIStackView!
     var selectedTopic = ""
     var selectedTopicId = -1
     var strdata1 = ""
@@ -58,6 +63,7 @@ class DD_SubmitQueryVC: BaseViewController, SelectedItemDelegate, UITextViewDele
         self.loaderView.isHidden = true
         self.querySummaryTextView.delegate = self
         self.queryDetailsTextView.delegate = self
+        self.heightOfImage.constant = 0
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -78,27 +84,27 @@ class DD_SubmitQueryVC: BaseViewController, SelectedItemDelegate, UITextViewDele
     }
     
     @IBAction func removeImageoneBtn(_ sender: Any) {
-        self.strdata1 = ""
-        self.attachedImage1.image = UIImage(named: "ic_default_img")
+//        self.strdata1 = ""
+//        self.attachedImage1.image = UIImage(named: "ic_default_img")
     }
     
     @IBAction func removeImageTwoBtn(_ sender: Any) {
-        self.strdata2 = ""
-        self.attachedImage2.image = UIImage(named: "ic_default_img")
+//        self.strdata2 = ""
+//        self.attachedImage2.image = UIImage(named: "ic_default_img")
     }
     
     @IBAction func removeImageThreeBtn(_ sender: Any) {
-        self.strdata3 = ""
-        self.attachedImage3.image = UIImage(named: "ic_default_img")
+//        self.strdata3 = ""
+//        self.attachedImage3.image = UIImage(named: "ic_default_img")
     }
     @IBAction func browseImageBtn(_ sender: Any) {
-        if self.strdata1 == "" && self.strdata2 == "" && self.strdata3 == ""{
+//        if self.strdata1 == "" && self.strdata2 == "" && self.strdata3 == ""{
             self.itsFrom = "Image1"
-        }else if self.strdata1 != "" && self.strdata2 == "" && self.strdata3 == ""{
-            self.itsFrom = "Image2"
-        }else if self.strdata1 != "" && self.strdata2 != "" && self.strdata3 == ""{
-            self.itsFrom = "Image3"
-        }
+//        }else if self.strdata1 != "" && self.strdata2 == "" && self.strdata3 == ""{
+//            self.itsFrom = "Image2"
+//        }else if self.strdata1 != "" && self.strdata2 != "" && self.strdata3 == ""{
+//            self.itsFrom = "Image3"
+//        }
         let alert = UIAlertController(title: "Choose any option", message: "", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Camera", style: .default , handler:{ (UIAlertAction)in
             self.openCamera()
@@ -116,13 +122,13 @@ class DD_SubmitQueryVC: BaseViewController, SelectedItemDelegate, UITextViewDele
         self.imageListArray1.removeAll()
         if self.selectedTopicLbl.text == ""{
             self.view.makeToast("Select query topic", duration: 3.0, position: .bottom)
-        }else if self.querySummaryTextView.text!.count == 0{
+        }else if self.querySummaryTextView.text!.count == 0 || self.querySummaryTextView.text == "Query Summary"{
             self.view.makeToast("Enter query summary", duration: 3.0, position: .bottom)
-        }else if self.queryDetailsTextView.text!.count == 0{
+        }else if self.queryDetailsTextView.text!.count == 0 || self.queryDetailsTextView.text == "Write your query details..."{
             self.view.makeToast("Enter query details", duration: 3.0, position: .bottom)
         }else{
             
-            if self.strdata1 != "" && self.strdata2 == "" && self.strdata3 == ""{
+           // if self.strdata1 != ""{
                 let parameter = [
                     "ActionType": "3",
                     "ActorId": "\(self.userID)",
@@ -144,7 +150,8 @@ class DD_SubmitQueryVC: BaseViewController, SelectedItemDelegate, UITextViewDele
                 ] as [String: Any]
                 print(parameter, "Single Image")
                 self.VM.querySubmissionApi(parameter: parameter)
-            }else if self.strdata1 != "" && self.strdata2 != "" && self.strdata3 == ""{
+            //}
+        if self.strdata1 != "" && self.strdata2 != "" && self.strdata3 == "" {
                 
                 self.imageListArray1 = [
                     [
@@ -172,7 +179,7 @@ class DD_SubmitQueryVC: BaseViewController, SelectedItemDelegate, UITextViewDele
                 ] as [String: Any]
                 print(parameter, "Two Images submission")
                 self.VM.querySubmissionApi(parameter: parameter)
-            }else if self.strdata1 != "" && self.strdata2 != "" && self.strdata3 != ""{
+            } else if self.strdata1 != "" && self.strdata2 != "" && self.strdata3 != "" {
                 let parameter = [
                     "ActionType": "3",
                     "ActorId": "\(self.userID)",
@@ -324,19 +331,22 @@ class DD_SubmitQueryVC: BaseViewController, SelectedItemDelegate, UITextViewDele
             let imageData1: NSData = imageData!.pngData()! as NSData
             print(self.itsFrom)
             
+            self.heightOfImage.constant = 150
+            
             if self.itsFrom == "Image1"{
                 self.attachedImage1.image = selectedImage
               self.strdata1 = imageData1.base64EncodedString(options: .lineLength64Characters)
-            }else if self.itsFrom == "Image2"{
-                self.attachedImage2.image = selectedImage
-                self.strdata2 = imageData1.base64EncodedString(options: .lineLength64Characters)
-            }else if self.itsFrom == "Image3"{
-                self.attachedImage3.image = selectedImage
-                self.strdata3 = imageData1.base64EncodedString(options: .lineLength64Characters)
             }
+//            else if self.itsFrom == "Image2"{
+//                self.attachedImage2.image = selectedImage
+//                self.strdata2 = imageData1.base64EncodedString(options: .lineLength64Characters)
+//            }else if self.itsFrom == "Image3"{
+//                self.attachedImage3.image = selectedImage
+//                self.strdata3 = imageData1.base64EncodedString(options: .lineLength64Characters)
+//            }
             
             picker.dismiss(animated: true, completion: nil)
-//                self.dismiss(animated: true, completion: nil)
+            self.dismiss(animated: true, completion: nil)
         }
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

@@ -30,9 +30,11 @@ class DD_SubscriptionHistoryVC: BaseViewController {
         self.subscriptionHistoryTV.register(UINib(nibName: "DD_SubscriptionHistoryTVC", bundle: nil), forCellReuseIdentifier: "DD_SubscriptionHistoryTVC")
         self.subscriptionHistoryTV.separatorStyle = .none
         self.noDataFoundLbl.isHidden = true
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.subscriptionListApi()
     }
-
     
     @IBAction func backBTN(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -60,11 +62,8 @@ extension DD_SubscriptionHistoryVC: UITableViewDelegate,UITableViewDataSource {
         cell.selectionStyle = .none
         cell.dateOfSubcriptionLbl.text = self.VM.subscriptionHistoryListingArray[indexPath.row].subscriptionDate ?? "-"
         cell.amountPaidLbl.text = "\(self.VM.subscriptionHistoryListingArray[indexPath.row].amount ?? 0)"
-        if self.VM.subscriptionHistoryListingArray[indexPath.row].subscription ?? "" == "" || self.VM.subscriptionHistoryListingArray[indexPath.row].subscription ?? nil == nil{
-            cell.subscribedLbl.text = "UNSUBSCRIBED"
-        }else{
+        
             cell.subscribedLbl.text = "SUBSCRIBED"
-        }
         cell.subcriptionHistoryID.text = "\(self.VM.subscriptionHistoryListingArray[indexPath.row].sourceValue ?? "")"
         cell.paymentStatus.text = "\(self.VM.subscriptionHistoryListingArray[indexPath.row].sourceType ?? "")"
         return cell
