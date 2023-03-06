@@ -144,6 +144,9 @@ class DD_SubscriptionVC: BaseViewController, SelectedItemDelegate {
         }else if self.selectedSourceId == -1{
             self.view.makeToast("Select Mode", duration: 2.0, position: .bottom)
         }else{
+            self.startLoading()
+            self.loaderView.isHidden = false
+             self.playAnimation2()
             let parameter = [
                 "ActionType":"1",
                 "ActorId":"\(self.userID)",

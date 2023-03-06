@@ -142,7 +142,7 @@ class DD_DashBoardVM {
                             self.VC?.emptyVehicleAnimation.isHidden = false
                             self.VC?.playAnimation()
                             self.VC?.vehicleView.isHidden = true
-                            self.VC?.myVehicelLbl.isHidden = true
+                            self.VC?.myVehicelLbl.isHidden = false
                             self.VC?.watchSpaceLbl.isHidden = false
                           //  self.VC?.emptyBannerImage.isHidden = false
                         }else{
@@ -160,7 +160,7 @@ class DD_DashBoardVM {
                         self.VC?.emptyVehicleAnimation.isHidden = false
                         self.VC?.playAnimation()
                         self.VC?.vehicleView.isHidden = true
-                        self.VC?.myVehicelLbl.isHidden = true
+                        self.VC?.myVehicelLbl.isHidden = false
                         self.VC?.watchSpaceLbl.isHidden = false
                         self.VC?.loaderView.isHidden = true
                     }
@@ -171,7 +171,7 @@ class DD_DashBoardVM {
                     self.VC?.emptyVehicleAnimation.isHidden = false
                     self.VC?.playAnimation()
                     self.VC?.vehicleView.isHidden = true
-                    self.VC?.myVehicelLbl.isHidden = true
+                    self.VC?.myVehicelLbl.isHidden = false
                     self.VC?.watchSpaceLbl.isHidden = false
                     self.VC?.loaderView.isHidden = true
                 }

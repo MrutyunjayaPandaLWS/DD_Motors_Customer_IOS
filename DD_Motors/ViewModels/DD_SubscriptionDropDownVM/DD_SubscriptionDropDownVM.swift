@@ -14,9 +14,6 @@ class DD_SubscriptionDropDownVM {
     var pushID = UserDefaults.standard.string(forKey: "DEVICE_TOKEN") ?? ""
     var requestAPIs = RestAPI_Requests()
     func subscriptionSubmission(parameter: JSON){
-        self.VC?.startLoading()
-        self.VC?.loaderView.isHidden = false
-         self.VC?.playAnimation2()
         self.requestAPIs.SubscriptionSubmission(parameters: parameter) { (result, error) in
             if error == nil{
                 if result != nil{
@@ -27,6 +24,7 @@ class DD_SubscriptionDropDownVM {
                         print(response, "asdfhjasdhfasdhjfasdf")
                         if response != "-1" {
                             if "\(response)" == self.VC!.loyaltyId{
+                                self.VC!.selectedTitle = ""
                                 let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_SubscriptionSuccessPopUp") as! DD_SubscriptionSuccessPopUp
                                 vc.modalTransitionStyle = .coverVertical
                                 vc.modalPresentationStyle = .overFullScreen
