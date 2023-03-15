@@ -106,10 +106,11 @@ class DD_DashBoardVM {
                                 UserDefaults.standard.synchronize()
                                // self.notificationListingApi()
                               //  self.VC?.userNameLbl.text = result?.lstCustomerFeedBackJsonApi?[0].firstName ?? "-"
+                                self.VC?.dashboardVehicleListApi(loyaltyID: "\(result?.lstCustomerFeedBackJsonApi?[0].loyaltyId ?? "")")
                             }
                             
                         }
-                    self.VC?.dashboardVehicleListApi()
+                 
 
                 }
                 }else{

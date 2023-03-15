@@ -13,8 +13,14 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 import Foundation
 struct ObjCustomerDashboardList : Codable {
-	let payBackPoints : Int?
+	let monthName : String?
+	let yearName : String?
+	let previousYearMonthName : String?
+	let priviousYearName : String?
+	let priviousYearPoint : Int?
 	let totalEarnedPoints : Int?
+	let payBackPoints : Int?
+	let totalMileStonePoints : Int?
 	let currentPointBalance : Double?
 	let multiplierPointBalance : Double?
 	let profileImage : String?
@@ -23,14 +29,14 @@ struct ObjCustomerDashboardList : Codable {
 	let messageCount : Int?
 	let warningCount : Int?
 	let redeemPoints : Int?
-	let totalRedeemed : Int?
+	let totalRedeemed : Double?
 	let customerTotalPoint : Double?
 	let giftEvoucherCount : Int?
 	let giftDonateCount : Int?
 	let objPromotionCommonList : String?
 	let objActivityDetailsList : String?
 	let giftingEvoucherCount : Int?
-	let redeemablePointsBalance : Int?
+	let redeemablePointsBalance : Double?
 	let redeemableEncashBalance : Int?
 	let customerType : String?
 	let notificationCount : Int?
@@ -99,6 +105,30 @@ struct ObjCustomerDashboardList : Codable {
 	let totalEarning : Double?
 	let userActionId : Int?
 	let userAction : String?
+	let walletBalance : Int?
+	let enrollment_Date : String?
+	let memberShipId : String?
+	let mobile : String?
+	let residance_Address : String?
+	let state : String?
+	let city : String?
+	let pincode : String?
+	let kycType : String?
+	let kycDetails : String?
+	let panCardDetails : String?
+	let distributorCode : String?
+	let garageAddress : String?
+	let garageName : String?
+	let agp : String?
+	let imagePath : String?
+	let park : String?
+	let mappedCustomerType : String?
+	let mappedCustomerId : Int?
+	let mappedCustomerName : String?
+	let behaviour : String?
+	let part_No : String?
+	let part_Desc : String?
+	let points : String?
 	let token : String?
 	let actorId : Int?
 	let isActive : Bool?
@@ -107,8 +137,14 @@ struct ObjCustomerDashboardList : Codable {
 
 	enum CodingKeys: String, CodingKey {
 
-		case payBackPoints = "payBackPoints"
+		case monthName = "monthName"
+		case yearName = "yearName"
+		case previousYearMonthName = "previousYearMonthName"
+		case priviousYearName = "priviousYearName"
+		case priviousYearPoint = "priviousYearPoint"
 		case totalEarnedPoints = "totalEarnedPoints"
+		case payBackPoints = "payBackPoints"
+		case totalMileStonePoints = "totalMileStonePoints"
 		case currentPointBalance = "currentPointBalance"
 		case multiplierPointBalance = "multiplierPointBalance"
 		case profileImage = "profileImage"
@@ -193,6 +229,30 @@ struct ObjCustomerDashboardList : Codable {
 		case totalEarning = "totalEarning"
 		case userActionId = "userActionId"
 		case userAction = "userAction"
+		case walletBalance = "walletBalance"
+		case enrollment_Date = "enrollment_Date"
+		case memberShipId = "memberShipId"
+		case mobile = "mobile"
+		case residance_Address = "residance_Address"
+		case state = "state"
+		case city = "city"
+		case pincode = "pincode"
+		case kycType = "kycType"
+		case kycDetails = "kycDetails"
+		case panCardDetails = "panCardDetails"
+		case distributorCode = "distributorCode"
+		case garageAddress = "garageAddress"
+		case garageName = "garageName"
+		case agp = "agp"
+		case imagePath = "imagePath"
+		case park = "park"
+		case mappedCustomerType = "mappedCustomerType"
+		case mappedCustomerId = "mappedCustomerId"
+		case mappedCustomerName = "mappedCustomerName"
+		case behaviour = "behaviour"
+		case part_No = "part_No"
+		case part_Desc = "part_Desc"
+		case points = "points"
 		case token = "token"
 		case actorId = "actorId"
 		case isActive = "isActive"
@@ -202,8 +262,14 @@ struct ObjCustomerDashboardList : Codable {
 
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
-		payBackPoints = try values.decodeIfPresent(Int.self, forKey: .payBackPoints)
+		monthName = try values.decodeIfPresent(String.self, forKey: .monthName)
+		yearName = try values.decodeIfPresent(String.self, forKey: .yearName)
+		previousYearMonthName = try values.decodeIfPresent(String.self, forKey: .previousYearMonthName)
+		priviousYearName = try values.decodeIfPresent(String.self, forKey: .priviousYearName)
+		priviousYearPoint = try values.decodeIfPresent(Int.self, forKey: .priviousYearPoint)
 		totalEarnedPoints = try values.decodeIfPresent(Int.self, forKey: .totalEarnedPoints)
+		payBackPoints = try values.decodeIfPresent(Int.self, forKey: .payBackPoints)
+		totalMileStonePoints = try values.decodeIfPresent(Int.self, forKey: .totalMileStonePoints)
 		currentPointBalance = try values.decodeIfPresent(Double.self, forKey: .currentPointBalance)
 		multiplierPointBalance = try values.decodeIfPresent(Double.self, forKey: .multiplierPointBalance)
 		profileImage = try values.decodeIfPresent(String.self, forKey: .profileImage)
@@ -212,14 +278,14 @@ struct ObjCustomerDashboardList : Codable {
 		messageCount = try values.decodeIfPresent(Int.self, forKey: .messageCount)
 		warningCount = try values.decodeIfPresent(Int.self, forKey: .warningCount)
 		redeemPoints = try values.decodeIfPresent(Int.self, forKey: .redeemPoints)
-		totalRedeemed = try values.decodeIfPresent(Int.self, forKey: .totalRedeemed)
+		totalRedeemed = try values.decodeIfPresent(Double.self, forKey: .totalRedeemed)
 		customerTotalPoint = try values.decodeIfPresent(Double.self, forKey: .customerTotalPoint)
 		giftEvoucherCount = try values.decodeIfPresent(Int.self, forKey: .giftEvoucherCount)
 		giftDonateCount = try values.decodeIfPresent(Int.self, forKey: .giftDonateCount)
 		objPromotionCommonList = try values.decodeIfPresent(String.self, forKey: .objPromotionCommonList)
 		objActivityDetailsList = try values.decodeIfPresent(String.self, forKey: .objActivityDetailsList)
 		giftingEvoucherCount = try values.decodeIfPresent(Int.self, forKey: .giftingEvoucherCount)
-		redeemablePointsBalance = try values.decodeIfPresent(Int.self, forKey: .redeemablePointsBalance)
+		redeemablePointsBalance = try values.decodeIfPresent(Double.self, forKey: .redeemablePointsBalance)
 		redeemableEncashBalance = try values.decodeIfPresent(Int.self, forKey: .redeemableEncashBalance)
 		customerType = try values.decodeIfPresent(String.self, forKey: .customerType)
 		notificationCount = try values.decodeIfPresent(Int.self, forKey: .notificationCount)
@@ -288,6 +354,30 @@ struct ObjCustomerDashboardList : Codable {
 		totalEarning = try values.decodeIfPresent(Double.self, forKey: .totalEarning)
 		userActionId = try values.decodeIfPresent(Int.self, forKey: .userActionId)
 		userAction = try values.decodeIfPresent(String.self, forKey: .userAction)
+		walletBalance = try values.decodeIfPresent(Int.self, forKey: .walletBalance)
+		enrollment_Date = try values.decodeIfPresent(String.self, forKey: .enrollment_Date)
+		memberShipId = try values.decodeIfPresent(String.self, forKey: .memberShipId)
+		mobile = try values.decodeIfPresent(String.self, forKey: .mobile)
+		residance_Address = try values.decodeIfPresent(String.self, forKey: .residance_Address)
+		state = try values.decodeIfPresent(String.self, forKey: .state)
+		city = try values.decodeIfPresent(String.self, forKey: .city)
+		pincode = try values.decodeIfPresent(String.self, forKey: .pincode)
+		kycType = try values.decodeIfPresent(String.self, forKey: .kycType)
+		kycDetails = try values.decodeIfPresent(String.self, forKey: .kycDetails)
+		panCardDetails = try values.decodeIfPresent(String.self, forKey: .panCardDetails)
+		distributorCode = try values.decodeIfPresent(String.self, forKey: .distributorCode)
+		garageAddress = try values.decodeIfPresent(String.self, forKey: .garageAddress)
+		garageName = try values.decodeIfPresent(String.self, forKey: .garageName)
+		agp = try values.decodeIfPresent(String.self, forKey: .agp)
+		imagePath = try values.decodeIfPresent(String.self, forKey: .imagePath)
+		park = try values.decodeIfPresent(String.self, forKey: .park)
+		mappedCustomerType = try values.decodeIfPresent(String.self, forKey: .mappedCustomerType)
+		mappedCustomerId = try values.decodeIfPresent(Int.self, forKey: .mappedCustomerId)
+		mappedCustomerName = try values.decodeIfPresent(String.self, forKey: .mappedCustomerName)
+		behaviour = try values.decodeIfPresent(String.self, forKey: .behaviour)
+		part_No = try values.decodeIfPresent(String.self, forKey: .part_No)
+		part_Desc = try values.decodeIfPresent(String.self, forKey: .part_Desc)
+		points = try values.decodeIfPresent(String.self, forKey: .points)
 		token = try values.decodeIfPresent(String.self, forKey: .token)
 		actorId = try values.decodeIfPresent(Int.self, forKey: .actorId)
 		isActive = try values.decodeIfPresent(Bool.self, forKey: .isActive)

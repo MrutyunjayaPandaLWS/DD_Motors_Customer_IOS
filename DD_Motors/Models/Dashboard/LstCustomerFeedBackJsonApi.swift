@@ -89,6 +89,12 @@ struct LstCustomerFeedBackJsonApi : Codable {
 	let skuMaxPrice : Int?
 	let targetPoint : Int?
 	let userCode : String?
+	let stateID : Int?
+	let stateName : String?
+	let passBookNumber : String?
+	let mappedCustomerType : String?
+	let mappedCustomerId : Int?
+	let mappedCustomerName : String?
 
 	enum CodingKeys: String, CodingKey {
 
@@ -168,6 +174,12 @@ struct LstCustomerFeedBackJsonApi : Codable {
 		case skuMaxPrice = "skuMaxPrice"
 		case targetPoint = "targetPoint"
 		case userCode = "userCode"
+		case stateID = "stateID"
+		case stateName = "stateName"
+		case passBookNumber = "passBookNumber"
+		case mappedCustomerType = "mappedCustomerType"
+		case mappedCustomerId = "mappedCustomerId"
+		case mappedCustomerName = "mappedCustomerName"
 	}
 
 	init(from decoder: Decoder) throws {
@@ -248,6 +260,12 @@ struct LstCustomerFeedBackJsonApi : Codable {
 		skuMaxPrice = try values.decodeIfPresent(Int.self, forKey: .skuMaxPrice)
 		targetPoint = try values.decodeIfPresent(Int.self, forKey: .targetPoint)
 		userCode = try values.decodeIfPresent(String.self, forKey: .userCode)
+		stateID = try values.decodeIfPresent(Int.self, forKey: .stateID)
+		stateName = try values.decodeIfPresent(String.self, forKey: .stateName)
+		passBookNumber = try values.decodeIfPresent(String.self, forKey: .passBookNumber)
+		mappedCustomerType = try values.decodeIfPresent(String.self, forKey: .mappedCustomerType)
+		mappedCustomerId = try values.decodeIfPresent(Int.self, forKey: .mappedCustomerId)
+		mappedCustomerName = try values.decodeIfPresent(String.self, forKey: .mappedCustomerName)
 	}
 
 }

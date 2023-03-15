@@ -407,6 +407,22 @@ class RestAPI_Requests {
             }
         }
     }
+    
+    // Validate Status
+    
+    func validateStatusApi(parameters: JSON, completion: @escaping (ValidateStatusModel?, Error?) -> ()) -> URLSessionDataTask? {
+        return client.load(path: validateStatus_URLMethod, method: .post, params: parameters) { data, error in
+            do{
+                if data != nil{
+                    let result1 =  try JSONDecoder().decode(ValidateStatusModel.self, from: data as! Data)
+                    completion(result1, nil)
+                }
+            }catch{
+                completion(nil, error)
+            }
+        }
+    }
+    
 }
 
 

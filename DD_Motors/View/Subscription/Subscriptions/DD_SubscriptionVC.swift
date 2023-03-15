@@ -151,9 +151,10 @@ class DD_SubscriptionVC: BaseViewController, SelectedItemDelegate {
                 "ActionType":"1",
                 "ActorId":"\(self.userID)",
                 "LoyaltY_ID":"\(UserDefaults.standard.string(forKey: "LoyaltyId") ?? "")",
-                "SourceType":"\(self.selectedSourceId)",
+                "SourceType":"3",
                 "SourceId":"\(self.selectedStatusId)",
                 "SourceValue":"\(self.selectedTitle)",
+                "SubscriptionTypeId":"\(self.selectedSourceId)",
                 "Amount":"999"
             ] as [String: Any]
             print(parameter)

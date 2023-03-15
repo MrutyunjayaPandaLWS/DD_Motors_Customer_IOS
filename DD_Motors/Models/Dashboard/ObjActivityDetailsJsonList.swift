@@ -18,6 +18,8 @@ struct ObjActivityDetailsJsonList : Codable {
 	let activityDate : String?
 	let jActivityDate : String?
 	let type : String?
+	let email : String?
+	let mobile : String?
 	let token : String?
 	let actorId : Int?
 	let isActive : Bool?
@@ -31,6 +33,8 @@ struct ObjActivityDetailsJsonList : Codable {
 		case activityDate = "activityDate"
 		case jActivityDate = "jActivityDate"
 		case type = "type"
+		case email = "email"
+		case mobile = "mobile"
 		case token = "token"
 		case actorId = "actorId"
 		case isActive = "isActive"
@@ -45,6 +49,8 @@ struct ObjActivityDetailsJsonList : Codable {
 		activityDate = try values.decodeIfPresent(String.self, forKey: .activityDate)
 		jActivityDate = try values.decodeIfPresent(String.self, forKey: .jActivityDate)
 		type = try values.decodeIfPresent(String.self, forKey: .type)
+		email = try values.decodeIfPresent(String.self, forKey: .email)
+		mobile = try values.decodeIfPresent(String.self, forKey: .mobile)
 		token = try values.decodeIfPresent(String.self, forKey: .token)
 		actorId = try values.decodeIfPresent(Int.self, forKey: .actorId)
 		isActive = try values.decodeIfPresent(Bool.self, forKey: .isActive)

@@ -28,9 +28,6 @@ class DD_LoginVC: BaseViewController,UITextFieldDelegate {
     
     @IBOutlet weak var stackView: UIStackView!
     
-    @IBAction func filterResetBTN(_ sender: Any) {
-    }
-    
     var enteredValues = ""
     var existencyValue = -1
     var receivedOTP = "0"

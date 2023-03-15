@@ -8,6 +8,7 @@
 import UIKit
 let membershipExistancy_URLMethod = "CheckCustomerExistancyAndVerification"
 let login_URLMethod = "CheckIsAuthenticatedMobileApp"
+let validateVerificationStatus = ""
 let saveOtp_URLMethod = "SaveAndGetOTPDetails"
 let termsAndCondition_URLMethod = "SaveOrGetTermAndConditions"
 let stateName_URLMethod = "GetStateDetailsMobileApp"
@@ -29,4 +30,5 @@ let getGiftSubscriptionSave_URLMethod = "GetGiftSubscriptionSave"
 let getGiftCardIssueMobileApp_URLMethod = "getGiftCardIssueMobileApp"
 let bannerImage_URLMethod = "BindLandingImageList"
 let bannerCategory_URLMethod = "GetAttributeDetails"
+let validateStatus_URLMethod = "UpdateCustomerAccountDetails"
 

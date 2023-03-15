@@ -36,13 +36,11 @@ class DD_DashboardVC: BaseViewController{
     var requestAPIs = RestAPI_Requests()
     var sourceArray = [AlamofireSource]()
     var bannerImagesArray = [ObjImageGalleryList1]()
-
+    var bannerImageCalled = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         self.VM.VC = self
-        self.tokendata()
-        self.bannerImageApi()
-     
+        
         myVehicleCollectionView.delegate = self
         myVehicleCollectionView.dataSource = self
 
@@ -60,6 +58,7 @@ class DD_DashboardVC: BaseViewController{
         self.slideMenuController()?.closeLeft()
         self.loaderView.isHidden = false
         self.playAnimation2()
+        self.bannerImageCalled = 1
         self.tokendata()
         
     }
@@ -149,11 +148,11 @@ class DD_DashboardVC: BaseViewController{
         self.VM.dashBoardApi(parameter: parameter)
     }
     
-    func dashboardVehicleListApi(){
+    func dashboardVehicleListApi(loyaltyID: String){
         let parameter = [
             "ActionType": "261",
             "ActorId":"\(self.userID)",
-            "LoyaltyID":"\(UserDefaults.standard.string(forKey: "LoyaltyId") ?? "")"
+            "LoyaltyID":loyaltyID
         ] as [String: Any]
         print(parameter)
         self.VM.dashBoardApiVehicleApi(parameter: parameter)
@@ -252,7 +251,12 @@ class DD_DashboardVC: BaseViewController{
                         print(parseddata.access_token ?? "")
                         UserDefaults.standard.setValue(parseddata.access_token ?? "", forKey: "TOKEN")
                     DispatchQueue.main.async {
+                        if self.bannerImageCalled == 1{
+                            self.bannerImageApi()
+                            self.bannerImageCalled = 0
+                        }
                         self.dashboardApi()
+                        
                         
                     }
                      }catch let parsingError {
@@ -283,7 +287,7 @@ extension DD_DashboardVC: UICollectionViewDelegate, UICollectionViewDataSource, 
             let receivedImagePath = URL(string: "\(imageBaseURL)\(self.VM.vehicleListArray[indexPath.row].imageUrl ?? "")")
             cell.vehicleImage.kf.setImage(with: receivedImagePath)
         }else{
-            cell.vehicleImage.image = UIImage(named: "swift-sport-black-and-red")
+            cell.vehicleImage.image = UIImage(named: "default_vehicle")
         }
         
         return cell
