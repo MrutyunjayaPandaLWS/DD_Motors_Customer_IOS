@@ -31,4 +31,4 @@ let getGiftCardIssueMobileApp_URLMethod = "getGiftCardIssueMobileApp"
 let bannerImage_URLMethod = "BindLandingImageList"
 let bannerCategory_URLMethod = "GetAttributeDetails"
 let validateStatus_URLMethod = "UpdateCustomerAccountDetails"
-
+let promotionList_URLMethod = "GetPromotionDetailsMobileApp"

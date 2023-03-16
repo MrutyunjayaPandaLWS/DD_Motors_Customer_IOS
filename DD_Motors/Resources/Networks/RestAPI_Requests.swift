@@ -423,6 +423,20 @@ class RestAPI_Requests {
         }
     }
     
+//    MARK: - PROMOTION LIST API IMPLEMENTATION
+    
+    func promotionListAPi(parameters: JSON, completion: @escaping (PromotionModels?, Error?) -> ()) -> URLSessionDataTask? {
+        return client.load(path: promotionList_URLMethod, method: .post, params: parameters) { data, error in
+            do{
+                if data != nil{
+                    let result1 =  try JSONDecoder().decode(PromotionModels.self, from: data as! Data)
+                    completion(result1, nil)
+                }
+            }catch{
+                completion(nil, error)
+            }
+        }
+    }
+    
 }
-
 

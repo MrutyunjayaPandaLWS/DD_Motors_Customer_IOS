@@ -13,6 +13,8 @@ class DD_MyOffersVC: BaseViewController, InfoDelegate {
   
  
     
+    @IBOutlet weak var offersAnimation: LottieAnimationView!
+    @IBOutlet weak var noOffersAnimationView: UIView!
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     
     @IBOutlet weak var myOffersListCollectionView: UICollectionView!
@@ -60,8 +62,12 @@ class DD_MyOffersVC: BaseViewController, InfoDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
    
-        self.myOffersListAPI(categoryId: self.categoryId, startIndex: 1)
+        noOffersAnimationView.isHidden = true
+       playAnimation3()
+        self.VM.myOffersCategoryListArray.removeAll()
+        self.VM.myOffersListArray1.removeAll()
         self.myOffersCategoryApi()
+        self.myOffersListAPI(categoryId: self.categoryId, startIndex: 1)
     }
     
     @objc func myOffersApi(){
@@ -275,6 +281,22 @@ extension DD_MyOffersVC: UICollectionViewDelegate, UICollectionViewDataSource{
         }
 
     }
+    
+
+    
+    func playAnimation3(){
+            loaderAnimationView = .init(name: "94248-gift-blue")
+            loaderAnimationView!.frame = offersAnimation.bounds
+              // 3. Set animation content mode
+            loaderAnimationView!.contentMode = .scaleAspectFill
+              // 4. Set animation loop mode
+            loaderAnimationView!.loopMode = .loop
+              // 5. Adjust animation speed
+            loaderAnimationView!.animationSpeed = 1.5
+            offersAnimation.addSubview(loaderAnimationView!)
+              // 6. Play animation
+            loaderAnimationView!.play()
+        }
     
     func playAnimation2(){
             loaderAnimationView = .init(name: "loader")

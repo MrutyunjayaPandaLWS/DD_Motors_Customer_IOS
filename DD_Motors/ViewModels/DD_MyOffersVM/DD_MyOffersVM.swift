@@ -28,6 +28,7 @@ class DD_MyOffersVM {
         self.VC?.unlockedImageArray.removeAll()
         self.VC?.lockedImageArray.removeAll()
         self.VC?.loaderView.isHidden = false
+        self.VC?.noOffersAnimationView.isHidden = true
         self.VC?.playAnimation2()
         self.requestAPIs.myOffersListApi(parameters: parameter) { (result, error) in
             if error == nil{
@@ -149,8 +150,10 @@ class DD_MyOffersVM {
                             self.VC?.myOffersListCollectionView.isHidden = false
                             self.VC?.myOffersListCollectionView.reloadData()
                         }else{
+                            
                             self.VC?.myOffersListCollectionView.isHidden = true
-                            self.VC?.view.makeToast("No data found !!", duration: 1.0, position: .bottom)
+//                            self.VC?.view.makeToast("No data found !!", duration: 1.0, position: .bottom)
+                            self.VC?.noOffersAnimationView.isHidden = false
                         }
                         }else{
                             if self.VC!.startIndex > 1{
@@ -158,7 +161,8 @@ class DD_MyOffersVM {
                                 self.VC?.noofelements = 9
                             }else{
                                 self.VC?.myOffersListCollectionView.isHidden = true
-                                self.VC?.view.makeToast("No data found !!", duration: 2.0, position: .bottom)
+//                                self.VC?.view.makeToast("No data found !!", duration: 2.0, position: .bottom)
+                                self.VC?.noOffersAnimationView.isHidden = false
                             }
 
                         }
@@ -184,6 +188,7 @@ class DD_MyOffersVM {
         self.VC?.startLoading()
         self.VC?.loaderView.isHidden = false
         self.VC?.playAnimation2()
+        self.myOffersCategoryListArray.removeAll()
         self.myOffersListArray.removeAll()
         self.requestAPIs.myOffersCategoryListApi(parameters: parameter) { (result, error) in
             if error == nil{
@@ -204,7 +209,8 @@ class DD_MyOffersVM {
                             self.VC?.categoryCollectionView.reloadData()
                         }else{
                             self.VC?.categoryCollectionView.isHidden = true
-                            self.VC?.view.makeToast("No data found !!", duration: 1.0, position: .bottom)
+//                            self.VC?.view.makeToast("No data found !!", duration: 1.0, position: .bottom)
+                            self.VC?.noOffersAnimationView.isHidden = false
                         }
                         
 //

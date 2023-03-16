@@ -25,8 +25,8 @@ class DD_SidemenuVC: BaseViewController {
     @IBOutlet weak var loaderAnimation: LottieAnimationView!
     private var loaderAnimationView : LottieAnimationView?
     
-    var sideMenuArray = ["My Offers", "Subscription", "Subscription History", "Dealership Location", "Service History", "Support", "Terms & Conditions"]
-    var sideMenuImage = ["myOffers", "badge", "badge", "location", "setting", "stack", "copy"]
+    var sideMenuArray = ["My Offers", "Subscription", "Subscription History", "Dealership Location", "Service History", "Promotions", "Support", "Terms & Conditions"]
+    var sideMenuImage = ["myOffers", "badge", "badge", "location", "setting", "stack","stack", "copy"]
     let picker = UIImagePickerController()
     var strBase64 = ""
     var fileType = ""
@@ -187,14 +187,20 @@ extension DD_SidemenuVC: UITableViewDelegate, UITableViewDataSource{
             self.navigationController?.pushViewController(vc, animated: true)
         }else if indexPath.row == 5{
             self.closeLeft()
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_PromotionsVC") as! DD_PromotionsVC
+//            vc.itsFrom = "SideMenu"
+            self.navigationController?.pushViewController(vc, animated: true)
+        }else if indexPath.row == 6{
+            self.closeLeft()
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_SupportVC") as! DD_SupportVC
             vc.itsFrom = "SideMenu"
             self.navigationController?.pushViewController(vc, animated: true)
-        }else if indexPath.row == 6{
+        }else if indexPath.row == 7{
             self.closeLeft()
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_TermsandConditionsVC") as!  DD_TermsandConditionsVC
             self.navigationController?.pushViewController(vc, animated: true)
         }
+//
      }
     
     func playAnimation2(){

@@ -12,6 +12,13 @@
 		25F17010298B93DB00A02535 /* LstCustomerJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F1700D298B93D800A02535 /* LstCustomerJson.swift */; };
 		25F17011298B93DB00A02535 /* LstCustomerOfficalInfoJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F1700E298B93D900A02535 /* LstCustomerOfficalInfoJson.swift */; };
 		25F17012298B93DB00A02535 /* ProfileModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F1700F298B93DB00A02535 /* ProfileModels.swift */; };
+		8059CC9129C311990085A132 /* LstPromotionJsonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059CC8F29C311980085A132 /* LstPromotionJsonList.swift */; };
+		8059CC9229C311990085A132 /* PromotionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059CC9029C311990085A132 /* PromotionModels.swift */; };
+		8075441429C2EBBB00C614B9 /* DD_PromotionsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075441329C2EBBB00C614B9 /* DD_PromotionsVM.swift */; };
+		8075441629C2EBE900C614B9 /* DD_PromotionsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075441529C2EBE900C614B9 /* DD_PromotionsVC.swift */; };
+		8075441829C2EC1000C614B9 /* DD_PromotionDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075441729C2EC1000C614B9 /* DD_PromotionDetailsVC.swift */; };
+		8075441A29C2EC3200C614B9 /* DD_PromotionsListTVCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075441929C2EC3200C614B9 /* DD_PromotionsListTVCell.swift */; };
+		80AA3F9829C3477D0096E95F /* 94248-gift-blue.json in Resources */ = {isa = PBXBuildFile; fileRef = 80AA3F9729C3477C0096E95F /* 94248-gift-blue.json */; };
 		8409053F2959D0B8002DBBEE /* DD_QueryTopicCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409053E2959D0B8002DBBEE /* DD_QueryTopicCVC.swift */; };
 		8409054D2959DE6B002DBBEE /* WebClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840905402959DE66002DBBEE /* WebClient.swift */; };
 		8409054E2959DE6B002DBBEE /* RestAPI_Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840905412959DE67002DBBEE /* RestAPI_Requests.swift */; };
@@ -215,6 +222,13 @@
 		25F1700D298B93D800A02535 /* LstCustomerJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstCustomerJson.swift; sourceTree = "<group>"; };
 		25F1700E298B93D900A02535 /* LstCustomerOfficalInfoJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstCustomerOfficalInfoJson.swift; sourceTree = "<group>"; };
 		25F1700F298B93DB00A02535 /* ProfileModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileModels.swift; sourceTree = "<group>"; };
+		8059CC8F29C311980085A132 /* LstPromotionJsonList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstPromotionJsonList.swift; sourceTree = "<group>"; };
+		8059CC9029C311990085A132 /* PromotionModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromotionModels.swift; sourceTree = "<group>"; };
+		8075441329C2EBBB00C614B9 /* DD_PromotionsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_PromotionsVM.swift; sourceTree = "<group>"; };
+		8075441529C2EBE900C614B9 /* DD_PromotionsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_PromotionsVC.swift; sourceTree = "<group>"; };
+		8075441729C2EC1000C614B9 /* DD_PromotionDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_PromotionDetailsVC.swift; sourceTree = "<group>"; };
+		8075441929C2EC3200C614B9 /* DD_PromotionsListTVCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_PromotionsListTVCell.swift; sourceTree = "<group>"; };
+		80AA3F9729C3477C0096E95F /* 94248-gift-blue.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "94248-gift-blue.json"; path = "../../../../../../Downloads/94248-gift-blue.json"; sourceTree = "<group>"; };
 		8409053E2959D0B8002DBBEE /* DD_QueryTopicCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_QueryTopicCVC.swift; sourceTree = "<group>"; };
 		840905402959DE66002DBBEE /* WebClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebClient.swift; sourceTree = "<group>"; };
 		840905412959DE67002DBBEE /* RestAPI_Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestAPI_Requests.swift; sourceTree = "<group>"; };
@@ -458,6 +472,47 @@
 				25BF2ABE298D2BB7008B1DAC /* SubscriptionPopup.swift */,
 			);
 			path = SubscribePopUpMessage;
+			sourceTree = "<group>";
+		};
+		8059CC8E29C3117B0085A132 /* PromotionsModels */ = {
+			isa = PBXGroup;
+			children = (
+				8059CC9029C311990085A132 /* PromotionModels.swift */,
+				8059CC8F29C311980085A132 /* LstPromotionJsonList.swift */,
+			);
+			path = PromotionsModels;
+			sourceTree = "<group>";
+		};
+		8075440F29C2EB2C00C614B9 /* Promotions */ = {
+			isa = PBXGroup;
+			children = (
+				8075441529C2EBE900C614B9 /* DD_PromotionsVC.swift */,
+				8075441929C2EC3200C614B9 /* DD_PromotionsListTVCell.swift */,
+			);
+			path = Promotions;
+			sourceTree = "<group>";
+		};
+		8075441029C2EB5E00C614B9 /* DD_PromotionsVM */ = {
+			isa = PBXGroup;
+			children = (
+				8075441329C2EBBB00C614B9 /* DD_PromotionsVM.swift */,
+			);
+			path = DD_PromotionsVM;
+			sourceTree = "<group>";
+		};
+		8075441129C2EB7500C614B9 /* DD_PromotionsDetailsVM */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DD_PromotionsDetailsVM;
+			sourceTree = "<group>";
+		};
+		8075441229C2EB8B00C614B9 /* PromotionDetails */ = {
+			isa = PBXGroup;
+			children = (
+				8075441729C2EC1000C614B9 /* DD_PromotionDetailsVC.swift */,
+			);
+			path = PromotionDetails;
 			sourceTree = "<group>";
 		};
 		840905462959DE69002DBBEE /* CommonUtilities */ = {
@@ -927,6 +982,8 @@
 		8498EBE629542D2D0019A0D5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8075441229C2EB8B00C614B9 /* PromotionDetails */,
+				8075440F29C2EB2C00C614B9 /* Promotions */,
 				25BF2ABD298D2B30008B1DAC /* SubscribePopUpMessage */,
 				84F54FC0295DC6060084E50A /* Notification */,
 				8498EBE729542D350019A0D5 /* Login */,
@@ -958,6 +1015,8 @@
 		8498EBE829542D3E0019A0D5 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				8075441129C2EB7500C614B9 /* DD_PromotionsDetailsVM */,
+				8075441029C2EB5E00C614B9 /* DD_PromotionsVM */,
 				84EF2460297BE969006E9EA1 /* DD_MyOffersDetailsVM */,
 				84EF245D297BC657006E9EA1 /* DD_ScratchSubmissionVM */,
 				84C1E3EC29757D9400D188C5 /* DD_ServiceHistoryVM */,
@@ -998,6 +1057,7 @@
 		8498EBEA29542D520019A0D5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8059CC8E29C3117B0085A132 /* PromotionsModels */,
 				84BAAC5729C1C9C1006DDEE0 /* ValidateStatusModel */,
 				84EF2463297BEA4C006E9EA1 /* New Group */,
 				84EF245A297BC498006E9EA1 /* ScratchSubmissionModels */,
@@ -1099,6 +1159,7 @@
 				84B3FC55295C0C710090563D /* 81860-car-and-skylines.json */,
 				848A10CD2959737500B1589E /* success.json */,
 				8493F47D297A953C0005D4E0 /* loader.json */,
+				80AA3F9729C3477C0096E95F /* 94248-gift-blue.json */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -1338,9 +1399,9 @@
 		84F33FED2956CB5C00B1E428 /* DealerShipLocation */ = {
 			isa = PBXGroup;
 			children = (
+				84F33FEE2956CB6800B1E428 /* DD_DealershipLocationVC.swift */,
 				84F33FEF2956CB6800B1E428 /* DD_DealershipLocationTVC.swift */,
 				84F33FF02956CB6900B1E428 /* DD_DealershipLocationTVC.xib */,
-				84F33FEE2956CB6800B1E428 /* DD_DealershipLocationVC.swift */,
 			);
 			path = DealerShipLocation;
 			sourceTree = "<group>";
@@ -1501,6 +1562,7 @@
 				84B3FC86295C3DF40090563D /* otherInfoTableViewCell.xib in Resources */,
 				84B3FC7D295C3DF40090563D /* otherImageTableViewCell.xib in Resources */,
 				8498EC1229542E2F0019A0D5 /* lf30_editor_qd1wdceq.json in Resources */,
+				80AA3F9829C3477D0096E95F /* 94248-gift-blue.json in Resources */,
 				8498EC1529542E2F0019A0D5 /* lf30_editor_3bdwnbyb.json in Resources */,
 				845B9D9A296EE93E00D8DD04 /* 33886-check-okey-done.json in Resources */,
 				8498EC1629542E2F0019A0D5 /* lf30_editor_jh47f7lt (1).json in Resources */,
@@ -1589,6 +1651,7 @@
 				84BAAC5429C1C10F006DDEE0 /* LstCustomerFeedBackJsonApi.swift in Sources */,
 				84B3FC67295C3BDC0090563D /* ChatDetailsModels.swift in Sources */,
 				8498EC0329542E010019A0D5 /* GrandientExtension.swift in Sources */,
+				8075441429C2EBBB00C614B9 /* DD_PromotionsVM.swift in Sources */,
 				84BAAC5229C1C10F006DDEE0 /* DashBoardModels.swift in Sources */,
 				84F33FF72956CF3800B1E428 /* DD_MyOffersVC.swift in Sources */,
 				84ED675C2966B3F700E0A546 /* ObjLocationAddressInfo.swift in Sources */,
@@ -1621,6 +1684,7 @@
 				84BAAC5329C1C10F006DDEE0 /* ObjActivityDetailsJsonList.swift in Sources */,
 				8476936C295AD37E008DD594 /* DD_DropDownVM.swift in Sources */,
 				848EA5C12968011B004B6620 /* DashBoardVehicelModels.swift in Sources */,
+				8075441A29C2EC3200C614B9 /* DD_PromotionsListTVCell.swift in Sources */,
 				840905532959DE6B002DBBEE /* MyCommonFunctionalUtilities.swift in Sources */,
 				840905542959DE6B002DBBEE /* Reachability.swift in Sources */,
 				845B9D91296EE11C00D8DD04 /* MyOffersListModels.swift in Sources */,
@@ -1652,7 +1716,9 @@
 				25BF2ABF298D2BB7008B1DAC /* SubscriptionPopup.swift in Sources */,
 				84668D862954776A000491FE /* DD_SupportVC.swift in Sources */,
 				84AF555C296BE13800D52E44 /* DD_SubscriptionHistoryVM.swift in Sources */,
+				8075441629C2EBE900C614B9 /* DD_PromotionsVC.swift in Sources */,
 				84B3FC7A295C3DF40090563D /* SelectquerytopicInListingTableViewCell.swift in Sources */,
+				8075441829C2EC1000C614B9 /* DD_PromotionDetailsVC.swift in Sources */,
 				848A10CC29596EB800B1589E /* DD_SuccessPopUp.swift in Sources */,
 				84769365295AD1E6008DD594 /* CityModels.swift in Sources */,
 				84B3FC85295C3DF40090563D /* otherImageTableViewCell.swift in Sources */,
@@ -1660,6 +1726,7 @@
 				84B3FC68295C3BDC0090563D /* ObjQueryResponseJsonList.swift in Sources */,
 				845B9D8C296ED50F00D8DD04 /* SubscriptionSubmissionModels.swift in Sources */,
 				848EA5C22968011B004B6620 /* LstUserVehicleDetails.swift in Sources */,
+				8059CC9229C311990085A132 /* PromotionModels.swift in Sources */,
 				8409054F2959DE6B002DBBEE /* ApiUrls.swift in Sources */,
 				8498EC0929542E010019A0D5 /* TapGestureExtension.swift in Sources */,
 				8498EBB429542AC90019A0D5 /* AppDelegate.swift in Sources */,
@@ -1708,6 +1775,7 @@
 				8476935A295AC34A008DD594 /* UserList.swift in Sources */,
 				8498EC0B29542E010019A0D5 /* NotificationExtension.swift in Sources */,
 				84B3FC83295C3DF40090563D /* senderImageTableViewCell.swift in Sources */,
+				8059CC9129C311990085A132 /* LstPromotionJsonList.swift in Sources */,
 				84EF245C297BC4B0006E9EA1 /* ScratchSubmissionModels.swift in Sources */,
 				84F17D9329557F4700B6B6C7 /* DD_WalletListTVC.swift in Sources */,
 				84668D77295470A1000491FE /* DD_DashboardVC.swift in Sources */,
