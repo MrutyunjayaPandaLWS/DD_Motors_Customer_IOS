@@ -28,6 +28,7 @@ struct LstGiftCardType : Codable {
     let cardImagePath : String?
     let behaviourId : Int?
     let cardNumber : String?
+    let ltyProgramBehaviour : String?
     let subscriptionStatus : String?
     let offerRedeemedId : Int?
     let offerEarendId : Int?
@@ -53,7 +54,6 @@ struct LstGiftCardType : Codable {
     let instruction : String?
     let is_Gifited : Int?
     let offerReferenceID : String?
-    var offerImage: String?
 
     enum CodingKeys: String, CodingKey {
 
@@ -72,6 +72,7 @@ struct LstGiftCardType : Codable {
         case cardImagePath = "cardImagePath"
         case behaviourId = "behaviourId"
         case cardNumber = "cardNumber"
+        case ltyProgramBehaviour = "ltyProgramBehaviour"
         case subscriptionStatus = "subscriptionStatus"
         case offerRedeemedId = "offerRedeemedId"
         case offerEarendId = "offerEarendId"
@@ -116,6 +117,7 @@ struct LstGiftCardType : Codable {
         cardImagePath = try values.decodeIfPresent(String.self, forKey: .cardImagePath)
         behaviourId = try values.decodeIfPresent(Int.self, forKey: .behaviourId)
         cardNumber = try values.decodeIfPresent(String.self, forKey: .cardNumber)
+        ltyProgramBehaviour = try values.decodeIfPresent(String.self, forKey: .ltyProgramBehaviour)
         subscriptionStatus = try values.decodeIfPresent(String.self, forKey: .subscriptionStatus)
         offerRedeemedId = try values.decodeIfPresent(Int.self, forKey: .offerRedeemedId)
         offerEarendId = try values.decodeIfPresent(Int.self, forKey: .offerEarendId)

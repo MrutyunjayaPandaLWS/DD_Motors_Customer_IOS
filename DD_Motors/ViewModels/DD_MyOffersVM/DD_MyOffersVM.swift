@@ -25,11 +25,8 @@ class DD_MyOffersVM {
     
     func myOffersListApi(parameter: JSON){
         self.VC?.startLoading()
-        self.myOffersListArray1.removeAll()
-        self.myOffersListArray.removeAll()
         self.VC?.unlockedImageArray.removeAll()
         self.VC?.lockedImageArray.removeAll()
-        self.myOffersListArray.removeAll()
         self.VC?.loaderView.isHidden = false
         self.VC?.playAnimation2()
         self.requestAPIs.myOffersListApi(parameters: parameter) { (result, error) in
@@ -39,9 +36,12 @@ class DD_MyOffersVM {
                         
                         self.VC?.loaderView.isHidden = true
                         self.VC?.stopLoading()
-                        self.myOffersListArray = result?.lstGiftCardType ?? []
-                        self.myOffersListArray1.removeAll()
-                        print(self.myOffersListArray1.count, "Total Count")
+                        //                        self.myOffersListArray = result?.lstGiftCardType ?? []
+                        let myOfferListsArray = result?.lstGiftCardType ?? []
+                        self.myOffersListArray += myOfferListsArray
+                        self.VC?.noofelements = self.myOffersListArray.count
+                        print(self.myOffersListArray.count, "Total Count")
+                        if myOfferListsArray.isEmpty == false{
                         if self.myOffersListArray.count != 0 {
                             for data in self.myOffersListArray{
                                 if self.myOffersListArray.count >= 4{
@@ -147,13 +147,23 @@ class DD_MyOffersVM {
                                 }
                             }
                             self.VC?.myOffersListCollectionView.isHidden = false
-                            
+                            self.VC?.myOffersListCollectionView.reloadData()
                         }else{
                             self.VC?.myOffersListCollectionView.isHidden = true
                             self.VC?.view.makeToast("No data found !!", duration: 1.0, position: .bottom)
                         }
-                        print(self.VC?.unlockedImageArray.count)
-                        self.VC?.myOffersListCollectionView.reloadData()
+                        }else{
+                            if self.VC!.startIndex > 1{
+                                self.VC?.startIndex = 1
+                                self.VC?.noofelements = 9
+                            }else{
+                                self.VC?.myOffersListCollectionView.isHidden = true
+                                self.VC?.view.makeToast("No data found !!", duration: 2.0, position: .bottom)
+                            }
+
+                        }
+//                        print(self.VC?.unlockedImageArray.count)
+//                        self.VC?.myOffersListCollectionView.reloadData()
                     }
                 }else{
                     DispatchQueue.main.async {
@@ -171,10 +181,10 @@ class DD_MyOffersVM {
     }
     
     func myOffersCategoryList(parameter: JSON){
-        self.myOffersCategoryListArray.removeAll()
         self.VC?.startLoading()
         self.VC?.loaderView.isHidden = false
         self.VC?.playAnimation2()
+        self.myOffersListArray.removeAll()
         self.requestAPIs.myOffersCategoryListApi(parameters: parameter) { (result, error) in
             if error == nil{
                 if result != nil{

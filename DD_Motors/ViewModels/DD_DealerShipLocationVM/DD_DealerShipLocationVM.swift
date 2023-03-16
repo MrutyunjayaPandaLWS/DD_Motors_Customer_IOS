@@ -26,15 +26,30 @@ class DD_DealerShipLocationVM {
                     DispatchQueue.main.async {
                         self.VC?.stopLoading()
                         self.VC?.loaderView.isHidden = true
-                        self.dealerShipListArray = result?.lstLocationDetails ?? []
-                        if self.dealerShipListArray.count != 0 {
-                            self.VC!.dealershipLocationTV.isHidden = false
-                            self.VC!.noDataFoundLbl.isHidden = true
-                            self.VC!.dealershipLocationTV.reloadData()
+                        let dealerShipListArrya = result?.lstLocationDetails ?? []
+                        
+                        if dealerShipListArrya.isEmpty == false || dealerShipListArrya.count != 0{
+                            self.dealerShipListArray += dealerShipListArrya
+                            self.VC?.noofelements = self.dealerShipListArray.count
+                            if self.dealerShipListArray.count != 0 {
+                                self.VC!.dealershipLocationTV.isHidden = false
+                                self.VC!.noDataFoundLbl.isHidden = true
+                                self.VC!.dealershipLocationTV.reloadData()
+                            }else{
+                                self.VC!.dealershipLocationTV.isHidden = true
+                                self.VC!.noDataFoundLbl.isHidden = false
+                            }
                         }else{
-                            self.VC!.dealershipLocationTV.isHidden = true
-                            self.VC!.noDataFoundLbl.isHidden = false
+                            if self.VC!.startindex > 1{
+                                self.VC?.startindex = 1
+                                self.VC?.noofelements = 9
+                            }else{
+                                self.VC?.dealershipLocationTV.isHidden = true
+                                self.VC?.noDataFoundLbl.isHidden = false
+                            }
+
                         }
+
                         
                     }
                 }else{

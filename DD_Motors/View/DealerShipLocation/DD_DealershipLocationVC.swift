@@ -43,7 +43,8 @@ class DD_DealershipLocationVC: BaseViewController, LocationRedirectDelegate, CLL
     var latitude = 0.0
     var VM = DD_DealerShipLocationVM()
     var locationName = ""
-    
+    var noofelements = 0
+    var startindex = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         self.VM.VC = self
@@ -52,7 +53,8 @@ class DD_DealershipLocationVC: BaseViewController, LocationRedirectDelegate, CLL
         self.dealershipLocationTV.dataSource = self
         self.dealershipLocationTV.register(UINib(nibName: "DD_DealershipLocationTVC", bundle: nil), forCellReuseIdentifier: "DD_DealershipLocationTVC")
         self.dealershipLocationTV.separatorStyle = .none
-        self.dealerListingApi()
+        self.dealerListingApi(startIndex: 1)
+        self.VM.dealerShipListArray.removeAll()
     }
     override func viewWillAppear(_ animated: Bool) {
         self.locationManager.startUpdatingLocation()
@@ -66,10 +68,13 @@ class DD_DealershipLocationVC: BaseViewController, LocationRedirectDelegate, CLL
         self.navigationController?.popViewController(animated: true)
     }
     
-    func dealerListingApi(){
+    func dealerListingApi(startIndex: Int){
         let parameter = [
             "ActionType": "248",
-            "ActorId":"\(self.userID )"
+            "ActorId":"\(self.userID )",
+            "ActiveStatusID": "1",
+            "StartIndex": startIndex,
+            "PageSize": "10"
         ] as [String: Any]
         print(parameter)
         self.VM.dealerShipLocationAPi(parameter: parameter)
@@ -100,6 +105,23 @@ extension DD_DealershipLocationVC: UITableViewDelegate,UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+            if indexPath.row == VM.dealerShipListArray.count - 2{
+                if noofelements == 10{
+                    startindex = startindex + 1
+                    self.dealerListingApi(startIndex: self.startindex)
+                }else if self.noofelements > 10{
+                    self.startindex = self.startindex + 1
+                    self.dealerListingApi(startIndex: self.startindex)
+                }else if noofelements < 10{
+                    print("no need to hit API")
+                    return
+                }else{
+                    print("n0 more elements")
+                    return
+                }
+            }
+        }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 270
     }

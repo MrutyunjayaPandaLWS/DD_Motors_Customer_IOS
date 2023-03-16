@@ -32,6 +32,9 @@ class DD_MyOffersVC: BaseViewController, InfoDelegate {
     var offersID = ""
     var isGiftID = 0
     
+    var noofelements = 0
+    var startIndex = 1
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,13 +60,13 @@ class DD_MyOffersVC: BaseViewController, InfoDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
    
-        self.myOffersListAPI(categoryId: self.categoryId)
+        self.myOffersListAPI(categoryId: self.categoryId, startIndex: 1)
         self.myOffersCategoryApi()
     }
     
     @objc func myOffersApi(){
       
-        self.myOffersListAPI(categoryId: self.categoryId)
+        self.myOffersListAPI(categoryId: self.categoryId, startIndex: 1)
         self.myOffersCategoryApi()
     }
     @objc func moveToSubscribe(){
@@ -86,12 +89,14 @@ class DD_MyOffersVC: BaseViewController, InfoDelegate {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func myOffersListAPI(categoryId: Int){
+    func myOffersListAPI(categoryId: Int, startIndex: Int){
         let parameter = [
             "ActionType": "46",
             "ActorId": "\(self.userID)",
             "LoyaltyId":"\(self.loyaltyId)",
-            "OfferTypeID": categoryId
+            "OfferTypeID": categoryId,
+            "StartIndex": startIndex,
+            "PageSize": 10
         ] as [String: Any]
         print(parameter)
         self.VM.myOffersListApi(parameter: parameter)
@@ -243,11 +248,32 @@ extension DD_MyOffersVC: UICollectionViewDelegate, UICollectionViewDataSource{
             }
          
         }else{
+            self.VM.myOffersListArray1.removeAll()
             self.categoryId = self.VM.myOffersCategoryListArray[indexPath.row].attributeId ?? -1
             self.myOffersCategoryApi()
-            self.myOffersListAPI(categoryId: self.categoryId)
+            self.myOffersListAPI(categoryId: self.categoryId, startIndex: self.startIndex)
             
         }
+    }
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if collectionView == myOffersListCollectionView{
+            if indexPath.row == self.VM.myOffersCategoryListArray.count - 1{
+                if self.noofelements == 10{
+                    self.startIndex = self.startIndex + 1
+                    self.myOffersListAPI(categoryId: self.categoryId, startIndex: self.startIndex)
+                }else if self.noofelements > 10{
+                    self.startIndex = self.startIndex + 1
+                    self.myOffersListAPI(categoryId: self.categoryId, startIndex: self.startIndex)
+                }else if self.noofelements < 10{
+                    print("no need to hit API")
+                    return
+                }else{
+                    print("n0 more elements")
+                    return
+                }
+            }
+        }
+
     }
     
     func playAnimation2(){
