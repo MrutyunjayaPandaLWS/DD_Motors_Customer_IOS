@@ -27,15 +27,29 @@ class DD_SubscriptionHistoryVM {
                     DispatchQueue.main.async {
                         self.VC?.loaderView.isHidden = true
                         self.VC?.stopLoading()
-                        self.subscriptionHistoryListingArray = result?.lstcustomerSubscriptionSources ?? []
+                        let subscriptionHistoryList = result?.lstcustomerSubscriptionSources ?? []
                         print(self.subscriptionHistoryListingArray.count)
-                        if self.subscriptionHistoryListingArray.count != 0 {
-                            self.VC?.subscriptionHistoryTV.reloadData()
-                            self.VC?.subscriptionHistoryTV.isHidden = false
-                            self.VC?.noDataFoundLbl.isHidden = true
-                        }else{
-                            self.VC?.subscriptionHistoryTV.isHidden = true
-                            self.VC?.noDataFoundLbl.isHidden = false
+                        if subscriptionHistoryList.count != 0 {
+                            
+                            self.subscriptionHistoryListingArray += subscriptionHistoryList
+                            self.VC?.noofelements = self.subscriptionHistoryListingArray.count
+                            if self.subscriptionHistoryListingArray.count != 0{
+                                self.VC?.subscriptionHistoryTV.reloadData()
+                                self.VC?.subscriptionHistoryTV.isHidden = false
+                                self.VC?.noDataFoundLbl.isHidden = true
+                            }else{
+                                self.VC?.subscriptionHistoryTV.isHidden = true
+                                self.VC?.noDataFoundLbl.isHidden = false
+                            }
+                            
+                        }else{   
+                            if self.VC!.startindex > 1{
+                                self.VC?.startindex = 1
+                                self.VC?.noofelements = 9
+                            }else{
+                                self.VC?.subscriptionHistoryTV.isHidden = true
+                                self.VC?.noDataFoundLbl.isHidden = false
+                            }
                         }
                         
                     }

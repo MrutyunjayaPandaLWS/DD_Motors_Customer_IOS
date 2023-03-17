@@ -54,7 +54,8 @@ class DD_MyCashPointVC: BaseViewController, DateSelectedDelegate {
     var selectedToDate = ""
     var selectedStatus = ""
     var itsFrom = ""
-    
+    var noofelements = 0
+    var startindex = 1
     override func viewDidLoad() {
         super.viewDidLoad()
         self.VM.VC = self
@@ -81,6 +82,7 @@ class DD_MyCashPointVC: BaseViewController, DateSelectedDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        self.VM.myCashPointListingArray.removeAll()
         self.myCashPointListApi(status: "", fromDate: "", toDate: "")
     }
     
@@ -225,7 +227,9 @@ class DD_MyCashPointVC: BaseViewController, DateSelectedDelegate {
                "LOYALITY_ID":"\(UserDefaults.standard.string(forKey: "LoyaltyId") ?? "")",
                "FromDate": fromDate,
                "ToDate": toDate,
-               "Status": status
+               "Status": status,
+               "StartIndex":"\(startindex)",
+               "PageSize":"10"
         ] as [String: Any]
         print(parameter)
         self.VM.myCashPointListingApi(parameter: parameter)
@@ -265,6 +269,24 @@ extension DD_MyCashPointVC: UITableViewDataSource, UITableViewDelegate{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 120
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == VM.myCashPointListingArray.count - 2{
+            if noofelements == 10{
+                startindex = startindex + 1
+                self.myCashPointListApi(status: self.selectedStatus, fromDate: self.selectedFromDate, toDate: self.selectedToDate)
+            }else if self.noofelements > 10{
+                self.startindex = self.startindex + 1
+                self.self.myCashPointListApi(status: self.selectedStatus, fromDate: self.selectedFromDate, toDate: self.selectedToDate)
+            }else if noofelements < 10{
+                print("no need to hit API")
+                return
+            }else{
+                print("n0 more elements")
+                return
+            }
+        }
     }
     
     func playAnimation2(){

@@ -28,7 +28,8 @@ class DD_SupportVC: BaseViewController, SendTopicDelegate{
     @IBOutlet weak var loaderView: UIView!
     @IBOutlet weak var loaderAnimation: LottieAnimationView!
     private var loaderAnimationView : LottieAnimationView?
-    
+    var noofelements = 0
+    var startindex = 1
     var tableHeight = 0
     var VM = DD_QueryListVM()
     var selectedQueryTopic = ""
@@ -63,6 +64,7 @@ class DD_SupportVC: BaseViewController, SendTopicDelegate{
         self.selectedItem.text = "Filter"
         self.selectedStatusId = -1
         self.selectedQueryTopicId = -1
+        self.VM.queryListArray.removeAll()
         self.queryListApi(queryTopic: self.selectedQueryTopicId, statusId: self.selectedStatusId)
         self.tableHeight = 0
         self.dropDownTableHeight.constant = 30
@@ -106,6 +108,8 @@ class DD_SupportVC: BaseViewController, SendTopicDelegate{
             "ActorId": "\(self.userID)",
             "HelpTopicID": queryTopic,
             "TicketStatusId": statusId,
+            "StartIndex":"\(startindex)",
+            "PageSize":"10"
         ] as [String: Any]
         print(parameter)
         self.VM.querListsApi(parameter: parameter)
@@ -192,6 +196,24 @@ extension DD_SupportVC: UITableViewDelegate, UITableViewDataSource{
             return 35
         }else{
             return 180
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == VM.queryListArray.count - 1{
+            if noofelements == 10{
+                startindex = startindex + 1
+                self.queryListApi(queryTopic: self.selectedQueryTopicId, statusId: self.selectedStatusId)
+            }else if self.noofelements > 10{
+                self.startindex = self.startindex + 1
+                self.queryListApi(queryTopic: self.selectedQueryTopicId, statusId: self.selectedStatusId)
+            }else if noofelements < 10{
+                print("no need to hit API")
+                return
+            }else{
+                print("n0 more elements")
+                return
+            }
         }
     }
     

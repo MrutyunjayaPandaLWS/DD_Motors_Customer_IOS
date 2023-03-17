@@ -31,11 +31,13 @@ class DD_PromotionsVM{
                             self.VC?.promotionListTV.reloadData()
                             self.VC?.stopLoading()
                         }else{
-                            self.VC?.emptyMessage.isHidden = false
-                            self.VC?.noofelements = 0
-                            self.VC?.startindex = 1
-                            self.VC?.stopLoading()
-                            self.VC?.promotionListTV.reloadData()
+                            if self.VC!.startindex > 1{
+                                self.VC?.startindex = 1
+                                self.VC?.noofelements = 9
+                            }else{
+                                self.VC?.promotionListTV.isHidden = true
+                                self.VC?.emptyMessage.isHidden = false
+                            }
                         }
                     }
                 }else{

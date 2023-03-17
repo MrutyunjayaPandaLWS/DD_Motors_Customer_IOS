@@ -23,20 +23,30 @@ class DD_ServiceHistoryVM {
             if error == nil{
                 if result != nil{
                     DispatchQueue.main.async {
-                        self.serviceHistoryListingArray.removeAll()
                         self.VC?.loaderView.isHidden = true
                         self.VC?.stopLoading()
-                        self.serviceHistoryListingArray = result?.lstUserVehicleDetails ?? []
-                        if self.serviceHistoryListingArray.count != 0 {
-                            self.VC?.serviceHistoryTableView.isHidden = false
-                            self.VC?.noDataFoundLbl.isHidden = true
-                            self.VC?.serviceHistoryTableView.reloadData()
+                        let serviceHistoryList = result?.lstUserVehicleDetails ?? []
+                        if serviceHistoryList.count != 0 {
+                            self.serviceHistoryListingArray += serviceHistoryList
+                            self.VC?.noofelements = self.serviceHistoryListingArray.count
+                            if self.serviceHistoryListingArray.count != 0{
+                                self.VC?.serviceHistoryTableView.isHidden = false
+                                self.VC?.noDataFoundLbl.isHidden = true
+                                self.VC?.serviceHistoryTableView.reloadData()
+                            }else{
+                                self.VC?.serviceHistoryTableView.isHidden = true
+                                self.VC?.noDataFoundLbl.isHidden = false
+                            }
+                            
                         }else{
-                            self.VC?.serviceHistoryTableView.isHidden = true
-//                            self.VC?.view.makeToast("No data found !!", duration: 3.0, position: .center)
-                            self.VC?.noDataFoundLbl.isHidden = false
+                            if self.VC!.startindex > 1{
+                                self.VC?.startindex = 1
+                                self.VC?.noofelements = 9
+                            }else{
+                                self.VC?.serviceHistoryTableView.isHidden = true
+                                self.VC?.noDataFoundLbl.isHidden = false
+                            }
                         }
-//
                     }
                 }else{
                     DispatchQueue.main.async {

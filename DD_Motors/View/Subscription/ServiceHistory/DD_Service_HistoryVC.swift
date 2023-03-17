@@ -15,7 +15,8 @@ class DD_Service_HistoryVC: BaseViewController {
     @IBOutlet weak var loaderAnimation: LottieAnimationView!
     private var loaderAnimationView : LottieAnimationView?
     
-    
+    var noofelements = 0
+    var startindex = 1
     var VM = DD_ServiceHistoryVM()
     let userID = UserDefaults.standard.string(forKey: "UserID") ?? ""
     let loyaltyId = UserDefaults.standard.string(forKey: "LoyaltyId") ?? ""
@@ -40,7 +41,9 @@ class DD_Service_HistoryVC: BaseViewController {
         let parameter = [
             "ActionType": "262",
             "ActorId": "\(self.userID)",
-            "LoyaltyID": "\(self.loyaltyId)"
+            "LoyaltyID": "\(self.loyaltyId)",
+            "StartIndex": startindex,
+            "PageSize":"10"
         ] as [String: Any]
         print(parameter)
         self.VM.serviceHistoryListApi(parameter: parameter)
@@ -71,6 +74,24 @@ extension DD_Service_HistoryVC: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == VM.serviceHistoryListingArray.count - 2{
+            if noofelements == 10{
+                startindex = startindex + 1
+                self.serviceHistoryListApi()
+            }else if self.noofelements > 10{
+                self.startindex = self.startindex + 1
+                self.serviceHistoryListApi()
+            }else if noofelements < 10{
+                print("no need to hit API")
+                return
+            }else{
+                print("no more elements")
+                return
+            }
+        }
     }
     
     func playAnimation2(){

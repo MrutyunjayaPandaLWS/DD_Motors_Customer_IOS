@@ -19,27 +19,38 @@ class DD_MyCashPointVM {
         self.VC?.startLoading()
         self.VC?.loaderView.isHidden = false
         self.VC?.playAnimation2()
-        self.myCashPointListingArray.removeAll()
+//        self.myCashPointListingArray.removeAll()
         self.requestAPIs.myCashPointListApi(parameters: parameter) { (result, error) in
             if error == nil{
                 if result != nil{
                     DispatchQueue.main.async {
                         self.VC?.stopLoading()
                         self.VC?.loaderView.isHidden = true
-                        self.myCashPointListingArray = result?.lstRewardTransJsonDetails ?? []
+                        let myCashPointList = result?.lstRewardTransJsonDetails ?? []
                         print(self.myCashPointListingArray.count)
-                        if self.myCashPointListingArray.count != 0 {
-                            self.VC!.totalAvaliablePts.text = "\(self.myCashPointListingArray[0].pointBalance ?? 0)"
-                            self.VC!.totalEarningPts.text = "\(self.myCashPointListingArray[0].totalPointCredited ?? 0)"
-                            self.VC!.totalRedeemedPts.text = "\(self.myCashPointListingArray[0].totalPointDebited ?? 0)"
-                            self.VC!.walletTableView.isHidden = false
-                            self.VC!.noDataFoundLbl.isHidden = true
-                            self.VC!.walletTableView.reloadData()
+                        if myCashPointList.count != 0 {
+                            self.myCashPointListingArray += myCashPointList
+                            self.VC?.noofelements = self.myCashPointListingArray.count
+                            if self.myCashPointListingArray.count != 0{
+                                self.VC!.totalAvaliablePts.text = "\(self.myCashPointListingArray[0].pointBalance ?? 0)"
+                                self.VC!.totalEarningPts.text = "\(self.myCashPointListingArray[0].totalPointCredited ?? 0)"
+                                self.VC!.totalRedeemedPts.text = "\(self.myCashPointListingArray[0].totalPointDebited ?? 0)"
+                                self.VC!.walletTableView.isHidden = false
+                                self.VC!.noDataFoundLbl.isHidden = true
+                                self.VC!.walletTableView.reloadData()
+                            }else{
+                                self.VC?.walletTableView.isHidden = true
+                                self.VC?.noDataFoundLbl.isHidden = false
+                            }
                         }else{
-                            self.VC!.walletTableView.isHidden = true
-                            self.VC!.noDataFoundLbl.isHidden = false
+                            if self.VC!.startindex > 1{
+                                self.VC?.startindex = 1
+                                self.VC?.noofelements = 9
+                            }else{
+                                self.VC?.walletTableView.isHidden = true
+                                self.VC?.noDataFoundLbl.isHidden = false
+                            }
                         }
-                        
                     }
                 }else{
                     DispatchQueue.main.async {

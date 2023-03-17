@@ -31,13 +31,26 @@ class DD_QueryListVM {
                     DispatchQueue.main.async {
                         self.VC?.stopLoading()
                         self.VC?.loaderView.isHidden = true
-                        self.queryListArray = result?.objCustomerAllQueryJsonList ?? []
-                        if self.queryListArray.count != 0 {
-                            self.VC?.queryListingTableView.isHidden = false
-                            self.VC?.queryListingTableView.reloadData()
+                        let queryList = result?.objCustomerAllQueryJsonList ?? []
+                        if queryList.count != 0 {
+                            self.queryListArray += queryList
+                            self.VC?.noofelements = self.queryListArray.count
+                            if self.queryListArray.count != 0{
+                                self.VC?.queryListingTableView.isHidden = false
+                                self.VC?.queryListingTableView.reloadData()
+                            }else{
+                                self.VC?.queryListingTableView.isHidden = true
+                                self.VC?.view.makeToast("No data found !!", duration: 2.0, position: .bottom)
+                            }
+                            
                         }else{
-                            self.VC?.view.makeToast("No data found !!", duration: 2.0, position: .bottom)
-                            self.VC?.queryListingTableView.isHidden = true
+                            if self.VC!.startindex > 1{
+                                self.VC?.startindex = 1
+                                self.VC?.noofelements = 9
+                            }else{
+                                self.VC?.queryListingTableView.isHidden = true
+                                self.VC?.view.makeToast("No data found !!", duration: 2.0, position: .bottom)
+                            }
                         }
                     }
                 }else{

@@ -47,10 +47,7 @@ class DD_DealerShipLocationVM {
                                 self.VC?.dealershipLocationTV.isHidden = true
                                 self.VC?.noDataFoundLbl.isHidden = false
                             }
-
                         }
-
-                        
                     }
                 }else{
                     DispatchQueue.main.async {

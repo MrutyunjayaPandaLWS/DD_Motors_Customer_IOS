@@ -16,7 +16,8 @@ class DD_SubscriptionHistoryVC: BaseViewController {
     @IBOutlet weak var loaderAnimation: LottieAnimationView!
     private var loaderAnimationView : LottieAnimationView?
     
-    
+    var noofelements = 0
+    var startindex = 1
     var VM = DD_SubscriptionHistoryVM()
     let userID = UserDefaults.standard.string(forKey: "UserID") ?? ""
     let loyaltyId = UserDefaults.standard.string(forKey: "LoyaltyId") ?? ""
@@ -45,7 +46,9 @@ class DD_SubscriptionHistoryVC: BaseViewController {
         let parameter = [
             "ActionType":"3",
             "ActorId":"\(self.userID)",
-            "LoyaltY_ID":"\(self.loyaltyId)"
+            "LoyaltY_ID":"\(self.loyaltyId)",
+            "StartIndex": startindex,
+            "NoOfRows":"10"
         ] as [String: Any]
         print(parameter)
         self.VM.myCashPointListingApi(parameter: parameter)
@@ -71,6 +74,24 @@ extension DD_SubscriptionHistoryVC: UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180
+    }
+        
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == VM.subscriptionHistoryListingArray.count - 1{
+            if noofelements == 10{
+                startindex = startindex + 1
+                self.subscriptionListApi()
+            }else if self.noofelements > 10{
+                self.startindex = self.startindex + 1
+                self.subscriptionListApi()
+            }else if noofelements < 10{
+                print("no need to hit API")
+                return
+            }else{
+                print("n0 more elements")
+                return
+            }
+        }
     }
     
     func playAnimation2(){
