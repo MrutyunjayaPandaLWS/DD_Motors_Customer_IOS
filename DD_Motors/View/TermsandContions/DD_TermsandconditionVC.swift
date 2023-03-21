@@ -8,17 +8,26 @@
 import UIKit
 import WebKit
 import Lottie
+
+protocol TermsandConditionDelegate: AnyObject{
+    func acceptButtonDidTap(_ vc: DD_TermsandconditionVC)
+    func declineButtonDidTap(_ vc: DD_TermsandconditionVC)
+}
+
 class DD_TermsandconditionVC: BaseViewController {
 
     @IBOutlet weak var termsandContionsWebKit: WKWebView!
-    @IBOutlet weak var checkBoxBtn: UIButton!
+//    @IBOutlet weak var checkBoxBtn: UIButton!
     
     @IBOutlet weak var loaderView: UIView!
      @IBOutlet weak var loaderAnimation: LottieAnimationView!
     
+    var delegate: TermsandConditionDelegate!
+    
     private var loaderAnimationView : LottieAnimationView?
     var username = ""
     var password = ""
+    var accepted = 0
     var VM = DD_TermsandconditionVM()
     var tcListingArray = [LstTermsAndCondition]()
     var requestAPIs = RestAPI_Requests()
@@ -27,7 +36,7 @@ class DD_TermsandconditionVC: BaseViewController {
         self.VM.VC = self
         self.loaderView.isHidden = false
         self.playAnimation2()
-        self.checkBoxBtn.setImage(UIImage(named: "CheckBox 2"), for: .normal)
+      //  self.checkBoxBtn.setImage(UIImage(named: "CheckBox 2"), for: .normal)
         self.dashboardTCApi()
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -42,34 +51,38 @@ class DD_TermsandconditionVC: BaseViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    @IBAction func checkBoxButton(_ sender: Any) {
-        if self.checkBoxBtn.currentImage == UIImage(named: "CheckedBox"){
-            self.checkBoxBtn.setImage(UIImage(named: "CheckBox 2"), for: .normal)
-        }else{
-            self.checkBoxBtn.setImage(UIImage(named: "CheckedBox"), for: .normal)
-        }
-        
-    }
+//    @IBAction func checkBoxButton(_ sender: Any) {
+//        if self.checkBoxBtn.currentImage == UIImage(named: "CheckedBox"){
+//            self.checkBoxBtn.setImage(UIImage(named: "CheckBox 2"), for: .normal)
+//        }else{
+//            self.checkBoxBtn.setImage(UIImage(named: "CheckedBox"), for: .normal)
+//        }
+//
+//    }
     @IBAction func decline(_ sender: Any) {
-        self.checkBoxBtn.setImage(UIImage(named: "CheckBox 2"), for: .normal)
+   //     self.checkBoxBtn.setImage(UIImage(named: "CheckBox 2"), for: .normal)
         //self.dismiss(animated: true, completion: nil)
+        self.accepted = 0
+        self.delegate?.acceptButtonDidTap(self)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func acceptBtn(_ sender: Any) {
+        self.accepted = 1
+        self.delegate?.acceptButtonDidTap(self)
+        self.navigationController?.popViewController(animated: true)
 //        if self.checkBoxBtn.currentImage == UIImage(named: "CheckedBox"){
 //            self.checkBoxBtn.setImage(UIImage(named: "CheckBox 2"), for: .normal)
 //        }else{
         
         
-        if checkBoxBtn.currentImage == UIImage(named:"CheckBox 2"){
-            self.view.makeToast("Select Terms and Condition", duration: 2.0, position: .center)
-            
-        }else{
+//        if checkBoxBtn.currentImage == UIImage(named:"CheckBox 2"){
+//            self.view.makeToast("Select Terms and Condition", duration: 2.0, position: .center)
+//
+//        }else{
             //self.checkBoxBtn.setImage(UIImage(named: "CheckedBox"), for: .normal)
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-                self.VM.loginSubmissionApi(username: self.username)
-            })
-        }
+          
+        //}
     }
     func loadHTMLStringImage(htmlString:String) -> Void {
            let htmlString = "\(htmlString)"

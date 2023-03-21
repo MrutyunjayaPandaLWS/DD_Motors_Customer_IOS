@@ -438,5 +438,20 @@ class RestAPI_Requests {
         }
     }
     
+//   MARK: - GENERATE RECEIPT
+    
+    func generateReceiptApi(parameters: JSON, completion: @escaping (GenerateReceiptModel?, Error?) -> ()) -> URLSessionDataTask? {
+        return client.load(path: generateReceipt_URLMethod, method: .post, params: parameters) { data, error in
+            do{
+                if data != nil{
+                    let result1 =  try JSONDecoder().decode(GenerateReceiptModel.self, from: data as! Data)
+                    completion(result1, nil)
+                }
+            }catch{
+                completion(nil, error)
+            }
+        }
+    }
+    
 }
 

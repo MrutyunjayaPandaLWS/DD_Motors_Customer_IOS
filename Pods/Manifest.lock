@@ -2,6 +2,15 @@ PODS:
   - Alamofire (4.9.1)
   - AlamofireImage (3.6.0):
     - Alamofire (~> 4.9)
+  - CashfreeAnalyticsSDK (2.0.0):
+    - CFNetworkSDK (~> 2.0.0)
+  - CashfreePG (2.0.4):
+    - CashfreePGUISDK (~> 2.0.4)
+  - CashfreePGCoreSDK (2.0.4):
+    - CashfreeAnalyticsSDK (~> 2.0.0)
+  - CashfreePGUISDK (2.0.4):
+    - CashfreePGCoreSDK (~> 2.0.4)
+  - CFNetworkSDK (2.0.0)
   - EasyTipView (2.0.4)
   - GSMessages (1.7.5)
   - ImageSlideshow/Alamofire (1.8.3):
@@ -21,6 +30,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
+  - CashfreePG (~> 2.0.3)
   - EasyTipView (~> 2.0.4)
   - GSMessages
   - ImageSlideshow/Alamofire
@@ -37,6 +47,11 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - AlamofireImage
+    - CashfreeAnalyticsSDK
+    - CashfreePG
+    - CashfreePGCoreSDK
+    - CashfreePGUISDK
+    - CFNetworkSDK
     - EasyTipView
     - GSMessages
     - ImageSlideshow
@@ -52,6 +67,11 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   AlamofireImage: be9963c6582d68b39e89191f64c82a7d7bf40fdd
+  CashfreeAnalyticsSDK: d36845057f2f2bfda662dbe8c29a64f56805ec48
+  CashfreePG: d237f95459c50c55f3f08f70ab7f0f63289054e1
+  CashfreePGCoreSDK: b90c1cefd39a1f09d7eb6a712654b035e21f7028
+  CashfreePGUISDK: 0b0e1cf34a0b46a3f708d0185b98af7d4830c930
+  CFNetworkSDK: fca644b42b741bd154764bc2c67d85008a9be489
   EasyTipView: 4f8beae0a82db2ca4a9b5fd658785fc5f61d296b
   GSMessages: ff0397d30b804fa38c6026fb080b8ad6f7454ab6
   ImageSlideshow: 4694d7d699a1549582e7cc631fb392d8f91630f3
@@ -64,6 +84,6 @@ SPEC CHECKSUMS:
   SVPinView: 9b538d0ba68cdb092afe4f0f67ec84cbed079466
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 8138d353be7b66108ba6a697fd7bd1e4d1eae83b
+PODFILE CHECKSUM: d7d7b8c3b29847fa8bffad25c80c2942b2fa7bc9
 
 COCOAPODS: 1.11.3

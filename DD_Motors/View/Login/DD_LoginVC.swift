@@ -11,8 +11,26 @@ import ImageSlideshow
 import Toast_Swift
 import Lottie
 //import SDWebImage
-class DD_LoginVC: BaseViewController,UITextFieldDelegate {
+class DD_LoginVC: BaseViewController,UITextFieldDelegate, TermsandConditionDelegate {
+    func acceptButtonDidTap(_ vc: DD_TermsandconditionVC) {
+        
+        if vc.accepted != 1{
+            self.isSelected = 0
+            self.checkBoxBtn.setImage(UIImage(named: "CheckBox 2"), for: .normal)
+        }else{
+            self.isSelected = 1
+            self.checkBoxBtn.setImage(UIImage(named: "CheckedBox"), for: .normal)
+        }
+    }
+    
+    func declineButtonDidTap(_ vc: DD_TermsandconditionVC) {
+        self.isSelected = 0
+        self.checkBoxBtn.setImage(UIImage(named: "CheckBox 2"), for: .normal)
+    }
+    
 
+    @IBOutlet weak var checkBoxTopSpaceButton: NSLayoutConstraint!
+    @IBOutlet weak var checkBoxBtn: UIButton!
     @IBOutlet weak var loaderView: UIView!
     @IBOutlet weak var loaderAnimation: LottieAnimationView!
    
@@ -33,6 +51,9 @@ class DD_LoginVC: BaseViewController,UITextFieldDelegate {
     var receivedOTP = "0"
     var VM = DD_Login_VM()
     var VM1 = DD_TermsandconditionVM()
+    
+    var isSelected = -1
+    
     private var loaderAnimationView : LottieAnimationView?
     
     override func viewDidLoad() {
@@ -43,15 +64,19 @@ class DD_LoginVC: BaseViewController,UITextFieldDelegate {
         self.mobileNumberTF.keyboardType = .asciiCapableNumberPad
         self.loaderView.isHidden = true
 //        self.playAnimation2()
+        self.checkBoxTopSpaceButton.constant = 10
+        self.isSelected = 0
+        self.checkBoxBtn.setImage(UIImage(named: "CheckBox 2"), for: .normal)
      
         }
     override func viewWillAppear(_ animated: Bool) {
         tokendata()
         self.existencyValue = -1
         self.sendOTPBtn.setTitle("Send OTP", for: .normal)
-        self.mobileNumberTF.text = ""
-        self.enteredValues = ""
-        self.mainviewHeightConstraint.constant = 200
+//        self.mobileNumberTF.text = ""
+//        self.enteredValues = ""
+        self.mainviewHeightConstraint.constant = 250
+        self.checkBoxTopSpaceButton.constant = 20
         self.enterOTPLbl.isHidden = true
         self.stackView.isHidden = true
         self.otpView.isHidden = true
@@ -93,26 +118,34 @@ class DD_LoginVC: BaseViewController,UITextFieldDelegate {
     
     @IBAction func submitButton(_ sender: Any) {
         if self.sendOTPBtn.currentTitle == "Send OTP"{
+            
             if self.mobileNumberTF.text!.count == 0{
                 self.view.makeToast("Enter mobile number", duration: 2.0, position: .center)
             }else if self.mobileNumberTF.text!.count != 10{
                 self.view.makeToast("Enter valid mobile number", duration: 2.0, position: .center)
+            }else if self.isSelected != 1{
+                self.view.makeToast("Please accept Terms and condition", duration: 2.0, position: .center)
             }else{
+                self.checkBoxTopSpaceButton.constant = 100
                 self.VM.sendOTP(mobileNumber: self.mobileNumberTF.text!, userName: "")
             }
             
         }else{
             if self.enteredValues == ""{
                 self.view.makeToast("Enter OTP", duration: 2.0, position: .center)
+            }else if "123456" != self.enteredValues{
+                self.view.makeToast("Enter correct OTP", duration: 2.0, position: .center)
             }else if "123456" == self.enteredValues{
-                let parameterJSON = [
+                
+                    let parameterJSON = [
                         "ActionType": "57",
                         "Location": [
                             "UserName": "\(self.mobileNumberTF.text ?? "")"
-                            ]
-                ] as [String:Any]
-                print(parameterJSON)
-                self.VM.verifyMobileNumberAPI(paramters: parameterJSON)
+                        ]
+                    ] as [String:Any]
+                    print(parameterJSON)
+                    self.VM.verifyMobileNumberAPI(paramters: parameterJSON)
+                
             }else{
                 self.view.makeToast("Invalid OTP", duration: 2.0, position: .center)
             }
@@ -120,6 +153,22 @@ class DD_LoginVC: BaseViewController,UITextFieldDelegate {
         }
         
     }
+    
+    @IBAction func acceptTermsandConditionBtn(_ sender: Any) {
+        if self.mobileNumberTF.text!.count == 0{
+            self.view.makeToast("Enter mobile number", duration: 2.0, position: .center)
+        }else if self.mobileNumberTF.text!.count != 10{
+            self.view.makeToast("Enter valid mobile number", duration: 2.0, position: .center)
+        }else{
+            
+            let vc = storyboard?.instantiateViewController(withIdentifier: "DD_TermsandconditionVC") as! DD_TermsandconditionVC
+            vc.delegate = self
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+    
+    
+    
     func tokendata(){
         if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
         }else{

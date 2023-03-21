@@ -32,3 +32,6 @@ let bannerImage_URLMethod = "BindLandingImageList"
 let bannerCategory_URLMethod = "GetAttributeDetails"
 let validateStatus_URLMethod = "UpdateCustomerAccountDetails"
 let promotionList_URLMethod = "GetPromotionDetailsMobileApp"
+let paymentOrder_URLMethod = "orders"
+let generateReceipt_URLMethod = "GetpaymentRecpit"
+

@@ -74,14 +74,19 @@ class DD_Login_VM {
                         if self.VC?.existencyValue == -1{
                             self.VC?.existencyValue = 1
                             self.timer.invalidate()
-                            self.loginSubmissionApi(username: self.VC?.mobileNumberTF.text ?? "")
+//                            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                                self.loginSubmissionApi(username: self.VC?.mobileNumberTF.text ?? "")
+//                            })
+                           
                         }
                     }
                 }
                  }catch{
-                     self.VC?.stopLoading()
-                     self.VC?.loaderView.isHidden = true
-                     print("parsing Error")
+                     DispatchQueue.main.async{
+                         self.VC?.stopLoading()
+                         self.VC?.loaderView.isHidden = true
+                         print("parsing Error")
+                     }
             }
         })
         task.resume()
@@ -101,7 +106,7 @@ class DD_Login_VM {
             self.VC?.enteredValues = ""
             self.timer.invalidate()
             self.VC?.timerLbl.text = "00:59"
-            self.VC?.mainviewHeightConstraint.constant = 280
+            self.VC?.mainviewHeightConstraint.constant = 320
             self.VC?.enterOTPLbl.isHidden = false
             self.VC?.stackView.isHidden = false
             self.VC?.otpView.isHidden = false
@@ -159,8 +164,8 @@ class DD_Login_VM {
     }
     func loginSubmissionApi(username: String){
         self.VC?.startLoading()
-        self.VC?.playAnimation2()
         self.VC?.loaderView.isHidden = false
+        self.VC?.playAnimation2()
         let parameter = [
             "UserName": username,
             "Password":"123456",
@@ -178,53 +183,100 @@ class DD_Login_VM {
                         print(result?.userList?[0].result ?? 0)
                         if result?.userList?[0].isDelete ?? 0 == 1 {
                             DispatchQueue.main.async{
-                                self.VC?.loaderView.isHidden = true
                                 self.VC?.view.makeToast("Your account is deleted.", duration: 2.0, position: .center)
-                                
                                 self.VC?.stopLoading()
+                                self.VC?.loaderView.isHidden = true
                             }
                             return
                         } else {
-                            if result?.userList?[0].verifiedStatus ?? 0 == 1 || result?.userList?[0].verifiedStatus ?? 0 != 4{
+                            if result?.userList?[0].result ?? 0 == 1 {
+                                DispatchQueue.main.async {
+                                    UserDefaults.standard.set(password, forKey: "SavedPassword")
+                                    UserDefaults.standard.set(result?.userList?[0].userType ?? -1, forKey: "userType")
+                                    UserDefaults.standard.set(result?.userList?[0].userId ?? -1, forKey: "UserID")
+                                    UserDefaults.standard.set(result?.userList?[0].userName ?? "", forKey: "UserName")
+                                    UserDefaults.standard.set(result?.userList?[0].custAccountNumber ?? "", forKey: "custAccountNumber")
+                                    UserDefaults.standard.set(result?.userList?[0].mobile ?? "", forKey: "customerMobile")
+                                    UserDefaults.standard.set(result?.userList?[0].merchantMobileNo ?? "", forKey: "MerchantMobile")
+                                    UserDefaults.standard.set(result?.userList?[0].merchantEmailID ?? "", forKey: "MerchantEmailId")
+                                    UserDefaults.standard.set(result?.userList?[0].customerTypeID ?? -1, forKey: "CustomerTypeId")
+                                    UserDefaults.standard.set(result?.userList?[0].isUserActive ?? -1, forKey: "IsUserActive")
+                                    UserDefaults.standard.set(result?.userList?[0].name ?? "", forKey: "CustomerName")
+                                    
+                                    UserDefaults.standard.setValue(true, forKey: "IsloggedIn?")
+                                    print(result?.userList?[0].verifiedStatus ?? -1, "Verified Status")
+                                    if result?.userList?[0].verifiedStatus ?? -1 != 0{
+                                        self.validateStatusApi(actorId: String(result?.userList?[0].userId ?? -1))
+                                    }
+                                        
+                                        DispatchQueue.main.async {
+                                            if #available(iOS 13.0, *) {
+                                                let sceneDelegate = self.VC!.view.window!.windowScene!.delegate as! SceneDelegate
+                                                sceneDelegate.setHomeAsRootViewController()
+                                            } else {
+                                                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                                                appDelegate.setHomeAsRootViewController()
+                                            }
+                                            self.VC?.stopLoading()
+                                            self.VC?.loaderView.isHidden = true
+                                        }
+                                    }
+                                }else if result?.userList?[0].verifiedStatus ?? 0 != 1{
                                     DispatchQueue.main.async{
-                                        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_TermsandconditionVC") as! DD_TermsandconditionVC
-                                        vc.username = self.VC?.mobileNumberTF.text ?? ""
-                                        self.VC!.navigationController?.pushViewController(vc, animated: true)
-                                        self.VC?.loaderView.isHidden = true
+                                        self.VC?.view.makeToast("Password is Invalid", duration: 2.0, position: .center)
                                         self.VC?.stopLoading()
+                                        self.VC?.loaderView.isHidden = true
                                     }
                                     return
-                            }else if result?.userList?[0].verifiedStatus ?? 0 == 4{
-                                DispatchQueue.main.async{
-                                    self.VC?.view.makeToast("Your account has been unverified. Kindly contact administrator", duration: 2.0, position: .center)
-                                    self.VC?.existencyValue = -1
-                                    self.VC?.sendOTPBtn.setTitle("Send OTP", for: .normal)
-                                    self.VC?.mobileNumberTF.text = ""
-                                    self.VC?.enteredValues = ""
-                                    self.VC?.mainviewHeightConstraint.constant = 200
-                                    self.VC?.enterOTPLbl.isHidden = true
-                                    self.VC?.stackView.isHidden = true
-                                    self.VC?.otpView.isHidden = true
-                                    self.VC?.otpView.clearPin()
-                                    self.VC?.loaderView.isHidden = true
-                                    self.VC?.stopLoading()
-                                }
+                                
                             }
                         }
                     }
                 }else{
                     DispatchQueue.main.async {
-                        self.VC?.loaderView.isHidden = true
                         self.VC?.stopLoading()
+                        self.VC?.loaderView.isHidden = true
                     }
                 }
             }else{
                 DispatchQueue.main.async {
-                    self.VC?.loaderView.isHidden = true
                     self.VC?.stopLoading()
+                    self.VC?.loaderView.isHidden = true
                 }
             }
         }
+    }
+    func validateStatusApi(actorId: String){
+        let parameter = [
+            "ActionType": "5",
+              "ActorId": actorId,
+              "ObjCustomer":[
+
+                  "FirstName":""
+              ]
+        ] as [String: Any]
+        print(parameter)
+        self.requestAPIs.validateStatusApi(parameters: parameter) { (result, error) in
+            if error == nil{
+                if result != nil{
+                    DispatchQueue.main.async {
+                        print(result?.returnMessage ?? "", "Validate Status")
+                    }
+                }else{
+                    DispatchQueue.main.async {
+                        self.VC?.stopLoading()
+                        self.VC?.loaderView.isHidden = true
+                    }
+                }
+            }else{
+                DispatchQueue.main.async {
+                    self.VC?.stopLoading()
+                    self.VC?.loaderView.isHidden = true
+                }
+            }
+        }
+        
+        
     }
     
     

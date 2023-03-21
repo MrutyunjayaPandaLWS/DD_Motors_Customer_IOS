@@ -16,4 +16,5 @@ target 'DD_Motors' do
   pod 'Kingfisher', '~> 7.0'
   pod 'lottie-ios'
   pod "ImageSlideshow/Alamofire"
+  pod 'CashfreePG', '~> 2.0.3'
 end
