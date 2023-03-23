@@ -65,10 +65,19 @@ extension DD_SubscriptionHistoryVC: UITableViewDelegate,UITableViewDataSource {
         cell.selectionStyle = .none
         cell.dateOfSubcriptionLbl.text = self.VM.subscriptionHistoryListingArray[indexPath.row].subscriptionDate ?? "-"
         cell.amountPaidLbl.text = "\(self.VM.subscriptionHistoryListingArray[indexPath.row].amount ?? 0)"
-        
-            cell.subscribedLbl.text = "SUBSCRIBED"
         cell.subcriptionHistoryID.text = "\(self.VM.subscriptionHistoryListingArray[indexPath.row].sourceValue ?? "")"
         cell.paymentStatus.text = "\(self.VM.subscriptionHistoryListingArray[indexPath.row].sourceType ?? "")"
+        
+        if self.VM.subscriptionHistoryListingArray[indexPath.row].subscriptionStatus ?? 0 == 1{
+            cell.subscribedLbl.text = "SUBSCRIBED"
+        }else if self.VM.subscriptionHistoryListingArray[indexPath.row].subscriptionStatus ?? 0 == 0{
+            cell.subscribedLbl.text = "PENDING"
+        }else if self.VM.subscriptionHistoryListingArray[indexPath.row].subscriptionStatus ?? 0 == 0{
+            cell.subscribedLbl.text = "REJECTED"
+        }else{
+            cell.subscribedLbl.text = "-"
+        }
+        
         return cell
     }
     

@@ -205,7 +205,7 @@ class DD_Login_VM {
                                     
                                     UserDefaults.standard.setValue(true, forKey: "IsloggedIn?")
                                     print(result?.userList?[0].verifiedStatus ?? -1, "Verified Status")
-                                    if result?.userList?[0].verifiedStatus ?? -1 != 0{
+                                    if result?.userList?[0].verifiedStatus ?? -1 != 1{
                                         self.validateStatusApi(actorId: String(result?.userList?[0].userId ?? -1))
                                     }
                                         

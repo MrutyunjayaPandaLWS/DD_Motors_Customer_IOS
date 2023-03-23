@@ -25,6 +25,7 @@ class DD_SubscriptionVC: BaseViewController, SelectedItemDelegate, SendBackDetai
     func subscriptionDidTap(_ vc: DD_DropDownVC) {
         self.selectedDealerTitle.text = vc.subscriptionTitle
         self.selectedTitle = vc.subscriptionTitle
+        self.subscriptionStatusId = vc.subscriptionStatusId
     }
     
     func stateDidTap(_ vc: DD_DropDownVC) {}
@@ -61,7 +62,7 @@ class DD_SubscriptionVC: BaseViewController, SelectedItemDelegate, SendBackDetai
     
     
     var selectedStatusId = -1
-   
+   var subscriptionStatusId = -1
     var selectedTitle = ""
     var selectedSourceId = -1
     var VM = DD_SubscriptionDropDownVM()
@@ -125,13 +126,18 @@ class DD_SubscriptionVC: BaseViewController, SelectedItemDelegate, SendBackDetai
     }
     
     @IBAction func selectCategoryBtn(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_DropDownVC") as! DD_DropDownVC
-        vc.delegate = self
-        vc.itsFrom = "SUBSCRIPTION"
-        vc.selectedStatusId = self.selectedStatusId
-        vc.modalTransitionStyle = .coverVertical
-        vc.modalPresentationStyle = .overFullScreen
-        self.present(vc, animated: true)
+        if self.selectedStatusId != -1{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_DropDownVC") as! DD_DropDownVC
+            vc.delegate = self
+            vc.itsFrom = "SUBSCRIPTION"
+            vc.selectedStatusId = self.selectedStatusId
+            vc.modalTransitionStyle = .coverVertical
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true)
+        }else{
+            self.view.makeToast("Select Type", duration: 2.0, position: .bottom)
+        }
+        
     }
     
     @IBAction func onlineSubscriptionBnt(_ sender: Any) {
@@ -155,6 +161,10 @@ class DD_SubscriptionVC: BaseViewController, SelectedItemDelegate, SendBackDetai
             self.view.makeToast("Select Type", duration: 2.0, position: .bottom)
         }else if self.selectedTitle == ""{
             self.view.makeToast("Select Subscription type", duration: 2.0, position: .bottom)
+        }else if self.subscriptionStatusId == 0{
+            self.view.makeToast("Your subscription is in pending!", duration: 2.0, position: .bottom)
+        }else if self.subscriptionStatusId == 1{
+            self.view.makeToast("You have already subscribed!", duration: 2.0, position: .bottom)
         }else if self.selectedSourceId == -1{
             self.view.makeToast("Select Mode", duration: 2.0, position: .bottom)
         }else{
@@ -179,7 +189,7 @@ class DD_SubscriptionVC: BaseViewController, SelectedItemDelegate, SendBackDetai
                     "SourceType": "3",// 1-->> Android, 3-->>IOS
                     "SourceValue": "\(self.selectedTitle)",
                     "SubscriptionTypeId":"\(self.selectedSourceId)",// 1-->> Offline, 2-->>Online
-                    "SubscriptionStatus":"-1",
+                    "SubscriptionStatus":"0",
                     "PaymentID":""
                     
                 ] as [String: Any]

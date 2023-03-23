@@ -33,7 +33,7 @@ class DD_DropDownVC: BaseViewController, UITableViewDataSource, UITableViewDeleg
     var subscriptionTitle = ""
     
     var selectedStatusId = -1
-
+    var subscriptionStatusId = -1
     var delegate : SelectedItemDelegate!
     let userID = UserDefaults.standard.string(forKey: "UserID") ?? ""
     let loyaltyId = UserDefaults.standard.string(forKey: "LoyaltyId") ?? ""
@@ -152,6 +152,7 @@ class DD_DropDownVC: BaseViewController, UITableViewDataSource, UITableViewDeleg
             self.delegate.helpTopicDidTap(self)
         }else if self.itsFrom == "SUBSCRIPTION"{
             self.subscriptionTitle = self.VM.subscriptionHistoryListingArray[indexPath.row].subscription ?? ""
+            self.subscriptionStatusId = self.VM.subscriptionHistoryListingArray[indexPath.row].subscriptionStatus ?? -1
             self.delegate.subscriptionDidTap(self)
         }
         self.dismiss(animated: true, completion: nil)

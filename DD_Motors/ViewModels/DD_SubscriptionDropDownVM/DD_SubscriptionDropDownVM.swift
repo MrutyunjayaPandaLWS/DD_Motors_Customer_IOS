@@ -22,6 +22,7 @@ class DD_SubscriptionDropDownVM {
                         self.VC?.stopLoading()
                         let response = String(result?.returnMessage ?? "").dropFirst(1)
                         print(response, "asdfhjasdhfasdhjfasdf")
+                        print(self.VC!.loyaltyId)
                         if response != "-1" {
                             if "\(response)" == self.VC!.loyaltyId{
                                 self.VC!.selectedTitle = ""
