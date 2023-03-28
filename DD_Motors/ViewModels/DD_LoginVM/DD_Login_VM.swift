@@ -205,8 +205,16 @@ class DD_Login_VM {
                                     
                                     UserDefaults.standard.setValue(true, forKey: "IsloggedIn?")
                                     print(result?.userList?[0].verifiedStatus ?? -1, "Verified Status")
-                                    if result?.userList?[0].verifiedStatus ?? -1 != 1{
+                                    if result?.userList?[0].verifiedStatus ?? -1 == 0{
                                         self.validateStatusApi(actorId: String(result?.userList?[0].userId ?? -1))
+                                    }else if result?.userList?[0].verifiedStatus ?? 0 == 4{
+                                        DispatchQueue.main.async{
+                                            self.VC?.view.makeToast("Your account verification is pending, Kindly contact your administrator!", duration: 2.0, position: .center)
+                                            self.VC?.stopLoading()
+                                            self.VC?.loaderView.isHidden = true
+                                        }
+                                        return
+                                    
                                     }
                                         
                                         DispatchQueue.main.async {
@@ -221,15 +229,14 @@ class DD_Login_VM {
                                             self.VC?.loaderView.isHidden = true
                                         }
                                     }
-                                }else if result?.userList?[0].verifiedStatus ?? 0 != 1{
+                                }else{
                                     DispatchQueue.main.async{
-                                        self.VC?.view.makeToast("Password is Invalid", duration: 2.0, position: .center)
+                                        self.VC?.view.makeToast("Something went wrong", duration: 2.0, position: .center)
                                         self.VC?.stopLoading()
                                         self.VC?.loaderView.isHidden = true
                                     }
                                     return
-                                
-                            }
+                                }
                         }
                     }
                 }else{
