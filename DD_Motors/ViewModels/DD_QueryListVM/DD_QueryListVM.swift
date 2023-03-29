@@ -32,7 +32,7 @@ class DD_QueryListVM {
                         self.VC?.stopLoading()
                         self.VC?.loaderView.isHidden = true
                         let queryList = result?.objCustomerAllQueryJsonList ?? []
-                        if queryList.count != 0 {
+                        if queryList.isEmpty == false{
                             self.queryListArray += queryList
                             self.VC?.noofelements = self.queryListArray.count
                             if self.queryListArray.count != 0{
@@ -82,13 +82,13 @@ class DD_QueryListVM {
                         if self.queryTopicListArray.count != 0 {
                             self.VC?.dropDownTableView.isHidden = false
                             if self.queryTopicListArray.count < 20{
-                                self.VC?.tableHeight = Int(CGFloat(self.queryTopicListArray.count * 30))
-                                self.VC?.bottomSpaceConstraint.constant = CGFloat(self.VC!.tableHeight)
-                                self.VC?.dropDownTableHeight.constant = CGFloat(self.VC!.tableHeight)
+                                //self.VC?.tableHeight = Int(CGFloat(self.queryTopicListArray.count * 30))
+//                                self.VC?.bottomSpaceConstraint.constant = CGFloat(self.queryTopicListArray.count * 30)
+                                self.VC?.dropDownTableHeight.constant = CGFloat(self.queryTopicListArray.count * 35)
                             }else if self.queryTopicListArray.count > 20{
-                                self.VC?.tableHeight = Int(CGFloat(300))
-                                self.VC?.bottomSpaceConstraint.constant = CGFloat(self.VC!.tableHeight)
-                                self.VC?.dropDownTableHeight.constant = CGFloat(self.VC!.tableHeight)
+                               // self.VC?.tableHeight = Int(CGFloat(300))
+//                                self.VC?.bottomSpaceConstraint.constant = CGFloat(self.queryTopicListArray.count * 30)
+                                self.VC?.dropDownTableHeight.constant = CGFloat(self.queryTopicListArray.count * 35)
                             }
                             self.VC?.dropDownTableView.reloadData()
                            

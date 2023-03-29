@@ -49,38 +49,38 @@ class DD_MyOffersVM {
                                     if data.subscriptionStatus ?? "0" == "1" && data.is_Gifited ?? 0 == 0{
                                         if self.unlockedImg == "1"{
                                             self.VC?.unlockedImageArray.append("EnableOfferBlue")
-                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "EnableOfferBlue", offerReferenceID: data.offerReferenceID ?? ""))
+                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "EnableOfferBlue", offerReferenceID: data.offerReferenceID ?? "", cardImagePath: data.cardImagePath ?? ""))
                                             self.unlockedImg = "2"
                                         }else if self.unlockedImg == "2"{
                                             self.VC?.unlockedImageArray.append("EnableOfferRed")
                                             self.unlockedImg = "3"
-                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "EnableOfferRed", offerReferenceID: data.offerReferenceID ?? ""))
+                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "EnableOfferRed", offerReferenceID: data.offerReferenceID ?? "", cardImagePath: data.cardImagePath ?? ""))
                                         }else if self.unlockedImg == "3"{
                                             self.unlockedImg = "4"
                                             self.VC?.unlockedImageArray.append("EnableOfferRed1")
-                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "EnableOfferRed1", offerReferenceID: data.offerReferenceID ?? ""))
+                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "EnableOfferRed1", offerReferenceID: data.offerReferenceID ?? "", cardImagePath: data.cardImagePath ?? ""))
                                         }else if self.unlockedImg == "4"{
                                             self.unlockedImg = "1"
                                             self.VC?.unlockedImageArray.append("EnableOfferBlue1")
-                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "EnableOfferBlue1", offerReferenceID: data.offerReferenceID ?? ""))
+                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "EnableOfferBlue1", offerReferenceID: data.offerReferenceID ?? "", cardImagePath: data.cardImagePath ?? ""))
                                         }
                                     }else{
                                         if self.lockedImage == "5"{
                                             self.VC?.unlockedImageArray.append("LockedBlue")
-                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "LockedBlue", offerReferenceID: data.offerReferenceID ?? ""))
+                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "LockedBlue", offerReferenceID: data.offerReferenceID ?? "", cardImagePath: data.cardImagePath ?? ""))
                                             self.lockedImage = "6"
                                         }else if self.lockedImage == "6"{
                                             self.VC?.unlockedImageArray.append("LockedRed")
                                             self.lockedImage = "7"
-                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "LockedRed", offerReferenceID: data.offerReferenceID ?? ""))
+                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "LockedRed", offerReferenceID: data.offerReferenceID ?? "", cardImagePath: data.cardImagePath ?? ""))
                                         }else if self.lockedImage == "7"{
                                             self.lockedImage = "8"
                                             self.VC?.unlockedImageArray.append("LockedRed 1")
-                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "LockedRed 1", offerReferenceID: data.offerReferenceID ?? ""))
+                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "LockedRed 1", offerReferenceID: data.offerReferenceID ?? "", cardImagePath: data.cardImagePath ?? ""))
                                         }else if self.lockedImage == "8"{
                                             self.lockedImage = "5"
                                             self.VC?.unlockedImageArray.append("LockedBlue 1")
-                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "LockedBlue 1", offerReferenceID: data.offerReferenceID ?? ""))
+                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "LockedBlue 1", offerReferenceID: data.offerReferenceID ?? "", cardImagePath: data.cardImagePath ?? ""))
                                         }
                                     }
                                 }else if self.myOffersListArray.count == 3{
@@ -88,29 +88,29 @@ class DD_MyOffersVM {
                                         if self.unlockedImg == "1"{
                                             self.VC?.unlockedImageArray.append("EnableOfferBlue")
                                             self.unlockedImg = "2"
-                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "EnableOfferBlue", offerReferenceID: data.offerReferenceID ?? ""))
+                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "EnableOfferBlue", offerReferenceID: data.offerReferenceID ?? "", cardImagePath: data.cardImagePath ?? ""))
                                         }else if self.unlockedImg == "2"{
                                             self.VC?.unlockedImageArray.append("EnableOfferRed")
                                             self.unlockedImg = "3"
-                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "EnableOfferRed", offerReferenceID: data.offerReferenceID ?? ""))
+                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "EnableOfferRed", offerReferenceID: data.offerReferenceID ?? "", cardImagePath: data.cardImagePath ?? ""))
                                         }else if self.unlockedImg == "3"{
                                             self.unlockedImg = "1"
                                             self.VC?.unlockedImageArray.append("EnableOfferRed1")
-                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "EnableOfferRed1", offerReferenceID: data.offerReferenceID ?? ""))
+                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "EnableOfferRed1", offerReferenceID: data.offerReferenceID ?? "", cardImagePath: data.cardImagePath ?? ""))
                                         }
                                     }else{
                                         if self.lockedImage == "5"{
                                             self.VC?.unlockedImageArray.append("LockedBlue")
                                             self.lockedImage = "6"
-                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "LockedBlue", offerReferenceID: data.offerReferenceID ?? ""))
+                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "LockedBlue", offerReferenceID: data.offerReferenceID ?? "", cardImagePath: data.cardImagePath ?? ""))
                                         }else if self.lockedImage == "6"{
                                             self.VC?.unlockedImageArray.append("LockedRed")
                                             self.lockedImage = "7"
-                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "LockedRed", offerReferenceID: data.offerReferenceID ?? ""))
+                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "LockedRed", offerReferenceID: data.offerReferenceID ?? "", cardImagePath: data.cardImagePath ?? ""))
                                         }else if self.lockedImage == "7"{
                                             self.lockedImage = "5"
                                             self.VC?.unlockedImageArray.append("LockedRed 1")
-                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "LockedRed 1", offerReferenceID: data.offerReferenceID ?? ""))
+                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "LockedRed 1", offerReferenceID: data.offerReferenceID ?? "", cardImagePath: data.cardImagePath ?? ""))
                                         }
                                     }
                                 }else if self.myOffersListArray.count == 2{
@@ -118,32 +118,32 @@ class DD_MyOffersVM {
                                         if self.unlockedImg == "1"{
                                             self.VC?.unlockedImageArray.append("EnableOfferBlue")
                                             self.unlockedImg = "2"
-                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "EnableOfferBlue", offerReferenceID: data.offerReferenceID ?? ""))
+                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "EnableOfferBlue", offerReferenceID: data.offerReferenceID ?? "", cardImagePath: data.cardImagePath ?? ""))
                                         }else if self.unlockedImg == "2"{
                                             self.VC?.unlockedImageArray.append("EnableOfferRed")
                                             self.unlockedImg = "1"
-                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "EnableOfferRed", offerReferenceID: data.offerReferenceID ?? ""))
+                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "EnableOfferRed", offerReferenceID: data.offerReferenceID ?? "", cardImagePath: data.cardImagePath ?? ""))
                                         }
                                     }else{
                                         if self.lockedImage == "5"{
                                             self.VC?.unlockedImageArray.append("LockedBlue")
                                             self.lockedImage = "6"
-                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "LockedBlue", offerReferenceID: data.offerReferenceID ?? ""))
+                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "LockedBlue", offerReferenceID: data.offerReferenceID ?? "", cardImagePath: data.cardImagePath ?? ""))
                                         }else if self.lockedImage == "6"{
                                             self.VC?.unlockedImageArray.append("LockedRed")
                                             self.lockedImage = "5"
-                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "LockedRed", offerReferenceID: data.offerReferenceID ?? ""))
+                                            self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "LockedRed", offerReferenceID: data.offerReferenceID ?? "", cardImagePath: data.cardImagePath ?? ""))
                                         }
                                     }
                                 }else if self.myOffersListArray.count == 1{
                                     if data.subscriptionStatus ?? "0" == "1" && data.is_Gifited ?? 0 == 0{
                                         
                                         self.VC?.unlockedImageArray.append("EnableOfferBlue")
-                                        self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "EnableOfferBlue", offerReferenceID: data.offerReferenceID ?? ""))
+                                        self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "EnableOfferBlue", offerReferenceID: data.offerReferenceID ?? "", cardImagePath: data.cardImagePath ?? ""))
                                         
                                     }else{
                                         self.VC?.unlockedImageArray.append("LockedBlue")
-                                        self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "LockedBlue", offerReferenceID: data.offerReferenceID ?? ""))
+                                        self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "LockedBlue", offerReferenceID: data.offerReferenceID ?? "", cardImagePath: data.cardImagePath ?? ""))
                                     }
                                 }
                             }

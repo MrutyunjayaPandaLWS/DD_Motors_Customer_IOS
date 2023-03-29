@@ -37,13 +37,19 @@ class DD_SuccessPopUp: UIViewController, SRScratchViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.VM.VC = self
+        if self.isGiftID == 0{
+            self.scratchView.isHidden = false
+            self.congratulationView.isHidden = true
+            self.scratchImageView.delegate = self
+            self.scratchImageView.lineWidth = 40.0
+            self.scratchImageView.lineType = .round
+            self.scratchImageView.backgroundColor = UIColor.clear
+        }else{
+            self.scratchView.isHidden = true
+            self.congratulationView.isHidden = false
+        }
         self.loaderView.isHidden = true
-        self.scratchView.isHidden = false
-        self.congratulationView.isHidden = true
-        self.scratchImageView.delegate = self
-        self.scratchImageView.lineWidth = 40.0
-        self.scratchImageView.lineType = .round
-        self.scratchImageView.backgroundColor = UIColor.clear
+        
         self.successAnimation.isHidden = true
         self.infoLbl.text = self.offerTitle
     //    self.offerIdLbl.text = ""

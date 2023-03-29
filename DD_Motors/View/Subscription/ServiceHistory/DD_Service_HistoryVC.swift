@@ -30,19 +30,24 @@ class DD_Service_HistoryVC: BaseViewController {
         self.serviceHistoryTableView.register(UINib(nibName: "DD_ServiceHistoryTVC", bundle: nil), forCellReuseIdentifier: "DD_ServiceHistoryTVC")
         self.serviceHistoryTableView.separatorStyle = .none
         self.noDataFoundLbl.isHidden = true
-        self.serviceHistoryListApi()
+      
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.VM.serviceHistoryListingArray.removeAll()
+        self.serviceHistoryListApi(startIndex: 1)
     }
     
     @IBAction func backBTN(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func serviceHistoryListApi(){
+    func serviceHistoryListApi(startIndex: Int){
         let parameter = [
             "ActionType": "262",
             "ActorId": "\(self.userID)",
             "LoyaltyID": "\(self.loyaltyId)",
-            "StartIndex": startindex,
+            "StartIndex": startIndex,
             "PageSize":"10"
         ] as [String: Any]
         print(parameter)
@@ -80,10 +85,10 @@ extension DD_Service_HistoryVC: UITableViewDelegate,UITableViewDataSource {
         if indexPath.row == VM.serviceHistoryListingArray.count - 2{
             if noofelements == 10{
                 startindex = startindex + 1
-                self.serviceHistoryListApi()
+                self.serviceHistoryListApi(startIndex: self.startindex)
             }else if self.noofelements > 10{
                 self.startindex = self.startindex + 1
-                self.serviceHistoryListApi()
+                self.serviceHistoryListApi(startIndex: self.startindex)
             }else if noofelements < 10{
                 print("no need to hit API")
                 return

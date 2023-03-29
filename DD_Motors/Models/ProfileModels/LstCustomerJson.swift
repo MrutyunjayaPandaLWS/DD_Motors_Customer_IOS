@@ -182,6 +182,9 @@ struct LstCustomerJson : Codable {
 	let enrollmentStatus : Bool?
 	let dealerUserId : String?
 	let dealerName : String?
+	let aadharNumber : String?
+	let user : String?
+	let ssid : String?
 
 	enum CodingKeys: String, CodingKey {
 
@@ -354,6 +357,9 @@ struct LstCustomerJson : Codable {
 		case enrollmentStatus = "enrollmentStatus"
 		case dealerUserId = "dealerUserId"
 		case dealerName = "dealerName"
+		case aadharNumber = "aadharNumber"
+		case user = "user"
+		case ssid = "ssid"
 	}
 
 	init(from decoder: Decoder) throws {
@@ -527,6 +533,9 @@ struct LstCustomerJson : Codable {
 		enrollmentStatus = try values.decodeIfPresent(Bool.self, forKey: .enrollmentStatus)
 		dealerUserId = try values.decodeIfPresent(String.self, forKey: .dealerUserId)
 		dealerName = try values.decodeIfPresent(String.self, forKey: .dealerName)
+		aadharNumber = try values.decodeIfPresent(String.self, forKey: .aadharNumber)
+		user = try values.decodeIfPresent(String.self, forKey: .user)
+		ssid = try values.decodeIfPresent(String.self, forKey: .ssid)
 	}
 
 }

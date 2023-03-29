@@ -49,6 +49,8 @@ struct LstCustomerOfficalInfoJson : Codable {
 	let establishDate : String?
 	let isGSTNumber : String?
 	let targetPoint : Int?
+	let talukId : Int?
+	let districtId : Int?
 
 	enum CodingKeys: String, CodingKey {
 
@@ -88,6 +90,8 @@ struct LstCustomerOfficalInfoJson : Codable {
 		case establishDate = "establishDate"
 		case isGSTNumber = "isGSTNumber"
 		case targetPoint = "targetPoint"
+		case talukId = "talukId"
+		case districtId = "districtId"
 	}
 
 	init(from decoder: Decoder) throws {
@@ -128,6 +132,8 @@ struct LstCustomerOfficalInfoJson : Codable {
 		establishDate = try values.decodeIfPresent(String.self, forKey: .establishDate)
 		isGSTNumber = try values.decodeIfPresent(String.self, forKey: .isGSTNumber)
 		targetPoint = try values.decodeIfPresent(Int.self, forKey: .targetPoint)
+		talukId = try values.decodeIfPresent(Int.self, forKey: .talukId)
+		districtId = try values.decodeIfPresent(Int.self, forKey: .districtId)
 	}
 
 }

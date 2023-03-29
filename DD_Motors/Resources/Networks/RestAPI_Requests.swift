@@ -199,11 +199,11 @@ class RestAPI_Requests {
     
     // Profile Details
     
-    func myProfileApi(parameters: JSON, completion: @escaping (ProfileModels?, Error?) -> ()) -> URLSessionDataTask? {
+    func myProfileApi(parameters: JSON, completion: @escaping (MyProfileModels?, Error?) -> ()) -> URLSessionDataTask? {
         return client.load(path: profile_URLMethod, method: .post, params: parameters) { data, error in
             do{
                 if data != nil{
-                    let result1 =  try JSONDecoder().decode(ProfileModels.self, from: data as! Data)
+                    let result1 =  try JSONDecoder().decode(MyProfileModels.self, from: data as! Data)
                     completion(result1, nil)
                 }
             }catch{

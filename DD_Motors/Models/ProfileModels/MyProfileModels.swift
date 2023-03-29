@@ -12,9 +12,9 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 */
 
 import Foundation
-struct ProfileModels : Codable {
+struct MyProfileModels : Codable {
 	let lstCustomerJson : [LstCustomerJson]?
-	let lstVehicleJson : [String]?
+	let lstVehicleJson : [LstVehicleJson]?
 	let lstCustomerOfficalInfoJson : [LstCustomerOfficalInfoJson]?
 	let lstCustomerIdentityInfo : String?
 	let customerBasicInfoList : String?
@@ -55,7 +55,7 @@ struct ProfileModels : Codable {
 	init(from decoder: Decoder) throws {
 		let values = try decoder.container(keyedBy: CodingKeys.self)
 		lstCustomerJson = try values.decodeIfPresent([LstCustomerJson].self, forKey: .lstCustomerJson)
-		lstVehicleJson = try values.decodeIfPresent([String].self, forKey: .lstVehicleJson)
+		lstVehicleJson = try values.decodeIfPresent([LstVehicleJson].self, forKey: .lstVehicleJson)
 		lstCustomerOfficalInfoJson = try values.decodeIfPresent([LstCustomerOfficalInfoJson].self, forKey: .lstCustomerOfficalInfoJson)
 		lstCustomerIdentityInfo = try values.decodeIfPresent(String.self, forKey: .lstCustomerIdentityInfo)
 		customerBasicInfoList = try values.decodeIfPresent(String.self, forKey: .customerBasicInfoList)

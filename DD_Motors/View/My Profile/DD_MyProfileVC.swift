@@ -84,7 +84,7 @@ class DD_MyProfileVC: BaseViewController, SelectedItemDelegate, DateSelectedDele
         self.cityTF.isEnabled = false
         self.pinCodeTF.isEnabled = false
         self.dobTF.isEnabled = false
-        self.dobBtn.isHidden = true
+        self.dobBtn.isHidden = false
         self.stateButton.isHidden = true
         self.cityBtn.isHidden = true
         self.profileNameLbl.text = self.profileName
@@ -100,18 +100,16 @@ class DD_MyProfileVC: BaseViewController, SelectedItemDelegate, DateSelectedDele
     @IBAction func editActionBtn(_ sender: Any) {
         if self.editOutBtn.currentTitle == "Edit Profile"{
             self.editOutBtn.setTitle("Save Changes", for: .normal)
-            self.nameTF.isEnabled = true
+            self.nameTF.isEnabled = false
             self.mobileNumberTF.isEnabled = false
             self.addressTF.isEnabled = true
             self.stateTF.isEnabled = true
             self.cityTF.isEnabled = true
             self.pinCodeTF.isEnabled = true
-            self.dobTF.isEnabled = true
             self.dobBtn.isHidden = false
-            self.stateButton.isHidden = false
-            self.cityBtn.isHidden = false
+            self.stateButton.isEnabled = true
+            self.cityBtn.isEnabled = true
         }else if self.editOutBtn.currentTitle == "Save Changes"{
-            
             // Api Call
             
             if self.nameTF.text!.count == 0{
@@ -120,19 +118,28 @@ class DD_MyProfileVC: BaseViewController, SelectedItemDelegate, DateSelectedDele
                 self.view.makeToast("Enter mobile number", duration: 2.0, position: .bottom)
             }else if self.mobileNumberTF.text!.count != 10 {
                 self.view.makeToast("Enter valid mobile number", duration: 2.0, position: .bottom)
-            }else if self.addressTF.text!.count == 0{
-                self.view.makeToast("Enter address", duration: 2.0, position: .bottom)
-            }else if self.stateTF.text == "Select State" || self.selectedStateId == -1{
-                self.view.makeToast("Select State", duration: 2.0, position: .bottom)
-            }else if self.cityTF.text == "Select City" || self.selectedCityId == -1{
+            }
+            
+            
+//            else if self.addressTF.text!.count == 0{
+//                self.view.makeToast("Enter address", duration: 2.0, position: .bottom)
+//            }
+//            else if self.stateTF.text == "Select State" || self.selectedStateId == -1{
+//                self.view.makeToast("Select State", duration: 2.0, position: .bottom)
+//            }
+            else if self.selectedStateId != -1 && self.cityTF.text == "Select City" || self.selectedStateId != -1 && self.selectedCityId == -1{
                 self.view.makeToast("Select City", duration: 2.0, position: .bottom)
-            }else if self.pinCodeTF.text!.count == 0{
-                self.view.makeToast("Enter pin", duration: 2.0, position: .bottom)
-            }else if self.pinCodeTF.text!.count != 6{
+            }
+//            else if self.pinCodeTF.text!.count == 0{
+//                self.view.makeToast("Enter pin", duration: 2.0, position: .bottom)
+//            }
+            else if self.pinCodeTF.text!.count != 6 && self.pinCodeTF.text!.count != 0{
                 self.view.makeToast("Enter valid pin", duration: 2.0, position: .bottom)
-            }else if self.dobTF.text == "Select DOB"{
-                self.view.makeToast("Select date of birth", duration: 2.0, position: .bottom)
-            }else{
+            }
+//            else if self.dobTF.text == "Select DOB"{
+//                self.view.makeToast("Select date of birth", duration: 2.0, position: .bottom)
+//            }
+            else{
                let parameter = [
                 "ActionType": "4",
                 "ActorId": "\(self.userID)",

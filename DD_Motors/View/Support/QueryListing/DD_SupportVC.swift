@@ -18,7 +18,7 @@ class DD_SupportVC: BaseViewController, SendTopicDelegate{
 
     @IBOutlet weak var backButton: UIButton!
     
-    @IBOutlet weak var bottomSpaceConstraint: NSLayoutConstraint!
+    //@IBOutlet weak var bottomSpaceConstraint: NSLayoutConstraint!
     @IBOutlet weak var selectedItem: UILabel!
     @IBOutlet weak var dropDownTableHeight: NSLayoutConstraint!
     @IBOutlet weak var dropDownTableView: UITableView!
@@ -67,8 +67,8 @@ class DD_SupportVC: BaseViewController, SendTopicDelegate{
         self.VM.queryListArray.removeAll()
         self.queryListApi(queryTopic: self.selectedQueryTopicId, statusId: self.selectedStatusId)
         self.tableHeight = 0
-        self.dropDownTableHeight.constant = 30
-        self.bottomSpaceConstraint.constant = 3
+        self.dropDownTableHeight.constant = 0
+//        self.bottomSpaceConstraint.constant = 3
         subView.clipsToBounds = false
         subView.layer.cornerRadius = 36
         
@@ -94,8 +94,9 @@ class DD_SupportVC: BaseViewController, SendTopicDelegate{
         if self.dropDownTableView.isHidden == false{
             self.dropDownTableView.isHidden = true
             self.tableHeight = 0
-            self.bottomSpaceConstraint.constant = 3
-            self.dropDownTableHeight.constant = CGFloat(self.tableHeight)
+            self.dropDownTableHeight.constant = 0
+//            self.bottomSpaceConstraint.constant = 3
+           // self.dropDownTableHeight.constant = CGFloat(self.tableHeight)
         }else{
             self.queryStatusListApi()
         }
@@ -161,11 +162,11 @@ extension DD_SupportVC: UITableViewDelegate, UITableViewDataSource{
                 cell.ticketStatusLbl.backgroundColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 0.1495978123)
                 cell.ticketStatusLbl.textColor = .red
             }else if cell.ticketStatusLbl.text == "Resolved" {
-                cell.ticketStatusLbl.backgroundColor = #colorLiteral(red: 0.1294117719, green: 0.2156862766, blue: 0.06666667014, alpha: 0.1629260739)
-                cell.ticketStatusLbl.textColor = .green
+                cell.ticketStatusLbl.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+                cell.ticketStatusLbl.textColor = #colorLiteral(red: 0.1960784346, green: 0.3411764801, blue: 0.1019607857, alpha: 1)
             }else{
-                cell.ticketStatusLbl.backgroundColor = #colorLiteral(red: 1, green: 0, blue: 0, alpha: 0.1495978123)
-                cell.ticketStatusLbl.textColor = .black
+                cell.ticketStatusLbl.backgroundColor = #colorLiteral(red: 0.9764705896, green: 0.850980401, blue: 0.5490196347, alpha: 1)
+                cell.ticketStatusLbl.textColor = #colorLiteral(red: 0.3098039329, green: 0.2039215714, blue: 0.03921568766, alpha: 1)
             }
             
             return cell
@@ -178,7 +179,9 @@ extension DD_SupportVC: UITableViewDelegate, UITableViewDataSource{
             self.selectedStatusId = self.VM.queryTopicListArray[indexPath.row].attributeId ?? 0
             self.dropDownTableView.isHidden = true
             self.tableHeight = 0
-            self.bottomSpaceConstraint.constant = 3
+           // self.bottomSpaceConstraint.constant = 3
+            self.dropDownTableHeight.constant = 0
+            self.VM.queryListArray.removeAll()
             self.queryListApi(queryTopic: self.selectedQueryTopicId, statusId: self.selectedStatusId)
         }else{
             let centerviewcontroller = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "ChatListViewController") as! ChatListViewController
@@ -200,19 +203,21 @@ extension DD_SupportVC: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == VM.queryListArray.count - 1{
-            if noofelements == 10{
-                startindex = startindex + 1
-                self.queryListApi(queryTopic: self.selectedQueryTopicId, statusId: self.selectedStatusId)
-            }else if self.noofelements > 10{
-                self.startindex = self.startindex + 1
-                self.queryListApi(queryTopic: self.selectedQueryTopicId, statusId: self.selectedStatusId)
-            }else if noofelements < 10{
-                print("no need to hit API")
-                return
-            }else{
-                print("n0 more elements")
-                return
+        if tableView != dropDownTableView{
+            if indexPath.row == VM.queryListArray.count - 1{
+                if noofelements == 10{
+                    startindex = startindex + 1
+                    self.queryListApi(queryTopic: self.selectedQueryTopicId, statusId: self.selectedStatusId)
+                }else if self.noofelements > 10{
+                    self.startindex = self.startindex + 1
+                    self.queryListApi(queryTopic: self.selectedQueryTopicId, statusId: self.selectedStatusId)
+                }else if noofelements < 10{
+                    print("no need to hit API")
+                    return
+                }else{
+                    print("n0 more elements")
+                    return
+                }
             }
         }
     }

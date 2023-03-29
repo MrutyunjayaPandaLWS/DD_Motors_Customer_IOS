@@ -108,12 +108,34 @@ class DD_MyProfileVM{
                             self.VC!.view.makeToast("Profile updated successfully", duration: 3.0, position: .bottom)
                             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
                                 self.VC?.myProfileDetails()
+                                self.VC!.editOutBtn.setTitle("Edit Profile", for: .normal)
+                                self.VC!.nameTF.isEnabled = false
+                                self.VC!.mobileNumberTF.isEnabled = false
+                                self.VC!.addressTF.isEnabled = false
+                                self.VC!.stateTF.isEnabled = false
+                                self.VC!.cityTF.isEnabled = true
+                                self.VC!.pinCodeTF.isEnabled = false
+                                self.VC!.dobTF.isEnabled = false
+                                self.VC!.dobBtn.isEnabled = false
+                                self.VC!.stateButton.isEnabled = false
+                                self.VC!.cityBtn.isEnabled = false
                             })
                             
                         }else{
-                            self.VC!.view.makeToast("Profile updated successfully", duration: 3.0, position: .bottom)
+                            self.VC!.view.makeToast("Profile updated Failed", duration: 3.0, position: .bottom)
                             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
                                 self.VC?.myProfileDetails()
+                                self.VC!.editOutBtn.setTitle("Edit Profile", for: .normal)
+                                self.VC!.nameTF.isEnabled = false
+                                self.VC!.mobileNumberTF.isEnabled = false
+                                self.VC!.addressTF.isEnabled = false
+                                self.VC!.stateTF.isEnabled = false
+                                self.VC!.cityTF.isEnabled = true
+                                self.VC!.pinCodeTF.isEnabled = false
+                                self.VC!.dobTF.isEnabled = false
+                                self.VC!.dobBtn.isEnabled = false
+                                self.VC!.stateButton.isEnabled = false
+                                self.VC!.cityBtn.isEnabled = false
                             })
                         }
                         }

@@ -26,7 +26,7 @@ class DD_ServiceHistoryVM {
                         self.VC?.loaderView.isHidden = true
                         self.VC?.stopLoading()
                         let serviceHistoryList = result?.lstUserVehicleDetails ?? []
-                        if serviceHistoryList.count != 0 {
+                        if serviceHistoryList.isEmpty == false{
                             self.serviceHistoryListingArray += serviceHistoryList
                             self.VC?.noofelements = self.serviceHistoryListingArray.count
                             if self.serviceHistoryListingArray.count != 0{

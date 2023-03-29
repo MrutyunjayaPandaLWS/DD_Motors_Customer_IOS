@@ -9,9 +9,6 @@
 /* Begin PBXBuildFile section */
 		25BF2ABF298D2BB7008B1DAC /* SubscriptionPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BF2ABE298D2BB7008B1DAC /* SubscriptionPopup.swift */; };
 		25F1700C298B7A8500A02535 /* 69030-confetti-full-screen.json in Resources */ = {isa = PBXBuildFile; fileRef = 25F1700B298B7A8500A02535 /* 69030-confetti-full-screen.json */; };
-		25F17010298B93DB00A02535 /* LstCustomerJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F1700D298B93D800A02535 /* LstCustomerJson.swift */; };
-		25F17011298B93DB00A02535 /* LstCustomerOfficalInfoJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F1700E298B93D900A02535 /* LstCustomerOfficalInfoJson.swift */; };
-		25F17012298B93DB00A02535 /* ProfileModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25F1700F298B93DB00A02535 /* ProfileModels.swift */; };
 		8059CC9129C311990085A132 /* LstPromotionJsonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059CC8F29C311980085A132 /* LstPromotionJsonList.swift */; };
 		8059CC9229C311990085A132 /* PromotionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059CC9029C311990085A132 /* PromotionModels.swift */; };
 		8075441429C2EBBB00C614B9 /* DD_PromotionsVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075441329C2EBBB00C614B9 /* DD_PromotionsVM.swift */; };
@@ -209,6 +206,10 @@
 		84F33FFD2956D1BB00B1E428 /* DD_SubscriptionHistoryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F33FFA2956D1BB00B1E428 /* DD_SubscriptionHistoryVC.swift */; };
 		84F54FC2295DC6560084E50A /* DD_NotificationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F54FC1295DC6560084E50A /* DD_NotificationVC.swift */; };
 		84F54FC4295DCFBF0084E50A /* DD_NotificationTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F54FC3295DCFBF0084E50A /* DD_NotificationTVC.swift */; };
+		84F800D029D43E3700044FFE /* LstCustomerOfficalInfoJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F800CC29D43E3700044FFE /* LstCustomerOfficalInfoJson.swift */; };
+		84F800D129D43E3700044FFE /* MyProfileModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F800CD29D43E3700044FFE /* MyProfileModels.swift */; };
+		84F800D229D43E3700044FFE /* LstCustomerJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F800CE29D43E3700044FFE /* LstCustomerJson.swift */; };
+		84F800D329D43E3700044FFE /* LstVehicleJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F800CF29D43E3700044FFE /* LstVehicleJson.swift */; };
 		D1EA75EAEBA52669A59D96F8 /* libPods-DD_Motors.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98960DF652491A2137F901B7 /* libPods-DD_Motors.a */; };
 /* End PBXBuildFile section */
 
@@ -232,9 +233,6 @@
 /* Begin PBXFileReference section */
 		25BF2ABE298D2BB7008B1DAC /* SubscriptionPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPopup.swift; sourceTree = "<group>"; };
 		25F1700B298B7A8500A02535 /* 69030-confetti-full-screen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "69030-confetti-full-screen.json"; sourceTree = "<group>"; };
-		25F1700D298B93D800A02535 /* LstCustomerJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstCustomerJson.swift; sourceTree = "<group>"; };
-		25F1700E298B93D900A02535 /* LstCustomerOfficalInfoJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstCustomerOfficalInfoJson.swift; sourceTree = "<group>"; };
-		25F1700F298B93DB00A02535 /* ProfileModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileModels.swift; sourceTree = "<group>"; };
 		8059CC8F29C311980085A132 /* LstPromotionJsonList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstPromotionJsonList.swift; sourceTree = "<group>"; };
 		8059CC9029C311990085A132 /* PromotionModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PromotionModels.swift; sourceTree = "<group>"; };
 		8075441329C2EBBB00C614B9 /* DD_PromotionsVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_PromotionsVM.swift; sourceTree = "<group>"; };
@@ -441,6 +439,10 @@
 		84F33FFA2956D1BB00B1E428 /* DD_SubscriptionHistoryVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DD_SubscriptionHistoryVC.swift; sourceTree = "<group>"; };
 		84F54FC1295DC6560084E50A /* DD_NotificationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_NotificationVC.swift; sourceTree = "<group>"; };
 		84F54FC3295DCFBF0084E50A /* DD_NotificationTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_NotificationTVC.swift; sourceTree = "<group>"; };
+		84F800CC29D43E3700044FFE /* LstCustomerOfficalInfoJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstCustomerOfficalInfoJson.swift; sourceTree = "<group>"; };
+		84F800CD29D43E3700044FFE /* MyProfileModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyProfileModels.swift; sourceTree = "<group>"; };
+		84F800CE29D43E3700044FFE /* LstCustomerJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstCustomerJson.swift; sourceTree = "<group>"; };
+		84F800CF29D43E3700044FFE /* LstVehicleJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstVehicleJson.swift; sourceTree = "<group>"; };
 		92B9C3D26AD77EB07DB48B90 /* Pods-DD_Motors.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DD_Motors.debug.xcconfig"; path = "Target Support Files/Pods-DD_Motors/Pods-DD_Motors.debug.xcconfig"; sourceTree = "<group>"; };
 		98960DF652491A2137F901B7 /* libPods-DD_Motors.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DD_Motors.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B829B7026CDBD8C65E56E5FC /* Pods-DD_Motors.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DD_Motors.release.xcconfig"; path = "Target Support Files/Pods-DD_Motors/Pods-DD_Motors.release.xcconfig"; sourceTree = "<group>"; };
@@ -901,9 +903,10 @@
 		84882644295C76AB00A447B5 /* ProfileModels */ = {
 			isa = PBXGroup;
 			children = (
-				25F1700F298B93DB00A02535 /* ProfileModels.swift */,
-				25F1700D298B93D800A02535 /* LstCustomerJson.swift */,
-				25F1700E298B93D900A02535 /* LstCustomerOfficalInfoJson.swift */,
+				84F800CD29D43E3700044FFE /* MyProfileModels.swift */,
+				84F800CE29D43E3700044FFE /* LstCustomerJson.swift */,
+				84F800CC29D43E3700044FFE /* LstCustomerOfficalInfoJson.swift */,
+				84F800CF29D43E3700044FFE /* LstVehicleJson.swift */,
 			);
 			path = ProfileModels;
 			sourceTree = "<group>";
@@ -1763,6 +1766,7 @@
 				84ED675C2966B3F700E0A546 /* ObjLocationAddressInfo.swift in Sources */,
 				8476936F295AF1D8008DD594 /* DD_RegistrationVM.swift in Sources */,
 				8418265E297A677D0066DD2F /* BannerImageListModel.swift in Sources */,
+				84F800D029D43E3700044FFE /* LstCustomerOfficalInfoJson.swift in Sources */,
 				8498EBB829542AC90019A0D5 /* DD_LoginVC.swift in Sources */,
 				8498EC0129542E010019A0D5 /* TextfieldExtension.swift in Sources */,
 				84B3FC8E295C40F30090563D /* ChatSubmissionModels.swift in Sources */,
@@ -1843,18 +1847,17 @@
 				8409054F2959DE6B002DBBEE /* ApiUrls.swift in Sources */,
 				8498EC0929542E010019A0D5 /* TapGestureExtension.swift in Sources */,
 				8486BD9129C9766C0072A1AE /* Refunds.swift in Sources */,
+				84F800D329D43E3700044FFE /* LstVehicleJson.swift in Sources */,
 				8498EBB429542AC90019A0D5 /* AppDelegate.swift in Sources */,
 				84769361295AD178008DD594 /* StateModels.swift in Sources */,
 				84B3FC5A295C199F0090563D /* ObjCustomerAllQueryJsonList.swift in Sources */,
 				8498EBB629542AC90019A0D5 /* SceneDelegate.swift in Sources */,
 				8498EBEF29542DD10019A0D5 /* PersistanceService.swift in Sources */,
-				25F17010298B93DB00A02535 /* LstCustomerJson.swift in Sources */,
 				848EA5AE2967E544004B6620 /* DD_MyCashPointVM.swift in Sources */,
 				84B3FC7C295C3DF40090563D /* customerqueryTableViewCell.swift in Sources */,
 				8418265D297A677D0066DD2F /* ObjImageGalleryList1.swift in Sources */,
 				84B3FC88295C3DF40090563D /* querylistingTableViewCell.swift in Sources */,
 				8467E3DB2956DCF200176AAE /* DD_DOBVC.swift in Sources */,
-				25F17011298B93DB00A02535 /* LstCustomerOfficalInfoJson.swift in Sources */,
 				84A1D3EE29C9DC3200CBC671 /* GenerateReceiptModel.swift in Sources */,
 				8470DE302955D682000990AD /* DD_SupportTVC.swift in Sources */,
 				84769374295B0858008DD594 /* ObjHelpTopicList.swift in Sources */,
@@ -1863,6 +1866,7 @@
 				84B452A2295498B400C8EC0C /* DD_MyVehicleCVC.swift in Sources */,
 				84EF2459297BAE52006E9EA1 /* MyOffersCategoryModels.swift in Sources */,
 				84C1E3EE29757E2800D188C5 /* DD_ServiceHistoryVM.swift in Sources */,
+				84F800D129D43E3700044FFE /* MyProfileModels.swift in Sources */,
 				84DF6B25299A66E700E3FD3F /* DD_SubscriptionSuccessPopUp.swift in Sources */,
 				8467E3E32956E19F00176AAE /* DD_MyProfileVC.swift in Sources */,
 				8467E3E02956E04A00176AAE /* DD_DropDownTVC.swift in Sources */,
@@ -1911,8 +1915,8 @@
 				84F21FF8295D75C30040C67F /* QueryTopicListModels.swift in Sources */,
 				84ED675D2966B3F700E0A546 /* DealershipLocationModels.swift in Sources */,
 				84BAAC5529C1C10F006DDEE0 /* LstLoyaltyProgramReport.swift in Sources */,
-				25F17012298B93DB00A02535 /* ProfileModels.swift in Sources */,
 				8409054D2959DE6B002DBBEE /* WebClient.swift in Sources */,
+				84F800D229D43E3700044FFE /* LstCustomerJson.swift in Sources */,
 				84DF6B27299A703E00E3FD3F /* DD_RegistrationSubmissionVC.swift in Sources */,
 				840905522959DE6B002DBBEE /* RequestMethod.swift in Sources */,
 				8498EC0829542E010019A0D5 /* ImageExtension.swift in Sources */,
