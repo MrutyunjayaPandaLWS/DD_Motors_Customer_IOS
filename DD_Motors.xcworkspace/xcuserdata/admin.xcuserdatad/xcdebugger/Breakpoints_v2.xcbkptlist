@@ -7,22 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "666657C5-6189-49C5-8D87-97500CBAF4F1"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DD_Motors/View/Subscription/Subscriptions/DD_SubscriptionVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "197"
-            endingLineNumber = "197"
-            landmarkName = "proceedbtn(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "15908109-6591-4B7C-AC86-83B0845E5881"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -33,6 +17,86 @@
             startingLineNumber = "26"
             endingLineNumber = "26"
             landmarkName = "subscriptionSubmission(parameter:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4EE077E4-B133-4F05-9D47-D3F53568EC39"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DD_Motors/View/Subscription/Subscriptions/DD_SubscriptionSubmissionPopUpVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "generateReceiptBtn(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9F5C05B4-8FEF-41B6-BEAB-00CA2136C18E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DD_Motors/View/Subscription/Subscriptions/DD_SubscriptionSubmissionPopUpVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "generateReceiptApi(parameter:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9F5C05B4-8FEF-41B6-BEAB-00CA2136C18E - c9cf7fa8bd439a3d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DD_Motors.DD_SubscriptionSubmissionPopUpVC.generateReceiptApi(parameter: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "DD_Motors"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/LWS_Projects/DD_Motors_Customer_IOS/DD_Motors/View/Subscription/Subscriptions/DD_SubscriptionSubmissionPopUpVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "51"
+                  endingLineNumber = "51"
+                  offsetFromSymbolStart = "42">
+               </Location>
+               <Location
+                  uuid = "9F5C05B4-8FEF-41B6-BEAB-00CA2136C18E - fc0b40723a76ca22"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;DD_Motors.GenerateReceiptModel&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in DD_Motors.DD_SubscriptionSubmissionPopUpVC.generateReceiptApi(parameter: Swift.Dictionary&lt;Swift.String, Any&gt;) -&gt; ()"
+                  moduleName = "DD_Motors"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/LWS_Projects/DD_Motors_Customer_IOS/DD_Motors/View/Subscription/Subscriptions/DD_SubscriptionSubmissionPopUpVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "217">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "934081A5-302C-42D8-9F6B-7F70E978E542"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DD_Motors/View/Subscription/Subscriptions/DD_SubscriptionVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "252"
+            endingLineNumber = "252"
+            landmarkName = "paymentProceedApi()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

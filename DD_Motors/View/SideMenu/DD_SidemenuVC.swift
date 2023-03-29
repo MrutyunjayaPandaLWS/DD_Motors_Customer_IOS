@@ -98,17 +98,16 @@ class DD_SidemenuVC: BaseViewController {
         let alert = UIAlertController(title: "", message: "Are you sure want to delete this account?", preferredStyle: UIAlertController.Style.alert)
         alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { UIAlertAction in
             
-            UserDefaults.standard.set(false, forKey: "IsloggedIn?")
-            UserDefaults.standard.set("" ,forKey: "result_UserID")
-            UserDefaults.standard.set("" ,forKey: "result_Password")
+//            UserDefaults.standard.set(false, forKey: "IsloggedIn?")
+//            UserDefaults.standard.set("" ,forKey: "result_UserID")
+//            UserDefaults.standard.set("" ,forKey: "result_Password")
 
-            if #available(iOS 13.0, *) {
-                let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
-                sceneDelegate.setInitialViewAsRootViewController()
-            } else {
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                appDelegate.setInitialViewAsRootViewController()
-            }
+            let parameters = [
+                "ActionType": 1,
+                "userid":"\(self.userID)"
+            ] as [String : Any]
+            print(parameters)
+            self.VM.deleteAccountAPI(paramters: parameters)
         }))
             alert.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)

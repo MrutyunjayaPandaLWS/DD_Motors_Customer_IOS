@@ -43,5 +43,6 @@ extension Notification.Name{
     static let hitMyOffersApi = Notification.Name(rawValue: "hitMyOffersApi")
     
     static let navigateToSubscription = Notification.Name(rawValue: "navigateToSubscription")
+    static let accountDeactivated = Notification.Name(rawValue: "accountDeactivated")
     
 }

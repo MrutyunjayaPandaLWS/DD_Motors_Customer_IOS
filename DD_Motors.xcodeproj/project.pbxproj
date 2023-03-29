@@ -39,6 +39,8 @@
 		8418799A2959A1D200240F5A /* DD_SubmitQueryVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841879992959A1D200240F5A /* DD_SubmitQueryVC.swift */; };
 		8418799C2959A80100240F5A /* DD_QueryTopicVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418799B2959A80100240F5A /* DD_QueryTopicVC.swift */; };
 		841ADA7E295723A600CA8632 /* DD_MyOffersDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841ADA7D295723A600CA8632 /* DD_MyOffersDetailsVC.swift */; };
+		841FC68D29D3F05B00765484 /* AccountDeactivatePopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841FC68C29D3F05B00765484 /* AccountDeactivatePopUpVC.swift */; };
+		841FC69029D4009B00765484 /* DeleteAccountModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841FC68F29D4009B00765484 /* DeleteAccountModels.swift */; };
 		843FDC0D295DA7D60061B2F5 /* ProfileUpdateModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FDC0C295DA7D60061B2F5 /* ProfileUpdateModels.swift */; };
 		845193AD295C4A5900F8B3CA /* libPods-DD_Motors.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 845193AC295C4A5900F8B3CA /* libPods-DD_Motors.a */; };
 		845193AF295C4A9E00F8B3CA /* libPods-DD_Motors.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 845193AE295C4A9E00F8B3CA /* libPods-DD_Motors.a */; };
@@ -260,6 +262,8 @@
 		841879992959A1D200240F5A /* DD_SubmitQueryVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_SubmitQueryVC.swift; sourceTree = "<group>"; };
 		8418799B2959A80100240F5A /* DD_QueryTopicVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_QueryTopicVC.swift; sourceTree = "<group>"; };
 		841ADA7D295723A600CA8632 /* DD_MyOffersDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_MyOffersDetailsVC.swift; sourceTree = "<group>"; };
+		841FC68C29D3F05B00765484 /* AccountDeactivatePopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDeactivatePopUpVC.swift; sourceTree = "<group>"; };
+		841FC68F29D4009B00765484 /* DeleteAccountModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteAccountModels.swift; sourceTree = "<group>"; };
 		843FDC0C295DA7D60061B2F5 /* ProfileUpdateModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileUpdateModels.swift; sourceTree = "<group>"; };
 		845193AC295C4A5900F8B3CA /* libPods-DD_Motors.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-DD_Motors.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		845193AE295C4A9E00F8B3CA /* libPods-DD_Motors.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-DD_Motors.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -621,6 +625,22 @@
 				84DD783F299B6EA3009F7704 /* DD_MyOffersDetailsPopUp.swift */,
 			);
 			path = "My Offers Details";
+			sourceTree = "<group>";
+		};
+		841FC68B29D3EF8A00765484 /* PopUpMessage */ = {
+			isa = PBXGroup;
+			children = (
+				841FC68C29D3F05B00765484 /* AccountDeactivatePopUpVC.swift */,
+			);
+			path = PopUpMessage;
+			sourceTree = "<group>";
+		};
+		841FC68E29D4001000765484 /* DeleteAccountModels */ = {
+			isa = PBXGroup;
+			children = (
+				841FC68F29D4009B00765484 /* DeleteAccountModels.swift */,
+			);
+			path = DeleteAccountModels;
 			sourceTree = "<group>";
 		};
 		843FDC09295DA7A30061B2F5 /* ProfileUpdateModels */ = {
@@ -1019,6 +1039,7 @@
 		8498EBE629542D2D0019A0D5 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				841FC68B29D3EF8A00765484 /* PopUpMessage */,
 				8075441229C2EB8B00C614B9 /* PromotionDetails */,
 				8075440F29C2EB2C00C614B9 /* Promotions */,
 				25BF2ABD298D2B30008B1DAC /* SubscribePopUpMessage */,
@@ -1095,6 +1116,7 @@
 		8498EBEA29542D520019A0D5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				841FC68E29D4001000765484 /* DeleteAccountModels */,
 				84A1D3E729C9D83100CBC671 /* GenerateReceiptModel */,
 				8486BD8729C9765E0072A1AE /* PayMentModels */,
 				8059CC8E29C3117B0085A132 /* PromotionsModels */,
@@ -1787,6 +1809,7 @@
 				8415DC2C29961DF400B7EB69 /* LstTermsAndCondition.swift in Sources */,
 				84769356295AC21D008DD594 /* DD_TermsandconditionVM.swift in Sources */,
 				84EF2462297BE981006E9EA1 /* DD_MyOffersDetailsVM.swift in Sources */,
+				841FC69029D4009B00765484 /* DeleteAccountModels.swift in Sources */,
 				84090561295A0D72002DBBEE /* TermsandConditionModels.swift in Sources */,
 				84B3FC8B295C3EC90090563D /* ChatListViewVM.swift in Sources */,
 				84F54FC4295DCFBF0084E50A /* DD_NotificationTVC.swift in Sources */,
@@ -1893,6 +1916,7 @@
 				84DF6B27299A703E00E3FD3F /* DD_RegistrationSubmissionVC.swift in Sources */,
 				840905522959DE6B002DBBEE /* RequestMethod.swift in Sources */,
 				8498EC0829542E010019A0D5 /* ImageExtension.swift in Sources */,
+				841FC68D29D3F05B00765484 /* AccountDeactivatePopUpVC.swift in Sources */,
 				8418799C2959A80100240F5A /* DD_QueryTopicVC.swift in Sources */,
 				8486BD9329C9766C0072A1AE /* PaymentModel.swift in Sources */,
 				84F33FE92956CB4300B1E428 /* DD_ServiceHistoryTVC.swift in Sources */,
@@ -2073,9 +2097,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2HG885J5KS;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2HG885J5KS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DD_Motors/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Scanning QR Codes requires Camera access for redeeming points.Allow Camera access?";
@@ -2095,6 +2121,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.DD-Motors";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = DDMotors_Dev_Cer;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2108,9 +2135,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2HG885J5KS;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2HG885J5KS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DD_Motors/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Scanning QR Codes requires Camera access for redeeming points.Allow Camera access?";
@@ -2130,6 +2159,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.DD-Motors";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = DDMotors_Dev_Cer;
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

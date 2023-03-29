@@ -67,5 +67,46 @@ class DD_SideMenuVM{
             }
         }
     }
-    
+    func deleteAccountAPI(paramters: JSON){
+        self.VC?.startLoading()
+        self.VC?.loaderView.isHidden = false
+        self.VC?.playAnimation2()
+        self.requestAPIs.deleteAccountApi(parameters: paramters) { (result, error) in
+            if error == nil {
+                if result != nil{
+                    DispatchQueue.main.async {
+                        self.VC?.loaderView.isHidden = true
+                        self.VC?.stopLoading()
+                        print(result?.returnMessage ?? "", "Deletate account Status")
+                        if result?.returnMessage ?? "" == "1" {
+                            DispatchQueue.main.async{
+                                self.VC?.loaderView.isHidden = true
+                                self.VC?.stopLoading()
+                                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "AccountDeactivatePopUpVC") as! AccountDeactivatePopUpVC
+                                vc.modalTransitionStyle = .coverVertical
+                                vc.modalPresentationStyle = .overFullScreen
+                                self.VC!.present(vc, animated: true)
+                            }
+                        } else {
+                            DispatchQueue.main.async{
+                                self.VC!.view.makeToast("Something went wrong! Try again later", duration: 2.0, position: .center)
+                            }
+                        }
+                     
+                    }
+
+                }else{
+                    DispatchQueue.main.async {
+                        self.VC?.loaderView.isHidden = true
+                    self.VC?.stopLoading()
+                    }
+                }
+            }else{
+                DispatchQueue.main.async {
+                    self.VC?.loaderView.isHidden = true
+                self.VC?.stopLoading()
+                }
+            }
+        }
+    }
 }

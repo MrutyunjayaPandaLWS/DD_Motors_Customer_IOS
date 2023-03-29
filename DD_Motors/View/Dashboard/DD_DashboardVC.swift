@@ -51,6 +51,7 @@ class DD_DashboardVC: BaseViewController{
         collectionViewFLowLayout.minimumInteritemSpacing = 2.5
         collectionViewFLowLayout.scrollDirection = .horizontal
         self.myVehicleCollectionView.collectionViewLayout = collectionViewFLowLayout
+        NotificationCenter.default.addObserver(self, selector: #selector(goBackToLogin), name: Notification.Name.accountDeactivated, object: nil)
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -61,6 +62,36 @@ class DD_DashboardVC: BaseViewController{
         self.bannerImageCalled = 1
         self.tokendata()
         
+    }
+    
+    @objc func goBackToLogin(){
+        
+        UserDefaults.standard.set(false, forKey: "IsloggedIn?")
+        
+        if #available(iOS 13.0, *) {
+            DispatchQueue.main.async {
+                let pushID = UserDefaults.standard.string(forKey: "UD_DEVICE_TOKEN") ?? ""
+                let domain = Bundle.main.bundleIdentifier!
+                UserDefaults.standard.removePersistentDomain(forName: domain)
+                UserDefaults.standard.synchronize()
+                UserDefaults.standard.setValue(pushID, forKey: "UD_DEVICE_TOKEN")
+                let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
+                sceneDelegate.setInitialViewAsRootViewController()
+             //   self.clearTable2()
+            }
+        } else {
+            DispatchQueue.main.async {
+                let pushID = UserDefaults.standard.string(forKey: "UD_DEVICE_TOKEN") ?? ""
+                let domain = Bundle.main.bundleIdentifier!
+                UserDefaults.standard.removePersistentDomain(forName: domain)
+                UserDefaults.standard.synchronize()
+                UserDefaults.standard.setValue(pushID, forKey: "UD_DEVICE_TOKEN")
+                if #available(iOS 13.0, *) {
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.setInitialViewAsRootViewController()
+                }
+            }
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -146,6 +177,13 @@ class DD_DashboardVC: BaseViewController{
         ] as [String: Any]
         print(parameter)
         self.VM.dashBoardApi(parameter: parameter)
+    }
+    func userStatusApi(){
+        let parameter = [
+            "ActorId":"\(self.userID)"
+        ] as [String: Any]
+        print(parameter)
+        self.VM.userActiveApi(parameter: parameter)
     }
     
     func dashboardVehicleListApi(loyaltyID: String){
@@ -255,8 +293,8 @@ class DD_DashboardVC: BaseViewController{
                             self.bannerImageApi()
                             self.bannerImageCalled = 0
                         }
-                        self.dashboardApi()
-                        
+                        self.userStatusApi()
+                    //    self.dashboardApi()
                         
                     }
                      }catch let parsingError {

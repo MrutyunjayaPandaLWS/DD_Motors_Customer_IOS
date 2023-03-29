@@ -19,6 +19,8 @@ let imageBaseURL = "https://ddmotors.loyltwo3ks.com/UploadFiles/ProductManager/P
 let profileImageURL = "https://ddmotors.loyltwo3ks.com/UploadFiles/CustomerImage/"
 let productCatalogueImgURL = "https://ddmotors.loyltwo3ks.com/UploadFiles/CatalogueImages/"
 let checkUserExistencyURL = "https://ddmotorserv.loyltwo3ks.com/Mobile/CheckCustomerExistancyAndVerification"
+
+
 let username = "DDMoTorsAPi"
 let password = "mFjf$fgjhksdfl#m"
 let grant_type = "password"

@@ -111,18 +111,21 @@ class DD_SubscriptionVC: BaseViewController, SelectedItemDelegate, SendBackDetai
         self.yourVINImg.image = UIImage(named: "Ellipse 105")
         self.selectYourVRN.image = UIImage(named: "Ellipse 105")
         self.selectedStatusId = 1
+        self.selectedDealerTitle.text = "Select"
     }
     @IBAction func selectYourVIN(_ sender: Any) {
         self.yourVINImg.image = UIImage(named: "selected")
         self.bookingIdImg.image = UIImage(named: "Ellipse 105")
         self.selectYourVRN.image = UIImage(named: "Ellipse 105")
         self.selectedStatusId = 2
+        self.selectedDealerTitle.text = "Select"
     }
     @IBAction func selectYourVRNButton(_ sender: Any) {
         self.selectYourVRN.image = UIImage(named: "selected")
         self.yourVINImg.image = UIImage(named: "Ellipse 105")
         self.bookingIdImg.image = UIImage(named: "Ellipse 105")
         self.selectedStatusId = 3
+        self.selectedDealerTitle.text = "Select"
     }
     
     @IBAction func selectCategoryBtn(_ sender: Any) {
@@ -233,9 +236,12 @@ class DD_SubscriptionVC: BaseViewController, SelectedItemDelegate, SendBackDetai
             return data.map { String($0) }.joined(separator: "&")
         }
     func paymentProceedApi(){
+        let randomNumbers = Int(arc4random_uniform(1000000000))
+        let orderId = "\(randomNumbers)".prefix(6)
+        
         var request = URLRequest(url: URL(string: paymentGateWayURL)!)
         let parameters =  ["order_amount": self.amount,
-                           "order_id": "\(Int(arc4random_uniform(1000000000)))",
+                           "order_id": "ORD\(orderId)",
                            "order_currency": "INR",
                            "customer_details":[
                             "customer_id": "\(UserDefaults.standard.string(forKey: "CustomerId") ?? "")",

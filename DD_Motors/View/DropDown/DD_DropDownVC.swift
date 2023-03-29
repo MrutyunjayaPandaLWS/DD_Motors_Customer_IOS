@@ -18,6 +18,7 @@ class DD_DropDownVC: BaseViewController, UITableViewDataSource, UITableViewDeleg
 
     @IBOutlet weak var dropDownTableView: UITableView!
     
+    @IBOutlet weak var noDataFoundLbl: UILabel!
     @IBOutlet weak var loaderView: UIView!
     @IBOutlet weak var loaderAnimation: LottieAnimationView!
     private var loaderAnimationView : LottieAnimationView?
@@ -44,6 +45,7 @@ class DD_DropDownVC: BaseViewController, UITableViewDataSource, UITableViewDeleg
         dropDownTableView.delegate = self
         dropDownTableView.dataSource = self
         self.loaderView.isHidden = true
+        self.noDataFoundLbl.isHidden = true
         self.VM.VC = self
         if self.itsFrom == "STATE"{
             self.stateApi()

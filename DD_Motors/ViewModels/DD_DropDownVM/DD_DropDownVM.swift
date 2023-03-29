@@ -31,10 +31,12 @@ class DD_DropDownVM {
                         print(self.subscriptionHistoryListingArray.count)
                         if self.subscriptionHistoryListingArray.count != 0 {
                             self.VC?.dropDownTableView.isHidden = false
+                          //  self.VC?.noDataFoundLbl.isHidden = true
                             self.VC?.dropDownTableView.reloadData()
                         }else{
                             self.VC?.view.makeToast("No data found !!", duration: 3.0, position: .center)
                             self.VC?.dropDownTableView.isHidden = true
+                            self.VC?.noDataFoundLbl.isHidden = false
                         }
                         
                     }
@@ -42,12 +44,19 @@ class DD_DropDownVM {
                     DispatchQueue.main.async {
                         self.VC?.stopLoading()
                         self.VC?.loaderView.isHidden = true
+                        self.VC?.view.makeToast("No data found !!", duration: 3.0, position: .center)
+                        self.VC?.dropDownTableView.isHidden = true
+                      //  self.VC?.noDataFoundLbl.isHidden = false
                     }
                 }
             }else{
                 DispatchQueue.main.async {
+                    print(error)
                     self.VC?.stopLoading()
                     self.VC?.loaderView.isHidden = true
+                 self.VC?.view.makeToast("No data found !!", duration: 3.0, position: .center)
+                    self.VC?.dropDownTableView.isHidden = true
+                 //   self.VC?.noDataFoundLbl.isHidden = false
                 }
             }
         }

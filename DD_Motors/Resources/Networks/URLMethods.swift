@@ -34,4 +34,5 @@ let validateStatus_URLMethod = "UpdateCustomerAccountDetails"
 let promotionList_URLMethod = "GetPromotionDetailsMobileApp"
 let paymentOrder_URLMethod = "orders"
 let generateReceipt_URLMethod = "GetpaymentRecpit"
+let deleteAccountMethodName = "CustomerAccountDelete"
 

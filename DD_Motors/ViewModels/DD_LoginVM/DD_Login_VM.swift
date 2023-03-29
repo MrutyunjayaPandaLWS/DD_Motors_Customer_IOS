@@ -229,11 +229,25 @@ class DD_Login_VM {
                                             self.VC?.loaderView.isHidden = true
                                         }
                                     }
-                                }else{
+                            }else{
+                                    
                                     DispatchQueue.main.async{
                                         self.VC?.view.makeToast("Something went wrong", duration: 2.0, position: .center)
                                         self.VC?.stopLoading()
                                         self.VC?.loaderView.isHidden = true
+                                        self.VC!.existencyValue = -1
+                                        self.VC!.sendOTPBtn.setTitle("Send OTP", for: .normal)
+                                //        self.mobileNumberTF.text = ""
+                                //        self.enteredValues = ""
+                                        self.VC!.mainviewHeightConstraint.constant = 250
+                                        self.VC!.checkBoxTopSpaceButton.constant = 20
+                                        self.VC!.enterOTPLbl.isHidden = true
+                                        self.VC!.stackView.isHidden = true
+                                        self.VC!.otpView.isHidden = true
+                                        self.VC!.otpView.clearPin()
+                                        self.VC!.isSelected = 0
+                                        self.VC!.checkBoxBtn.setImage(UIImage(named: "CheckBox 2"), for: .normal)
+                                        self.VC!.mobileNumberTF.text = ""
                                     }
                                     return
                                 }
