@@ -85,8 +85,11 @@ class DD_MyProfileVC: BaseViewController, SelectedItemDelegate, DateSelectedDele
         self.pinCodeTF.isEnabled = false
         self.dobTF.isEnabled = false
         self.dobBtn.isHidden = false
-        self.stateButton.isHidden = true
-        self.cityBtn.isHidden = true
+        self.stateButton.isHidden = false
+        self.cityBtn.isHidden = false
+        self.stateButton.isEnabled = false
+        self.cityBtn.isEnabled = false
+        
         self.profileNameLbl.text = self.profileName
         self.mobileNumberLbl.text = self.mobileNumber
         self.locationLbl.text = self.location
@@ -103,8 +106,8 @@ class DD_MyProfileVC: BaseViewController, SelectedItemDelegate, DateSelectedDele
             self.nameTF.isEnabled = false
             self.mobileNumberTF.isEnabled = false
             self.addressTF.isEnabled = true
-            self.stateTF.isEnabled = true
-            self.cityTF.isEnabled = true
+            self.stateTF.isEnabled = false
+            self.cityTF.isEnabled = false
             self.pinCodeTF.isEnabled = true
             self.dobBtn.isHidden = false
             self.stateButton.isEnabled = true
@@ -143,23 +146,18 @@ class DD_MyProfileVC: BaseViewController, SelectedItemDelegate, DateSelectedDele
                let parameter = [
                 "ActionType": "4",
                 "ActorId": "\(self.userID)",
-                "IsMobileRequest": 1,
-                "ObjCustomerDetails": [],
                 "ObjCustomerJson": [
                     "Address1": "\(self.addressTF.text ?? "")",
+                    "cityid": "\(self.selectedCityId)",
+                    "CountryId": 15,
                     "CustomerId": "\(self.customerId)",
                     "FirstName": "\(self.nameTF.text ?? "")",
-                    "JDOB": "\(self.dobTF.text ?? "")",
-                    "LoyaltyIdAutoGen": "1",
-                    "MerchantId": 1,
-                    "CountryId": 15,
-                    "LocationId": 15,
+                    "DOB": "\(self.dobTF.text ?? "")",
                     "Mobile": "\(self.mobileNumberTF.text ?? "")",
-                    "RegStatusid": 1,
                     "RegistrationSource": "5",
                     "StateId": "\(self.selectedStateId)",
                     "Zip": "\(self.pinCodeTF.text ?? "")",
-                    "cityid": "\(self.selectedCityId)"
+                    "MerchantId": "1"
                     ]
                ] as [String: Any]
                 print(parameter)

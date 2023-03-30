@@ -6521,7 +6521,6 @@
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="XXXXX" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qC3-Vf-kaf">
                                                             <rect key="frame" x="3" y="176" width="157" height="20"/>
-                                                            <color key="backgroundColor" red="0.99207466840000003" green="0.96856063599999997" blue="0.97254925969999995" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="20" id="MT1-D5-Qqr"/>
                                                             </constraints>

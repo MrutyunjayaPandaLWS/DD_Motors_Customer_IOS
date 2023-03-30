@@ -36,6 +36,7 @@ class DD_MyOffersVC: BaseViewController, InfoDelegate {
     
     var noofelements = 0
     var startIndex = 1
+    var itsEnable = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -195,21 +196,33 @@ extension DD_MyOffersVC: UICollectionViewDelegate, UICollectionViewDataSource{
                 if  "\(subscriptionStatus)" == "1"{
                     cell.scratchView.isHidden = false
                     if self.VM.myOffersListArray1[indexPath.row].is_Gifited ?? 0 == 0{
-                        if self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" == "EnableOfferBlue" || self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" == "EnableOfferBlue1"{
-                            cell.enableBlueImage.isHidden = false
-                            cell.enableRedImage.isHidden = true
-                        }else{
+                     //   if self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" == "EnableOfferBlue" || self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" == "EnableOfferBlue1"{
+                        if self.itsEnable == 1{
+                            self.itsEnable = 0
                             cell.enableBlueImage.isHidden = true
                             cell.enableRedImage.isHidden = false
+                            cell.lockedBlueImage.isHidden = true
+                            cell.lockedRedImage.isHidden = true
+                        }else{
+                            self.itsEnable = 1
+                            cell.enableBlueImage.isHidden = false
+                            cell.enableRedImage.isHidden = true
+                            cell.lockedBlueImage.isHidden = true
+                            cell.lockedRedImage.isHidden = true
                         }
+                       // }
+//                        else{
+//                            cell.enableBlueImage.isHidden = true
+//                            cell.enableRedImage.isHidden = false
+//                        }
                         
                         
                     }else{
-                        if self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" != "EnableOfferRed" || self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" != "EnableOfferBlue" || self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" != "EnableOfferBlue1" || self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" != "EnableOfferRed1"{
-                            
+//                        if self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" != "EnableOfferRed" || self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" != "EnableOfferBlue" || self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" != "EnableOfferBlue1" || self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" != "EnableOfferRed1"{
+//
                             cell.scratchView.borderWidth = 1
                             cell.scratchView.borderColor = .red
-                        }
+//                        }
                         cell.enableRedImage.isHidden = true
                         cell.enableBlueImage.isHidden = true
                         
@@ -226,21 +239,36 @@ extension DD_MyOffersVC: UICollectionViewDelegate, UICollectionViewDataSource{
                     }else{
                         cell.expiredLbl.isHidden = false
                         cell.expiredLbl.text = "Redeemed"
+                        cell.expiredLbl.textColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+                        cell.expiredLbl.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
                         cell.bottomSpaceConstraint.constant = 26
                         
                     }
                 }else{
                     cell.scratchView.isHidden = true
                     cell.lockerView.isHidden = false
-                    cell.lockedBlueImage.isHidden = false
-                    cell.lockedRedImage.isHidden = true
-                    if self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" == "LockedBlue" || self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" == "LockedBlue 1"{
-                        cell.lockedBlueImage.isHidden = false
-                        cell.lockedRedImage.isHidden = true
-                    }else{
+                    
+//                    cell.lockedBlueImage.isHidden = false
+//                    cell.lockedRedImage.isHidden = true
+                    //if self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" == "LockedBlue" || self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" == "LockedBlue 1"{
+                    if self.itsEnable == 1{
+                        self.itsEnable = 0
                         cell.lockedBlueImage.isHidden = true
                         cell.lockedRedImage.isHidden = false
+                        cell.enableBlueImage.isHidden = true
+                        cell.enableRedImage.isHidden = true
+                    }else{
+                        self.itsEnable = 1
+                        cell.lockedBlueImage.isHidden = false
+                        cell.lockedRedImage.isHidden = true
+                        cell.enableBlueImage.isHidden = true
+                        cell.enableRedImage.isHidden = true
                     }
+                   // }
+//                    else{
+//                        cell.lockedBlueImage.isHidden = true
+//                        cell.lockedRedImage.isHidden = false
+//                    }
                 }
          
             

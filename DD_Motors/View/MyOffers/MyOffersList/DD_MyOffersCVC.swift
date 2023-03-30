@@ -32,7 +32,15 @@ class DD_MyOffersCVC: UICollectionViewCell {
     @IBAction func offersDetailsBtn(_ sender: Any) {
         self.delegate.didTapButton(self)
     }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.enableRedImage.isHidden = true
+        self.enableBlueImage.isHidden = true
+        self.lockedBlueImage.isHidden = true
+        self.lockedRedImage.isHidden = true
+    }
     
+   
 }
 
 //offersTitleLbl
