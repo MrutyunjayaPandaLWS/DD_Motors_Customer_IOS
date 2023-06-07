@@ -63,7 +63,8 @@ extension DD_SubscriptionHistoryVC: UITableViewDelegate,UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DD_SubscriptionHistoryTVC") as! DD_SubscriptionHistoryTVC
         cell.selectionStyle = .none
-        cell.dateOfSubcriptionLbl.text = self.VM.subscriptionHistoryListingArray[indexPath.row].subscriptionDate ?? "-"
+        let dateSplited = (self.VM.subscriptionHistoryListingArray[indexPath.row].subscriptionDate ?? "-").split(separator: " ")
+        cell.dateOfSubcriptionLbl.text = "\(dateSplited[0])"
         cell.amountPaidLbl.text = "\(self.VM.subscriptionHistoryListingArray[indexPath.row].amount ?? 0)"
         cell.subcriptionHistoryID.text = "\(self.VM.subscriptionHistoryListingArray[indexPath.row].sourceValue ?? "")"
         cell.paymentStatus.text = "\(self.VM.subscriptionHistoryListingArray[indexPath.row].sourceType ?? "")"

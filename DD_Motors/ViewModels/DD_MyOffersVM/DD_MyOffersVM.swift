@@ -37,7 +37,7 @@ class DD_MyOffersVM {
                         
                         self.VC?.loaderView.isHidden = true
                         self.VC?.stopLoading()
-                        //                        self.myOffersListArray = result?.lstGiftCardType ?? []
+                        //self.myOffersListArray = result?.lstGiftCardType ?? []
                         let myOfferListsArray = result?.lstGiftCardType ?? []
                         self.myOffersListArray += myOfferListsArray
                         self.VC?.noofelements = self.myOffersListArray.count
@@ -60,7 +60,7 @@ class DD_MyOffersVM {
 //                                    }else if self.unlockedImg == "4"{
 //                                        self.unlockedImg = "1"
 //                                        self.VC?.unlockedImageArray.append("EnableOfferBlue1")
-                                        self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "", offerReferenceID: data.offerReferenceID ?? "", cardImagePath: data.cardImagePath ?? ""))
+    self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "", offerReferenceID: data.offerReferenceID ?? "", cardImagePath: data.cardImagePath ?? ""))
 //                                    }
                                 }else{
 //                                    if self.lockedImage == "5"{
@@ -78,7 +78,7 @@ class DD_MyOffersVM {
 //                                    }else if self.lockedImage == "8"{
 //                                        self.lockedImage = "5"
 //                                        self.VC?.unlockedImageArray.append("LockedBlue 1")
-                                        self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "", offerReferenceID: data.offerReferenceID ?? "", cardImagePath: data.cardImagePath ?? ""))
+ self.myOffersListArray1.append(MyOffersModels(cardNumber: data.cardNumber ?? "", giftCardTypeName: data.giftCardTypeName ?? "", subscriptionStatus: data.subscriptionStatus ?? "", is_Gifited: data.is_Gifited ?? 0, expiry:data.expiry ?? 0, offerImage:  "", offerReferenceID: data.offerReferenceID ?? "", cardImagePath: data.cardImagePath ?? ""))
                                         //    }
 //                                    }
                                 }
@@ -103,6 +103,7 @@ class DD_MyOffersVM {
                 }
             }else{
                 DispatchQueue.main.async {
+                    self.VC?.noOffersAnimationView.isHidden = false
                     self.VC?.loaderView.isHidden = true
                     self.VC?.stopLoading()
                 }

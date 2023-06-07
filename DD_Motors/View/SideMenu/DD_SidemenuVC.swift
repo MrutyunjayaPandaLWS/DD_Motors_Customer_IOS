@@ -67,7 +67,7 @@ class DD_SidemenuVC: BaseViewController {
     }
     @objc func deletedAccount(){
         
-        UserDefaults.standard.setValue(false, forKey: "IsloggedIn?")
+        UserDefaults.standard.set(false, forKey: "IsloggedIn?")
 //        self.clearTable()
         let domain = Bundle.main.bundleIdentifier!
         UserDefaults.standard.removePersistentDomain(forName: domain)

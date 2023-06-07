@@ -23,7 +23,7 @@
                             <constraint firstAttribute="height" constant="9" id="B2a-WQ-Rxw"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="8"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HmH-F0-WG5">
@@ -56,11 +56,11 @@
                             <constraint firstAttribute="height" constant="9" id="scx-kg-JQ0"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="8"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
-                <color key="backgroundColor" red="0.25490196078431371" green="0.25882352941176467" blue="0.30588235294117649" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="8he-Go-6jk" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="1Ua-xe-u2e"/>
                     <constraint firstAttribute="trailing" secondItem="iZv-IP-sIJ" secondAttribute="trailing" constant="16" id="7QZ-oD-1Za"/>

@@ -199,7 +199,13 @@ class DD_SubscriptionVC: BaseViewController, SelectedItemDelegate, SendBackDetai
                 print(parameter)
                self.VM.subscriptionSubmission(parameter: parameter)
             }else{
-                self.paymentProceedApi()
+                
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_ComingSoonVC") as! DD_ComingSoonVC
+                vc.modalTransitionStyle = .coverVertical
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+                
+//                self.paymentProceedApi()
             }
 
         }

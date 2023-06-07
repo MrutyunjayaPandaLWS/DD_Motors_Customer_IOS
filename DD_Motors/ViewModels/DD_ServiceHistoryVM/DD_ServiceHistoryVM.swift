@@ -51,12 +51,14 @@ class DD_ServiceHistoryVM {
                 }else{
                     DispatchQueue.main.async {
                         self.VC?.loaderView.isHidden = true
+                        self.VC?.noDataFoundLbl.isHidden = false
                         self.VC?.stopLoading()
                     }
                 }
             }else{
                 DispatchQueue.main.async {
                     self.VC?.loaderView.isHidden = true
+                    self.VC?.noDataFoundLbl.isHidden = false
                     self.VC?.stopLoading()
                 }
             }

@@ -155,6 +155,8 @@ class DD_DropDownVC: BaseViewController, UITableViewDataSource, UITableViewDeleg
         }else if self.itsFrom == "SUBSCRIPTION"{
             self.subscriptionTitle = self.VM.subscriptionHistoryListingArray[indexPath.row].subscription ?? ""
             self.subscriptionStatusId = self.VM.subscriptionHistoryListingArray[indexPath.row].subscriptionStatus ?? -1
+            print(subscriptionTitle)
+            print(subscriptionStatusId)
             self.delegate.subscriptionDidTap(self)
         }
         self.dismiss(animated: true, completion: nil)

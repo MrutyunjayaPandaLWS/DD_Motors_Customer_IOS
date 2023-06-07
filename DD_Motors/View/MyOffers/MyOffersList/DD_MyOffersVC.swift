@@ -16,7 +16,7 @@ class DD_MyOffersVC: BaseViewController, InfoDelegate {
     @IBOutlet weak var offersAnimation: LottieAnimationView!
     @IBOutlet weak var noOffersAnimationView: UIView!
     @IBOutlet weak var categoryCollectionView: UICollectionView!
-    
+    @IBOutlet weak var category1CollectionView: UICollectionView!
     @IBOutlet weak var myOffersListCollectionView: UICollectionView!
     
     @IBOutlet weak var loaderView: UIView!
@@ -34,14 +34,19 @@ class DD_MyOffersVC: BaseViewController, InfoDelegate {
     var offersID = ""
     var isGiftID = 0
     
+    var statusId = -1
+    var secondCatagoryArray = ""
     var noofelements = 0
     var startIndex = 1
     var itsEnable = 0
+    var filterCategoryListingArray = ["All","Active","Redeemed","Expired"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.VM.VC = self
+        category1CollectionView.delegate = self
+        category1CollectionView.dataSource = self
         categoryCollectionView.delegate = self
         categoryCollectionView.dataSource = self
         myOffersListCollectionView.dataSource = self
@@ -64,7 +69,7 @@ class DD_MyOffersVC: BaseViewController, InfoDelegate {
         super.viewWillAppear(animated)
    
         noOffersAnimationView.isHidden = true
-       playAnimation3()
+        playAnimation3()
         self.VM.myOffersCategoryListArray.removeAll()
         self.VM.myOffersListArray1.removeAll()
         self.myOffersCategoryApi()
@@ -103,7 +108,8 @@ class DD_MyOffersVC: BaseViewController, InfoDelegate {
             "LoyaltyId":"\(self.loyaltyId)",
             "OfferTypeID": categoryId,
             "StartIndex": startIndex,
-            "PageSize": 10
+            "PageSize": 10,
+            "StatusId": self.statusId ?? 0
         ] as [String: Any]
         print(parameter)
         self.VM.myOffersListApi(parameter: parameter)
@@ -111,7 +117,8 @@ class DD_MyOffersVC: BaseViewController, InfoDelegate {
     
     func myOffersCategoryApi(){
         let parameter = [
-            "ActionType": "152"
+            "ActionType": "152",
+            "ActorId": "\(self.userID)"
         ] as [String: Any]
         print(parameter)
         self.VM.myOffersCategoryList(parameter: parameter)
@@ -138,6 +145,8 @@ extension DD_MyOffersVC: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == categoryCollectionView{
             return self.VM.myOffersCategoryListArray.count
+        }else if collectionView == category1CollectionView{
+            return self.filterCategoryListingArray.count
         }else{
             return self.VM.myOffersListArray1.count
         }
@@ -173,6 +182,22 @@ extension DD_MyOffersVC: UICollectionViewDelegate, UICollectionViewDataSource{
             }
             
             return cell
+        }else if collectionView == category1CollectionView {
+            
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DD_Category1CVC", for: indexPath) as! DD_Category1CVC
+            cell.categoryLbl.text = self.filterCategoryListingArray[indexPath.row]
+//            if self.categoryId == self.VM.myOffersCategoryListArray[indexPath.row].attributeId ?? 0 {
+//
+//                cell.categoryLbl.textColor = UIColor.white
+//                cell.subView.backgroundColor = #colorLiteral(red: 0.07028683275, green: 0.4640961289, blue: 0.9083878398, alpha: 1)
+//            }else{
+//                cell.categoryLbl.textColor = UIColor.black
+//                cell.subView.backgroundColor = #colorLiteral(red: 0.9613716006, green: 0.9806967378, blue: 0.9979247451, alpha: 1)
+//            }
+            
+            
+            return cell
+            
         }else{
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DD_MyOffersCVC", for: indexPath) as! DD_MyOffersCVC
             cell.delegate = self
@@ -189,88 +214,71 @@ extension DD_MyOffersVC: UICollectionViewDelegate, UICollectionViewDataSource{
             }else{
                 cell.offerImage.image = UIImage(named: "default_vehicle")
             }
-                let subscriptionStatus = String(self.VM.myOffersListArray1[indexPath.row].subscriptionStatus ??  "0").prefix(1)
-                print(subscriptionStatus)
+            let subscriptionStatus = String(self.VM.myOffersListArray1[indexPath.row].subscriptionStatus ??  "0").prefix(1)
+            print(subscriptionStatus)
             let redeemedStatus = String(self.VM.myOffersListArray1[indexPath.row].subscriptionStatus ??  "0").split(separator: "~")
-            print(redeemedStatus[1])
-                if  "\(subscriptionStatus)" == "1"{
-                    cell.scratchView.isHidden = false
-                    if self.VM.myOffersListArray1[indexPath.row].is_Gifited ?? 0 == 0{
-                     //   if self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" == "EnableOfferBlue" || self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" == "EnableOfferBlue1"{
-                        if self.itsEnable == 1{
-                            self.itsEnable = 0
-                            cell.enableBlueImage.isHidden = true
-                            cell.enableRedImage.isHidden = false
-                            cell.lockedBlueImage.isHidden = true
-                            cell.lockedRedImage.isHidden = true
-                        }else{
-                            self.itsEnable = 1
-                            cell.enableBlueImage.isHidden = false
-                            cell.enableRedImage.isHidden = true
-                            cell.lockedBlueImage.isHidden = true
-                            cell.lockedRedImage.isHidden = true
-                        }
-                       // }
-//                        else{
-//                            cell.enableBlueImage.isHidden = true
-//                            cell.enableRedImage.isHidden = false
-//                        }
-                        
-                        
-                    }else{
-//                        if self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" != "EnableOfferRed" || self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" != "EnableOfferBlue" || self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" != "EnableOfferBlue1" || self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" != "EnableOfferRed1"{
-//
-                            cell.scratchView.borderWidth = 1
-                            cell.scratchView.borderColor = .red
-//                        }
-                        cell.enableRedImage.isHidden = true
-                        cell.enableBlueImage.isHidden = true
-                        
-                    }
-                    cell.lockerView.isHidden = true
-                    if self.VM.myOffersListArray1[indexPath.row].expiry ?? -1 == 1 && "\(redeemedStatus[1])" == "1"{
-                        cell.expiredLbl.isHidden = false
-                        cell.expiredLbl.text = "Expired"
-                        cell.bottomSpaceConstraint.constant = 26
-                    }else if self.VM.myOffersListArray1[indexPath.row].expiry ?? -1 == 0 && "\(redeemedStatus[1])" == "0"{
-                        cell.expiredLbl.isHidden = true
-                        cell.expiredLbl.text = ""
-                        cell.bottomSpaceConstraint.constant = 6
-                    }else{
-                        cell.expiredLbl.isHidden = false
-                        cell.expiredLbl.text = "Redeemed"
-                        cell.expiredLbl.textColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
-                        cell.expiredLbl.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
-                        cell.bottomSpaceConstraint.constant = 26
-                        
-                    }
-                }else{
-                    cell.scratchView.isHidden = true
-                    cell.lockerView.isHidden = false
-                    
-//                    cell.lockedBlueImage.isHidden = false
-//                    cell.lockedRedImage.isHidden = true
-                    //if self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" == "LockedBlue" || self.VM.myOffersListArray1[indexPath.row].offerImage ?? "" == "LockedBlue 1"{
+            print(redeemedStatus,"jdhsdk")
+            if  "\(subscriptionStatus)" == "1"{
+                cell.scratchView.isHidden = false
+                if self.VM.myOffersListArray1[indexPath.row].is_Gifited ?? 0 == 0{
                     if self.itsEnable == 1{
                         self.itsEnable = 0
-                        cell.lockedBlueImage.isHidden = true
-                        cell.lockedRedImage.isHidden = false
                         cell.enableBlueImage.isHidden = true
-                        cell.enableRedImage.isHidden = true
+                        cell.enableRedImage.isHidden = false
+                        cell.lockedBlueImage.isHidden = true
+                        cell.lockedRedImage.isHidden = true
                     }else{
                         self.itsEnable = 1
-                        cell.lockedBlueImage.isHidden = false
-                        cell.lockedRedImage.isHidden = true
-                        cell.enableBlueImage.isHidden = true
+                        cell.enableBlueImage.isHidden = false
                         cell.enableRedImage.isHidden = true
+                        cell.lockedBlueImage.isHidden = true
+                        cell.lockedRedImage.isHidden = true
                     }
-                   // }
-//                    else{
-//                        cell.lockedBlueImage.isHidden = true
-//                        cell.lockedRedImage.isHidden = false
-//                    }
+                    
+                }else{
+                    
+                    cell.scratchView.borderWidth = 1
+                    cell.scratchView.borderColor = .red
+                    cell.enableRedImage.isHidden = true
+                    cell.enableBlueImage.isHidden = true
+                    
                 }
-         
+                cell.lockerView.isHidden = true
+                if self.VM.myOffersListArray1[indexPath.row].expiry ?? -1 == 1 && "\(redeemedStatus[1])" == "1"{
+                    cell.expiredLbl.isHidden = false
+                    cell.expiredLbl.text = "Expired"
+                    cell.bottomSpaceConstraint.constant = 26
+                }else if self.VM.myOffersListArray1[indexPath.row].expiry ?? -1 == 0 && "\(redeemedStatus[1])" == "0"{
+                    cell.expiredLbl.isHidden = true
+                    cell.expiredLbl.text = ""
+                    cell.bottomSpaceConstraint.constant = 6
+                }else{
+                    cell.expiredLbl.isHidden = false
+                    cell.expiredLbl.text = "Redeemed"
+                    cell.expiredLbl.textColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+                    cell.expiredLbl.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+                    cell.bottomSpaceConstraint.constant = 26
+                    
+                }
+            }else{
+                cell.scratchView.isHidden = true
+                cell.lockerView.isHidden = false
+                if self.itsEnable == 1{
+                    self.itsEnable = 0
+                    cell.lockedBlueImage.isHidden = true
+                    cell.lockedRedImage.isHidden = false
+                    cell.enableBlueImage.isHidden = true
+                    cell.enableRedImage.isHidden = true
+                }else{
+                    self.itsEnable = 1
+                    cell.lockedBlueImage.isHidden = false
+                    cell.lockedRedImage.isHidden = true
+                    cell.enableBlueImage.isHidden = true
+                    cell.enableRedImage.isHidden = true
+                }
+                
+            }
+            
             
             return cell
         }
@@ -302,12 +310,33 @@ extension DD_MyOffersVC: UICollectionViewDelegate, UICollectionViewDataSource{
                     self.present(vc, animated: true)
             }
          
-        }else{
+        }else if collectionView == categoryCollectionView {
             self.VM.myOffersListArray1.removeAll()
-            self.categoryId = self.VM.myOffersCategoryListArray[indexPath.row].attributeId ?? -1
             self.myOffersCategoryApi()
+            self.categoryId = self.VM.myOffersCategoryListArray[indexPath.row].attributeId ?? -1
             self.myOffersListAPI(categoryId: self.categoryId, startIndex: self.startIndex)
             
+            
+        }else{
+            //    ALL = "-1"
+            //Active = 1
+            // redemed = 3
+            //expired = 2
+            self.VM.myOffersListArray1.removeAll()
+            self.secondCatagoryArray = filterCategoryListingArray[indexPath.row]
+            if secondCatagoryArray == "All" {
+                self.statusId = -1
+            }else if secondCatagoryArray == "Active"{
+                self.statusId = 1
+            }else if secondCatagoryArray == "Redeemed"{
+                self.statusId = 3
+            }else if secondCatagoryArray == "Expired"{
+                self.statusId = 2
+            }else{
+                self.statusId = -1
+            }
+            self.myOffersCategoryApi()
+            self.myOffersListAPI(categoryId: self.categoryId, startIndex: self.startIndex)
         }
     }
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {

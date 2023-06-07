@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25812DD52A2F5FC5008BB3E7 /* HistoryNotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25812DD42A2F5FC5008BB3E7 /* HistoryNotificationsViewModel.swift */; };
+		25812DD92A2F5FF6008BB3E7 /* NotificationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25812DD72A2F5FF6008BB3E7 /* NotificationModels.swift */; };
+		25812DDA2A2F5FF6008BB3E7 /* LstPushHistoryJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25812DD82A2F5FF6008BB3E7 /* LstPushHistoryJson.swift */; };
+		258957812A188E3B009EB091 /* DD_Category1CVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 258957802A188E3B009EB091 /* DD_Category1CVC.swift */; };
+		259147D02A17355A003D5D4B /* 94248-gift-blue.json in Resources */ = {isa = PBXBuildFile; fileRef = 259147CF2A17355A003D5D4B /* 94248-gift-blue.json */; };
+		25A6F6572A3095E5000C7501 /* DD_ComingSoonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A6F6562A3095E5000C7501 /* DD_ComingSoonVC.swift */; };
+		25A6F6592A30982A000C7501 /* coming soon ilustration.json in Resources */ = {isa = PBXBuildFile; fileRef = 25A6F6582A30982A000C7501 /* coming soon ilustration.json */; };
 		25BF2ABF298D2BB7008B1DAC /* SubscriptionPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25BF2ABE298D2BB7008B1DAC /* SubscriptionPopup.swift */; };
 		25F1700C298B7A8500A02535 /* 69030-confetti-full-screen.json in Resources */ = {isa = PBXBuildFile; fileRef = 25F1700B298B7A8500A02535 /* 69030-confetti-full-screen.json */; };
 		8059CC9129C311990085A132 /* LstPromotionJsonList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8059CC8F29C311980085A132 /* LstPromotionJsonList.swift */; };
@@ -78,7 +85,6 @@
 		84769373295B0858008DD594 /* HelpTopicModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84769371295B0858008DD594 /* HelpTopicModels.swift */; };
 		84769374295B0858008DD594 /* ObjHelpTopicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84769372295B0858008DD594 /* ObjHelpTopicList.swift */; };
 		84769382295B0FDF008DD594 /* DD_DashBoardVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84769381295B0FDF008DD594 /* DD_DashBoardVM.swift */; };
-		847BDD9729C860670017644B /* 94248-gift-blue.json in Resources */ = {isa = PBXBuildFile; fileRef = 847BDD9629C860670017644B /* 94248-gift-blue.json */; };
 		8486BD8E29C9766C0072A1AE /* Payments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BD8829C9766B0072A1AE /* Payments.swift */; };
 		8486BD8F29C9766C0072A1AE /* Order_meta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BD8929C9766B0072A1AE /* Order_meta.swift */; };
 		8486BD9029C9766C0072A1AE /* Settlements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BD8A29C9766C0072A1AE /* Settlements.swift */; };
@@ -231,6 +237,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		25812DD42A2F5FC5008BB3E7 /* HistoryNotificationsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryNotificationsViewModel.swift; sourceTree = "<group>"; };
+		25812DD72A2F5FF6008BB3E7 /* NotificationModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationModels.swift; sourceTree = "<group>"; };
+		25812DD82A2F5FF6008BB3E7 /* LstPushHistoryJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstPushHistoryJson.swift; sourceTree = "<group>"; };
+		258957802A188E3B009EB091 /* DD_Category1CVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_Category1CVC.swift; sourceTree = "<group>"; };
+		259147CF2A17355A003D5D4B /* 94248-gift-blue.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "94248-gift-blue.json"; path = "../../../../../../Downloads/94248-gift-blue.json"; sourceTree = "<group>"; };
+		25A6F6562A3095E5000C7501 /* DD_ComingSoonVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DD_ComingSoonVC.swift; sourceTree = "<group>"; };
+		25A6F6582A30982A000C7501 /* coming soon ilustration.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "coming soon ilustration.json"; sourceTree = "<group>"; };
 		25BF2ABE298D2BB7008B1DAC /* SubscriptionPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionPopup.swift; sourceTree = "<group>"; };
 		25F1700B298B7A8500A02535 /* 69030-confetti-full-screen.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "69030-confetti-full-screen.json"; sourceTree = "<group>"; };
 		8059CC8F29C311980085A132 /* LstPromotionJsonList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstPromotionJsonList.swift; sourceTree = "<group>"; };
@@ -302,7 +315,6 @@
 		84769371295B0858008DD594 /* HelpTopicModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpTopicModels.swift; sourceTree = "<group>"; };
 		84769372295B0858008DD594 /* ObjHelpTopicList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjHelpTopicList.swift; sourceTree = "<group>"; };
 		84769381295B0FDF008DD594 /* DD_DashBoardVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_DashBoardVM.swift; sourceTree = "<group>"; };
-		847BDD9629C860670017644B /* 94248-gift-blue.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = "94248-gift-blue.json"; path = "../../../../../../Downloads/94248-gift-blue.json"; sourceTree = "<group>"; };
 		8486BD8829C9766B0072A1AE /* Payments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payments.swift; sourceTree = "<group>"; };
 		8486BD8929C9766B0072A1AE /* Order_meta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order_meta.swift; sourceTree = "<group>"; };
 		8486BD8A29C9766C0072A1AE /* Settlements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settlements.swift; sourceTree = "<group>"; };
@@ -502,6 +514,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		25812DD32A2F5FC5008BB3E7 /* NotificationVM */ = {
+			isa = PBXGroup;
+			children = (
+				25812DD42A2F5FC5008BB3E7 /* HistoryNotificationsViewModel.swift */,
+			);
+			path = NotificationVM;
+			sourceTree = "<group>";
+		};
+		25812DD62A2F5FF6008BB3E7 /* NotificationModels */ = {
+			isa = PBXGroup;
+			children = (
+				25812DD72A2F5FF6008BB3E7 /* NotificationModels.swift */,
+				25812DD82A2F5FF6008BB3E7 /* LstPushHistoryJson.swift */,
+			);
+			path = NotificationModels;
+			sourceTree = "<group>";
+		};
 		25BF2ABD298D2B30008B1DAC /* SubscribePopUpMessage */ = {
 			isa = PBXGroup;
 			children = (
@@ -659,6 +688,7 @@
 				84F33FF62956CF3800B1E428 /* DD_MyOffersVC.swift */,
 				8467E3E42957087400176AAE /* DD_CategoryCVC.swift */,
 				8467E3E62957093600176AAE /* DD_MyOffersCVC.swift */,
+				258957802A188E3B009EB091 /* DD_Category1CVC.swift */,
 			);
 			path = MyOffersList;
 			sourceTree = "<group>";
@@ -1015,6 +1045,7 @@
 				8498EBEA29542D520019A0D5 /* Models */,
 				8498EBE929542D4A0019A0D5 /* Resources */,
 				8498EBE629542D2D0019A0D5 /* View */,
+				25A6F6562A3095E5000C7501 /* DD_ComingSoonVC.swift */,
 				8498EBE829542D3E0019A0D5 /* ViewModels */,
 				8498EBBF29542ACB0019A0D5 /* Assets.xcassets */,
 				8498EBC429542ACB0019A0D5 /* Info.plist */,
@@ -1076,6 +1107,7 @@
 		8498EBE829542D3E0019A0D5 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				25812DD32A2F5FC5008BB3E7 /* NotificationVM */,
 				84A1D3E429C9D53E00CBC671 /* DD_ReceiptVM */,
 				84A1D3E129C9D44B00CBC671 /* DD_PaymentVM */,
 				8075441029C2EB5E00C614B9 /* DD_PromotionsVM */,
@@ -1119,6 +1151,7 @@
 		8498EBEA29542D520019A0D5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				25812DD62A2F5FF6008BB3E7 /* NotificationModels */,
 				841FC68E29D4001000765484 /* DeleteAccountModels */,
 				84A1D3E729C9D83100CBC671 /* GenerateReceiptModel */,
 				8486BD8729C9765E0072A1AE /* PayMentModels */,
@@ -1225,7 +1258,8 @@
 				84B3FC55295C0C710090563D /* 81860-car-and-skylines.json */,
 				848A10CD2959737500B1589E /* success.json */,
 				8493F47D297A953C0005D4E0 /* loader.json */,
-				847BDD9629C860670017644B /* 94248-gift-blue.json */,
+				259147CF2A17355A003D5D4B /* 94248-gift-blue.json */,
+				25A6F6582A30982A000C7501 /* coming soon ilustration.json */,
 			);
 			path = Animation;
 			sourceTree = "<group>";
@@ -1647,13 +1681,13 @@
 			files = (
 				84B3FC79295C3DF40090563D /* senderInfoImageTableViewCell.xib in Resources */,
 				84F33FE82956CB4300B1E428 /* DD_ServiceHistoryTVC.xib in Resources */,
+				25A6F6592A30982A000C7501 /* coming soon ilustration.json in Resources */,
 				25F1700C298B7A8500A02535 /* 69030-confetti-full-screen.json in Resources */,
 				8498EBC329542ACB0019A0D5 /* LaunchScreen.storyboard in Resources */,
 				84F17D9429557F4700B6B6C7 /* DD_WalletListTVC.xib in Resources */,
 				84B3FC86295C3DF40090563D /* otherInfoTableViewCell.xib in Resources */,
 				84B3FC7D295C3DF40090563D /* otherImageTableViewCell.xib in Resources */,
 				8498EC1229542E2F0019A0D5 /* lf30_editor_qd1wdceq.json in Resources */,
-				847BDD9729C860670017644B /* 94248-gift-blue.json in Resources */,
 				8498EC1529542E2F0019A0D5 /* lf30_editor_3bdwnbyb.json in Resources */,
 				845B9D9A296EE93E00D8DD04 /* 33886-check-okey-done.json in Resources */,
 				8498EC1629542E2F0019A0D5 /* lf30_editor_jh47f7lt (1).json in Resources */,
@@ -1671,6 +1705,7 @@
 				8498EBC029542ACB0019A0D5 /* Assets.xcassets in Resources */,
 				8498EBBB29542AC90019A0D5 /* Main.storyboard in Resources */,
 				84A1D3E029C9C8CC00CBC671 /* 94320-loader.json in Resources */,
+				259147D02A17355A003D5D4B /* 94248-gift-blue.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1784,6 +1819,7 @@
 				845B9D94296EE2CD00D8DD04 /* DD_MyOffersVM.swift in Sources */,
 				845B9D96296EE59600D8DD04 /* DD_SubscriptionSubmissionPopUpVC.swift in Sources */,
 				840905572959DE6B002DBBEE /* URLMethods.swift in Sources */,
+				25812DD52A2F5FC5008BB3E7 /* HistoryNotificationsViewModel.swift in Sources */,
 				8467E3DE2956DD0F00176AAE /* DD_DropDownVC.swift in Sources */,
 				8488264B295C778D00A447B5 /* DD_MyProfileVM.swift in Sources */,
 				8498EC19295440200019A0D5 /* DD_TermsandconditionVC.swift in Sources */,
@@ -1817,6 +1853,7 @@
 				84090561295A0D72002DBBEE /* TermsandConditionModels.swift in Sources */,
 				84B3FC8B295C3EC90090563D /* ChatListViewVM.swift in Sources */,
 				84F54FC4295DCFBF0084E50A /* DD_NotificationTVC.swift in Sources */,
+				25812DD92A2F5FF6008BB3E7 /* NotificationModels.swift in Sources */,
 				84769373295B0858008DD594 /* HelpTopicModels.swift in Sources */,
 				84F33FFD2956D1BB00B1E428 /* DD_SubscriptionHistoryVC.swift in Sources */,
 				84B3FC5B295C199F0090563D /* QueryListingModels.swift in Sources */,
@@ -1831,6 +1868,7 @@
 				84DD7840299B6EA3009F7704 /* DD_MyOffersDetailsPopUp.swift in Sources */,
 				25BF2ABF298D2BB7008B1DAC /* SubscriptionPopup.swift in Sources */,
 				84668D862954776A000491FE /* DD_SupportVC.swift in Sources */,
+				25A6F6572A3095E5000C7501 /* DD_ComingSoonVC.swift in Sources */,
 				84AF555C296BE13800D52E44 /* DD_SubscriptionHistoryVM.swift in Sources */,
 				8075441629C2EBE900C614B9 /* DD_PromotionsVC.swift in Sources */,
 				84B3FC7A295C3DF40090563D /* SelectquerytopicInListingTableViewCell.swift in Sources */,
@@ -1880,6 +1918,7 @@
 				84F21FF4295D6DDC0040C67F /* ProfileImageUpdateModel.swift in Sources */,
 				84769369295AD2CE008DD594 /* RegistrationSubmissionModels.swift in Sources */,
 				84769362295AD178008DD594 /* StateList.swift in Sources */,
+				258957812A188E3B009EB091 /* DD_Category1CVC.swift in Sources */,
 				840905562959DE6B002DBBEE /* URLRequest.swift in Sources */,
 				8491F61C29726D0A0087926C /* LstGiftCardType1.swift in Sources */,
 				8409054E2959DE6B002DBBEE /* RestAPI_Requests.swift in Sources */,
@@ -1911,6 +1950,7 @@
 				84BAAC5129C1C10F006DDEE0 /* LstPromotionListJsonApi.swift in Sources */,
 				8488264E295C7BAB00A447B5 /* DD_SideMenuVM.swift in Sources */,
 				8409053F2959D0B8002DBBEE /* DD_QueryTopicCVC.swift in Sources */,
+				25812DDA2A2F5FF6008BB3E7 /* LstPushHistoryJson.swift in Sources */,
 				8498EC0529542E010019A0D5 /* String + Font Extension.swift in Sources */,
 				84F21FF8295D75C30040C67F /* QueryTopicListModels.swift in Sources */,
 				84ED675D2966B3F700E0A546 /* DealershipLocationModels.swift in Sources */,
@@ -2108,14 +2148,16 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2HG885J5KS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DD_Motors/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "DD Motors Club Elite";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Scanning QR Codes requires Camera access for redeeming points.Allow Camera access?";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Lodge Query equires image to be uploaded. Allow";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2146,14 +2188,16 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2HG885J5KS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DD_Motors/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "DD Motors Club Elite";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Scanning QR Codes requires Camera access for redeeming points.Allow Camera access?";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Lodge Query equires image to be uploaded. Allow";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleDarkContent;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -140,8 +140,8 @@ class DD_SubmitQueryVC: BaseViewController, SelectedItemDelegate, UITextViewDele
                     "LoyaltyID": "\(self.loyaltyId)",
                     "QueryDetails": "\(self.queryDetailsTextView.text!)",
                     "QuerySummary": "\(self.querySummaryTextView.text!)",
-                    "SourceType": "1",
-                    "ImageUrl": "",
+                    "SourceType": "3",
+                    "ImageUrl": "\(self.strdata1)",
                     "lstcustomereQueryImgPathGalleryLists": [
                         [
                         "ImageAttachMent": "\(self.strdata1)"

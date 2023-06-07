@@ -7,95 +7,31 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "588F9C25-9422-415B-B188-B9090E587B5E"
+            uuid = "3BBC490C-23CE-46D8-A715-C06C50BDD66B"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DD_Motors/View/Support/CreateNewQuery/DD_SubmitQueryVC.swift"
+            filePath = "DD_Motors/View/MyOffers/MyOffersList/DD_MyOffersVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
-            landmarkName = "submitQueryBNtm(_:)"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
+            landmarkName = "myOffersListAPI(categoryId:startIndex:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "16142544-E587-4F8A-BC1A-F0CA0477E232"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DD_Motors/View/Support/Chat/ChatListViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "100"
-            endingLineNumber = "100"
-            landmarkName = "chatListingAPI()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "16142544-E587-4F8A-BC1A-F0CA0477E232 - 4212b27de561b4e7"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "DD_Motors.ChatListViewController.chatListingAPI() -&gt; ()"
-                  moduleName = "DD_Motors"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/arokia-m3/Desktop/DD_Motors%202/DD_Motors/View/Support/Chat/ChatListViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "100"
-                  endingLineNumber = "100"
-                  offsetFromSymbolStart = "1072">
-               </Location>
-               <Location
-                  uuid = "16142544-E587-4F8A-BC1A-F0CA0477E232 - 2d67e2a86e029c1c"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;DD_Motors.ChatDetailsModels&gt;) -&gt; () in DD_Motors.ChatListViewController.chatListingAPI() -&gt; ()"
-                  moduleName = "DD_Motors"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/arokia-m3/Desktop/DD_Motors%202/DD_Motors/View/Support/Chat/ChatListViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "101"
-                  endingLineNumber = "101"
-                  offsetFromSymbolStart = "232">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "39FBCC59-6341-4FC8-A0A3-DD6D8347E33B"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "DD_Motors/View/Subscription/ServiceHistory/DD_Service_HistoryVC.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "46"
-            endingLineNumber = "46"
-            landmarkName = "serviceHistoryListApi()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FF52AC72-45F8-4319-B802-99D9FF945250"
+            uuid = "B629F940-9335-4166-86A1-DFA75363E835"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "DD_Motors/View/Subscription/SubscriptionHistory/DD_SubscriptionHistoryVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
             landmarkName = "subscriptionListApi()"
             landmarkType = "7">
          </BreakpointContent>
@@ -103,49 +39,113 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "1ABAE53D-6A7C-4B40-BF9C-850E9DF75384"
+            uuid = "FB25ACA6-75BE-40CD-B1E9-E6B450CF43D2"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "DD_Motors/View/Support/Chat/ChatListViewController.swift"
+            filePath = "DD_Motors/ViewModels/DD_TermsandConditionVM/DD_TermsandconditionVM.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "319"
-            endingLineNumber = "319"
-            landmarkName = "newChatSubmissiongApi()"
+            startingLineNumber = "62"
+            endingLineNumber = "62"
+            landmarkName = "loginSubmissionApi(username:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "1ABAE53D-6A7C-4B40-BF9C-850E9DF75384 - fe293ea76c15cef4"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "DD_Motors.ChatListViewController.newChatSubmissiongApi() -&gt; ()"
-                  moduleName = "DD_Motors"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/arokia-m3/Desktop/DD_Motors%202/DD_Motors/View/Support/Chat/ChatListViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "319"
-                  endingLineNumber = "319"
-                  offsetFromSymbolStart = "2624">
-               </Location>
-               <Location
-                  uuid = "1ABAE53D-6A7C-4B40-BF9C-850E9DF75384 - 5f40a467359f4eb5"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;DD_Motors.ChatSubmissionModels&gt;) -&gt; () in DD_Motors.ChatListViewController.newChatSubmissiongApi() -&gt; ()"
-                  moduleName = "DD_Motors"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/arokia-m3/Desktop/DD_Motors%202/DD_Motors/View/Support/Chat/ChatListViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "320"
-                  endingLineNumber = "320"
-                  offsetFromSymbolStart = "208">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0686E7EB-2C3D-460F-AF4F-8FAB66ACC8C0"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DD_Motors/View/Subscription/Subscriptions/DD_SubscriptionVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
+            landmarkName = "offlineSubscriptionBnt(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3DBB1C5D-1381-4D55-96A5-F3B234ADE7EF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DD_Motors/View/Subscription/Subscriptions/DD_SubscriptionVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "proceedbtn(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A1F36677-EE76-4B3E-B4EB-68ABB111B1D8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DD_Motors/View/MyOffers/MyOffersList/DD_MyOffersVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EF0524E3-8A8F-48C7-A578-3DFDBAEA903B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DD_Motors/View/Subscription/Subscriptions/DD_SubscriptionVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C89C4BBA-2A45-49B8-B421-7A02770A4347"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DD_Motors/View/Subscription/Subscriptions/DD_SubscriptionVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "64CF09ED-4436-4E37-A922-2FFA6CEEA080"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DD_Motors/View/Subscription/Subscriptions/DD_SubscriptionVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

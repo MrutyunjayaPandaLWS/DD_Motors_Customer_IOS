@@ -23,15 +23,14 @@ class DD_Login_VM {
     
     
     func verifyMobileNumberAPI(paramters: JSON){
-        self.VC?.startLoading()
-        self.VC?.loaderView.isHidden = false
-        self.VC?.playAnimation2()
-       print(pushID,"jdsd")
+        DispatchQueue.main.async {
+            self.VC?.startLoading()
+        }
         let url = URL(string: checkUserExistencyURL)!
         let session = URLSession.shared
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-
+        
         do {
             request.httpBody = try JSONSerialization.data(withJSONObject: paramters, options: .prettyPrinted)
         } catch let error {
@@ -40,9 +39,9 @@ class DD_Login_VM {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("application/json", forHTTPHeaderField: "Accept")
         request.setValue("Bearer \(UserDefaults.standard.string(forKey: "TOKEN") ?? "")", forHTTPHeaderField: "Authorization")
-
+        
         let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
-
+            
             guard error == nil else {
                 return
             }
@@ -51,46 +50,104 @@ class DD_Login_VM {
             }
             do{
                 let str = String(decoding: data, as: UTF8.self) as String?
-                 print(str, "- Mobile Number Exists")
-                if str ?? "" != "1"{
+                print(str, "- Mobile Number Exists")
+                if str ?? "" == "0"{
                     DispatchQueue.main.async{
-                        self.VC?.loaderView.isHidden = true
                         self.VC?.stopLoading()
-//                        self.VC?.view.makeToast("Mobile number is doesn't exists", duration: 2.0, position: .center)
-//                        self.VC?.mobileNumberTF.text = ""
                         if self.VC?.existencyValue == -1{
                             self.VC?.existencyValue = 1
                             self.timer.invalidate()
                             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_RegisterVC") as! DD_RegisterVC
                             vc.enteredMobileNumber = Int(self.VC?.mobileNumberTF.text ?? "")!
                             self.VC!.navigationController?.pushViewController(vc, animated: true)
-
+                            
                         }
                     }
                 }else{
                     DispatchQueue.main.async{
-                        self.VC?.stopLoading()
-                        self.VC?.loaderView.isHidden = true
-                        if self.VC?.existencyValue == -1{
-                            self.VC?.existencyValue = 1
-                            self.timer.invalidate()
-//                            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-                                self.loginSubmissionApi(username: self.VC?.mobileNumberTF.text ?? "")
-//                            })
-                           
-                        }
+                        self.loginSubmissionApi(username: self.VC?.mobileNumberTF.text ?? "")
                     }
                 }
-                 }catch{
-                     DispatchQueue.main.async{
-                         self.VC?.stopLoading()
-                         self.VC?.loaderView.isHidden = true
-                         print("parsing Error")
-                     }
+            }catch{
+                DispatchQueue.main.async{
+                    self.VC?.stopLoading()
+                    print("parsing Error")
+                }
             }
         })
         task.resume()
     }
+    
+    
+//    func verifyMobileNumberAPI(paramters: JSON){
+//        self.VC?.startLoading()
+//        self.VC?.loaderView.isHidden = false
+//        self.VC?.playAnimation2()
+//       print(pushID,"jdsd")
+//        let url = URL(string: checkUserExistencyURL)!
+//        let session = URLSession.shared
+//        var request = URLRequest(url: url)
+//        request.httpMethod = "POST"
+//
+//        do {
+//            request.httpBody = try JSONSerialization.data(withJSONObject: paramters, options: .prettyPrinted)
+//        } catch let error {
+//            print(error.localizedDescription)
+//        }
+//        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.addValue("application/json", forHTTPHeaderField: "Accept")
+//        request.setValue("Bearer \(UserDefaults.standard.string(forKey: "TOKEN") ?? "")", forHTTPHeaderField: "Authorization")
+//
+//        let task = session.dataTask(with: request as URLRequest, completionHandler: { data, response, error in
+//
+//            guard error == nil else {
+//                return
+//            }
+//            guard let data = data else {
+//                return
+//            }
+//            do{
+//                let str = String(decoding: data, as: UTF8.self) as String?
+//                 print(str, "- Mobile Number Exists")
+//                if str ?? "" != "1"{
+//                    DispatchQueue.main.async{
+//                        self.VC?.loaderView.isHidden = true
+//                        self.VC?.stopLoading()
+////                        self.VC?.view.makeToast("Mobile number is doesn't exists", duration: 2.0, position: .center)
+////                        self.VC?.mobileNumberTF.text = ""
+//                        if self.VC?.existencyValue == -1{
+//                            self.VC?.existencyValue = 1
+//                            self.timer.invalidate()
+//                            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_RegisterVC") as! DD_RegisterVC
+//                            vc.enteredMobileNumber = Int(self.VC?.mobileNumberTF.text ?? "")!
+//                            self.VC!.navigationController?.pushViewController(vc, animated: true)
+//
+//                        }
+//                    }
+//                }else{
+//                    DispatchQueue.main.async{
+//                        self.VC?.stopLoading()
+//                        self.VC?.loaderView.isHidden = true
+//                        if self.VC?.existencyValue == -1{
+//                            self.VC?.existencyValue = 1
+//                            self.timer.invalidate()
+////                            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+//                                self.loginSubmissionApi(username: self.VC?.mobileNumberTF.text ?? "")
+////                            })
+//
+//                        }
+//                    }
+//                }
+//                 }catch{
+//                     DispatchQueue.main.async{
+//                         self.VC?.stopLoading()
+//                         self.VC?.loaderView.isHidden = true
+//                         print("parsing Error")
+//                     }
+//            }
+//        })
+//        task.resume()
+//    }
     
     func sendOTP(mobileNumber : String, userName : String){
         DispatchQueue.main.async {
@@ -173,7 +230,7 @@ class DD_Login_VM {
             "Browser": "IOS",
             "LoggedDeviceName": "IOS",
             "UserType": "Customer",
-            "PushID":""
+            "PushID":"\(pushID)"
         ] as [String: Any]
         print(parameter)
         self.requestAPIs.loginApi(parameters: parameter) { (result, error) in
@@ -203,9 +260,10 @@ class DD_Login_VM {
                                     UserDefaults.standard.set(result?.userList?[0].isUserActive ?? -1, forKey: "IsUserActive")
                                     UserDefaults.standard.set(result?.userList?[0].name ?? "", forKey: "CustomerName")
                                     
-                                    UserDefaults.standard.setValue(true, forKey: "IsloggedIn?")
+
                                     print(result?.userList?[0].verifiedStatus ?? -1, "Verified Status")
                                     if result?.userList?[0].verifiedStatus ?? -1 == 0{
+                                        UserDefaults.standard.set(true, forKey: "IsloggedIn?")
                                         self.validateStatusApi(actorId: String(result?.userList?[0].userId ?? -1))
                                     }else if result?.userList?[0].verifiedStatus ?? 0 == 4{
                                         DispatchQueue.main.async{
@@ -216,9 +274,10 @@ class DD_Login_VM {
                                         return
                                     
                                     }
-                                        
+                                    
                                         DispatchQueue.main.async {
                                             if #available(iOS 13.0, *) {
+                                                UserDefaults.standard.set(true, forKey: "IsloggedIn?")
                                                 let sceneDelegate = self.VC!.view.window!.windowScene!.delegate as! SceneDelegate
                                                 sceneDelegate.setHomeAsRootViewController()
                                             } else {

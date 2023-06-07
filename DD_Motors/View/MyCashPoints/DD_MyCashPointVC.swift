@@ -248,7 +248,11 @@ extension DD_MyCashPointVC: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "DD_WalletListTVC", for: indexPath) as! DD_WalletListTVC
         cell.selectionStyle = .none
-        cell.dateLbl.text = self.VM.myCashPointListingArray[indexPath.row].jTranDate ?? "00-00-0000"
+        
+        let splitData = "\(self.VM.myCashPointListingArray[indexPath.row].jTranDate ?? "")".split(separator: " ")
+//        cell.dateLbl.text = self.VM.myCashPointListingArray[indexPath.row].jTranDate ?? "00-00-0000"
+        cell.dateLbl.text = "\(splitData[0])"
+//        print(self.VM.myCashPointListingArray[indexPath.row].jTranDate,"dkjsd")
         let splitedData = self.VM.myCashPointListingArray[indexPath.row].remarks?.split(separator: "(")
         //let infolistData = splitedData.split(separator: "(")
         cell.infoLbl.text = "\(splitedData?[0] ?? "-")"

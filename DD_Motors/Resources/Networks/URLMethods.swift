@@ -35,4 +35,4 @@ let promotionList_URLMethod = "GetPromotionDetailsMobileApp"
 let paymentOrder_URLMethod = "orders"
 let generateReceipt_URLMethod = "GetpaymentRecpit"
 let deleteAccountMethodName = "CustomerAccountDelete"
-
+let historyNotification = "GetPushHistoryDetails"

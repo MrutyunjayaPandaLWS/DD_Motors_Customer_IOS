@@ -25,7 +25,7 @@ class DD_SubmitNewQueryVM{
                         print(result?.returnMessage ?? "")
                         if result?.returnMessage ?? "" != "" || result?.returnMessage ?? nil != nil{
                         self.VC!.view.makeToast("Query Submitted successfully!", duration: 3.0, position: .bottom)
-                            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(4), execute: {
+                            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
                                 self.VC?.navigationController?.popViewController(animated: true)
                             })
                             

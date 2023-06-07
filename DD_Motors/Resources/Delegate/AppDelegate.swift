@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        FirebaseApp.configure()
         tokendata()
         let isUserLoggedIn: Bool = UserDefaults.standard.bool(forKey: "IsloggedIn?")
-        print(isUserLoggedIn)
+        print(isUserLoggedIn,"jhjh")
         if isUserLoggedIn {
             self.setHomeAsRootViewController()
         } else {

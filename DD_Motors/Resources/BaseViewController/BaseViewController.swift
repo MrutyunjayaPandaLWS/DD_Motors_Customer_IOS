@@ -100,6 +100,13 @@ class BaseViewController: UIViewController {
         }
           
        }
+    func lottieAnimation( animationView: LottieAnimationView){
+        animationView.contentMode = .scaleAspectFit
+        animationView.loopMode = .loop
+        animationView.animationSpeed = 1
+        animationView.play()
+
+    }
 
     func alertmsg(alertmsg:String, buttonalert:String){
         let alert = UIAlertController(title: "", message: alertmsg, preferredStyle: UIAlertController.Style.alert)

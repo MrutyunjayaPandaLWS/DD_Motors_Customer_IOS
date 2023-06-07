@@ -57,7 +57,7 @@ class DD_TermsandconditionVM {
                                     UserDefaults.standard.set(result?.userList?[0].isUserActive ?? -1, forKey: "IsUserActive")
                                     UserDefaults.standard.set(result?.userList?[0].name ?? "", forKey: "CustomerName")
                                     
-                                    UserDefaults.standard.setValue(true, forKey: "IsloggedIn?")
+                                    UserDefaults.standard.set(true, forKey: "IsloggedIn?")
                                     
                                     if result?.userList?[0].verifiedStatus ?? -1 != 0{
                                         self.validateStatusApi(actorId: String(result?.userList?[0].userId ?? -1))
