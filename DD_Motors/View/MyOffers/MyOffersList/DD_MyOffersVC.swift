@@ -117,8 +117,7 @@ class DD_MyOffersVC: BaseViewController, InfoDelegate {
     
     func myOffersCategoryApi(){
         let parameter = [
-            "ActionType": "152",
-            "ActorId": "\(self.userID)"
+            "ActionType": "152"
         ] as [String: Any]
         print(parameter)
         self.VM.myOffersCategoryList(parameter: parameter)
@@ -186,15 +185,6 @@ extension DD_MyOffersVC: UICollectionViewDelegate, UICollectionViewDataSource{
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DD_Category1CVC", for: indexPath) as! DD_Category1CVC
             cell.categoryLbl.text = self.filterCategoryListingArray[indexPath.row]
-//            if self.categoryId == self.VM.myOffersCategoryListArray[indexPath.row].attributeId ?? 0 {
-//
-//                cell.categoryLbl.textColor = UIColor.white
-//                cell.subView.backgroundColor = #colorLiteral(red: 0.07028683275, green: 0.4640961289, blue: 0.9083878398, alpha: 1)
-//            }else{
-//                cell.categoryLbl.textColor = UIColor.black
-//                cell.subView.backgroundColor = #colorLiteral(red: 0.9613716006, green: 0.9806967378, blue: 0.9979247451, alpha: 1)
-//            }
-            
             
             return cell
             
@@ -312,10 +302,9 @@ extension DD_MyOffersVC: UICollectionViewDelegate, UICollectionViewDataSource{
          
         }else if collectionView == categoryCollectionView {
             self.VM.myOffersListArray1.removeAll()
-            self.myOffersCategoryApi()
             self.categoryId = self.VM.myOffersCategoryListArray[indexPath.row].attributeId ?? -1
+            self.myOffersCategoryApi()
             self.myOffersListAPI(categoryId: self.categoryId, startIndex: self.startIndex)
-            
             
         }else{
             //    ALL = "-1"

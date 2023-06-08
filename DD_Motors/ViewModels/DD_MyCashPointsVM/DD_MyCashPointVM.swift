@@ -16,6 +16,7 @@ class DD_MyCashPointVM {
     var myCashPointListingArray = [LstRewardTransJsonDetails]()
     
     func myCashPointListingApi(parameter: JSON){
+        self.myCashPointListingArray.removeAll()
         self.VC?.startLoading()
         self.VC?.loaderView.isHidden = false
         self.VC?.playAnimation2()

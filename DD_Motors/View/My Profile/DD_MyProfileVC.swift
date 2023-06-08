@@ -103,7 +103,7 @@ class DD_MyProfileVC: BaseViewController, SelectedItemDelegate, DateSelectedDele
     @IBAction func editActionBtn(_ sender: Any) {
         if self.editOutBtn.currentTitle == "Edit Profile"{
             self.editOutBtn.setTitle("Save Changes", for: .normal)
-            self.nameTF.isEnabled = false
+            self.nameTF.isEnabled = true
             self.mobileNumberTF.isEnabled = false
             self.addressTF.isEnabled = true
             self.stateTF.isEnabled = false

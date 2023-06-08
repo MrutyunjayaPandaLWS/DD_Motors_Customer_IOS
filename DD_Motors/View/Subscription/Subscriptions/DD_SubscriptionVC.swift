@@ -60,6 +60,7 @@ class DD_SubscriptionVC: BaseViewController, SelectedItemDelegate, SendBackDetai
     @IBOutlet weak var loaderAnimation: LottieAnimationView!
     private var loaderAnimationView : LottieAnimationView?
     
+    @IBOutlet var comingSoonScreen: UIView!
     
     var selectedStatusId = -1
    var subscriptionStatusId = -1
@@ -77,6 +78,7 @@ class DD_SubscriptionVC: BaseViewController, SelectedItemDelegate, SendBackDetai
 //        self.selectedStatusId = 1
         subView.clipsToBounds = false
         subView.layer.cornerRadius = 36
+        comingSoonScreen.isHidden = true
         subView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         self.bookingIdImg.image = UIImage(named: "Ellipse 105")
         self.yourVINImg.image = UIImage(named: "Ellipse 105")
@@ -164,9 +166,11 @@ class DD_SubscriptionVC: BaseViewController, SelectedItemDelegate, SendBackDetai
             self.view.makeToast("Select Type", duration: 2.0, position: .bottom)
         }else if self.selectedTitle == ""{
             self.view.makeToast("Select Subscription type", duration: 2.0, position: .bottom)
-        }else if self.subscriptionStatusId == 0{
-            self.view.makeToast("Your subscription is in pending!", duration: 2.0, position: .bottom)
-        }else if self.subscriptionStatusId == 1{
+        }
+//        else if self.subscriptionStatusId == 0{
+//            self.view.makeToast("Your subscription is in pending!", duration: 2.0, position: .bottom)
+//        }
+        else if self.subscriptionStatusId == 1{
             self.view.makeToast("You have already subscribed!", duration: 2.0, position: .bottom)
         }else if self.selectedSourceId == -1{
             self.view.makeToast("Select Mode", duration: 2.0, position: .bottom)
@@ -175,18 +179,9 @@ class DD_SubscriptionVC: BaseViewController, SelectedItemDelegate, SendBackDetai
             self.loaderView.isHidden = false
              self.playAnimation2()
             if self.selectedSourceId == 1{
-                let parameter = [
-    //                "ActionType":"1",
-    //                "ActorId":"\(self.userID)",
-    //                "LoyaltY_ID":"\(UserDefaults.standard.string(forKey: "LoyaltyId") ?? "")",
-    //                "SourceType":"3",
-    //                "SourceId":"\(self.selectedStatusId)",
-    //                "SourceValue":"\(self.selectedTitle)",
-    //                "SubscriptionTypeId":"\(self.selectedSourceId)",
-    //                "Amount":"999"
-                    "ActionType": "1",
+                let parameter = [                    "ActionType": "1",
                     "ActorId": "\(self.userID)",
-                    "Amount": "999",
+                    "Amount": "885",
                     "LoyaltY_ID": "\(UserDefaults.standard.string(forKey: "LoyaltyId") ?? "")",
                     "SourceId": "\(self.selectedStatusId)", // 1-->>BookingID,2-->>VIN, 3-->>VRN
                     "SourceType": "3",// 1-->> Android, 3-->>IOS
@@ -199,17 +194,35 @@ class DD_SubscriptionVC: BaseViewController, SelectedItemDelegate, SendBackDetai
                 print(parameter)
                self.VM.subscriptionSubmission(parameter: parameter)
             }else{
-                
-                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_ComingSoonVC") as! DD_ComingSoonVC
-                vc.modalTransitionStyle = .coverVertical
-                vc.modalPresentationStyle = .overFullScreen
-                self.present(vc, animated: true)
+                self.comingSoonScreen.isHidden = false
+//                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_ComingSoonVC") as! DD_ComingSoonVC
+//                vc.modalTransitionStyle = .coverVertical
+//                vc.modalPresentationStyle = .overFullScreen
+//                self.present(vc, animated: true)
                 
 //                self.paymentProceedApi()
             }
 
         }
     }
+    
+    
+    
+    
+    
+    @IBAction func commingSoonCloseBtn(_ sender: Any) {
+        dismiss(animated: true){
+            self.comingSoonScreen.isHidden = true
+            self.loaderView.isHidden = true
+        }
+    }
+    
+    
+    
+    
+    
+    
+    
     
     @IBAction func myDescriptionbtn(_ sender: Any) {
         let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_SubscriptionHistoryVC") as! DD_SubscriptionHistoryVC

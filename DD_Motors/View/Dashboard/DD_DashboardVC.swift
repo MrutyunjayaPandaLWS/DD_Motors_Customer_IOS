@@ -323,9 +323,10 @@ extension DD_DashboardVC: UICollectionViewDelegate, UICollectionViewDataSource, 
         print(self.VM.vehicleListArray[indexPath.row].imageUrl ?? "", "asdfsadfasfasdfdsa")
         if self.VM.vehicleListArray[indexPath.row].imageUrl ?? "" != ""{
             let receivedImagePath = URL(string: "\(imageBaseURL)\(self.VM.vehicleListArray[indexPath.row].imageUrl ?? "")")
-            cell.vehicleImage.kf.setImage(with: receivedImagePath)
+            //cell.vehicleImage.kf.setImage(with: receivedImagePath)
+            cell.vehicleImage.kf.setImage(with: URL(string: "\(receivedImagePath)"), placeholder: UIImage(named: "Group 7229"))
         }else{
-            cell.vehicleImage.image = UIImage(named: "default_vehicle")
+            cell.vehicleImage.image = UIImage(named: "Group 7229")
         }
         
         return cell
