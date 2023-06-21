@@ -27,7 +27,7 @@ class DD_TermsandconditionVM {
             "Browser": "IOS",
             "LoggedDeviceName": "IOS",
             "UserType": "Customer",
-            "PushID":""
+            "PushID": "\(pushID)"
         ] as [String: Any]
         print(parameter)
         self.requestAPIs.loginApi(parameters: parameter) { (result, error) in

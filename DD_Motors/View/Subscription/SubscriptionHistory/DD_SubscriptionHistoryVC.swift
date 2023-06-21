@@ -24,17 +24,28 @@ class DD_SubscriptionHistoryVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.VM.VC = self
-        self.loaderView.isHidden = true
-        self.subscriptionHistoryTV.delegate = self
-        self.subscriptionHistoryTV.dataSource = self
-        self.subscriptionHistoryTV.register(UINib(nibName: "DD_SubscriptionHistoryTVC", bundle: nil), forCellReuseIdentifier: "DD_SubscriptionHistoryTVC")
-        self.subscriptionHistoryTV.separatorStyle = .none
-        self.noDataFoundLbl.isHidden = true
+        
+            self.VM.VC = self
+            self.loaderView.isHidden = true
+            self.subscriptionHistoryTV.delegate = self
+            self.subscriptionHistoryTV.dataSource = self
+            self.subscriptionHistoryTV.register(UINib(nibName: "DD_SubscriptionHistoryTVC", bundle: nil), forCellReuseIdentifier: "DD_SubscriptionHistoryTVC")
+            self.subscriptionHistoryTV.separatorStyle = .none
+            self.noDataFoundLbl.isHidden = true
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.subscriptionListApi()
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            self.subscriptionListApi()
+        }
     }
     
     @IBAction func backBTN(_ sender: Any) {

@@ -34,18 +34,24 @@ class DD_PaymentVC: BaseViewController {
     var VM = DD_PaymentVM()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.VM.VC = self
-        if itsFrom == "Main"{
-            lottieAnimation1(animationView: paymentLoaderView)
-            self.itsFrom = ""
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("Check Internet Connection !!!", duration: 2.0,position: .bottom)
+            }
         }else{
-            self.paymentLoaderView.isHidden = true
+            self.VM.VC = self
+            if itsFrom == "Main"{
+                lottieAnimation1(animationView: paymentLoaderView)
+                self.itsFrom = ""
+            }else{
+                self.paymentLoaderView.isHidden = true
+            }
+            
+            self.cfPaymentGatewayService.setCallback(self)
+            DispatchQueue.main.asyncAfter(deadline: .now()+5, execute: {
+                self.invokeNativeiOSSDK()
+            })
         }
-        
-        self.cfPaymentGatewayService.setCallback(self)
-        DispatchQueue.main.asyncAfter(deadline: .now()+5, execute: {
-            self.invokeNativeiOSSDK()
-        })
     }
     func lottieAnimation1(animationView: LottieAnimationView){
         animationView.contentMode = .scaleAspectFit
@@ -59,7 +65,7 @@ class DD_PaymentVC: BaseViewController {
         let parameter = [
             "ActionType": "1",
             "ActorId": "\(self.userID)",
-            "Amount": "999",
+            "Amount": "885",
             "LoyaltY_ID": "\(UserDefaults.standard.string(forKey: "LoyaltyId") ?? "")",
             "SourceId": self.selectedStatusId, // 1-->>BookingID,2-->>VIN, 3-->>VRN
             "SourceType": "3",// 1-->> Android, 3-->>IOS

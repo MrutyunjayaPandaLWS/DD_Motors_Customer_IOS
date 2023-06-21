@@ -46,9 +46,18 @@ class DD_RegisterVC: BaseViewController, SelectedItemDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.VM.VC = self
-        self.loaderView.isHidden = true
-        NotificationCenter.default.addObserver(self, selector: #selector(goBackToLogin), name: Notification.Name.goToLogin, object: nil)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            self.VM.VC = self
+            self.loaderView.isHidden = true
+            NotificationCenter.default.addObserver(self, selector: #selector(goBackToLogin), name: Notification.Name.goToLogin, object: nil)
+        }
     }
     
     @objc func goBackToLogin(){
@@ -59,55 +68,83 @@ class DD_RegisterVC: BaseViewController, SelectedItemDelegate{
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func stateBTN(_ sender: Any) {
-       
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_DropDownVC") as! DD_DropDownVC
-        vc.delegate = self
-        vc.itsFrom = "STATE"
-        vc.modalTransitionStyle = .coverVertical
-        vc.modalPresentationStyle = .overFullScreen
-        self.present(vc, animated: true)
-    }
-    @IBAction func cityBtn(_ sender: Any) {
-        
-        if self.selectedStateId == -1{
-            self.view.makeToast("Select State", duration: 2.0, position: .center)
-            
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
         }else{
+            
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_DropDownVC") as! DD_DropDownVC
-            vc.itsFrom = "CITY"
             vc.delegate = self
-            vc.selectedStateId = self.selectedStateId
+            vc.itsFrom = "STATE"
             vc.modalTransitionStyle = .coverVertical
             vc.modalPresentationStyle = .overFullScreen
             self.present(vc, animated: true)
         }
     }
+    @IBAction func cityBtn(_ sender: Any) {
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            
+            if self.selectedStateId == -1{
+                self.view.makeToast("Select State", duration: 2.0, position: .center)
+                
+            }else{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_DropDownVC") as! DD_DropDownVC
+                vc.itsFrom = "CITY"
+                vc.delegate = self
+                vc.selectedStateId = self.selectedStateId
+                vc.modalTransitionStyle = .coverVertical
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }
+    }
     
     @IBAction func submitBtn(_ sender: Any) {
-        if self.vehicleTF.text?.count == 0{
-            self.view.makeToast("Enter vehicle number", duration: 2.0, position: .center)
-        }else if nameTF.text!.count == 0 {
-            self.view.makeToast("Enter name", duration: 2.0, position: .center)
-        }else if stateLbl.text ?? "" == "Select State" {
-            self.view.makeToast("Select State", duration: 2.0, position: .center)
-        }else if cityLbl.text ?? "" == "Select City" {
-            self.view.makeToast("Select City", duration: 2.0, position: .center)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
         }else{
-            let parameter = [
-                "ActionType": "0",
-                "ObjCustomerJson": [
-                    "FirstName": "\(self.nameTF.text ?? "")",
-                    "MerchantId":"1",
-                    "StateId": "\(self.selectedStateId)",
-                    "CityId": "\(self.selectedCityId)",
-                    "IsActive":"1",
-                    "LoyaltyId": "\(self.enteredMobileNumber)",
-                    "Mobile": "\(self.enteredMobileNumber)",
-                    "VehicleNumber": "\(self.vehicleTF.text ?? "")"
+            if self.vehicleTF.text?.count == 0{
+                self.view.makeToast("Enter vehicle number", duration: 2.0, position: .center)
+            }else if nameTF.text!.count == 0 {
+                self.view.makeToast("Enter name", duration: 2.0, position: .center)
+            }else if stateLbl.text ?? "" == "Select State" {
+                self.view.makeToast("Select State", duration: 2.0, position: .center)
+            }else if cityLbl.text ?? "" == "Select City" {
+                self.view.makeToast("Select City", duration: 2.0, position: .center)
+            }else{
+                let parameter = [
+                    "ActionType": "0",
+                    "ObjCustomerJson": [
+                        "FirstName": "\(self.nameTF.text ?? "")",
+                        "MerchantId":"1",
+                        "StateId": "\(self.selectedStateId)",
+                        "CityId": "\(self.selectedCityId)",
+                        "IsActive":"1",
+                        "LoyaltyId": "\(self.enteredMobileNumber)",
+                        "Mobile": "\(self.enteredMobileNumber)",
+                        "VehicleNumber": "\(self.vehicleTF.text ?? "")",
+                        "RegistrationSource" : "2"
                     ]
-            ] as [String: Any]
-            print(parameter)
-            self.VM.registrationSubmissionApi(parameter: parameter)
+                ] as [String: Any]
+                print(parameter)
+                self.VM.registrationSubmissionApi(parameter: parameter)
+            }
         }
     }
     func playAnimation2(){

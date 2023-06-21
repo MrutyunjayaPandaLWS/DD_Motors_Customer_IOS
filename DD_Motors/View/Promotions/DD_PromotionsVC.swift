@@ -37,14 +37,22 @@ class DD_PromotionsVC: BaseViewController, UITableViewDelegate, UITableViewDataS
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        loadarView.isHidden = false
-        emptyMessage.isHidden = true
-        playAnimation2()
-        DispatchQueue.main.asyncAfter(deadline: .now()+2.0, execute: {
-            self.VM.promotionArrayList.removeAll()
-            self.promotionListApi()
-        })
-        
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            loadarView.isHidden = false
+            emptyMessage.isHidden = true
+            playAnimation2()
+            DispatchQueue.main.asyncAfter(deadline: .now()+2.0, execute: {
+                self.VM.promotionArrayList.removeAll()
+                self.promotionListApi()
+            })
+        }
     }
     
     @IBAction func didTappedBackBtn(_ sender: UIButton) {

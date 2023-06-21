@@ -59,34 +59,45 @@ class DD_MyCashPointVC: BaseViewController, DateSelectedDelegate {
     var startindex = 1
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.VM.VC = self
-        backBtn.isHidden = true
-        self.loaderView.isHidden = true
-        walletTableView.dataSource = self
-        walletTableView.delegate = self
-        self.walletTableView.register(UINib(nibName: "DD_WalletListTVC", bundle: nil), forCellReuseIdentifier: "DD_WalletListTVC")
+        
+            self.VM.VC = self
+            backBtn.isHidden = true
+            self.loaderView.isHidden = true
+            walletTableView.dataSource = self
+            walletTableView.delegate = self
+            self.walletTableView.register(UINib(nibName: "DD_WalletListTVC", bundle: nil), forCellReuseIdentifier: "DD_WalletListTVC")
+        
       
         
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        subView.clipsToBounds = false
-        subView.layer.cornerRadius = 36
-        subView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        self.allBtn.backgroundColor = UIColor(hexString: "204F99")
-        self.allBtn.setTitleColor(.white, for: .normal)
-        self.creditView.backgroundColor = UIColor(hexString: "F3F9FF")
-        self.creditLbl.textColor = .black
-        self.debitedView.backgroundColor = UIColor(hexString: "F3F9FF")
-        self.debitLbl.textColor = .black
-        self.filterLbl.text = "Filter"
-        if self.itsFrom == "SideMenu"{
-            self.backBtn.isHidden = false
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
         }else{
-            self.backBtn.isHidden = true
+            subView.clipsToBounds = false
+            subView.layer.cornerRadius = 36
+            subView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            self.allBtn.backgroundColor = UIColor(hexString: "204F99")
+            self.allBtn.setTitleColor(.white, for: .normal)
+            self.creditView.backgroundColor = UIColor(hexString: "F3F9FF")
+            self.creditLbl.textColor = .black
+            self.debitedView.backgroundColor = UIColor(hexString: "F3F9FF")
+            self.debitLbl.textColor = .black
+            self.filterLbl.text = "Filter"
+            if self.itsFrom == "SideMenu"{
+                self.backBtn.isHidden = false
+            }else{
+                self.backBtn.isHidden = true
+            }
+            self.VM.myCashPointListingArray.removeAll()
+            self.myCashPointListApi(status: "", fromDate: "", toDate: "")
         }
-        self.VM.myCashPointListingArray.removeAll()
-        self.myCashPointListApi(status: "", fromDate: "", toDate: "")
     }
     
     @IBAction func backBtn(_ sender: Any) {
@@ -113,36 +124,86 @@ class DD_MyCashPointVC: BaseViewController, DateSelectedDelegate {
     }
     
     @IBAction func filterBtn(_ sender: Any) {
-        
-        if self.filterLbl.text! == "Filter"{
-            if self.selectedFromDate == "" && self.selectedToDate == ""{
-                self.view.makeToast("Select date range", duration: 2.0, position: .bottom)
-                
-            }else if self.selectedFromDate != "" && self.selectedToDate == ""{
-                self.view.makeToast("Select To Date", duration: 2.0, position: .bottom)
-                
-            }else if self.selectedFromDate == "" && self.selectedToDate != ""{
-                self.view.makeToast("Select From Date", duration: 2.0, position: .bottom)
-            }else if self.selectedFromDate != "" && self.selectedToDate != ""{
-                if self.selectedFromDate > self.selectedToDate{
-                    self.view.makeToast("To date shouldn't greater than from date", duration: 2.0, position: .bottom)
-                }else{
-                    
-                    self.VM.myCashPointListingArray.removeAll()
-                    self.filterLbl.text = "Reset"
-                    DispatchQueue.main.asyncAfter(deadline: .now()+0.9, execute: {
-                        
-                        self.myCashPointListApi(status: self.selectedStatus, fromDate: self.selectedFromDate, toDate: self.selectedToDate)
-                    })
-                }
-                
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
             }
-        }else if self.filterLbl.text! == "Reset"{
+        }else{
+            
+            if self.filterLbl.text! == "Filter"{
+                if self.selectedFromDate == "" && self.selectedToDate == ""{
+                    self.view.makeToast("Select date range", duration: 2.0, position: .bottom)
+                    
+                }else if self.selectedFromDate != "" && self.selectedToDate == ""{
+                    self.view.makeToast("Select To Date", duration: 2.0, position: .bottom)
+                    
+                }else if self.selectedFromDate == "" && self.selectedToDate != ""{
+                    self.view.makeToast("Select From Date", duration: 2.0, position: .bottom)
+                }else if self.selectedFromDate != "" && self.selectedToDate != ""{
+                    if self.selectedFromDate > self.selectedToDate{
+                        self.view.makeToast("To date shouldn't greater than from date", duration: 2.0, position: .bottom)
+                    }else{
+                        
+                        self.VM.myCashPointListingArray.removeAll()
+                        self.filterLbl.text = "Reset"
+                        DispatchQueue.main.asyncAfter(deadline: .now()+0.9, execute: {
+                            
+                            self.myCashPointListApi(status: self.selectedStatus, fromDate: self.selectedFromDate, toDate: self.selectedToDate)
+                        })
+                    }
+                    
+                }
+            }else if self.filterLbl.text! == "Reset"{
+                self.selectedStatus = ""
+                self.selectedToDate = ""
+                self.selectedFromDate = ""
+                self.fromDateLbl.text = "From Date"
+                self.toDateLbl.text = "To Date"
+                self.allBtn.backgroundColor = UIColor(hexString: "204F99")
+                self.allBtn.setTitleColor(.white, for: .normal)
+                self.creditView.backgroundColor = UIColor(hexString: "F3F9FF")
+                self.creditLbl.textColor = .black
+                self.debitedView.backgroundColor = UIColor(hexString: "F3F9FF")
+                self.debitLbl.textColor = .black
+                self.loaderView.isHidden = false
+                self.VM.myCashPointListingArray.removeAll()
+                DispatchQueue.main.asyncAfter(deadline: .now()+0.9, execute: {
+                    
+                    self.myCashPointListApi(status: self.selectedStatus, fromDate: self.selectedFromDate, toDate: self.selectedToDate)
+                })
+                self.filterLbl.text = "Filter"
+            }
+            //        else{
+            //            if self.selectedFromDate == "" && self.selectedToDate == "" ||  self.selectedFromDate != "" && self.selectedToDate != "" {
+            //                if self.selectedFromDate > self.selectedToDate{
+            //                    self.view.makeToast("To date shouldn't greater than from date", duration: 2.0, position: .bottom)
+            //                }else{
+            //                    self.loaderView.isHidden = false
+            //                    self.VM.myCashPointListingArray.removeAll()
+            //                    self.filterResetOutBTN.setTitle("Reset", for: .normal)
+            //                    DispatchQueue.main.asyncAfter(deadline: .now()+0.9, execute: {
+            //
+            //                        self.myCashPointListApi(status: self.selectedStatus, fromDate: self.selectedFromDate, toDate: self.selectedToDate)
+            //                    })
+            //                }
+            //            }
+            //        }
+        }
+    }
+    
+    @IBAction func allBtn(_ sender: Any) {
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
             self.selectedStatus = ""
-            self.selectedToDate = ""
-            self.selectedFromDate = ""
-            self.fromDateLbl.text = "From Date"
-            self.toDateLbl.text = "To Date"
             self.allBtn.backgroundColor = UIColor(hexString: "204F99")
             self.allBtn.setTitleColor(.white, for: .normal)
             self.creditView.backgroundColor = UIColor(hexString: "F3F9FF")
@@ -155,70 +216,55 @@ class DD_MyCashPointVC: BaseViewController, DateSelectedDelegate {
                 
                 self.myCashPointListApi(status: self.selectedStatus, fromDate: self.selectedFromDate, toDate: self.selectedToDate)
             })
-            self.filterLbl.text = "Filter"
         }
-//        else{
-//            if self.selectedFromDate == "" && self.selectedToDate == "" ||  self.selectedFromDate != "" && self.selectedToDate != "" {
-//                if self.selectedFromDate > self.selectedToDate{
-//                    self.view.makeToast("To date shouldn't greater than from date", duration: 2.0, position: .bottom)
-//                }else{
-//                    self.loaderView.isHidden = false
-//                    self.VM.myCashPointListingArray.removeAll()
-//                    self.filterResetOutBTN.setTitle("Reset", for: .normal)
-//                    DispatchQueue.main.asyncAfter(deadline: .now()+0.9, execute: {
-//                        
-//                        self.myCashPointListApi(status: self.selectedStatus, fromDate: self.selectedFromDate, toDate: self.selectedToDate)
-//                    })
-//                }
-//            }
-//        }
-    }
-    
-    @IBAction func allBtn(_ sender: Any) {
-        self.selectedStatus = ""
-        self.allBtn.backgroundColor = UIColor(hexString: "204F99")
-        self.allBtn.setTitleColor(.white, for: .normal)
-        self.creditView.backgroundColor = UIColor(hexString: "F3F9FF")
-        self.creditLbl.textColor = .black
-        self.debitedView.backgroundColor = UIColor(hexString: "F3F9FF")
-        self.debitLbl.textColor = .black
-        self.loaderView.isHidden = false
-        self.VM.myCashPointListingArray.removeAll()
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.9, execute: {
-            
-            self.myCashPointListApi(status: self.selectedStatus, fromDate: self.selectedFromDate, toDate: self.selectedToDate)
-        })
-       
     }
     @IBAction func creditBtn(_ sender: Any) {
-        self.selectedStatus = "Credited"
-        self.allBtn.backgroundColor = UIColor(hexString: "F3F9FF")
-        self.allBtn.setTitleColor(.black, for: .normal)
-        self.creditView.backgroundColor = UIColor(hexString: "204F99")
-        self.creditLbl.textColor = .white
-        self.debitedView.backgroundColor = UIColor(hexString: "F3F9FF")
-        self.debitLbl.textColor = .black
-        self.loaderView.isHidden = false
-        self.VM.myCashPointListingArray.removeAll()
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.9, execute: {
-          
-            self.myCashPointListApi(status: self.selectedStatus, fromDate: self.selectedFromDate, toDate: self.selectedToDate)
-        })
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            self.selectedStatus = "Credited"
+            self.allBtn.backgroundColor = UIColor(hexString: "F3F9FF")
+            self.allBtn.setTitleColor(.black, for: .normal)
+            self.creditView.backgroundColor = UIColor(hexString: "204F99")
+            self.creditLbl.textColor = .white
+            self.debitedView.backgroundColor = UIColor(hexString: "F3F9FF")
+            self.debitLbl.textColor = .black
+            self.loaderView.isHidden = false
+            self.VM.myCashPointListingArray.removeAll()
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.9, execute: {
+                
+                self.myCashPointListApi(status: self.selectedStatus, fromDate: self.selectedFromDate, toDate: self.selectedToDate)
+            })
+        }
     }
     @IBAction func debitBtn(_ sender: Any) {
-        self.selectedStatus = "Debited"
-        self.allBtn.backgroundColor = UIColor(hexString: "F3F9FF")
-        self.allBtn.setTitleColor(.black, for: .normal)
-        self.creditView.backgroundColor = UIColor(hexString: "F3F9FF")
-        self.creditLbl.textColor = .black
-        self.debitedView.backgroundColor = UIColor(hexString: "204F99")
-        self.debitLbl.textColor = .white
-        self.loaderView.isHidden = false
-        self.VM.myCashPointListingArray.removeAll()
-        DispatchQueue.main.asyncAfter(deadline: .now()+0.9, execute: {
-            
-            self.myCashPointListApi(status: self.selectedStatus, fromDate: self.selectedFromDate, toDate: self.selectedToDate)
-        })
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            self.selectedStatus = "Debited"
+            self.allBtn.backgroundColor = UIColor(hexString: "F3F9FF")
+            self.allBtn.setTitleColor(.black, for: .normal)
+            self.creditView.backgroundColor = UIColor(hexString: "F3F9FF")
+            self.creditLbl.textColor = .black
+            self.debitedView.backgroundColor = UIColor(hexString: "204F99")
+            self.debitLbl.textColor = .white
+            self.loaderView.isHidden = false
+            self.VM.myCashPointListingArray.removeAll()
+            DispatchQueue.main.asyncAfter(deadline: .now()+0.9, execute: {
+                
+                self.myCashPointListApi(status: self.selectedStatus, fromDate: self.selectedFromDate, toDate: self.selectedToDate)
+            })
+        }
     }
     
     @IBAction func backButton(_ sender: Any) {

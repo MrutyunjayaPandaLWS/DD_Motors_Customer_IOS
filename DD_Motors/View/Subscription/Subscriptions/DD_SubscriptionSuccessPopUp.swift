@@ -20,7 +20,9 @@ class DD_SubscriptionSuccessPopUp: BaseViewController {
     }
 
     @IBAction func goToDashBoardBtn(_ sender: Any) {
-        NotificationCenter.default.post(name: .goToDashBoard, object: nil)
-        self.dismiss(animated: true)
+       
+            NotificationCenter.default.post(name: .goToDealerlocation, object: nil)
+            self.dismiss(animated: true)
+        
     }
 }

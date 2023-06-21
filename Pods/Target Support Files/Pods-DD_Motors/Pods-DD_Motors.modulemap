@@ -1,4 +1,4 @@
-module Pods_DD_Motors {
+framework module Pods_DD_Motors {
   umbrella header "Pods-DD_Motors-umbrella.h"
 
   export *

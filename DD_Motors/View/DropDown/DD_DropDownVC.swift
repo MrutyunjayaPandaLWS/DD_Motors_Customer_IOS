@@ -143,10 +143,12 @@ class DD_DropDownVC: BaseViewController, UITableViewDataSource, UITableViewDeleg
         if self.itsFrom == "STATE"{
             self.selectedStateName = self.VM.stateListArray[indexPath.row].stateName ?? ""
             self.selectedStateId = self.VM.stateListArray[indexPath.row].stateId ?? -1
+            print(self.selectedStateId,"dljkdk")
             self.delegate.stateDidTap(self)
         }else if self.itsFrom == "CITY"{
             self.selectedCityName = self.VM.cityListArray[indexPath.row].cityName ?? ""
             self.selectedCityId = self.VM.cityListArray[indexPath.row].cityId ?? -1
+            print(self.selectedCityId,"dljkdk")
             self.delegate.cityDidTap(self)
         }else if self.itsFrom == "HELP"{
             self.helpTopicName = self.VM.helpTopicListArray[indexPath.row].helpTopicName ?? ""

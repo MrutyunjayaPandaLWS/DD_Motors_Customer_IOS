@@ -24,9 +24,18 @@ class DD_SubscriptionSubmissionPopUpVC: BaseViewController, UIDocumentInteractio
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.amountLbl.text = "999"
-        playAnimation()
-        playAnimation1()
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            self.amountLbl.text = "999"
+            playAnimation()
+            playAnimation1()
+        }
     }
     
 //    func lottieAnimation1(animationView: LottieAnimationView){

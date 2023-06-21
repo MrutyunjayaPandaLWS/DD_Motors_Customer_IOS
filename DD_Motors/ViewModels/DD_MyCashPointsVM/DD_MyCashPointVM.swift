@@ -33,18 +33,18 @@ class DD_MyCashPointVM {
                             self.myCashPointListingArray += myCashPointList
                             self.VC?.noofelements = self.myCashPointListingArray.count
                             if self.myCashPointListingArray.count != 0{
-                                self.VC!.totalAvaliablePts.text = "\(self.myCashPointListingArray[0].pointBalance ?? 0)"
-                                self.VC!.totalEarningPts.text = "\(self.myCashPointListingArray[0].totalPointCredited ?? 0)"
-                                self.VC!.totalRedeemedPts.text = "\(self.myCashPointListingArray[0].totalPointDebited ?? 0)"
-                                self.VC!.walletTableView.isHidden = false
-                                self.VC!.noDataFoundLbl.isHidden = true
-                                self.VC!.walletTableView.reloadData()
+                                self.VC?.totalAvaliablePts.text = "\(self.myCashPointListingArray[0].pointBalance ?? 0)"
+                                self.VC?.totalEarningPts.text = "\(self.myCashPointListingArray[0].totalPointCredited ?? 0)"
+                                self.VC?.totalRedeemedPts.text = "\(self.myCashPointListingArray[0].totalPointDebited ?? 0)"
+                                self.VC?.walletTableView.isHidden = false
+                                self.VC?.noDataFoundLbl.isHidden = true
+                                self.VC?.walletTableView.reloadData()
                             }else{
                                 self.VC?.walletTableView.isHidden = true
                                 self.VC?.noDataFoundLbl.isHidden = false
                             }
                         }else{
-                            if self.VC!.startindex > 1{
+                            if self.VC?.startindex ?? 0 > 1{
                                 self.VC?.startindex = 1
                                 self.VC?.noofelements = 9
                             }else{

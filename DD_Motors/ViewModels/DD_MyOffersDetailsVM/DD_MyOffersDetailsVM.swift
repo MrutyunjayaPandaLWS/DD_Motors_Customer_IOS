@@ -26,8 +26,11 @@ class DD_MyOffersDetailsVM {
                         
                         self.myOffersListArray =  result?.lstGiftCardType ?? []
                         if self.myOffersListArray.count != 0 {
+                            print(self.myOffersListArray[0].cardNumber ?? "","dkjhdk")
                             self.VC?.offersTitleLbl.text = self.myOffersListArray[0].giftCardTypeName ?? ""
-                            self.VC?.offerIdTF.text = self.myOffersListArray[0].cardNumber ?? ""
+                            print(self.myOffersListArray[0].cardNumber ?? "")
+                            let splitData = (self.myOffersListArray[0].cardNumber ?? "").split(separator: "~")
+                            self.VC?.offerIdTF.text = "\(splitData[0])"
                             let filterDate = String(self.myOffersListArray[0].expiryDate ?? "").split(separator: "T")
                             if filterDate.count != 0 {
                                 self.VC?.offersValidTill.text = "\(filterDate[0])"
@@ -47,11 +50,32 @@ class DD_MyOffersDetailsVM {
                                 self.VC?.loadHTMLStringImage(htmlString: self.VC?.howToUse ?? "")
                                 
                             }
-                          if self.myOffersListArray[0].expiry ?? 0 == 0{
-                              self.VC?.redeemButton.isHidden = false
-                          }else{
-                              self.VC?.redeemButton.isHidden = true
-                          }
+                            print(self.myOffersListArray[0].cardNumber,"nkjsdhdk")
+//                           let splitSubscript = "\(self.myOffersListArray[0].cardNumber ?? "")".split(separator: "~")
+//                           print(splitSubscript[1],"kjhkh")
+                            let redeemedStatus = String(self.myOffersListArray[0].cardNumber ?? "").split(separator: "~")
+                            
+                            print(redeemedStatus[1],"kjdhskjd")
+                            if "\(redeemedStatus[1])" == "0" {
+                                if "\(redeemedStatus[1])" == "0" && self.myOffersListArray[0].expiry ?? 0 == 1 {
+                                    self.VC?.redeemButton.isHidden = true
+                                }else{
+                                    self.VC?.redeemButton.isHidden = false
+                                }
+                            }else{
+                                if "\(redeemedStatus[1])" == "1" && self.myOffersListArray[0].expiry ?? 0 == 1{
+                                    self.VC?.redeemButton.isHidden = true
+                                }else{
+                                    self.VC?.redeemButton.isHidden = false
+                                }
+                                
+                            }
+    
+//                          if self.myOffersListArray[0].expiry ?? 0 == 0{
+//                              self.VC?.redeemButton.isHidden = false
+//                          }else{
+//                              self.VC?.redeemButton.isHidden = true
+//                          }
                         }
                         self.VC?.loaderView.isHidden = true
                         self.VC?.stopLoading()

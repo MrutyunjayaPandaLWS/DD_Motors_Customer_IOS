@@ -42,17 +42,28 @@ class DD_SidemenuVC: BaseViewController {
     var VM = DD_SideMenuVM()
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.VM.VC = self
-        self.loaderView.isHidden = true
-        sideMenuTableView.delegate = self
-        sideMenuTableView.dataSource = self
-        NotificationCenter.default.addObserver(self, selector: #selector(closingSideMenu), name: Notification.Name.sideMenuClosing, object: nil)
-        self.sideMenuTableView.isScrollEnabled = false
-        NotificationCenter.default.addObserver(self, selector: #selector(deletedAccount), name: Notification.Name.deleteAccount, object: nil)
+        
+            self.VM.VC = self
+            self.loaderView.isHidden = true
+            sideMenuTableView.delegate = self
+            sideMenuTableView.dataSource = self
+            NotificationCenter.default.addObserver(self, selector: #selector(closingSideMenu), name: Notification.Name.sideMenuClosing, object: nil)
+            self.sideMenuTableView.isScrollEnabled = false
+            NotificationCenter.default.addObserver(self, selector: #selector(deletedAccount), name: Notification.Name.deleteAccount, object: nil)
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.dashboardApi()
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            self.dashboardApi()
+        }
     }
 
     func dashboardApi(){
@@ -85,59 +96,86 @@ class DD_SidemenuVC: BaseViewController {
     
     
     @IBAction func myProfileBtn(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_MyProfileVC") as! DD_MyProfileVC
-        print(self.profileName, "sadfsadfsadf")
-        vc.profileName = self.profileName
-        vc.mobileNumber = self.mobileNumber
-        vc.location = self.location
-        vc.profileImageURL = self.profileImageURL
-        self.navigationController?.pushViewController(vc, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_MyProfileVC") as! DD_MyProfileVC
+            print(self.profileName, "sadfsadfsadf")
+            vc.profileName = self.profileName
+            vc.mobileNumber = self.mobileNumber
+            vc.location = self.location
+            vc.profileImageURL = self.profileImageURL
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
         
     }
     @IBAction func deleteAccount(_ sender: Any) {
-        let alert = UIAlertController(title: "", message: "Are you sure want to delete this account?", preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { UIAlertAction in
-            
-//            UserDefaults.standard.set(false, forKey: "IsloggedIn?")
-//            UserDefaults.standard.set("" ,forKey: "result_UserID")
-//            UserDefaults.standard.set("" ,forKey: "result_Password")
-
-            let parameters = [
-                "ActionType": 1,
-                "userid":"\(self.userID)"
-            ] as [String : Any]
-            print(parameters)
-            self.VM.deleteAccountAPI(paramters: parameters)
-        }))
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            let alert = UIAlertController(title: "", message: "Are you sure want to delete this account?", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: { UIAlertAction in
+                
+                //            UserDefaults.standard.set(false, forKey: "IsloggedIn?")
+                //            UserDefaults.standard.set("" ,forKey: "result_UserID")
+                //            UserDefaults.standard.set("" ,forKey: "result_Password")
+                
+                let parameters = [
+                    "ActionType": 1,
+                    "userid":"\(self.userID)"
+                ] as [String : Any]
+                print(parameters)
+                self.VM.deleteAccountAPI(paramters: parameters)
+            }))
             alert.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
+        }
 
         }
     @IBAction func logoutBtn(_ sender: Any) {
-        
-        UserDefaults.standard.set(false, forKey: "IsloggedIn?")
-        
-        if #available(iOS 13.0, *) {
-            DispatchQueue.main.async {
-                let pushID = UserDefaults.standard.string(forKey: "UD_DEVICE_TOKEN") ?? ""
-                let domain = Bundle.main.bundleIdentifier!
-                UserDefaults.standard.removePersistentDomain(forName: domain)
-                UserDefaults.standard.synchronize()
-                UserDefaults.standard.setValue(pushID, forKey: "UD_DEVICE_TOKEN")
-                let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
-                sceneDelegate.setInitialViewAsRootViewController()
-             //   self.clearTable2()
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
             }
-        } else {
-            DispatchQueue.main.async {
-                let pushID = UserDefaults.standard.string(forKey: "UD_DEVICE_TOKEN") ?? ""
-                let domain = Bundle.main.bundleIdentifier!
-                UserDefaults.standard.removePersistentDomain(forName: domain)
-                UserDefaults.standard.synchronize()
-                UserDefaults.standard.setValue(pushID, forKey: "UD_DEVICE_TOKEN")
-                if #available(iOS 13.0, *) {
-                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    appDelegate.setInitialViewAsRootViewController()
+        }else{
+            
+            UserDefaults.standard.set(false, forKey: "IsloggedIn?")
+            
+            if #available(iOS 13.0, *) {
+                DispatchQueue.main.async {
+                    let pushID = UserDefaults.standard.string(forKey: "UD_DEVICE_TOKEN") ?? ""
+                    let domain = Bundle.main.bundleIdentifier!
+                    UserDefaults.standard.removePersistentDomain(forName: domain)
+                    UserDefaults.standard.synchronize()
+                    UserDefaults.standard.setValue(pushID, forKey: "UD_DEVICE_TOKEN")
+                    let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
+                    sceneDelegate.setInitialViewAsRootViewController()
+                    //   self.clearTable2()
+                }
+            } else {
+                DispatchQueue.main.async {
+                    let pushID = UserDefaults.standard.string(forKey: "UD_DEVICE_TOKEN") ?? ""
+                    let domain = Bundle.main.bundleIdentifier!
+                    UserDefaults.standard.removePersistentDomain(forName: domain)
+                    UserDefaults.standard.synchronize()
+                    UserDefaults.standard.setValue(pushID, forKey: "UD_DEVICE_TOKEN")
+                    if #available(iOS 13.0, *) {
+                        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                        appDelegate.setInitialViewAsRootViewController()
+                    }
                 }
             }
         }

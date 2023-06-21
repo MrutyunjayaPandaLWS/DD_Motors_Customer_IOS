@@ -23,19 +23,29 @@ class DD_Service_HistoryVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.VM.VC = self
-        self.loaderView.isHidden = true
-        self.serviceHistoryTableView.delegate = self
-        self.serviceHistoryTableView.dataSource = self
-        self.serviceHistoryTableView.register(UINib(nibName: "DD_ServiceHistoryTVC", bundle: nil), forCellReuseIdentifier: "DD_ServiceHistoryTVC")
-        self.serviceHistoryTableView.separatorStyle = .none
-        self.noDataFoundLbl.isHidden = true
-      
+        
+            self.VM.VC = self
+            self.loaderView.isHidden = true
+            self.serviceHistoryTableView.delegate = self
+            self.serviceHistoryTableView.dataSource = self
+            self.serviceHistoryTableView.register(UINib(nibName: "DD_ServiceHistoryTVC", bundle: nil), forCellReuseIdentifier: "DD_ServiceHistoryTVC")
+            self.serviceHistoryTableView.separatorStyle = .none
+            self.noDataFoundLbl.isHidden = true
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.VM.serviceHistoryListingArray.removeAll()
-        self.serviceHistoryListApi(startIndex: 1)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            self.VM.serviceHistoryListingArray.removeAll()
+            self.serviceHistoryListApi(startIndex: 1)
+        }
     }
     
     @IBAction func backBTN(_ sender: Any) {

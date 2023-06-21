@@ -55,19 +55,29 @@ class DD_LoginVC: BaseViewController,UITextFieldDelegate, TermsandConditionDeleg
     var isSelected = -1
     
     private var loaderAnimationView : LottieAnimationView?
+    let pushIDData = UserDefaults.standard.string(forKey: "SMSDEVICE_TOKEN") ?? ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.VM1.VC1 = self
-        self.VM.VC = self
-        self.mobileNumberTF.delegate = self
-        self.mobileNumberTF.keyboardType = .asciiCapableNumberPad
-        self.loaderView.isHidden = true
-//        self.playAnimation2()
-        self.checkBoxTopSpaceButton.constant = 10
-        self.isSelected = 0
-        self.checkBoxBtn.setImage(UIImage(named: "CheckBox 2"), for: .normal)
-     
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            self.VM1.VC1 = self
+            self.VM.VC = self
+            self.mobileNumberTF.delegate = self
+            self.mobileNumberTF.keyboardType = .asciiCapableNumberPad
+            self.loaderView.isHidden = true
+            //        self.playAnimation2()
+            self.checkBoxTopSpaceButton.constant = 10
+            self.isSelected = 0
+            self.checkBoxBtn.setImage(UIImage(named: "CheckBox 2"), for: .normal)
+            print(pushIDData,"Token")
+        }
         }
     override func viewWillAppear(_ animated: Bool) {
         tokendata()
@@ -107,36 +117,53 @@ class DD_LoginVC: BaseViewController,UITextFieldDelegate, TermsandConditionDeleg
         
     }
     @IBAction func resendBtn(_ sender: Any) {
-        if self.mobileNumberTF.text!.count == 0{
-            self.view.makeToast("Enter mobile number", duration: 2.0, position: .center)
-        }else if self.mobileNumberTF.text!.count != 10{
-            self.view.makeToast("Enter valid mobile number", duration: 2.0, position: .center)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
         }else{
-            self.VM.sendOTP(mobileNumber: self.mobileNumberTF.text!, userName: "")
-        }
-    }
-    
-    @IBAction func submitButton(_ sender: Any) {
-        if self.sendOTPBtn.currentTitle == "Send OTP"{
-            
             if self.mobileNumberTF.text!.count == 0{
                 self.view.makeToast("Enter mobile number", duration: 2.0, position: .center)
             }else if self.mobileNumberTF.text!.count != 10{
                 self.view.makeToast("Enter valid mobile number", duration: 2.0, position: .center)
-            }else if self.isSelected != 1{
-                self.view.makeToast("Please accept Terms and condition", duration: 2.0, position: .center)
             }else{
-                self.checkBoxTopSpaceButton.constant = 100
                 self.VM.sendOTP(mobileNumber: self.mobileNumberTF.text!, userName: "")
             }
-            
+        }
+    }
+    
+    @IBAction func submitButton(_ sender: Any) {
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
         }else{
-            if self.enteredValues == ""{
-                self.view.makeToast("Enter OTP", duration: 2.0, position: .center)
-            }else if "123456" != self.enteredValues{
-                self.view.makeToast("Enter correct OTP", duration: 2.0, position: .center)
-            }else if "123456" == self.enteredValues{
+            if self.sendOTPBtn.currentTitle == "Send OTP"{
                 
+                if self.mobileNumberTF.text!.count == 0{
+                    self.view.makeToast("Enter mobile number", duration: 2.0, position: .center)
+                }else if self.mobileNumberTF.text!.count != 10{
+                    self.view.makeToast("Enter valid mobile number", duration: 2.0, position: .center)
+                }else if self.isSelected != 1{
+                    self.view.makeToast("Please accept Terms and condition", duration: 2.0, position: .center)
+                }else{
+                    self.checkBoxTopSpaceButton.constant = 100
+                    self.VM.sendOTP(mobileNumber: self.mobileNumberTF.text!, userName: "")
+                }
+                
+            }else{
+                if self.enteredValues == ""{
+                    self.view.makeToast("Enter OTP", duration: 2.0, position: .center)
+                }else if "123456" != self.enteredValues{
+                    self.view.makeToast("Enter correct OTP", duration: 2.0, position: .center)
+                }else if "123456" == self.enteredValues{
+                    
                     let parameterJSON = [
                         "ActionType": "57",
                         "Location": [
@@ -145,25 +172,35 @@ class DD_LoginVC: BaseViewController,UITextFieldDelegate, TermsandConditionDeleg
                     ] as [String:Any]
                     print(parameterJSON)
                     self.VM.verifyMobileNumberAPI(paramters: parameterJSON)
+                    
+                }else{
+                    self.view.makeToast("Invalid OTP", duration: 2.0, position: .center)
+                }
                 
-            }else{
-                self.view.makeToast("Invalid OTP", duration: 2.0, position: .center)
             }
-            
         }
         
     }
     
     @IBAction func acceptTermsandConditionBtn(_ sender: Any) {
-        if self.mobileNumberTF.text!.count == 0{
-            self.view.makeToast("Enter mobile number", duration: 2.0, position: .center)
-        }else if self.mobileNumberTF.text!.count != 10{
-            self.view.makeToast("Enter valid mobile number", duration: 2.0, position: .center)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
         }else{
-            
-            let vc = storyboard?.instantiateViewController(withIdentifier: "DD_TermsandconditionVC") as! DD_TermsandconditionVC
-            vc.delegate = self
-            self.navigationController?.pushViewController(vc, animated: true)
+            if self.mobileNumberTF.text!.count == 0{
+                self.view.makeToast("Enter mobile number", duration: 2.0, position: .center)
+            }else if self.mobileNumberTF.text!.count != 10{
+                self.view.makeToast("Enter valid mobile number", duration: 2.0, position: .center)
+            }else{
+                
+                let vc = storyboard?.instantiateViewController(withIdentifier: "DD_TermsandconditionVC") as! DD_TermsandconditionVC
+                vc.delegate = self
+                self.navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
     

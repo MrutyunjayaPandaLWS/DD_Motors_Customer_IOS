@@ -61,18 +61,27 @@ class DD_SupportVC: BaseViewController, SendTopicDelegate{
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.selectedItem.text = "Filter"
-        self.selectedStatusId = -1
-        self.selectedQueryTopicId = -1
-        self.VM.queryListArray.removeAll()
-        self.queryListApi(queryTopic: self.selectedQueryTopicId, statusId: self.selectedStatusId)
-        self.tableHeight = 0
-        self.dropDownTableHeight.constant = 0
-//        self.bottomSpaceConstraint.constant = 3
-        subView.clipsToBounds = false
-        subView.layer.cornerRadius = 36
-        
-        subView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            self.selectedItem.text = "Filter"
+            self.selectedStatusId = -1
+            self.selectedQueryTopicId = -1
+            self.VM.queryListArray.removeAll()
+            self.queryListApi(queryTopic: self.selectedQueryTopicId, statusId: self.selectedStatusId)
+            self.tableHeight = 0
+            self.dropDownTableHeight.constant = 0
+            //        self.bottomSpaceConstraint.constant = 3
+            subView.clipsToBounds = false
+            subView.layer.cornerRadius = 36
+            
+            subView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        }
     }
     
     
@@ -83,22 +92,39 @@ class DD_SupportVC: BaseViewController, SendTopicDelegate{
         self.navigationController?.pushViewController(vc, animated: true)
     }
     @IBAction func addQueryBtn(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_QueryTopicVC") as! DD_QueryTopicVC
-        vc.delegate = self
-        vc.modalTransitionStyle = .coverVertical
-        vc.modalPresentationStyle = .overFullScreen
-        self.present(vc, animated: true, completion: nil)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_QueryTopicVC") as! DD_QueryTopicVC
+            vc.delegate = self
+            vc.modalTransitionStyle = .coverVertical
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: true, completion: nil)
+        }
     }
     @IBAction func filterBtn(_ sender: Any) {
-        
-        if self.dropDownTableView.isHidden == false{
-            self.dropDownTableView.isHidden = true
-            self.tableHeight = 0
-            self.dropDownTableHeight.constant = 0
-//            self.bottomSpaceConstraint.constant = 3
-           // self.dropDownTableHeight.constant = CGFloat(self.tableHeight)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
         }else{
-            self.queryStatusListApi()
+            if self.dropDownTableView.isHidden == false{
+                self.dropDownTableView.isHidden = true
+                self.tableHeight = 0
+                self.dropDownTableHeight.constant = 0
+                //            self.bottomSpaceConstraint.constant = 3
+                // self.dropDownTableHeight.constant = CGFloat(self.tableHeight)
+            }else{
+                self.queryStatusListApi()
+            }
         }
         
     }

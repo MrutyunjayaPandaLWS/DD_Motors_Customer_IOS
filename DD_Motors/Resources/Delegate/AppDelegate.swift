@@ -8,10 +8,14 @@
 import UIKit
 import CoreData
 import SlideMenuControllerSwift
-//import Firebase
+
+import FirebaseCore
+import Firebase
+import UserNotificationsUI
+import FirebaseMessaging
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate, MessagingDelegate {
 
 
     var window: UIWindow?
@@ -24,8 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         URLCache.shared.diskCapacity = 0
         URLCache.shared.memoryCapacity = 0
         RunLoop.current.run(until: Date(timeIntervalSinceNow: 4.0))
-//        FirebaseApp.configure()
         tokendata()
+
         let isUserLoggedIn: Bool = UserDefaults.standard.bool(forKey: "IsloggedIn?")
         print(isUserLoggedIn,"jhjh")
         if isUserLoggedIn {
@@ -33,8 +37,57 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             self.setInitialViewAsRootViewController()
         }
+        
+        if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().delegate = self
+            let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
+            UNUserNotificationCenter.current().requestAuthorization(
+                options: authOptions,
+                completionHandler: {_, _ in })
+        } else {
+            let settings: UIUserNotificationSettings =
+                UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+            application.registerUserNotificationSettings(settings)
+        }
+        FirebaseApp.configure()
+        
+       //   Messaging.messaging().isAutoInitEnabled = true
+          application.registerForRemoteNotifications()
+          Messaging.messaging().delegate = self
+          Messaging.messaging().token { token, error in
+            if let error = error {
+              print("Error fetching FCM registration token: \(error)")
+            } else if let token = token {
+              print("FCM registration token: \(token)")
+              UserDefaults.standard.setValue(token, forKey: "UD_DEVICE_TOKEN")
+            }
+          }
+        print("App Launch Screen")
+        
         return true
     }
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Messaging.messaging().apnsToken = deviceToken
+        Messaging.messaging().token { (token, error) in
+            if let error = error {
+                print("Error fetching remote instance ID: \(error.localizedDescription)")
+            } else if let token = token {
+                print("Token is \(token)")
+                UserDefaults.standard.setValue(token, forKey: "SMSDEVICE_TOKEN")
+            }
+        }
+    }
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void)
+    {
+        completionHandler([.alert, .badge, .sound])
+    }
+    //MessagingDelegate
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        print("Firebase token: \(fcmToken ?? "")")
+//        UserDefaults.standard.setValue(fcmToken ?? "", forKey: "SMSDEVICE_TOKEN")
+
+    }
+        
     func setHomeAsRootViewController(){
         let leftVC = storyboard.instantiateViewController(withIdentifier: "DD_SidemenuVC") as! DD_SidemenuVC
         let homeVC = storyboard.instantiateViewController(withIdentifier: "DD_TabbarVC") as! DD_TabbarVC
@@ -83,7 +136,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 do{
                     let parseddata = try JSONDecoder().decode(TokenModels.self, from: data)
                         print(parseddata.access_token ?? "")
-                        UserDefaults.standard.setValue(parseddata.access_token ?? "", forKey: "TOKEN")
+                        UserDefaults.standard.setValue(parseddata.access_token ?? "", forKey: "DEVICE_TOKEN")
                      }catch let parsingError {
                     print("Error", parsingError)
                 }

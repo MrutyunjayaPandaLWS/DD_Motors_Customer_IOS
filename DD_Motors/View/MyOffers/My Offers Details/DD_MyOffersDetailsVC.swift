@@ -40,26 +40,35 @@ class DD_MyOffersDetailsVC: BaseViewController {
     var categoryId = -1
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.VM.VC = self
-        self.loaderView.isHidden = true
-        self.itsFrom = "Description"
-        self.offersDetailsApi(cardNo: "\(cardNumber)")
-        self.descriptionBtn.setTitleColor(.white, for: .normal)
-        self.descriptionBtn.backgroundColor = UIColor(hexString: "204FA4")
-        self.termsandConditionBtn.setTitleColor(.lightGray, for: .normal)
-        self.termsandConditionBtn.backgroundColor = .white
-        self.offerBtn.setTitleColor(.lightGray, for: .normal)
-        self.offerBtn.backgroundColor = .white
-        self.offerrefernID.text = self.offerId
-        NotificationCenter.default.addObserver(self, selector: #selector(navigateToNext), name: Notification.Name.navigateToSubscription, object: nil)
-        if self.categoryId == 1{
-            self.offerCategoryLbl.text = "Offers / Sales"
-        }else if self.categoryId == 2{
-            self.offerCategoryLbl.text = "Offers / Body Shop"
-        }else if self.categoryId == 3{
-            self.offerCategoryLbl.text = "Offers / Service"
-        }else if self.categoryId == 4{
-            self.offerCategoryLbl.text = "Offers / Insurance"
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            self.VM.VC = self
+            self.loaderView.isHidden = true
+            self.itsFrom = "Description"
+            self.offersDetailsApi(cardNo: "\(cardNumber)")
+            self.descriptionBtn.setTitleColor(.white, for: .normal)
+            self.descriptionBtn.backgroundColor = UIColor(hexString: "204FA4")
+            self.termsandConditionBtn.setTitleColor(.lightGray, for: .normal)
+            self.termsandConditionBtn.backgroundColor = .white
+            self.offerBtn.setTitleColor(.lightGray, for: .normal)
+            self.offerBtn.backgroundColor = .white
+            self.offerrefernID.text = self.offerId
+            NotificationCenter.default.addObserver(self, selector: #selector(navigateToNext), name: Notification.Name.navigateToSubscription, object: nil)
+            if self.categoryId == 1{
+                self.offerCategoryLbl.text = "Offers / Sales"
+            }else if self.categoryId == 2{
+                self.offerCategoryLbl.text = "Offers / Body Shop"
+            }else if self.categoryId == 3{
+                self.offerCategoryLbl.text = "Offers / Service"
+            }else if self.categoryId == 4{
+                self.offerCategoryLbl.text = "Offers / Insurance"
+            }
         }
     }
 

@@ -70,30 +70,31 @@ class DD_SubscriptionVC: BaseViewController, SelectedItemDelegate, SendBackDetai
     let userID = UserDefaults.standard.string(forKey: "UserID") ?? ""
     let loyaltyId = UserDefaults.standard.string(forKey: "LoyaltyId") ?? ""
     var itsFrom = ""
-    var amount = "999"
+    var amount = "885"
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.VM.VC = self
-        self.amountLbl.isEnabled = false
-//        self.selectedStatusId = 1
-        subView.clipsToBounds = false
-        subView.layer.cornerRadius = 36
-        comingSoonScreen.isHidden = true
-        subView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        self.bookingIdImg.image = UIImage(named: "Ellipse 105")
-        self.yourVINImg.image = UIImage(named: "Ellipse 105")
-        self.selectYourVRN.image = UIImage(named: "Ellipse 105")
-        self.onlineSubscriptionImage.image = UIImage(named: "Ellipse 105")
-        self.offlineSubscriptionImage.image = UIImage(named: "Ellipse 105")
-        self.offlineSubscriptionView.backgroundColor = .white
-        self.onlineSubscriptionView.backgroundColor = .white
-        self.loaderView.isHidden = true
-        if self.itsFrom == "SideMenu"{
-            self.backButton.isHidden = false
-        }else{
-            self.backButton.isHidden = true
-        }
-        NotificationCenter.default.addObserver(self, selector: #selector(goToDashBoard), name: Notification.Name.goToDashBoard, object: nil)
+            self.VM.VC = self
+            self.amountLbl.isEnabled = false
+            //        self.selectedStatusId = 1
+            subView.clipsToBounds = false
+            subView.layer.cornerRadius = 36
+            comingSoonScreen.isHidden = true
+            subView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            self.bookingIdImg.image = UIImage(named: "Ellipse 105")
+            self.yourVINImg.image = UIImage(named: "Ellipse 105")
+            self.selectYourVRN.image = UIImage(named: "Ellipse 105")
+            self.onlineSubscriptionImage.image = UIImage(named: "Ellipse 105")
+            self.offlineSubscriptionImage.image = UIImage(named: "Ellipse 105")
+            self.offlineSubscriptionView.backgroundColor = .white
+            self.onlineSubscriptionView.backgroundColor = .white
+            self.loaderView.isHidden = true
+            if self.itsFrom == "SideMenu"{
+                self.backButton.isHidden = false
+            }else{
+                self.backButton.isHidden = true
+            }
+            NotificationCenter.default.addObserver(self, selector: #selector(goToDashBoard), name: Notification.Name.goToDashBoard, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(goToDealerlocation), name: Notification.Name.goToDealerlocation, object: nil)
         
     }
     @objc func goToDashBoard(){
@@ -103,106 +104,186 @@ class DD_SubscriptionVC: BaseViewController, SelectedItemDelegate, SendBackDetai
             tabBarController?.selectedIndex = 0
         }
     }
+    @objc func goToDealerlocation(){
+        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_DealershipLocationVC") as! DD_DealershipLocationVC
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.selectedDealerTitle.text = "Select Type"
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+                self.comingSoonScreen.isHidden = true
+            }
+        }else{
+            self.selectedDealerTitle.text = "Select Type"
+        }
     }
 
     @IBAction func selectYourBookingId(_ sender: Any) {
-        self.bookingIdImg.image = UIImage(named: "selected")
-        self.yourVINImg.image = UIImage(named: "Ellipse 105")
-        self.selectYourVRN.image = UIImage(named: "Ellipse 105")
-        self.selectedStatusId = 1
-        self.selectedDealerTitle.text = "Select"
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            self.bookingIdImg.image = UIImage(named: "selected")
+            self.yourVINImg.image = UIImage(named: "Ellipse 105")
+            self.selectYourVRN.image = UIImage(named: "Ellipse 105")
+            self.selectedStatusId = 1
+            self.selectedDealerTitle.text = "Select"
+        }
     }
     @IBAction func selectYourVIN(_ sender: Any) {
-        self.yourVINImg.image = UIImage(named: "selected")
-        self.bookingIdImg.image = UIImage(named: "Ellipse 105")
-        self.selectYourVRN.image = UIImage(named: "Ellipse 105")
-        self.selectedStatusId = 2
-        self.selectedDealerTitle.text = "Select"
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            self.yourVINImg.image = UIImage(named: "selected")
+            self.bookingIdImg.image = UIImage(named: "Ellipse 105")
+            self.selectYourVRN.image = UIImage(named: "Ellipse 105")
+            self.selectedStatusId = 2
+            self.selectedDealerTitle.text = "Select"
+        }
     }
     @IBAction func selectYourVRNButton(_ sender: Any) {
-        self.selectYourVRN.image = UIImage(named: "selected")
-        self.yourVINImg.image = UIImage(named: "Ellipse 105")
-        self.bookingIdImg.image = UIImage(named: "Ellipse 105")
-        self.selectedStatusId = 3
-        self.selectedDealerTitle.text = "Select"
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            self.selectYourVRN.image = UIImage(named: "selected")
+            self.yourVINImg.image = UIImage(named: "Ellipse 105")
+            self.bookingIdImg.image = UIImage(named: "Ellipse 105")
+            self.selectedStatusId = 3
+            self.selectedDealerTitle.text = "Select"
+        }
     }
     
     @IBAction func selectCategoryBtn(_ sender: Any) {
-        if self.selectedStatusId != -1{
-            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_DropDownVC") as! DD_DropDownVC
-            vc.delegate = self
-            vc.itsFrom = "SUBSCRIPTION"
-            vc.selectedStatusId = self.selectedStatusId
-            vc.modalTransitionStyle = .coverVertical
-            vc.modalPresentationStyle = .overFullScreen
-            self.present(vc, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
         }else{
-            self.view.makeToast("Select Type", duration: 2.0, position: .bottom)
+            if self.selectedStatusId != -1{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_DropDownVC") as! DD_DropDownVC
+                vc.delegate = self
+                vc.itsFrom = "SUBSCRIPTION"
+                vc.selectedStatusId = self.selectedStatusId
+                vc.modalTransitionStyle = .coverVertical
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }else{
+                self.view.makeToast("Select Type", duration: 2.0, position: .bottom)
+            }
         }
-        
     }
     
     @IBAction func onlineSubscriptionBnt(_ sender: Any) {
-        self.selectedSourceId = 2
-        self.onlineSubscriptionImage.image = UIImage(named: "selected")
-        self.offlineSubscriptionImage.image = UIImage(named: "Ellipse 105")
-        self.onlineSubscriptionView.backgroundColor = #colorLiteral(red: 0.9523764253, green: 0.9772849679, blue: 0.9983460307, alpha: 1)
-        self.offlineSubscriptionView.backgroundColor = .white
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            self.selectedSourceId = 2
+            self.onlineSubscriptionImage.image = UIImage(named: "selected")
+            self.offlineSubscriptionImage.image = UIImage(named: "Ellipse 105")
+            self.onlineSubscriptionView.backgroundColor = #colorLiteral(red: 0.9523764253, green: 0.9772849679, blue: 0.9983460307, alpha: 1)
+            self.offlineSubscriptionView.backgroundColor = .white
+        }
     }
     
     @IBAction func offlineSubscriptionBnt(_ sender: Any) {
-        self.selectedSourceId = 1
-        self.offlineSubscriptionImage.image = UIImage(named: "selected")
-        self.onlineSubscriptionImage.image = UIImage(named: "Ellipse 105")
-        self.offlineSubscriptionView.backgroundColor = #colorLiteral(red: 0.9523764253, green: 0.9772849679, blue: 0.9983460307, alpha: 1)
-        self.onlineSubscriptionView.backgroundColor = .white
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            self.selectedSourceId = 1
+            self.offlineSubscriptionImage.image = UIImage(named: "selected")
+            self.onlineSubscriptionImage.image = UIImage(named: "Ellipse 105")
+            self.offlineSubscriptionView.backgroundColor = #colorLiteral(red: 0.9523764253, green: 0.9772849679, blue: 0.9983460307, alpha: 1)
+            self.onlineSubscriptionView.backgroundColor = .white
+        }
     }
     @IBAction func proceedbtn(_ sender: Any) {
-       
-        if self.selectedStatusId == -1 {
-            self.view.makeToast("Select Type", duration: 2.0, position: .bottom)
-        }else if self.selectedTitle == ""{
-            self.view.makeToast("Select Subscription type", duration: 2.0, position: .bottom)
-        }
-//        else if self.subscriptionStatusId == 0{
-//            self.view.makeToast("Your subscription is in pending!", duration: 2.0, position: .bottom)
-//        }
-        else if self.subscriptionStatusId == 1{
-            self.view.makeToast("You have already subscribed!", duration: 2.0, position: .bottom)
-        }else if self.selectedSourceId == -1{
-            self.view.makeToast("Select Mode", duration: 2.0, position: .bottom)
-        }else{
-            self.startLoading()
-            self.loaderView.isHidden = false
-             self.playAnimation2()
-            if self.selectedSourceId == 1{
-                let parameter = [                    "ActionType": "1",
-                    "ActorId": "\(self.userID)",
-                    "Amount": "885",
-                    "LoyaltY_ID": "\(UserDefaults.standard.string(forKey: "LoyaltyId") ?? "")",
-                    "SourceId": "\(self.selectedStatusId)", // 1-->>BookingID,2-->>VIN, 3-->>VRN
-                    "SourceType": "3",// 1-->> Android, 3-->>IOS
-                    "SourceValue": "\(self.selectedTitle)",
-                    "SubscriptionTypeId":"\(self.selectedSourceId)",// 1-->> Offline, 2-->>Online
-                    "SubscriptionStatus":"0",
-                    "PaymentID":""
-                    
-                ] as [String: Any]
-                print(parameter)
-               self.VM.subscriptionSubmission(parameter: parameter)
-            }else{
-                self.comingSoonScreen.isHidden = false
-//                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_ComingSoonVC") as! DD_ComingSoonVC
-//                vc.modalTransitionStyle = .coverVertical
-//                vc.modalPresentationStyle = .overFullScreen
-//                self.present(vc, animated: true)
-                
-//                self.paymentProceedApi()
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
             }
-
+        }else{
+            if self.selectedStatusId == -1 {
+                self.view.makeToast("Select Type", duration: 2.0, position: .bottom)
+            }else if self.selectedTitle == ""{
+                self.view.makeToast("Select Subscription type", duration: 2.0, position: .bottom)
+            }else if self.subscriptionStatusId == 0{
+                //            if selectedSourceId = 1{
+                //                self.view.makeToast("Your subscription is in pending!", duration: 2.0, position: .bottom)
+                //            }else{
+                //                self.paymentProceedApi()
+                //            }
+                self.view.makeToast("Your subscription is in pending!", duration: 2.0, position: .bottom)
+                
+            }else if self.subscriptionStatusId == 1{
+                self.view.makeToast("You have already subscribed!", duration: 2.0, position: .bottom)
+            }else if self.selectedSourceId == -1{
+                self.view.makeToast("Select Mode", duration: 2.0, position: .bottom)
+            }else{
+                self.startLoading()
+                self.loaderView.isHidden = false
+                self.playAnimation2()
+                if self.selectedSourceId == 1{
+                    let parameter = [
+                        "ActionType": "1",
+                        "ActorId": "\(self.userID)",
+                        "Amount": "885",
+                        "LoyaltY_ID": "\(UserDefaults.standard.string(forKey: "LoyaltyId") ?? "")",
+                        "SourceId": "\(self.selectedStatusId)", // 1-->>BookingID,2-->>VIN, 3-->>VRN
+                        "SourceType": "3",// 1-->> Android, 3-->>IOS
+                        "SourceValue": "\(self.selectedTitle)",
+                        "SubscriptionTypeId":"\(self.selectedSourceId)",// 1-->> Offline, 2-->>Online
+                        "SubscriptionStatus":"0",
+                        "PaymentID":""
+                        
+                    ] as [String: Any]
+                    print(parameter)
+                    self.VM.subscriptionSubmission(parameter: parameter)
+                }else{
+                    self.comingSoonScreen.isHidden = false
+                    //                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_ComingSoonVC") as! DD_ComingSoonVC
+                    //                vc.modalTransitionStyle = .coverVertical
+                    //                vc.modalPresentationStyle = .overFullScreen
+                    //                self.present(vc, animated: true)
+                    
+                    //                self.paymentProceedApi()
+                }
+                
+            }
         }
     }
     
@@ -211,9 +292,18 @@ class DD_SubscriptionVC: BaseViewController, SelectedItemDelegate, SendBackDetai
     
     
     @IBAction func commingSoonCloseBtn(_ sender: Any) {
-        dismiss(animated: true){
-            self.comingSoonScreen.isHidden = true
-            self.loaderView.isHidden = true
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            dismiss(animated: true){
+                self.comingSoonScreen.isHidden = true
+                self.loaderView.isHidden = true
+            }
         }
     }
     
@@ -225,8 +315,17 @@ class DD_SubscriptionVC: BaseViewController, SelectedItemDelegate, SendBackDetai
     
     
     @IBAction func myDescriptionbtn(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_SubscriptionHistoryVC") as! DD_SubscriptionHistoryVC
-        self.navigationController?.pushViewController(vc, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_SubscriptionHistoryVC") as! DD_SubscriptionHistoryVC
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     @IBAction func backBtn(_ sender: Any) {
         self.navigationController?.popToRootViewController(animated: true)

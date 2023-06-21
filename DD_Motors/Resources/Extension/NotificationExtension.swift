@@ -45,4 +45,7 @@ extension Notification.Name{
     static let navigateToSubscription = Notification.Name(rawValue: "navigateToSubscription")
     static let accountDeactivated = Notification.Name(rawValue: "accountDeactivated")
     
+    static let goToDealerlocation = Notification.Name(rawValue: "goToDealerlocation")
+    static let navigateFromPopUP = Notification.Name(rawValue: "navigateFromPopUP")
+    
 }

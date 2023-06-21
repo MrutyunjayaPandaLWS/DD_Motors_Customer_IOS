@@ -32,6 +32,7 @@ class DD_DashboardVC: BaseViewController{
     private var animationView: LottieAnimationView?
     private var loaderAnimationView : LottieAnimationView?
     let userID = UserDefaults.standard.string(forKey: "UserID") ?? ""
+    let loyaltyId = UserDefaults.standard.string(forKey: "LoyaltyId") ?? ""
     var VM = DD_DashBoardVM()
     var requestAPIs = RestAPI_Requests()
     var sourceArray = [AlamofireSource]()
@@ -39,28 +40,37 @@ class DD_DashboardVC: BaseViewController{
     var bannerImageCalled = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.VM.VC = self
-        
-        myVehicleCollectionView.delegate = self
-        myVehicleCollectionView.dataSource = self
-
-        let collectionViewFLowLayout = UICollectionViewFlowLayout()
-        
-        collectionViewFLowLayout.itemSize = CGSize(width: (self.view.bounds.width - 10 - (self.myVehicleCollectionView.contentInset.left + self.myVehicleCollectionView.contentInset.right)) / 2, height: 210)
-        collectionViewFLowLayout.minimumLineSpacing = 2.5
-        collectionViewFLowLayout.minimumInteritemSpacing = 2.5
-        collectionViewFLowLayout.scrollDirection = .horizontal
-        self.myVehicleCollectionView.collectionViewLayout = collectionViewFLowLayout
-        NotificationCenter.default.addObserver(self, selector: #selector(goBackToLogin), name: Notification.Name.accountDeactivated, object: nil)
+            self.VM.VC = self
+            
+            myVehicleCollectionView.delegate = self
+            myVehicleCollectionView.dataSource = self
+            
+            let collectionViewFLowLayout = UICollectionViewFlowLayout()
+            
+            collectionViewFLowLayout.itemSize = CGSize(width: (self.view.bounds.width - 10 - (self.myVehicleCollectionView.contentInset.left + self.myVehicleCollectionView.contentInset.right)) / 2, height: 210)
+            collectionViewFLowLayout.minimumLineSpacing = 2.5
+            collectionViewFLowLayout.minimumInteritemSpacing = 2.5
+            collectionViewFLowLayout.scrollDirection = .horizontal
+            self.myVehicleCollectionView.collectionViewLayout = collectionViewFLowLayout
+            NotificationCenter.default.addObserver(self, selector: #selector(goBackToLogin), name: Notification.Name.accountDeactivated, object: nil)
         
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        self.slideMenuController()?.closeLeft()
-        self.loaderView.isHidden = false
-        self.playAnimation2()
-        self.bannerImageCalled = 1
-        self.tokendata()
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            self.slideMenuController()?.closeLeft()
+            self.loaderView.isHidden = false
+            self.playAnimation2()
+            self.bannerImageCalled = 1
+            self.tokendata()
+        }
         
     }
     
@@ -95,9 +105,18 @@ class DD_DashboardVC: BaseViewController{
     }
     
     override func viewDidLayoutSubviews() {
-        slideMenuController()?.changeLeftViewWidth(self.view.frame.size.width * 0.89)
-        SlideMenuOptions.contentViewScale = 1
-        self.countLbl.layer.cornerRadius = self.countLbl.frame.size.height/2
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            slideMenuController()?.changeLeftViewWidth(self.view.frame.size.width * 0.89)
+            SlideMenuOptions.contentViewScale = 1
+            self.countLbl.layer.cornerRadius = self.countLbl.frame.size.height/2
+        }
     }
     func playAnimation(){
         animationView = .init(name: "81860-car-and-skylines")
@@ -130,35 +149,89 @@ class DD_DashboardVC: BaseViewController{
     }
     
     @IBAction func viewMoreBtn(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_MyOffersVC") as! DD_MyOffersVC
-        self.navigationController?.pushViewController(vc, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_MyOffersVC") as! DD_MyOffersVC
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     @IBAction func salesBtn(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_MyOffersVC") as! DD_MyOffersVC
-        vc.categoryId = 1
-        self.navigationController?.pushViewController(vc, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_MyOffersVC") as! DD_MyOffersVC
+            vc.categoryId = 1
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     @IBAction func bodyShopBtn(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_MyOffersVC") as! DD_MyOffersVC
-        vc.categoryId = 2
-        self.navigationController?.pushViewController(vc, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_MyOffersVC") as! DD_MyOffersVC
+            vc.categoryId = 2
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     @IBAction func serviceBtn(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_MyOffersVC") as! DD_MyOffersVC
-        vc.categoryId = 3
-        self.navigationController?.pushViewController(vc, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_MyOffersVC") as! DD_MyOffersVC
+            vc.categoryId = 3
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     @IBAction func insuranceBtn(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_MyOffersVC") as! DD_MyOffersVC
-        vc.categoryId = 4
-        self.navigationController?.pushViewController(vc, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_MyOffersVC") as! DD_MyOffersVC
+            vc.categoryId = 4
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     @IBAction func notificationBtn(_ sender: Any) {
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_NotificationVC") as! DD_NotificationVC
-        self.navigationController?.pushViewController(vc, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_NotificationVC") as! DD_NotificationVC
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     
@@ -291,6 +364,7 @@ class DD_DashboardVC: BaseViewController{
                     DispatchQueue.main.async {
                         if self.bannerImageCalled == 1{
                             self.bannerImageApi()
+                            self.notificationListApi()
                             self.bannerImageCalled = 0
                         }
                         self.userStatusApi()
@@ -304,6 +378,36 @@ class DD_DashboardVC: BaseViewController{
             task.resume()
         }
         }
+    
+    
+    func notificationListApi(){
+        let parameters = [
+            "ActionType": 0,
+            "ActorId": self.userID,
+            "LoyaltyId": self.loyaltyId
+        ] as [String: Any]
+        print(parameters)
+        self.VM.notificationListApi(parameters: parameters) { response in
+            self.VM.notificationListArray = response?.lstPushHistoryJson ?? []
+            print(self.VM.notificationListArray.count)
+            if self.VM.notificationListArray.count != 0 {
+                DispatchQueue.main.async {
+                    self.countLbl.isHidden = false
+                    self.countLbl.text = "\(self.VM.notificationListArray.count ?? 0)"
+                }
+            }else{
+                self.countLbl.isHidden = true
+            }
+        }
+        
+    }
+    
+    
+    
+    
+    
+    
+    
 }
 extension DD_DashboardVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

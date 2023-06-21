@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		127D91933872375C213DAC97 /* Pods_DD_Motors.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B174E46AD84741A07C916A0F /* Pods_DD_Motors.framework */; };
 		25812DD52A2F5FC5008BB3E7 /* HistoryNotificationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25812DD42A2F5FC5008BB3E7 /* HistoryNotificationsViewModel.swift */; };
 		25812DD92A2F5FF6008BB3E7 /* NotificationModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25812DD72A2F5FF6008BB3E7 /* NotificationModels.swift */; };
 		25812DDA2A2F5FF6008BB3E7 /* LstPushHistoryJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25812DD82A2F5FF6008BB3E7 /* LstPushHistoryJson.swift */; };
@@ -45,12 +46,14 @@
 		841ADA7E295723A600CA8632 /* DD_MyOffersDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841ADA7D295723A600CA8632 /* DD_MyOffersDetailsVC.swift */; };
 		841FC68D29D3F05B00765484 /* AccountDeactivatePopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841FC68C29D3F05B00765484 /* AccountDeactivatePopUpVC.swift */; };
 		841FC69029D4009B00765484 /* DeleteAccountModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841FC68F29D4009B00765484 /* DeleteAccountModels.swift */; };
+		843738A92A36E0DC00CC1F30 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843738A82A36E0DC00CC1F30 /* NotificationService.swift */; };
+		843738AD2A36E0DC00CC1F30 /* NotificationService.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 843738A62A36E0DC00CC1F30 /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		843738B32A36EACA00CC1F30 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 843738B22A36EACA00CC1F30 /* GoogleService-Info.plist */; };
 		843FDC0D295DA7D60061B2F5 /* ProfileUpdateModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FDC0C295DA7D60061B2F5 /* ProfileUpdateModels.swift */; };
-		845193AD295C4A5900F8B3CA /* libPods-DD_Motors.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 845193AC295C4A5900F8B3CA /* libPods-DD_Motors.a */; };
-		845193AF295C4A9E00F8B3CA /* libPods-DD_Motors.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 845193AE295C4A9E00F8B3CA /* libPods-DD_Motors.a */; };
-		845193B1295C4AA400F8B3CA /* libSDWebImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 845193B0295C4AA400F8B3CA /* libSDWebImage.a */; };
 		8451D561296C0BE400208317 /* SubscriptionHistoryModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451D55F296C0BE300208317 /* SubscriptionHistoryModels.swift */; };
 		8451D562296C0BE400208317 /* LstcustomerSubscriptionSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451D560296C0BE400208317 /* LstcustomerSubscriptionSources.swift */; };
+		845838E22A3755E8005779E1 /* DD_IOS_Internet_Check.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845838E12A3755E8005779E1 /* DD_IOS_Internet_Check.swift */; };
+		845838E42A3757E9005779E1 /* no_internet_lottie.json in Resources */ = {isa = PBXBuildFile; fileRef = 845838E32A3757E9005779E1 /* no_internet_lottie.json */; };
 		845B9D89296EC4FD00D8DD04 /* DD_SubscriptionDropDownVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B9D88296EC4FD00D8DD04 /* DD_SubscriptionDropDownVM.swift */; };
 		845B9D8C296ED50F00D8DD04 /* SubscriptionSubmissionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B9D8B296ED50F00D8DD04 /* SubscriptionSubmissionModels.swift */; };
 		845B9D90296EE11C00D8DD04 /* LstGiftCardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B9D8E296EE11B00D8DD04 /* LstGiftCardType.swift */; };
@@ -216,10 +219,16 @@
 		84F800D129D43E3700044FFE /* MyProfileModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F800CD29D43E3700044FFE /* MyProfileModels.swift */; };
 		84F800D229D43E3700044FFE /* LstCustomerJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F800CE29D43E3700044FFE /* LstCustomerJson.swift */; };
 		84F800D329D43E3700044FFE /* LstVehicleJson.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84F800CF29D43E3700044FFE /* LstVehicleJson.swift */; };
-		D1EA75EAEBA52669A59D96F8 /* libPods-DD_Motors.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 98960DF652491A2137F901B7 /* libPods-DD_Motors.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		843738AB2A36E0DC00CC1F30 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8498EBA829542AC90019A0D5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 843738A52A36E0DC00CC1F30;
+			remoteInfo = NotificationService;
+		};
 		8498EBCA29542ACC0019A0D5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8498EBA829542AC90019A0D5 /* Project object */;
@@ -235,6 +244,20 @@
 			remoteInfo = DD_Motors;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		843738AE2A36E0DD00CC1F30 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				843738AD2A36E0DC00CC1F30 /* NotificationService.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		25812DD42A2F5FC5008BB3E7 /* HistoryNotificationsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryNotificationsViewModel.swift; sourceTree = "<group>"; };
@@ -275,12 +298,18 @@
 		841ADA7D295723A600CA8632 /* DD_MyOffersDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_MyOffersDetailsVC.swift; sourceTree = "<group>"; };
 		841FC68C29D3F05B00765484 /* AccountDeactivatePopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDeactivatePopUpVC.swift; sourceTree = "<group>"; };
 		841FC68F29D4009B00765484 /* DeleteAccountModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteAccountModels.swift; sourceTree = "<group>"; };
+		843738A62A36E0DC00CC1F30 /* NotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		843738A82A36E0DC00CC1F30 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		843738AA2A36E0DC00CC1F30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		843738B22A36EACA00CC1F30 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		843738B42A36FACD00CC1F30 /* NotificationService.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NotificationService.entitlements; sourceTree = "<group>"; };
 		843FDC0C295DA7D60061B2F5 /* ProfileUpdateModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileUpdateModels.swift; sourceTree = "<group>"; };
-		845193AC295C4A5900F8B3CA /* libPods-DD_Motors.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-DD_Motors.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		845193AE295C4A9E00F8B3CA /* libPods-DD_Motors.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = "libPods-DD_Motors.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		845193B0295C4AA400F8B3CA /* libSDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libSDWebImage.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8451D55F296C0BE300208317 /* SubscriptionHistoryModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionHistoryModels.swift; sourceTree = "<group>"; };
 		8451D560296C0BE400208317 /* LstcustomerSubscriptionSources.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstcustomerSubscriptionSources.swift; sourceTree = "<group>"; };
+		845838E02A371C8E005779E1 /* DD_Motors.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DD_Motors.entitlements; sourceTree = "<group>"; };
+		845838E12A3755E8005779E1 /* DD_IOS_Internet_Check.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_IOS_Internet_Check.swift; sourceTree = "<group>"; };
+		845838E32A3757E9005779E1 /* no_internet_lottie.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = no_internet_lottie.json; sourceTree = "<group>"; };
 		845B9D88296EC4FD00D8DD04 /* DD_SubscriptionDropDownVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_SubscriptionDropDownVM.swift; sourceTree = "<group>"; };
 		845B9D8B296ED50F00D8DD04 /* SubscriptionSubmissionModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionSubmissionModels.swift; sourceTree = "<group>"; };
 		845B9D8E296EE11B00D8DD04 /* LstGiftCardType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstGiftCardType.swift; sourceTree = "<group>"; };
@@ -456,19 +485,23 @@
 		84F800CE29D43E3700044FFE /* LstCustomerJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstCustomerJson.swift; sourceTree = "<group>"; };
 		84F800CF29D43E3700044FFE /* LstVehicleJson.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstVehicleJson.swift; sourceTree = "<group>"; };
 		92B9C3D26AD77EB07DB48B90 /* Pods-DD_Motors.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DD_Motors.debug.xcconfig"; path = "Target Support Files/Pods-DD_Motors/Pods-DD_Motors.debug.xcconfig"; sourceTree = "<group>"; };
-		98960DF652491A2137F901B7 /* libPods-DD_Motors.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DD_Motors.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B174E46AD84741A07C916A0F /* Pods_DD_Motors.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DD_Motors.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B829B7026CDBD8C65E56E5FC /* Pods-DD_Motors.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DD_Motors.release.xcconfig"; path = "Target Support Files/Pods-DD_Motors/Pods-DD_Motors.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		843738A32A36E0DC00CC1F30 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8498EBAD29542AC90019A0D5 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1EA75EAEBA52669A59D96F8 /* libPods-DD_Motors.a in Frameworks */,
-				845193B1295C4AA400F8B3CA /* libSDWebImage.a in Frameworks */,
-				845193AD295C4A5900F8B3CA /* libPods-DD_Motors.a in Frameworks */,
-				845193AF295C4A9E00F8B3CA /* libPods-DD_Motors.a in Frameworks */,
+				127D91933872375C213DAC97 /* Pods_DD_Motors.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,10 +539,8 @@
 				8486BD9A29C9A9E30072A1AE /* CashfreePG.xcframework */,
 				8486BD9629C9A9DA0072A1AE /* CashfreeAnalyticsSDK.xcframework */,
 				845193B0295C4AA400F8B3CA /* libSDWebImage.a */,
-				845193AE295C4A9E00F8B3CA /* libPods-DD_Motors.a */,
-				845193AC295C4A5900F8B3CA /* libPods-DD_Motors.a */,
 				84CFACC8295C475B001E442C /* libSDWebImage.a */,
-				98960DF652491A2137F901B7 /* libPods-DD_Motors.a */,
+				B174E46AD84741A07C916A0F /* Pods_DD_Motors.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -672,6 +703,16 @@
 				841FC68F29D4009B00765484 /* DeleteAccountModels.swift */,
 			);
 			path = DeleteAccountModels;
+			sourceTree = "<group>";
+		};
+		843738A72A36E0DC00CC1F30 /* NotificationService */ = {
+			isa = PBXGroup;
+			children = (
+				843738B42A36FACD00CC1F30 /* NotificationService.entitlements */,
+				843738A82A36E0DC00CC1F30 /* NotificationService.swift */,
+				843738AA2A36E0DC00CC1F30 /* Info.plist */,
+			);
+			path = NotificationService;
 			sourceTree = "<group>";
 		};
 		843FDC09295DA7A30061B2F5 /* ProfileUpdateModels */ = {
@@ -1023,6 +1064,7 @@
 				8498EBB229542AC90019A0D5 /* DD_Motors */,
 				8498EBCC29542ACC0019A0D5 /* DD_MotorsTests */,
 				8498EBD629542ACC0019A0D5 /* DD_MotorsUITests */,
+				843738A72A36E0DC00CC1F30 /* NotificationService */,
 				8498EBB129542AC90019A0D5 /* Products */,
 				0D8849BDD777BEE2CD1A6855 /* Pods */,
 				127DB5BA941C57A9AA120DA1 /* Frameworks */,
@@ -1035,6 +1077,7 @@
 				8498EBB029542AC90019A0D5 /* DD_Motors.app */,
 				8498EBC929542ACC0019A0D5 /* DD_MotorsTests.xctest */,
 				8498EBD329542ACC0019A0D5 /* DD_MotorsUITests.xctest */,
+				843738A62A36E0DC00CC1F30 /* NotificationService.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1042,12 +1085,14 @@
 		8498EBB229542AC90019A0D5 /* DD_Motors */ = {
 			isa = PBXGroup;
 			children = (
+				845838E02A371C8E005779E1 /* DD_Motors.entitlements */,
 				8498EBEA29542D520019A0D5 /* Models */,
 				8498EBE929542D4A0019A0D5 /* Resources */,
 				8498EBE629542D2D0019A0D5 /* View */,
 				25A6F6562A3095E5000C7501 /* DD_ComingSoonVC.swift */,
 				8498EBE829542D3E0019A0D5 /* ViewModels */,
 				8498EBBF29542ACB0019A0D5 /* Assets.xcassets */,
+				843738B22A36EACA00CC1F30 /* GoogleService-Info.plist */,
 				8498EBC429542ACB0019A0D5 /* Info.plist */,
 			);
 			path = DD_Motors;
@@ -1092,6 +1137,7 @@
 				84668D8129547717000491FE /* Support */,
 				8467E3D82956DCD200176AAE /* DOB */,
 				8467E3D92956DCD900176AAE /* DropDown */,
+				845838E12A3755E8005779E1 /* DD_IOS_Internet_Check.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1247,6 +1293,7 @@
 		8498EC0C29542E140019A0D5 /* Animation */ = {
 			isa = PBXGroup;
 			children = (
+				845838E32A3757E9005779E1 /* no_internet_lottie.json */,
 				84A1D3DF29C9C8CC00CBC671 /* 94320-loader.json */,
 				845B9D98296EE93E00D8DD04 /* 33886-check-okey-done.json */,
 				25F1700B298B7A8500A02535 /* 69030-confetti-full-screen.json */,
@@ -1575,6 +1622,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		843738A52A36E0DC00CC1F30 /* NotificationService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 843738B12A36E0DD00CC1F30 /* Build configuration list for PBXNativeTarget "NotificationService" */;
+			buildPhases = (
+				843738A22A36E0DC00CC1F30 /* Sources */,
+				843738A32A36E0DC00CC1F30 /* Frameworks */,
+				843738A42A36E0DC00CC1F30 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NotificationService;
+			productName = NotificationService;
+			productReference = 843738A62A36E0DC00CC1F30 /* NotificationService.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		8498EBAF29542AC90019A0D5 /* DD_Motors */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8498EBDD29542ACC0019A0D5 /* Build configuration list for PBXNativeTarget "DD_Motors" */;
@@ -1583,12 +1647,13 @@
 				8498EBAC29542AC90019A0D5 /* Sources */,
 				8498EBAD29542AC90019A0D5 /* Frameworks */,
 				8498EBAE29542AC90019A0D5 /* Resources */,
-				769EBA6C2C41C5C27A688491 /* [CP] Copy Pods Resources */,
 				220A2109B8B3071EEE7677AB /* [CP] Embed Pods Frameworks */,
+				843738AE2A36E0DD00CC1F30 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				843738AC2A36E0DC00CC1F30 /* PBXTargetDependency */,
 			);
 			name = DD_Motors;
 			productName = DD_Motors;
@@ -1638,9 +1703,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1410;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1410;
 				TargetAttributes = {
+					843738A52A36E0DC00CC1F30 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
 					8498EBAF29542AC90019A0D5 = {
 						CreatedOnToolsVersion = 14.1;
 					};
@@ -1670,11 +1738,19 @@
 				8498EBAF29542AC90019A0D5 /* DD_Motors */,
 				8498EBC829542ACC0019A0D5 /* DD_MotorsTests */,
 				8498EBD229542ACC0019A0D5 /* DD_MotorsUITests */,
+				843738A52A36E0DC00CC1F30 /* NotificationService */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		843738A42A36E0DC00CC1F30 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8498EBAE29542AC90019A0D5 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1700,10 +1776,12 @@
 				8498EC1329542E2F0019A0D5 /* lf30_editor_1i2qyxs4.json in Resources */,
 				8493F47E297A953C0005D4E0 /* loader.json in Resources */,
 				8498EC1429542E2F0019A0D5 /* lf30_editor_besjzwv5.json in Resources */,
+				843738B32A36EACA00CC1F30 /* GoogleService-Info.plist in Resources */,
 				84B3FC56295C0C710090563D /* 81860-car-and-skylines.json in Resources */,
 				84B3FC82295C3DF40090563D /* otherInfoImageTableViewCell.xib in Resources */,
 				8498EBC029542ACB0019A0D5 /* Assets.xcassets in Resources */,
 				8498EBBB29542AC90019A0D5 /* Main.storyboard in Resources */,
+				845838E42A3757E9005779E1 /* no_internet_lottie.json in Resources */,
 				84A1D3E029C9C8CC00CBC671 /* 94320-loader.json in Resources */,
 				259147D02A17355A003D5D4B /* 94248-gift-blue.json in Resources */,
 			);
@@ -1743,23 +1821,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DD_Motors/Pods-DD_Motors-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		769EBA6C2C41C5C27A688491 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DD_Motors/Pods-DD_Motors-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-DD_Motors/Pods-DD_Motors-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-DD_Motors/Pods-DD_Motors-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		AE93A8198DF3BAE799004B61 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1785,6 +1846,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		843738A22A36E0DC00CC1F30 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				843738A92A36E0DC00CC1F30 /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8498EBAC29542AC90019A0D5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1939,6 +2008,7 @@
 				84668D77295470A1000491FE /* DD_DashboardVC.swift in Sources */,
 				8498EC0A29542E010019A0D5 /* CircularProgressBar.swift in Sources */,
 				8498EC0429542E010019A0D5 /* ColorExtension.swift in Sources */,
+				845838E22A3755E8005779E1 /* DD_IOS_Internet_Check.swift in Sources */,
 				845B9D90296EE11C00D8DD04 /* LstGiftCardType.swift in Sources */,
 				8409055B295A0D3E002DBBEE /* TokenModels.swift in Sources */,
 				843FDC0D295DA7D60061B2F5 /* ProfileUpdateModels.swift in Sources */,
@@ -1988,6 +2058,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		843738AC2A36E0DC00CC1F30 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 843738A52A36E0DC00CC1F30 /* NotificationService */;
+			targetProxy = 843738AB2A36E0DC00CC1F30 /* PBXContainerItemProxy */;
+		};
 		8498EBCB29542ACC0019A0D5 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8498EBAF29542AC90019A0D5 /* DD_Motors */;
@@ -2020,6 +2095,70 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		843738AF2A36E0DD00CC1F30 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = NotificationService/NotificationService.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2HG885J5KS;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NotificationService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NotificationService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.DD-Motors.NotificationService";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "DD-Motors.Development-NotificationService";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		843738B02A36E0DD00CC1F30 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = NotificationService/NotificationService.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 2HG885J5KS;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NotificationService/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NotificationService;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.DD-Motors.NotificationService";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "DD-Motors.Development-NotificationService";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		8498EBDB29542ACC0019A0D5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2138,8 +2277,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 92B9C3D26AD77EB07DB48B90 /* Pods-DD_Motors.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DD_Motors/DD_Motors.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -2178,8 +2319,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B829B7026CDBD8C65E56E5FC /* Pods-DD_Motors.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = DD_Motors/DD_Motors.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
@@ -2294,6 +2437,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		843738B12A36E0DD00CC1F30 /* Build configuration list for PBXNativeTarget "NotificationService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				843738AF2A36E0DD00CC1F30 /* Debug */,
+				843738B02A36E0DD00CC1F30 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8498EBAB29542AC90019A0D5 /* Build configuration list for PBXProject "DD_Motors" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

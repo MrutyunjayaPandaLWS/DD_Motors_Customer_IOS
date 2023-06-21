@@ -20,6 +20,7 @@ class DD_DashBoardVM {
     var vehicleListArray = [LstUserVehicleDetails]()
     var sourceArray = [AlamofireSource]()
     var bannerImagesArray = [ObjImageGalleryList1]()
+    var notificationListArray = [LstPushHistoryJson]()
     func userActiveApi(parameter: JSON){
         self.VC?.startLoading()
         self.VC?.loaderView.isHidden = false
@@ -226,4 +227,37 @@ class DD_DashBoardVM {
         }
     }
  
+    
+    
+    func notificationListApi(parameters: JSON, completion: @escaping (NotificationModels?) -> ()){
+        DispatchQueue.main.async {
+              self.VC?.startLoading()
+         }
+        self.requestAPIs.notificationList(parameters: parameters) { (result, error) in
+            if error == nil{
+                if result != nil {
+                    DispatchQueue.main.async {
+                        completion(result)
+                        self.VC?.stopLoading()
+                    }
+                } else {
+                    print("No Response")
+                    DispatchQueue.main.async {
+                        self.VC?.stopLoading()
+                    }
+                }
+            }else{
+                print("ERROR_Login \(error)")
+                DispatchQueue.main.async {
+                    self.VC?.stopLoading()
+                }
+
+        }
+    }
+    
+    }
+    
+    
+    
+    
     }

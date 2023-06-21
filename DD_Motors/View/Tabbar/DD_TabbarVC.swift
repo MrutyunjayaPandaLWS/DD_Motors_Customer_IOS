@@ -18,5 +18,28 @@ class DD_TabbarVC: UITabBarController {
         layerGradient.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 60)
         self.tabBar.layer.insertSublayer(layerGradient, at: 0)
     }
+    
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        if self.selectedIndex == 0 {
+            self.tabBarController?.selectedIndex = selectedIndex
+        }else if self.selectedIndex == 1{
+//            let rootView = self.viewControllers![self.selectedIndex] as! UINavigationController
+//            rootView.popToRootViewController(animated: false)
+            self.tabBarController?.selectedIndex = selectedIndex
+        }else if self.selectedIndex == 2{
+//            let rootView = self.viewControllers![self.selectedIndex] as! UINavigationController
+//            rootView.popToRootViewController(animated: false)
+            self.tabBarController?.selectedIndex = selectedIndex
+        }else if self.selectedIndex == 3{
+//            let rootView = self.viewControllers![self.selectedIndex] as! UINavigationController
+//            rootView.popToRootViewController(animated: false)
+            self.tabBarController?.selectedIndex = selectedIndex
+        }else if self.selectedIndex == 4{
+//            let rootView = self.viewControllers![self.selectedIndex] as! UINavigationController
+//            rootView.popToRootViewController(animated: false)
+            self.tabBarController?.selectedIndex = selectedIndex
+        }
+    }
  
 }

@@ -34,6 +34,7 @@ class DD_MyProfileVM{
                         self.VC?.stateTF.text = profileDetails[0].stateName ?? "Select State"
                         self.VC?.cityTF.text = profileDetails[0].cityName ?? "Select City"
                         self.VC?.pinCodeTF.text = profileDetails[0].zip ?? ""
+                        self.VC?.addressID = "\(profileDetails[0].addressId ?? 0)"
                         //print(String(profileDetails[0].jdob ?? ""))
                         let dob = String(profileDetails[0].jdob ?? "").split(separator: " ")
                         if dob.count != 0 {
@@ -107,7 +108,6 @@ class DD_MyProfileVM{
                         if result?.returnMessage ?? "" == "1"{
                             self.VC!.view.makeToast("Profile updated successfully", duration: 3.0, position: .bottom)
                             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: {
-                                self.VC?.myProfileDetails()
                                 self.VC!.editOutBtn.setTitle("Edit Profile", for: .normal)
                                 self.VC!.nameTF.isEnabled = false
                                 self.VC!.mobileNumberTF.isEnabled = false
@@ -119,6 +119,7 @@ class DD_MyProfileVM{
                                 self.VC!.dobBtn.isEnabled = false
                                 self.VC!.stateButton.isEnabled = false
                                 self.VC!.cityBtn.isEnabled = false
+                                self.VC?.myProfileDetails()
                             })
                             
                         }else{

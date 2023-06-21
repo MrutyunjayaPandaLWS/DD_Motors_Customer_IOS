@@ -54,30 +54,39 @@ class ChatListViewController: BaseViewController,UITextFieldDelegate,UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.VM.VC = self
-        self.labelView.isHidden = true
-        self.loaderView.isHidden = true
-        chatTableView.register(UINib(nibName: "senderInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "senderInfoTableViewCell")
-        chatTableView.register(UINib(nibName: "otherInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "otherInfoTableViewCell")
-        chatTableView.register(UINib(nibName: "senderImageTableViewCell", bundle: nil), forCellReuseIdentifier: "senderImageTableViewCell")
-        chatTableView.register(UINib(nibName: "otherImageTableViewCell", bundle: nil), forCellReuseIdentifier: "otherImageTableViewCell")
-        chatTableView.register(UINib(nibName: "senderInfoImageTableViewCell", bundle: nil), forCellReuseIdentifier: "senderInfoImageTableViewCell")
-        chatTableView.register(UINib(nibName: "otherInfoImageTableViewCell", bundle: nil), forCellReuseIdentifier: "otherInfoImageTableViewCell")
-        self.commenttextfield.delegate = self
-        chatTableView.estimatedRowHeight = 70
-        chatTableView.rowHeight = UITableView.automaticDimension
-        expandedview.isHidden = true
-        NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotification1012(notification:)), name: Notification.Name("NotificationIdentifierinternet"), object: nil)
-        self.picker.delegate = self
-        setuppriortoLaunch()
-        chatTableView?.delegate = self
-        chatTableView?.dataSource = self
-        print(CustomerTicketIDchatvc)
-        chatListingAPI()
-        titlelabel.text = helptopicdetails
-        //self.querySummarylabel.text = "Query Summary : \(querysummary)"
-        self.titlelabel.text = "Chat"
-        self.commenttextfield.attributedPlaceholder = NSAttributedString(string: "Write query details", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            self.VM.VC = self
+            self.labelView.isHidden = true
+            self.loaderView.isHidden = true
+            chatTableView.register(UINib(nibName: "senderInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "senderInfoTableViewCell")
+            chatTableView.register(UINib(nibName: "otherInfoTableViewCell", bundle: nil), forCellReuseIdentifier: "otherInfoTableViewCell")
+            chatTableView.register(UINib(nibName: "senderImageTableViewCell", bundle: nil), forCellReuseIdentifier: "senderImageTableViewCell")
+            chatTableView.register(UINib(nibName: "otherImageTableViewCell", bundle: nil), forCellReuseIdentifier: "otherImageTableViewCell")
+            chatTableView.register(UINib(nibName: "senderInfoImageTableViewCell", bundle: nil), forCellReuseIdentifier: "senderInfoImageTableViewCell")
+            chatTableView.register(UINib(nibName: "otherInfoImageTableViewCell", bundle: nil), forCellReuseIdentifier: "otherInfoImageTableViewCell")
+            self.commenttextfield.delegate = self
+            chatTableView.estimatedRowHeight = 70
+            chatTableView.rowHeight = UITableView.automaticDimension
+            expandedview.isHidden = true
+            NotificationCenter.default.addObserver(self, selector: #selector(self.methodOfReceivedNotification1012(notification:)), name: Notification.Name("NotificationIdentifierinternet"), object: nil)
+            self.picker.delegate = self
+            setuppriortoLaunch()
+            chatTableView?.delegate = self
+            chatTableView?.dataSource = self
+            print(CustomerTicketIDchatvc)
+            chatListingAPI()
+            titlelabel.text = helptopicdetails
+            //self.querySummarylabel.text = "Query Summary : \(querysummary)"
+            self.titlelabel.text = "Chat"
+            self.commenttextfield.attributedPlaceholder = NSAttributedString(string: "Write query details", attributes: [NSAttributedString.Key.foregroundColor : UIColor.white])
+        }
         
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -120,7 +129,13 @@ class ChatListViewController: BaseViewController,UITextFieldDelegate,UITableView
     @IBOutlet weak var expandedview: UIView!
     @IBOutlet weak var expandedimageview: UIImageView!
     @IBAction func closeexpandedview(_ sender: Any) {
-        expandedview.isHidden = true
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                self.view.makeToast("Check Internet Connection !!!", duration: 2.0,position: .bottom)
+            }
+        }else{
+            expandedview.isHidden = true
+        }
     }
     func scrollToBottom(){
         DispatchQueue.main.async {

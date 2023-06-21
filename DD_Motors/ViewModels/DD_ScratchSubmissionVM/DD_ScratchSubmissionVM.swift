@@ -32,8 +32,11 @@ class DD_ScratchSubmissionVM {
                                 self.VC?.successAnimation.isHidden = false
                                 self.VC?.playAnimation()
                                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
-                                    self.VC?.successAnimation.isHidden = true
-                                    NotificationCenter.default.post(name: .hitMyOffersApi, object: nil)
+//                                    self.VC?.dismiss(animated: true){
+                                        self.VC?.successAnimation.isHidden = true
+                                        NotificationCenter.default.post(name: .navigateFromPopUP, object: nil)
+                                    self.VC?.dismiss(animated: true)
+//                                    }
                                 })
                                 
                                 

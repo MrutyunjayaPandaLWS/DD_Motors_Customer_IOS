@@ -58,12 +58,21 @@ class DD_SubmitQueryVC: BaseViewController, SelectedItemDelegate, UITextViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        picker.delegate = self
-        self.VM.VC = self
-        self.loaderView.isHidden = true
-        self.querySummaryTextView.delegate = self
-        self.queryDetailsTextView.delegate = self
-        self.heightOfImage.constant = 0
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            picker.delegate = self
+            self.VM.VC = self
+            self.loaderView.isHidden = true
+            self.querySummaryTextView.delegate = self
+            self.queryDetailsTextView.delegate = self
+            self.heightOfImage.constant = 0
+        }
         
     }
     override func viewWillAppear(_ animated: Bool) {

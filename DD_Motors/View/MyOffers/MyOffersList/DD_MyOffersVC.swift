@@ -43,57 +43,96 @@ class DD_MyOffersVC: BaseViewController, InfoDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            self.VM.VC = self
+            category1CollectionView.delegate = self
+            category1CollectionView.dataSource = self
+            categoryCollectionView.delegate = self
+            categoryCollectionView.dataSource = self
+            myOffersListCollectionView.dataSource = self
+            myOffersListCollectionView.delegate = self
+            self.loaderView.isHidden = true
+            let layout = UICollectionViewFlowLayout()
+            layout.itemSize = CGSize(width: (self.view.bounds.width - 20 - (self.myOffersListCollectionView.contentInset.left + self.myOffersListCollectionView.contentInset.right)) / 2, height: 200)
+            layout.minimumLineSpacing = 2.5
+            layout.minimumInteritemSpacing = 2.5
+            self.myOffersListCollectionView.collectionViewLayout = layout
+            
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(moveToSubscribe), name: Notification.Name.navigateSubscription, object: nil)
+            
+            NotificationCenter.default.addObserver(self, selector: #selector(moveToDetails), name: Notification.Name.navigateDetails, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(myOffersApi), name: Notification.Name.hitMyOffersApi, object: nil)
+            NotificationCenter.default.addObserver(self, selector: #selector(navigateFromPopUP), name: Notification.Name.navigateFromPopUP, object: nil)
+        }
         
-        self.VM.VC = self
-        category1CollectionView.delegate = self
-        category1CollectionView.dataSource = self
-        categoryCollectionView.delegate = self
-        categoryCollectionView.dataSource = self
-        myOffersListCollectionView.dataSource = self
-        myOffersListCollectionView.delegate = self
-        self.loaderView.isHidden = true
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: (self.view.bounds.width - 20 - (self.myOffersListCollectionView.contentInset.left + self.myOffersListCollectionView.contentInset.right)) / 2, height: 200)
-        layout.minimumLineSpacing = 2.5
-        layout.minimumInteritemSpacing = 2.5
-        self.myOffersListCollectionView.collectionViewLayout = layout
-        
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(moveToSubscribe), name: Notification.Name.navigateSubscription, object: nil)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(moveToDetails), name: Notification.Name.navigateDetails, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(myOffersApi), name: Notification.Name.hitMyOffersApi, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-   
-        noOffersAnimationView.isHidden = true
-        playAnimation3()
-        self.VM.myOffersCategoryListArray.removeAll()
-        self.VM.myOffersListArray1.removeAll()
-        self.myOffersCategoryApi()
-        self.myOffersListAPI(categoryId: self.categoryId, startIndex: 1)
+            noOffersAnimationView.isHidden = true
+            playAnimation3()
+            self.VM.myOffersCategoryListArray.removeAll()
+            self.VM.myOffersListArray1.removeAll()
+            self.myOffersCategoryApi()
+            self.myOffersListAPI(categoryId: self.categoryId, startIndex: 1)
     }
     
     @objc func myOffersApi(){
-      
+        self.VM.myOffersListArray1.removeAll()
+        self.VM.myOffersListArray.removeAll()
         self.myOffersListAPI(categoryId: self.categoryId, startIndex: 1)
         self.myOffersCategoryApi()
+//        self.myOffersListCollectionView.reloadData()
     }
+    
+    @objc func navigateFromPopUP(){
+        self.VM.myOffersListArray1.removeAll()
+        self.VM.myOffersListArray.removeAll()
+        self.myOffersListCollectionView.reloadData()
+        self.myOffersListAPI(categoryId: self.categoryId, startIndex: 1)
+        
+    }
+    
     @objc func moveToSubscribe(){
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_SubscriptionVC") as! DD_SubscriptionVC
-        vc.itsFrom = "SideMenu"
-        self.navigationController?.pushViewController(vc, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_SubscriptionVC") as! DD_SubscriptionVC
+            vc.itsFrom = "SideMenu"
+            self.navigationController?.pushViewController(vc, animated: true)
+            
+        }
        }
     
     @objc func moveToDetails(){
-        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_MyOffersDetailsVC") as! DD_MyOffersDetailsVC
-        vc.itsFrom = "SideMenu"
-        vc.cardNumber = Int(self.cardNumber)
-        vc.categoryId = self.categoryId
-        vc.offerId = "\(self.offersID)"
-        self.navigationController?.pushViewController(vc, animated: true)
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_MyOffersDetailsVC") as! DD_MyOffersDetailsVC
+            vc.itsFrom = "SideMenu"
+            vc.cardNumber = Int(self.cardNumber)
+            vc.categoryId = self.categoryId
+            vc.offerId = "\(self.offersID)"
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
        }
 
     
@@ -108,8 +147,8 @@ class DD_MyOffersVC: BaseViewController, InfoDelegate {
             "LoyaltyId":"\(self.loyaltyId)",
             "OfferTypeID": categoryId,
             "StartIndex": startIndex,
-            "PageSize": 10,
-            "StatusId": self.statusId ?? 0
+            "PageSize": 20,
+            "StatusId": self.statusId
         ] as [String: Any]
         print(parameter)
         self.VM.myOffersListApi(parameter: parameter)
@@ -171,8 +210,9 @@ extension DD_MyOffersVC: UICollectionViewDelegate, UICollectionViewDataSource{
                 
                 cell.categoryImage.image = UIImage(named: "Insurance")
             }
+            print(self.VM.myOffersCategoryListArray[indexPath.row].attributeId ?? 0)
             if self.categoryId == self.VM.myOffersCategoryListArray[indexPath.row].attributeId ?? 0 {
-                
+                print(self.VM.myOffersCategoryListArray[indexPath.row].attributeId ?? 0)
                 cell.categoryLbl.textColor = UIColor.white
                 cell.subView.backgroundColor = #colorLiteral(red: 0.07028683275, green: 0.4640961289, blue: 0.9083878398, alpha: 1)
             }else{
@@ -185,6 +225,46 @@ extension DD_MyOffersVC: UICollectionViewDelegate, UICollectionViewDataSource{
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DD_Category1CVC", for: indexPath) as! DD_Category1CVC
             cell.categoryLbl.text = self.filterCategoryListingArray[indexPath.row]
+            //    ALL = "-1"
+            //Active = 1
+            // redemed = 3
+            //expired = 2
+            if self.statusId == -1 {
+                if indexPath.row == 0{
+                    cell.categoryLbl.textColor = UIColor.white
+                    cell.subView.backgroundColor = #colorLiteral(red: 0.07028683275, green: 0.4640961289, blue: 0.9083878398, alpha: 1)
+                }else{
+                    cell.categoryLbl.textColor = UIColor.black
+                    cell.subView.backgroundColor = #colorLiteral(red: 0.9613716006, green: 0.9806967378, blue: 0.9979247451, alpha: 1)
+                }
+            }else if self.statusId == 1{
+                if indexPath.row == 1{
+                    cell.categoryLbl.textColor = UIColor.white
+                    cell.subView.backgroundColor = #colorLiteral(red: 0.07028683275, green: 0.4640961289, blue: 0.9083878398, alpha: 1)
+                }else{
+                    cell.categoryLbl.textColor = UIColor.black
+                    cell.subView.backgroundColor = #colorLiteral(red: 0.9613716006, green: 0.9806967378, blue: 0.9979247451, alpha: 1)
+                }
+            }else if self.statusId == 3{
+                if indexPath.row == 2{
+                    cell.categoryLbl.textColor = UIColor.white
+                    cell.subView.backgroundColor = #colorLiteral(red: 0.07028683275, green: 0.4640961289, blue: 0.9083878398, alpha: 1)
+                }else{
+                    cell.categoryLbl.textColor = UIColor.black
+                    cell.subView.backgroundColor = #colorLiteral(red: 0.9613716006, green: 0.9806967378, blue: 0.9979247451, alpha: 1)
+                }
+            }else if self.statusId == 2{
+                if indexPath.row == 3{
+                    cell.categoryLbl.textColor = UIColor.white
+                    cell.subView.backgroundColor = #colorLiteral(red: 0.07028683275, green: 0.4640961289, blue: 0.9083878398, alpha: 1)
+                }else{
+                    cell.categoryLbl.textColor = UIColor.black
+                    cell.subView.backgroundColor = #colorLiteral(red: 0.9613716006, green: 0.9806967378, blue: 0.9979247451, alpha: 1)
+                }
+            }else{
+                cell.categoryLbl.textColor = UIColor.black
+                cell.subView.backgroundColor = #colorLiteral(red: 0.9613716006, green: 0.9806967378, blue: 0.9979247451, alpha: 1)
+            }
             
             return cell
             
@@ -234,21 +314,24 @@ extension DD_MyOffersVC: UICollectionViewDelegate, UICollectionViewDataSource{
                     
                 }
                 cell.lockerView.isHidden = true
-                if self.VM.myOffersListArray1[indexPath.row].expiry ?? -1 == 1 && "\(redeemedStatus[1])" == "1"{
-                    cell.expiredLbl.isHidden = false
-                    cell.expiredLbl.text = "Expired"
-                    cell.bottomSpaceConstraint.constant = 26
-                }else if self.VM.myOffersListArray1[indexPath.row].expiry ?? -1 == 0 && "\(redeemedStatus[1])" == "0"{
-                    cell.expiredLbl.isHidden = true
-                    cell.expiredLbl.text = ""
-                    cell.bottomSpaceConstraint.constant = 6
-                }else{
+                if "\(redeemedStatus[1])" == "1" {
                     cell.expiredLbl.isHidden = false
                     cell.expiredLbl.text = "Redeemed"
                     cell.expiredLbl.textColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
                     cell.expiredLbl.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
                     cell.bottomSpaceConstraint.constant = 26
+                }else{
                     
+                    if self.VM.myOffersListArray1[indexPath.row].expiry ?? -1 == 1{
+                        cell.expiredLbl.isHidden = false
+                        cell.expiredLbl.text = "Expired"
+                        cell.expiredLbl.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                        cell.bottomSpaceConstraint.constant = 26
+                    }else{
+                        cell.expiredLbl.isHidden = true
+                        cell.expiredLbl.text = ""
+                        cell.bottomSpaceConstraint.constant = 6
+                    }
                 }
             }else{
                 cell.scratchView.isHidden = true
@@ -278,66 +361,98 @@ extension DD_MyOffersVC: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView == myOffersListCollectionView{
-            let subscriptionStatus = String(self.VM.myOffersListArray1[indexPath.row].subscriptionStatus ??  "0").prefix(1)
-            print(subscriptionStatus)
-            if "\(subscriptionStatus)" == "1"{
-                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_SuccessPopUp") as! DD_SuccessPopUp
-                vc.cardNumber = self.VM.myOffersListArray1[indexPath.row].cardNumber ?? ""
-                vc.offerReferenceID = self.VM.myOffersListArray1[indexPath.row].offerReferenceID ?? ""
-                vc.isGiftID = self.VM.myOffersListArray1[indexPath.row].is_Gifited ?? 0
-                vc.offerTitle = self.VM.myOffersListArray1[indexPath.row].giftCardTypeName ?? ""
-                self.cardNumber = Int(self.VM.myOffersListArray1[indexPath.row].cardNumber ?? "") ?? 0
-                self.offersID = self.VM.myOffersListArray1[indexPath.row].offerReferenceID ?? ""
-                vc.modalTransitionStyle = .coverVertical
-                vc.modalPresentationStyle = .overFullScreen
-                self.present(vc, animated: true)
+            if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+                DispatchQueue.main.async{
+                    let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                    vc.modalTransitionStyle = .crossDissolve
+                    vc.modalPresentationStyle = .overFullScreen
+                    self.present(vc, animated: true)
+                }
             }else{
-               
+                let subscriptionStatus = String(self.VM.myOffersListArray1[indexPath.row].subscriptionStatus ??  "0").prefix(1)
+                print(subscriptionStatus)
+                if "\(subscriptionStatus)" == "1"{
+                    let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_SuccessPopUp") as! DD_SuccessPopUp
+                    vc.cardNumber = self.VM.myOffersListArray1[indexPath.row].cardNumber ?? ""
+                    vc.offerReferenceID = self.VM.myOffersListArray1[indexPath.row].offerReferenceID ?? ""
+                    vc.isGiftID = self.VM.myOffersListArray1[indexPath.row].is_Gifited ?? 0
+                    vc.offerTitle = self.VM.myOffersListArray1[indexPath.row].giftCardTypeName ?? ""
+                    self.cardNumber = Int(self.VM.myOffersListArray1[indexPath.row].cardNumber ?? "") ?? 0
+                    self.offersID = self.VM.myOffersListArray1[indexPath.row].offerReferenceID ?? ""
+                    vc.modalTransitionStyle = .coverVertical
+                    vc.modalPresentationStyle = .overFullScreen
+                    self.present(vc, animated: true)
+                }else{
+                    
                     let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_SubscribePopUp") as! DD_SubscribePopUp
+                    print(self.VM.myOffersListArray1[indexPath.row].offerImage ?? "")
                     vc.selectedImage = "\(self.VM.myOffersListArray1[indexPath.row].offerImage ?? "")"
                     vc.modalTransitionStyle = .crossDissolve
                     vc.modalPresentationStyle = .overFullScreen
                     self.present(vc, animated: true)
+                }
             }
-         
         }else if collectionView == categoryCollectionView {
-            self.VM.myOffersListArray1.removeAll()
-            self.categoryId = self.VM.myOffersCategoryListArray[indexPath.row].attributeId ?? -1
-            self.myOffersCategoryApi()
-            self.myOffersListAPI(categoryId: self.categoryId, startIndex: self.startIndex)
+            if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+                DispatchQueue.main.async{
+                    let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                    vc.modalTransitionStyle = .crossDissolve
+                    vc.modalPresentationStyle = .overFullScreen
+                    self.present(vc, animated: true)
+                }
+            }else{
+                self.VM.myOffersListArray1.removeAll()
+                self.categoryId = self.VM.myOffersCategoryListArray[indexPath.row].attributeId ?? -1
+                self.myOffersCategoryApi()
+                self.myOffersListAPI(categoryId: self.categoryId, startIndex: self.startIndex)
+            }
             
         }else{
-            //    ALL = "-1"
-            //Active = 1
-            // redemed = 3
-            //expired = 2
-            self.VM.myOffersListArray1.removeAll()
-            self.secondCatagoryArray = filterCategoryListingArray[indexPath.row]
-            if secondCatagoryArray == "All" {
-                self.statusId = -1
-            }else if secondCatagoryArray == "Active"{
-                self.statusId = 1
-            }else if secondCatagoryArray == "Redeemed"{
-                self.statusId = 3
-            }else if secondCatagoryArray == "Expired"{
-                self.statusId = 2
+            if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+                DispatchQueue.main.async{
+                    let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                    vc.modalTransitionStyle = .crossDissolve
+                    vc.modalPresentationStyle = .overFullScreen
+                    self.present(vc, animated: true)
+                }
             }else{
-                self.statusId = -1
+                //    ALL = "-1"
+                //Active = 1
+                // redemed = 3
+                //expired = 2
+                self.VM.myOffersListArray1.removeAll()
+                self.secondCatagoryArray = filterCategoryListingArray[indexPath.row]
+                if secondCatagoryArray == "All" {
+                    self.statusId = -1
+                    self.category1CollectionView.reloadData()
+                }else if secondCatagoryArray == "Active"{
+                    self.statusId = 1
+                    self.category1CollectionView.reloadData()
+                }else if secondCatagoryArray == "Redeemed"{
+                    self.statusId = 3
+                    self.category1CollectionView.reloadData()
+                }else if secondCatagoryArray == "Expired"{
+                    self.statusId = 2
+                    self.category1CollectionView.reloadData()
+                }else{
+                    self.statusId = -1
+                    self.category1CollectionView.reloadData()
+                }
+                self.myOffersCategoryApi()
+                self.myOffersListAPI(categoryId: self.categoryId, startIndex: self.startIndex)
             }
-            self.myOffersCategoryApi()
-            self.myOffersListAPI(categoryId: self.categoryId, startIndex: self.startIndex)
         }
     }
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if collectionView == myOffersListCollectionView{
             if indexPath.row == self.VM.myOffersCategoryListArray.count - 1{
-                if self.noofelements == 10{
+                if self.noofelements == 20{
                     self.startIndex = self.startIndex + 1
                     self.myOffersListAPI(categoryId: self.categoryId, startIndex: self.startIndex)
-                }else if self.noofelements > 10{
+                }else if self.noofelements > 20{
                     self.startIndex = self.startIndex + 1
                     self.myOffersListAPI(categoryId: self.categoryId, startIndex: self.startIndex)
-                }else if self.noofelements < 10{
+                }else if self.noofelements < 20{
                     print("no need to hit API")
                     return
                 }else{

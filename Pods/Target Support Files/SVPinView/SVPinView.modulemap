@@ -1,4 +1,4 @@
-module SVPinView {
+framework module SVPinView {
   umbrella header "SVPinView-umbrella.h"
 
   export *

@@ -27,20 +27,29 @@ class DD_QueryTopicVC: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.VM.VC = self
-        self.loaderView.isHidden = true
-        queryTopicCollectionView.delegate = self
-        queryTopicCollectionView.dataSource = self
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: (self.view.bounds.width - 60 - (self.queryTopicCollectionView.contentInset.left + self.queryTopicCollectionView.contentInset.right)) / 2, height: 50)
-        layout.minimumLineSpacing = 2.5
-        layout.minimumInteritemSpacing = 2.5
-        self.queryTopicCollectionView.collectionViewLayout = layout
-        self.queryTopicCollectionView.reloadData()
-        mainView.clipsToBounds = false
-        mainView.layer.cornerRadius = 36
-        mainView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        getHelpTopicApi()
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            self.VM.VC = self
+            self.loaderView.isHidden = true
+            queryTopicCollectionView.delegate = self
+            queryTopicCollectionView.dataSource = self
+            let layout = UICollectionViewFlowLayout()
+            layout.itemSize = CGSize(width: (self.view.bounds.width - 60 - (self.queryTopicCollectionView.contentInset.left + self.queryTopicCollectionView.contentInset.right)) / 2, height: 50)
+            layout.minimumLineSpacing = 2.5
+            layout.minimumInteritemSpacing = 2.5
+            self.queryTopicCollectionView.collectionViewLayout = layout
+            self.queryTopicCollectionView.reloadData()
+            mainView.clipsToBounds = false
+            mainView.layer.cornerRadius = 36
+            mainView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+            getHelpTopicApi()
+        }
         
     }
     func getHelpTopicApi(){

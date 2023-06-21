@@ -33,7 +33,7 @@ import Foundation
 
 
 
-//Livehttps://rewards.ddprem.com/DD_services/Mobile/CheckIsAuthenticatedMobileApp
+//Live
 let tokenURL = "https://rewards.ddprem.com/DD_services/token"
 let baseURl = "https://rewards.ddprem.com/DD_services/Mobile/"
 

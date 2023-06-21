@@ -2,6 +2,9 @@
 # platform :ios, '9.0'
 
 target 'DD_Motors' do
+  
+   use_frameworks!
+   
   pod 'SVPinView', '~> 1.0'
   
   pod 'IQKeyboardManagerSwift'
@@ -12,9 +15,20 @@ target 'DD_Motors' do
   pod "GSMessages"
   pod 'EasyTipView', '~> 2.0.4'
   pod 'SRScratchView'
-  pod 'SDWebImage'
-  pod 'Kingfisher', '~> 7.0'
+
   pod 'lottie-ios'
   pod "ImageSlideshow/Alamofire"
   pod 'CashfreePG', '~> 2.0.3'
+  pod 'Kingfisher', '~> 7.0'
+
+  pod 'FirebaseAnalytics'
+  pod 'Firebase/Core'
+  pod 'FirebaseAuth'
+  pod 'FirebaseFirestore'
+  pod 'Crashlytics', '~> 3.14.0'
+  pod 'Firebase/Crashlytics'
+  pod 'Firebase/Messaging'
+  pod 'Firebase/Analytics'
+ 
+
 end

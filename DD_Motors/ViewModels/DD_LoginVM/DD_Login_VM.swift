@@ -11,7 +11,7 @@ import Toast_Swift
 class DD_Login_VM {
     
     weak var VC: DD_LoginVC?
-    var pushID = UserDefaults.standard.string(forKey: "DEVICE_TOKEN") ?? ""
+    var pushID = UserDefaults.standard.string(forKey: "SMSDEVICE_TOKEN") ?? ""
     var requestAPIs = RestAPI_Requests()
     var count = 0
     var timer = Timer()

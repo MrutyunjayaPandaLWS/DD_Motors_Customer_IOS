@@ -25,6 +25,8 @@ class DD_SuccessPopUp: UIViewController, SRScratchViewDelegate {
     private var animationView: LottieAnimationView?
     private var loaderAnimationView : LottieAnimationView?
     
+    @IBOutlet weak var openScratchView: UIButton!
+    
     let userID = UserDefaults.standard.string(forKey: "UserID") ?? ""
     let loyaltyId = UserDefaults.standard.string(forKey: "LoyaltyId") ?? ""
     var called = 1
@@ -37,11 +39,12 @@ class DD_SuccessPopUp: UIViewController, SRScratchViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.VM.VC = self
+        print(self.isGiftID,"dkjhdksjhd")
         if self.isGiftID == 0{
             self.scratchView.isHidden = false
             self.congratulationView.isHidden = true
             self.scratchImageView.delegate = self
-            self.scratchImageView.lineWidth = 40.0
+            self.scratchImageView.lineWidth = 0.1
             self.scratchImageView.lineType = .round
             self.scratchImageView.backgroundColor = UIColor.clear
         }else{
@@ -79,16 +82,27 @@ class DD_SuccessPopUp: UIViewController, SRScratchViewDelegate {
     
 
     @IBAction func helpButton(_ sender: Any) {
+        self.loaderView.isHidden = false
+         self.playAnimation2()
         NotificationCenter.default.post(name: .navigateDetails, object: nil)
         self.dismiss(animated: true, completion: nil)
+        self.loaderView.isHidden = false
     }
     
     @IBAction func knowDetailsBtn(_ sender: Any) {
+        self.loaderView.isHidden = false
+         self.playAnimation2()
         NotificationCenter.default.post(name: .navigateDetails, object: nil)
         self.dismiss(animated: true, completion: nil)
+        self.loaderView.isHidden = true
         // Navigate to Details
         
     }
+    
+    @IBAction func openScratchViewAPI(_ sender: Any) {
+        self.scratchSubmissionApi()
+    }
+    
     func playAnimation(){
         animationView = .init(name: "success")
           animationView!.frame = successAnimation.bounds
@@ -104,7 +118,7 @@ class DD_SuccessPopUp: UIViewController, SRScratchViewDelegate {
     }
     
     func scratchCardEraseProgress(eraseProgress: Float) {
-        if eraseProgress > 30.0{
+        if eraseProgress > 0.1{
             self.scratchSubmissionApi()
         }
     }

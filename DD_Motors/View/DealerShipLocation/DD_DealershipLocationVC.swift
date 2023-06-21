@@ -47,19 +47,30 @@ class DD_DealershipLocationVC: BaseViewController, LocationRedirectDelegate, CLL
     var startindex = 0
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.VM.VC = self
-        self.loaderView.isHidden = true
-        self.dealershipLocationTV.delegate = self
-        self.dealershipLocationTV.dataSource = self
-        self.dealershipLocationTV.register(UINib(nibName: "DD_DealershipLocationTVC", bundle: nil), forCellReuseIdentifier: "DD_DealershipLocationTVC")
-        self.dealershipLocationTV.separatorStyle = .none
-        self.dealerListingApi(startIndex: 1)
-        self.VM.dealerShipListArray.removeAll()
+        
+            self.VM.VC = self
+            self.loaderView.isHidden = true
+            self.dealershipLocationTV.delegate = self
+            self.dealershipLocationTV.dataSource = self
+            self.dealershipLocationTV.register(UINib(nibName: "DD_DealershipLocationTVC", bundle: nil), forCellReuseIdentifier: "DD_DealershipLocationTVC")
+            self.dealershipLocationTV.separatorStyle = .none
+            self.dealerListingApi(startIndex: 1)
+            self.VM.dealerShipListArray.removeAll()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
-        self.locationManager.startUpdatingLocation()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.stopLoading()
+        if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
+            DispatchQueue.main.async{
+                let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
+                vc.modalTransitionStyle = .crossDissolve
+                vc.modalPresentationStyle = .overFullScreen
+                self.present(vc, animated: true)
+            }
+        }else{
+            self.locationManager.startUpdatingLocation()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                self.stopLoading()
+            }
         }
     }
     
