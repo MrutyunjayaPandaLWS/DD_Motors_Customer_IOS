@@ -53,6 +53,21 @@ class DD_NotificationVC: BaseViewController, UITableViewDelegate, UITableViewDat
     }
     
     
+    func notificationDeleteApi(PushHistoryIds: Int){
+        let parameters =  [
+                "ActionType":"2",
+                "ActorId":self.userID,
+                "LoyaltyId":self.loyaltyId,
+                "PushHistoryIds":"\(PushHistoryIds)"
+            
+        ] as [String: Any]
+        print(parameters)
+        self.VM.notificationDeleteApi(parameters: parameters) { response in
+            
+        }
+        
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.VM.notificationListArray.count
     }
@@ -65,6 +80,7 @@ class DD_NotificationVC: BaseViewController, UITableViewDelegate, UITableViewDat
         let message = self.VM.notificationListArray[indexPath.row].pushMessage ?? ""
         cell.notificationMessageLbl.text = "\(message)"
         cell.notificationTitleLbl.text = "\(header)"
+        cell.thickMarkImager.isHidden = self.VM.notificationListArray[indexPath.row].isSelected
 
 //        if header.count != 0{
 //            cell.notificationHeader.isHidden = false
@@ -93,7 +109,24 @@ class DD_NotificationVC: BaseViewController, UITableViewDelegate, UITableViewDat
         return cell
 
     }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 80
+//    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.VM.notificationListArray[indexPath.row].isSelected = false
+        let indexpath =  IndexPath(row: indexPath.row, section: 0)
+        self.notificationTableView.reloadRows(at: [indexpath], with: UITableView.RowAnimation.none)
     }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (_, indexPath) in
+            self.notificationDeleteApi(PushHistoryIds: self.VM.notificationListArray[indexPath.row].pushHistoryId ?? 0)
+            self.VM.notificationListArray.remove(at: indexPath.row)
+            self.notificationTableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+        return [deleteAction]
+    }
+    
+    
 }

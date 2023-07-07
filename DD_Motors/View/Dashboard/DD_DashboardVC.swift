@@ -5,6 +5,7 @@
 //  Created by ADMIN on 22/12/2022.
 //
 
+import SDWebImage
 import UIKit
 import ImageSlideshow
 import Lottie
@@ -41,7 +42,7 @@ class DD_DashboardVC: BaseViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
             self.VM.VC = self
-            
+            self.countLbl.isHidden =  true
             myVehicleCollectionView.delegate = self
             myVehicleCollectionView.dataSource = self
             
@@ -77,25 +78,24 @@ class DD_DashboardVC: BaseViewController{
     @objc func goBackToLogin(){
         
         UserDefaults.standard.set(false, forKey: "IsloggedIn?")
-        
         if #available(iOS 13.0, *) {
             DispatchQueue.main.async {
-                let pushID = UserDefaults.standard.string(forKey: "UD_DEVICE_TOKEN") ?? ""
+                let pushID = UserDefaults.standard.string(forKey: "SMSDEVICE_TOKEN") ?? ""
                 let domain = Bundle.main.bundleIdentifier!
                 UserDefaults.standard.removePersistentDomain(forName: domain)
                 UserDefaults.standard.synchronize()
-                UserDefaults.standard.setValue(pushID, forKey: "UD_DEVICE_TOKEN")
+                UserDefaults.standard.setValue(pushID, forKey: "SMSDEVICE_TOKEN")
                 let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
                 sceneDelegate.setInitialViewAsRootViewController()
              //   self.clearTable2()
             }
         } else {
             DispatchQueue.main.async {
-                let pushID = UserDefaults.standard.string(forKey: "UD_DEVICE_TOKEN") ?? ""
+                let pushID = UserDefaults.standard.string(forKey: "SMSDEVICE_TOKEN") ?? ""
                 let domain = Bundle.main.bundleIdentifier!
                 UserDefaults.standard.removePersistentDomain(forName: domain)
                 UserDefaults.standard.synchronize()
-                UserDefaults.standard.setValue(pushID, forKey: "UD_DEVICE_TOKEN")
+                UserDefaults.standard.setValue(pushID, forKey: "SMSDEVICE_TOKEN")
                 if #available(iOS 13.0, *) {
                     let appDelegate = UIApplication.shared.delegate as! AppDelegate
                     appDelegate.setInitialViewAsRootViewController()
@@ -364,7 +364,7 @@ class DD_DashboardVC: BaseViewController{
                     DispatchQueue.main.async {
                         if self.bannerImageCalled == 1{
                             self.bannerImageApi()
-                            self.notificationListApi()
+//                            self.notificationListApi()
                             self.bannerImageCalled = 0
                         }
                         self.userStatusApi()
@@ -393,7 +393,7 @@ class DD_DashboardVC: BaseViewController{
             if self.VM.notificationListArray.count != 0 {
                 DispatchQueue.main.async {
                     self.countLbl.isHidden = false
-                    self.countLbl.text = "\(self.VM.notificationListArray.count ?? 0)"
+                    self.countLbl.text = "\(self.VM.notificationListArray.count )"
                 }
             }else{
                 self.countLbl.isHidden = true
@@ -426,9 +426,11 @@ extension DD_DashboardVC: UICollectionViewDelegate, UICollectionViewDataSource, 
         cell.vehicleCompanyLbl.text = self.VM.vehicleListArray[indexPath.row].categoryName ?? ""
         print(self.VM.vehicleListArray[indexPath.row].imageUrl ?? "", "asdfsadfasfasdfdsa")
         if self.VM.vehicleListArray[indexPath.row].imageUrl ?? "" != ""{
-            let receivedImagePath = URL(string: "\(imageBaseURL)\(self.VM.vehicleListArray[indexPath.row].imageUrl ?? "")")
+            
+            let receivedImagePath = URL(string: "\(PROMO_IMG1)\(self.VM.vehicleListArray[indexPath.row].imageUrl?.dropFirst(2) ?? "")")
             //cell.vehicleImage.kf.setImage(with: receivedImagePath)
-            cell.vehicleImage.kf.setImage(with: URL(string: "\(receivedImagePath)"), placeholder: UIImage(named: "Group 7229"))
+//            cell.vehicleImage.kf.setImage(with: URL(string: "\(String(describing: receivedImagePath))"), placeholder: UIImage(named: "Group 7229"))
+            cell.vehicleImage.sd_setImage(with: receivedImagePath!, placeholderImage: UIImage(named: "Group 7229"))
         }else{
             cell.vehicleImage.image = UIImage(named: "Group 7229")
         }

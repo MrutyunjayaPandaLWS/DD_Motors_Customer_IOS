@@ -375,6 +375,7 @@ extension DD_MyOffersVC: UICollectionViewDelegate, UICollectionViewDataSource{
                     let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_SuccessPopUp") as! DD_SuccessPopUp
                     vc.cardNumber = self.VM.myOffersListArray1[indexPath.row].cardNumber ?? ""
                     vc.offerReferenceID = self.VM.myOffersListArray1[indexPath.row].offerReferenceID ?? ""
+                    vc.selcetedImage = "\(self.VM.myOffersListArray1[indexPath.row].cardImagePath ?? "")"
                     vc.isGiftID = self.VM.myOffersListArray1[indexPath.row].is_Gifited ?? 0
                     vc.offerTitle = self.VM.myOffersListArray1[indexPath.row].giftCardTypeName ?? ""
                     self.cardNumber = Int(self.VM.myOffersListArray1[indexPath.row].cardNumber ?? "") ?? 0
@@ -386,7 +387,7 @@ extension DD_MyOffersVC: UICollectionViewDelegate, UICollectionViewDataSource{
                     
                     let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_SubscribePopUp") as! DD_SubscribePopUp
                     print(self.VM.myOffersListArray1[indexPath.row].offerImage ?? "")
-                    vc.selectedImage = "\(self.VM.myOffersListArray1[indexPath.row].offerImage ?? "")"
+                    vc.selectedImage = "\(self.VM.myOffersListArray1[indexPath.row].cardImagePath ?? "")"
                     vc.modalTransitionStyle = .crossDissolve
                     vc.modalPresentationStyle = .overFullScreen
                     self.present(vc, animated: true)

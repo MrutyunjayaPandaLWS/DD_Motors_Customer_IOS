@@ -9,6 +9,7 @@ import UIKit
 import Lottie
 import SRScratchView
 import CoreData
+import Kingfisher
 class DD_SuccessPopUp: UIViewController, SRScratchViewDelegate {
     
     @IBOutlet weak var loaderAnimation: LottieAnimationView!
@@ -35,6 +36,7 @@ class DD_SuccessPopUp: UIViewController, SRScratchViewDelegate {
     var offerReferenceID = ""
     var offerTitle = ""
     var isGiftID = 0
+    var selcetedImage = ""
     var VM = DD_ScratchSubmissionVM()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +54,8 @@ class DD_SuccessPopUp: UIViewController, SRScratchViewDelegate {
             self.congratulationView.isHidden = false
         }
         self.loaderView.isHidden = true
-        
+        let receivedImagePath = URL(string: "\(PROMO_IMG1)\(selcetedImage.dropFirst(2))")
+        productImage.kf.setImage(with: receivedImagePath)
         self.successAnimation.isHidden = true
         self.infoLbl.text = self.offerTitle
     //    self.offerIdLbl.text = ""

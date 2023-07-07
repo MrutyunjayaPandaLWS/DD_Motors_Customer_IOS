@@ -59,6 +59,7 @@ class DD_LoginVC: BaseViewController,UITextFieldDelegate, TermsandConditionDeleg
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        self.sendOTPBtn.setTitle("Send OTP", for: .normal)
         if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
             DispatchQueue.main.async{
                 let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_IOS_Internet_Check") as! DD_IOS_Internet_Check
@@ -82,20 +83,28 @@ class DD_LoginVC: BaseViewController,UITextFieldDelegate, TermsandConditionDeleg
     override func viewWillAppear(_ animated: Bool) {
         tokendata()
         self.existencyValue = -1
-        self.sendOTPBtn.setTitle("Send OTP", for: .normal)
+//        self.sendOTPBtn.setTitle("Send OTP", for: .normal)
 //        self.mobileNumberTF.text = ""
 //        self.enteredValues = ""
-        self.mainviewHeightConstraint.constant = 250
-        self.checkBoxTopSpaceButton.constant = 20
-        self.enterOTPLbl.isHidden = true
-        self.stackView.isHidden = true
-        self.otpView.isHidden = true
-        self.otpView.clearPin()
-        self.otpView.didFinishCallback = { [weak self] pin in
-            print("The pin entered is \(pin)")
-            self!.enteredValues = pin
-            print(pin)
-            }
+        if self.sendOTPBtn.currentTitle == "Send OTP"{
+//            self.mobileNumberTF.text = ""
+//            self.enteredValues = ""
+            self.mobileNumberTF.isEnabled = true
+            self.mainviewHeightConstraint.constant = 250
+            self.checkBoxTopSpaceButton.constant = 20
+            self.enterOTPLbl.isHidden = true
+            self.stackView.isHidden = true
+            self.otpView.isHidden = true
+            self.otpView.clearPin()
+            self.otpView.didFinishCallback = { [weak self] pin in
+                print("The pin entered is \(pin)")
+                self!.enteredValues = pin
+                print(pin)
+                }
+        }else{
+            mobileNumberTF.isEnabled = false
+        }
+        
     }
     
 
@@ -158,7 +167,9 @@ class DD_LoginVC: BaseViewController,UITextFieldDelegate, TermsandConditionDeleg
                 }
                 
             }else{
-                if self.enteredValues == ""{
+                if self.isSelected != 1{
+                    self.view.makeToast("Please accept Terms and condition", duration: 2.0, position: .center)
+                }else if self.enteredValues == ""{
                     self.view.makeToast("Enter OTP", duration: 2.0, position: .center)
                 }else if "123456" != self.enteredValues{
                     self.view.makeToast("Enter correct OTP", duration: 2.0, position: .center)

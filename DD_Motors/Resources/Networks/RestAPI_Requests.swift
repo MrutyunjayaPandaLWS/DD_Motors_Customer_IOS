@@ -496,5 +496,18 @@ class RestAPI_Requests {
        }
     }
     
+    func notificationDeleteApi(parameters: JSON, completion: @escaping (NotificationDeletModels?, Error?) -> ()) -> URLSessionDataTask? {
+       return client.load(path: historyNotification, method: .post, params: parameters) { data, error in
+           do{
+               if data != nil{
+                   let result1 =  try JSONDecoder().decode(NotificationDeletModels?.self, from: data as! Data)
+                   completion(result1, nil)
+               }
+           }catch{
+               completion(nil, error)
+           }
+       }
+    }
+    
 }
 

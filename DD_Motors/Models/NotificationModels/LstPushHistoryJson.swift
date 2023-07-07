@@ -28,6 +28,7 @@ struct LstPushHistoryJson : Codable {
 	let imagesURL : String?
 	let title : String?
 
+    var isSelected: Bool = true
 	enum CodingKeys: String, CodingKey {
 
 		case pushHistoryId = "pushHistoryId"

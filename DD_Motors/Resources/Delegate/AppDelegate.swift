@@ -13,6 +13,8 @@ import FirebaseCore
 import Firebase
 import UserNotificationsUI
 import FirebaseMessaging
+import FirebaseFirestore
+import FirebaseAuth
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate, MessagingDelegate {
@@ -49,7 +51,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
                 UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             application.registerUserNotificationSettings(settings)
         }
-        FirebaseApp.configure()
         
        //   Messaging.messaging().isAutoInitEnabled = true
           application.registerForRemoteNotifications()
@@ -59,7 +60,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
               print("Error fetching FCM registration token: \(error)")
             } else if let token = token {
               print("FCM registration token: \(token)")
-              UserDefaults.standard.setValue(token, forKey: "UD_DEVICE_TOKEN")
+              UserDefaults.standard.setValue(token, forKey: "SMSDEVICE_TOKEN")
             }
           }
         print("App Launch Screen")
@@ -67,13 +68,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         return true
     }
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let token = deviceToken.map { String(format: "%02.2hhx", $0) }.joined()
         Messaging.messaging().apnsToken = deviceToken
         Messaging.messaging().token { (token, error) in
             if let error = error {
                 print("Error fetching remote instance ID: \(error.localizedDescription)")
             } else if let token = token {
                 print("Token is \(token)")
-                UserDefaults.standard.setValue(token, forKey: "SMSDEVICE_TOKEN")
+                UserDefaults.standard.set(token, forKey: "SMSDEVICE_TOKEN")
+                UserDefaults.standard.synchronize()
             }
         }
     }
@@ -84,11 +87,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
     //MessagingDelegate
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         print("Firebase token: \(fcmToken ?? "")")
-//        UserDefaults.standard.setValue(fcmToken ?? "", forKey: "SMSDEVICE_TOKEN")
+        UserDefaults.standard.setValue(fcmToken ?? "", forKey: "SMSDEVICE_TOKEN")
 
     }
         
     func setHomeAsRootViewController(){
+        FirebaseApp.configure()
+        Messaging.messaging().delegate = self
         let leftVC = storyboard.instantiateViewController(withIdentifier: "DD_SidemenuVC") as! DD_SidemenuVC
         let homeVC = storyboard.instantiateViewController(withIdentifier: "DD_TabbarVC") as! DD_TabbarVC
         slider = SlideMenuController(mainViewController: homeVC, leftMenuViewController: leftVC)
@@ -98,6 +103,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         window?.makeKeyAndVisible()
     }
     func setInitialViewAsRootViewController(){
+        FirebaseApp.configure()
+        Messaging.messaging().delegate = self
         let mainStoryboard = UIStoryboard(name: "Main" , bundle: nil)
         let initialVC = mainStoryboard.instantiateViewController(withIdentifier: "DD_LoginVC") as! DD_LoginVC
         nav = UINavigationController(rootViewController: initialVC)

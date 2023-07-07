@@ -77,11 +77,12 @@ class DD_SidemenuVC: BaseViewController {
         self.closeLeft()
     }
     @objc func deletedAccount(){
-        
+        let pushIDData = UserDefaults.standard.string(forKey: "SMSDEVICE_TOKEN") ?? ""
         UserDefaults.standard.set(false, forKey: "IsloggedIn?")
 //        self.clearTable()
         let domain = Bundle.main.bundleIdentifier!
         UserDefaults.standard.removePersistentDomain(forName: domain)
+        UserDefaults.standard.setValue(pushIDData, forKey: "SMSDEVICE_TOKEN")
         UserDefaults.standard.synchronize()
         if #available(iOS 13.0, *) {
             let sceneDelegate = self.view.window?.windowScene?.delegate as? SceneDelegate
@@ -156,22 +157,22 @@ class DD_SidemenuVC: BaseViewController {
             
             if #available(iOS 13.0, *) {
                 DispatchQueue.main.async {
-                    let pushID = UserDefaults.standard.string(forKey: "UD_DEVICE_TOKEN") ?? ""
+                    let pushID = UserDefaults.standard.string(forKey: "SMSDEVICE_TOKEN") ?? ""
                     let domain = Bundle.main.bundleIdentifier!
                     UserDefaults.standard.removePersistentDomain(forName: domain)
                     UserDefaults.standard.synchronize()
-                    UserDefaults.standard.setValue(pushID, forKey: "UD_DEVICE_TOKEN")
+                    UserDefaults.standard.setValue(pushID, forKey: "SMSDEVICE_TOKEN")
                     let sceneDelegate = self.view.window?.windowScene?.delegate as! SceneDelegate
                     sceneDelegate.setInitialViewAsRootViewController()
                     //   self.clearTable2()
                 }
             } else {
                 DispatchQueue.main.async {
-                    let pushID = UserDefaults.standard.string(forKey: "UD_DEVICE_TOKEN") ?? ""
+                    let pushID = UserDefaults.standard.string(forKey: "SMSDEVICE_TOKEN") ?? ""
                     let domain = Bundle.main.bundleIdentifier!
                     UserDefaults.standard.removePersistentDomain(forName: domain)
                     UserDefaults.standard.synchronize()
-                    UserDefaults.standard.setValue(pushID, forKey: "UD_DEVICE_TOKEN")
+                    UserDefaults.standard.setValue(pushID, forKey: "SMSDEVICE_TOKEN")
                     if #available(iOS 13.0, *) {
                         let appDelegate = UIApplication.shared.delegate as! AppDelegate
                         appDelegate.setInitialViewAsRootViewController()

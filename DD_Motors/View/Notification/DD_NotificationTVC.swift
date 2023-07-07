@@ -9,6 +9,7 @@ import UIKit
 
 class DD_NotificationTVC: UITableViewCell {
 
+    @IBOutlet weak var thickMarkImager: UIImageView!
     @IBOutlet weak var notificationMessageLbl: UILabel!
     @IBOutlet weak var notificationTitleLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!

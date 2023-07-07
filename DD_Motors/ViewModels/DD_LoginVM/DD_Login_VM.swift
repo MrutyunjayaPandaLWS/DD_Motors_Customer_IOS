@@ -59,6 +59,9 @@ class DD_Login_VM {
                             self.timer.invalidate()
                             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_RegisterVC") as! DD_RegisterVC
                             vc.enteredMobileNumber = Int(self.VC?.mobileNumberTF.text ?? "")!
+                            self.VC?.sendOTPBtn.setTitle("Send OTP", for: .normal)
+                            self.VC?.mobileNumberTF.text = ""
+                            self.VC?.enteredValues = ""
                             self.VC!.navigationController?.pushViewController(vc, animated: true)
                             
                         }
@@ -163,6 +166,7 @@ class DD_Login_VM {
             self.VC?.enteredValues = ""
             self.timer.invalidate()
             self.VC?.timerLbl.text = "00:59"
+            self.VC?.mobileNumberTF.isEnabled = false
             self.VC?.mainviewHeightConstraint.constant = 320
             self.VC?.enterOTPLbl.isHidden = false
             self.VC?.stackView.isHidden = false

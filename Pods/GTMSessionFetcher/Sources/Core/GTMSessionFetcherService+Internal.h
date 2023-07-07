@@ -25,6 +25,5 @@
     (nonnull NS_NOESCAPE GTMSessionFetcherSessionCreationBlock)creationBlock;
 - (nullable id<NSURLSessionDelegate>)sessionDelegate;
 - (nullable NSDate *)stoppedAllFetchersDate;
-- (void)fetcherDidStop:(nonnull GTMSessionFetcher *)fetcher callbacksPending: (BOOL)callbacksPending;
 
 @end
