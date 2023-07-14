@@ -63,7 +63,7 @@ class DD_MyOffersDetailsVM {
                                     self.VC?.redeemButton.isHidden = false
                                 }
                             }else{
-                                if "\(redeemedStatus[1])" == "1" && self.myOffersListArray[0].expiry ?? 0 == 1{
+                                if "\(redeemedStatus[1])" == "1" || (self.myOffersListArray[0].expiry ?? 0) == 1{
                                     self.VC?.redeemButton.isHidden = true
                                 }else{
                                     self.VC?.redeemButton.isHidden = false

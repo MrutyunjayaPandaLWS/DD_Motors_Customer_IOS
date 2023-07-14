@@ -66,6 +66,9 @@ class DD_DashboardVC: BaseViewController{
                 self.present(vc, animated: true)
             }
         }else{
+            if self.VM.sourceArray.isEmpty{
+                self.bannerImageApi()
+            }
             self.slideMenuController()?.closeLeft()
             self.loaderView.isHidden = false
             self.playAnimation2()
@@ -271,7 +274,7 @@ class DD_DashboardVC: BaseViewController{
     }
     
     func ImageSetups(){
-        self.sourceArray.removeAll()
+        self.VM.sourceArray.removeAll()
         if self.bannerImagesArray.count > 0 {
             for image in self.bannerImagesArray {
                     print(image.imageGalleryUrl,"ImageURL")
@@ -291,6 +294,8 @@ class DD_DashboardVC: BaseViewController{
         }
     func dashboardBannerImageApi(parameter: JSON){
         self.startLoading()
+        self.bannerImagesArray.removeAll()
+        
         self.requestAPIs.dashboardBannerImageListApi(parameters: parameter) { (result, error) in
             if error == nil{
                 if result != nil{
@@ -363,8 +368,8 @@ class DD_DashboardVC: BaseViewController{
                         UserDefaults.standard.setValue(parseddata.access_token ?? "", forKey: "TOKEN")
                     DispatchQueue.main.async {
                         if self.bannerImageCalled == 1{
-                            self.bannerImageApi()
-//                            self.notificationListApi()
+//                            self.bannerImageApi()
+                            self.notificationListApi()
                             self.bannerImageCalled = 0
                         }
                         self.userStatusApi()
@@ -393,7 +398,8 @@ class DD_DashboardVC: BaseViewController{
             if self.VM.notificationListArray.count != 0 {
                 DispatchQueue.main.async {
                     self.countLbl.isHidden = false
-                    self.countLbl.text = "\(self.VM.notificationListArray.count )"
+                    self.countLbl.text = ""
+//                    self.countLbl.text = "\(self.VM.notificationListArray.count )"
                 }
             }else{
                 self.countLbl.isHidden = true

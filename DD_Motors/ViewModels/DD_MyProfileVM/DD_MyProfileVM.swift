@@ -35,6 +35,7 @@ class DD_MyProfileVM{
                         self.VC?.cityTF.text = profileDetails[0].cityName ?? "Select City"
                         self.VC?.pinCodeTF.text = profileDetails[0].zip ?? ""
                         self.VC?.addressID = "\(profileDetails[0].addressId ?? 0)"
+                        self.VC?.locationID = "\(profileDetails[0].locationId ?? 0)"
                         //print(String(profileDetails[0].jdob ?? ""))
                         let dob = String(profileDetails[0].jdob ?? "").split(separator: " ")
                         if dob.count != 0 {

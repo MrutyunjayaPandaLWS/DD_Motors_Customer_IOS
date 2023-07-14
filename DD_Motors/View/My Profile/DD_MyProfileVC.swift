@@ -72,6 +72,7 @@ class DD_MyProfileVC: BaseViewController, SelectedItemDelegate, DateSelectedDele
     let customerId = UserDefaults.standard.string(forKey: "CustomerId") ?? ""
     let merchantID = UserDefaults.standard.string(forKey: "MerchantID") ?? ""
     var addressID = ""
+    var locationID = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         if MyCommonFunctionalUtilities.isInternetCallTheApi() == false{
@@ -99,6 +100,7 @@ class DD_MyProfileVC: BaseViewController, SelectedItemDelegate, DateSelectedDele
             self.cityBtn.isHidden = false
             self.stateButton.isEnabled = false
             self.cityBtn.isEnabled = false
+            self.dobBtn.isEnabled = false
             
             self.profileNameLbl.text = self.profileName
             self.mobileNumberLbl.text = self.mobileNumber
@@ -128,6 +130,7 @@ class DD_MyProfileVC: BaseViewController, SelectedItemDelegate, DateSelectedDele
                 self.dobBtn.isHidden = false
                 self.stateButton.isEnabled = true
                 self.cityBtn.isEnabled = true
+                self.dobBtn.isEnabled = true
             }else if self.editOutBtn.currentTitle == "Save Changes"{
                 // Api Call
                 
@@ -164,6 +167,7 @@ class DD_MyProfileVC: BaseViewController, SelectedItemDelegate, DateSelectedDele
                         "ActorId": "\(self.userID)",
                         "ObjCustomerJson": [
                             "Address1": "\(self.addressTF.text ?? "")",
+                            "LocationId": "\(locationID)",
                             "cityid": "\(self.selectedCityId)",
                             "CountryId": 15,
                             "CustomerId": "\(self.customerId)",

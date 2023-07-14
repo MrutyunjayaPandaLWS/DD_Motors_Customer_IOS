@@ -7,12 +7,20 @@
 
 import UIKit
 
+protocol NotificationDelegate{
+    func didTappedImageBtn(imageName: String)
+    
+}
 class DD_NotificationTVC: UITableViewCell {
 
+    @IBOutlet weak var imageBtn: UIButton!
+    @IBOutlet weak var notificationImage: UIImageView!
     @IBOutlet weak var thickMarkImager: UIImageView!
     @IBOutlet weak var notificationMessageLbl: UILabel!
     @IBOutlet weak var notificationTitleLbl: UILabel!
     @IBOutlet weak var timeLbl: UILabel!
+    var delegate: NotificationDelegate?
+    var imageName: String = ""
     override func awakeFromNib() {
         super.awakeFromNib()
         self.selectionStyle = .none
@@ -24,4 +32,9 @@ class DD_NotificationTVC: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func didTappedImageBtn(_ sender: Any) {
+        if imageName != ""{
+        delegate?.didTappedImageBtn(imageName: imageName)
+        }
+    }
 }

@@ -24,7 +24,7 @@ class DD_SubscriptionDropDownVM {
                         print(response, "asdfhjasdhfasdhjfasdf")
                         print(self.VC!.loyaltyId)
                         if response != "-1" {
-                            if "\(response)" == self.VC!.loyaltyId{
+                            if "\(response)".contains(self.VC!.loyaltyId){
                                 self.VC!.selectedTitle = ""
                                 let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_SubscriptionSuccessPopUp") as! DD_SubscriptionSuccessPopUp
                                 vc.modalTransitionStyle = .coverVertical

@@ -123,9 +123,12 @@ class DD_MyOffersVM {
                     
                         self.VC?.loaderView.isHidden = true
                         self.VC?.stopLoading()
-                        self.myOffersCategoryListArray.append(MyCategoryListModels(attributeId: -1, attributeValue: "All", attributeType: "OFFER_REDEEMED_TYPE"))
+//                        self.myOffersCategoryListArray.append(MyCategoryListModels(attributeId: -1, attributeValue: "All", attributeType: "OFFER_REDEEMED_TYPE"))
+                        self.myOffersCategoryListArray.append(MyCategoryListModels(attributeId: -1, attributeValue: "All", attributeType: "OFFER_EARNED_TYPE"))
+//                        OFFER_EARNEND_TYPE
                         for data in result?.lstAttributesDetails ?? []{
-                            if data.attributeType ?? "" == "OFFER_REDEEMED_TYPE"{
+//                            if data.attributeType ?? "" == "OFFER_REDEEMED_TYPE"{
+                            if data.attributeType ?? "" == "OFFER_EARNED_TYPE"{
                                 self.myOffersCategoryListArray.append(MyCategoryListModels(attributeId: data.attributeId ?? 0, attributeValue: data.attributeValue ?? "", attributeType: data.attributeType ?? ""))
                             }
                         }

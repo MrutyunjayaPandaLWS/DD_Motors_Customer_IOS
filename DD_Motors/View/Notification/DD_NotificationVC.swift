@@ -6,9 +6,20 @@
 //
 
 import UIKit
+import Kingfisher
 
-class DD_NotificationVC: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+class DD_NotificationVC: BaseViewController, UITableViewDelegate, UITableViewDataSource, NotificationDelegate {
+    func didTappedImageBtn(imageName: String) {
+        expandedview.isHidden =  false
+        notificationImage.kf.setImage(with: URL(string: "\(PROMO_IMG1)\(imageName.dropFirst())"), placeholder: UIImage(named: "no_image1.jpg"))
+        let angleInRadians = CGFloat.pi / 2
+        notificationImage.transform = CGAffineTransform(rotationAngle: angleInRadians)
+        notificationImage.contentMode = .scaleAspectFit
+    }
+    
 
+    @IBOutlet weak var notificationImage: UIImageView!
+    @IBOutlet weak var expandedview: UIView!
     @IBOutlet weak var notificationTableView: UITableView!
     @IBOutlet weak var noDataFound: UILabel!
     
@@ -22,10 +33,16 @@ class DD_NotificationVC: BaseViewController, UITableViewDelegate, UITableViewDat
         self.notificationTableView.dataSource = self
         notificationListApi()
     }
-
+//    LaunchImage
     @IBAction func backBtn(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
+    
+    
+    @IBAction func didTappedBackBtn(_ sender: UIButton) {
+        expandedview.isHidden = true
+    }
+    
     
     
     func notificationListApi(){
@@ -81,31 +98,14 @@ class DD_NotificationVC: BaseViewController, UITableViewDelegate, UITableViewDat
         cell.notificationMessageLbl.text = "\(message)"
         cell.notificationTitleLbl.text = "\(header)"
         cell.thickMarkImager.isHidden = self.VM.notificationListArray[indexPath.row].isSelected
-
-//        if header.count != 0{
-//            cell.notificationHeader.isHidden = false
-//            cell.notificationHeader.text = header
-//        }else{
-//            cell.notificationHeader.isHidden = true
-//        }
-//        if message.count != 0{
-//            cell.notificationMessage.isHidden = false
-//            cell.notificationMessage.text = message
-//        }else{
-//            cell.notificationMessage.isHidden = true
-//        }
-        
-        
-//        cell.notificationImg.sd_setImage(with: URL(string: PROMO_IMG + receivedImage), placeholderImage: UIImage(named: "no_image1.jpg"))
-//        let receivedImage = String(self.VM.notificationListArray[indexPath.row].imagesURL ?? "")
-//        if  receivedImage != ""{
-//            cell.imageView1.isHidden = false
-//            cell.notificationImg.kf.setImage(with: URL(string: "\(Promo_ImageData)\(receivedImage.dropFirst(1))"), placeholder: UIImage(named: "no_image1.jpg"))
-//        }else{
-//            cell.imageView1.isHidden = true
-//        }
-//        cell.imageUrl = receivedImage
-//        cell.delegate = self
+        let receivedImage = String(self.VM.notificationListArray[indexPath.row].imagesURL ?? "")
+        if  receivedImage != ""{
+            cell.notificationImage.kf.setImage(with: URL(string: "\(PROMO_IMG1)\(receivedImage.dropFirst())"), placeholder: UIImage(named: "no_image1.jpg"))
+        }else{
+            cell.notificationImage.image = UIImage(named: "LaunchImage")
+        }
+        cell.imageName = receivedImage
+        cell.delegate = self
         return cell
 
     }
@@ -126,6 +126,10 @@ class DD_NotificationVC: BaseViewController, UITableViewDelegate, UITableViewDat
             self.notificationTableView.deleteRows(at: [indexPath], with: .automatic)
         }
         return [deleteAction]
+    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        
     }
     
     

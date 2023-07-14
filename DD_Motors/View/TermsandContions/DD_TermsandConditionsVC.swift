@@ -7,11 +7,12 @@
 
 import UIKit
 import Lottie
+import WebKit
 class DD_TermsandConditionsVC: UIViewController {
     
     @IBOutlet weak var loaderView: UIView!
-    @IBOutlet var webView: UIWebView!
-    @IBOutlet weak var loaderAnimation: LottieAnimationView! 
+    @IBOutlet weak var webView: WKWebView!
+    @IBOutlet weak var loaderAnimation: LottieAnimationView!
     private var loaderAnimationView : LottieAnimationView?
     var tcListingArray = [LstTermsAndCondition]()
     var requestAPIs = RestAPI_Requests()

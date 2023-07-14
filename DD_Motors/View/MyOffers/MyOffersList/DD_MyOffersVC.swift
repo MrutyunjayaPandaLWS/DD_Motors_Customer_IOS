@@ -150,6 +150,7 @@ class DD_MyOffersVC: BaseViewController, InfoDelegate {
             "PageSize": 20,
             "StatusId": self.statusId
         ] as [String: Any]
+        
         print(parameter)
         self.VM.myOffersListApi(parameter: parameter)
     }
