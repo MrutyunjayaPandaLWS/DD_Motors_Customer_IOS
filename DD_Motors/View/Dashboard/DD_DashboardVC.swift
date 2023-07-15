@@ -30,6 +30,9 @@ class DD_DashboardVC: BaseViewController{
     @IBOutlet weak var emptyBannerImage: UIImageView!
     @IBOutlet weak var emptyVehicleAnimation: LottieAnimationView!
     @IBOutlet weak var myVehicleCollectionView: UICollectionView!
+    @IBOutlet weak var maintenanceView: UIView!
+    @IBOutlet weak var underMaintenance: LottieAnimationView!
+    
     private var animationView: LottieAnimationView?
     private var loaderAnimationView : LottieAnimationView?
     let userID = UserDefaults.standard.string(forKey: "UserID") ?? ""
@@ -45,7 +48,7 @@ class DD_DashboardVC: BaseViewController{
             self.countLbl.isHidden =  true
             myVehicleCollectionView.delegate = self
             myVehicleCollectionView.dataSource = self
-            
+        self.maintenanceView.isHidden = true
             let collectionViewFLowLayout = UICollectionViewFlowLayout()
             
             collectionViewFLowLayout.itemSize = CGSize(width: (self.view.bounds.width - 10 - (self.myVehicleCollectionView.contentInset.left + self.myVehicleCollectionView.contentInset.right)) / 2, height: 210)
@@ -74,6 +77,8 @@ class DD_DashboardVC: BaseViewController{
             self.playAnimation2()
             self.bannerImageCalled = 1
             self.tokendata()
+            self.maintenanceAPI()
+            self.isUpdateAvailable()
         }
         
     }
@@ -330,6 +335,95 @@ class DD_DashboardVC: BaseViewController{
             }
         }
     }
+    
+    
+    func playAnimationMaintanace(){
+        animationView = .init(name: "27592-maintenance")
+        animationView!.frame = underMaintenance.bounds
+          // 3. Set animation content mode
+        animationView!.contentMode = .scaleAspectFit
+          // 4. Set animation loop mode
+        animationView!.loopMode = .loop
+          // 5. Adjust animation speed
+        animationView!.animationSpeed = 1
+        underMaintenance.addSubview(animationView!)
+          // 6. Play animation
+        animationView!.play()
+
+    }
+    
+    func isUpdateAvailable() {
+        let bundleId = Bundle.main.infoDictionary!["CFBundleIdentifier"] as! String
+        print(bundleId)
+        Alamofire.request("https://itunes.apple.com/in/lookup?bundleId=\(bundleId)").responseJSON { response in
+            if let json = response.result.value as? NSDictionary, let results = json["results"] as? NSArray, let entry = results.firstObject as? NSDictionary, let appStoreVersion = entry["version"] as? String,let appstoreid = entry["trackId"], let trackUrl = entry["trackViewUrl"], let installedVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                let installed = Int(installedVersion.replacingOccurrences(of: ".", with: "")) ?? 0
+                print(installed)
+                let appStore = Int(appStoreVersion.replacingOccurrences(of: ".", with: "")) ?? 0
+                print(appStore)
+                print(appstoreid)
+                if appStore>installed {
+                        let alertController = UIAlertController(title: "New update Available!", message: "Update is available to download. Downloading the latest update you will get the latest features, improvements and bug fixes of DD Motors Connect App", preferredStyle: .alert)
+
+                        // Create the actions
+                        let okAction = UIAlertAction(title: "Update Now", style: UIAlertAction.Style.default) {
+                            UIAlertAction in
+                            UIApplication.shared.openURL(NSURL(string: "\(trackUrl)")! as URL)
+
+                        }
+                        //                     Add the actions
+                        alertController.addAction(okAction)
+                        // Present the controller
+                        self.present(alertController, animated: true, completion: nil)
+
+                }else{
+                    print("no updates")
+
+                }
+            }
+        }
+    }
+    
+    func maintenanceAPI(){
+        guard let url = URL(string: "http://appupdate.arokiait.com/updates/serviceget?pid=com.loyaltyWorks.DD-MotorsService") else {return}
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let dataResponse = data,
+                  error == nil else {
+                print(error?.localizedDescription ?? "Response Error")
+                return }
+            do{
+                //here dataResponse received from a network request
+                let jsonResponse = try JSONSerialization.jsonObject(with:dataResponse, options: [])
+                print(jsonResponse)
+                let isMaintenanceValue = ((jsonResponse as AnyObject).value(forKeyPath: "Result.is_maintenance") as? String)
+                let forceupdatevalue = ((jsonResponse as AnyObject).value(forKeyPath: "Result.version_number") as? String)
+                print(forceupdatevalue)
+                if isMaintenanceValue == "1"{
+                    print(isMaintenanceValue)
+                    DispatchQueue.main.async {
+                        self.maintenanceView.isHidden = false
+                        self.playAnimationMaintanace()
+                        self.tabBarController?.tabBar.isHidden = true
+
+                    }
+                }else if isMaintenanceValue == "0"{
+                    DispatchQueue.main.async {
+                        self.tokendata()
+                        self.animationView?.stop()
+                        self.tabBarController?.tabBar.isHidden = false
+                    }
+                }
+            } catch let parsingError {
+                print("Error", parsingError)
+            }
+        }
+        task.resume()
+    }
+    
+    
+    
+    
+    
     @objc func didTap() {
         if self.bannerImagesArray.count > 0 {
             

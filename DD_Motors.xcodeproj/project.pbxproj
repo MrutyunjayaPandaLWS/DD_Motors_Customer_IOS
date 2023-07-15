@@ -85,6 +85,7 @@
 		84769373295B0858008DD594 /* HelpTopicModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84769371295B0858008DD594 /* HelpTopicModels.swift */; };
 		84769374295B0858008DD594 /* ObjHelpTopicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84769372295B0858008DD594 /* ObjHelpTopicList.swift */; };
 		84769382295B0FDF008DD594 /* DD_DashBoardVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84769381295B0FDF008DD594 /* DD_DashBoardVM.swift */; };
+		84804A672A62A4D000AADFBB /* 27592-maintenance.json in Resources */ = {isa = PBXBuildFile; fileRef = 84804A662A62A4D000AADFBB /* 27592-maintenance.json */; };
 		8486BD8E29C9766C0072A1AE /* Payments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BD8829C9766B0072A1AE /* Payments.swift */; };
 		8486BD8F29C9766C0072A1AE /* Order_meta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BD8929C9766B0072A1AE /* Order_meta.swift */; };
 		8486BD9029C9766C0072A1AE /* Settlements.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BD8A29C9766C0072A1AE /* Settlements.swift */; };
@@ -343,6 +344,7 @@
 		84769371295B0858008DD594 /* HelpTopicModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpTopicModels.swift; sourceTree = "<group>"; };
 		84769372295B0858008DD594 /* ObjHelpTopicList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjHelpTopicList.swift; sourceTree = "<group>"; };
 		84769381295B0FDF008DD594 /* DD_DashBoardVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_DashBoardVM.swift; sourceTree = "<group>"; };
+		84804A662A62A4D000AADFBB /* 27592-maintenance.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "27592-maintenance.json"; sourceTree = "<group>"; };
 		8486BD8829C9766B0072A1AE /* Payments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payments.swift; sourceTree = "<group>"; };
 		8486BD8929C9766B0072A1AE /* Order_meta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order_meta.swift; sourceTree = "<group>"; };
 		8486BD8A29C9766C0072A1AE /* Settlements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settlements.swift; sourceTree = "<group>"; };
@@ -1314,6 +1316,7 @@
 				25F1700B298B7A8500A02535 /* 69030-confetti-full-screen.json */,
 				8498EC0E29542E2E0019A0D5 /* lf30_editor_1i2qyxs4.json */,
 				8498EC1029542E2E0019A0D5 /* lf30_editor_3bdwnbyb.json */,
+				84804A662A62A4D000AADFBB /* 27592-maintenance.json */,
 				8498EC0F29542E2E0019A0D5 /* lf30_editor_besjzwv5.json */,
 				8498EC1129542E2F0019A0D5 /* lf30_editor_jh47f7lt (1).json */,
 				8498EC0D29542E2D0019A0D5 /* lf30_editor_qd1wdceq.json */,
@@ -1790,6 +1793,7 @@
 				84B3FC7B295C3DF40090563D /* senderInfoTableViewCell.xib in Resources */,
 				84F33FFC2956D1BB00B1E428 /* DD_SubscriptionHistoryTVC.xib in Resources */,
 				8498EC1329542E2F0019A0D5 /* lf30_editor_1i2qyxs4.json in Resources */,
+				84804A672A62A4D000AADFBB /* 27592-maintenance.json in Resources */,
 				8493F47E297A953C0005D4E0 /* loader.json in Resources */,
 				8498EC1429542E2F0019A0D5 /* lf30_editor_besjzwv5.json in Resources */,
 				84B3FC56295C0C710090563D /* 81860-car-and-skylines.json in Resources */,
@@ -2135,7 +2139,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.DD-MotorsService.NotificationService";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "DDMotors-NotificationService-AdHoc";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "DDMotors-NotificationService-Appstore";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -2167,7 +2171,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.DD-MotorsService.NotificationService";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "DDMotors-NotificationService-AdHoc";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "DDMotors-NotificationService-Appstore";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -2324,7 +2328,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.DD-MotorsService";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = DD_Motors_AdHoc;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = DD_Motors_AppStore;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2366,7 +2370,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.DD-MotorsService";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = DD_Motors_AdHoc;
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = DD_Motors_AppStore;
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

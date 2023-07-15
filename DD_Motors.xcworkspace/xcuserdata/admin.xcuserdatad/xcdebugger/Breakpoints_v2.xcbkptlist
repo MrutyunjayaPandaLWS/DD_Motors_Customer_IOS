@@ -160,6 +160,21 @@
                   endingLineNumber = "172"
                   offsetFromSymbolStart = "724">
                </Location>
+               <Location
+                  uuid = "3CC4BE1B-9D6F-43F5-B24D-2520F7D2CFE3 - 4492ed0a501456ab"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DD_Motors.DD_MyOffersVC.didTapButton(DD_Motors.DD_MyOffersCVC) -&gt; ()"
+                  moduleName = "DD_Motors"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/LWS_Projects/DD_Motors_Customer_IOS/DD_Motors/View/MyOffers/MyOffersList/DD_MyOffersVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "172"
+                  endingLineNumber = "172"
+                  offsetFromSymbolStart = "744">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>

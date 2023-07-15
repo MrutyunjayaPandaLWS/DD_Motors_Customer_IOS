@@ -3288,21 +3288,70 @@
                                     <constraint firstItem="hyk-BR-Jai" firstAttribute="centerX" secondItem="g1y-em-SVk" secondAttribute="centerX" id="Jyg-hH-ZtG"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P2F-Wy-Szg">
+                                <rect key="frame" x="0.0" y="59" width="393" height="908"/>
+                                <subviews>
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S1Y-qr-lvg">
+                                        <rect key="frame" x="46.666666666666657" y="304" width="300" height="300"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unfortunately the app is down for maintenance right now. But soon we will be up and app will shine again." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N52-0j-XfG">
+                                                <rect key="frame" x="5" y="215" width="290" height="80"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="80" id="lhk-hg-iac"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ox-B8-jAB" customClass="LottieAnimationView" customModule="Lottie">
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="215"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="300" id="5zb-rK-dqz"/>
+                                            <constraint firstItem="5ox-B8-jAB" firstAttribute="leading" secondItem="S1Y-qr-lvg" secondAttribute="leading" id="A1w-Us-HRy"/>
+                                            <constraint firstItem="N52-0j-XfG" firstAttribute="top" secondItem="5ox-B8-jAB" secondAttribute="bottom" id="Irz-11-gxi"/>
+                                            <constraint firstAttribute="bottom" secondItem="N52-0j-XfG" secondAttribute="bottom" constant="5" id="QoQ-TN-hxt"/>
+                                            <constraint firstAttribute="trailing" secondItem="5ox-B8-jAB" secondAttribute="trailing" id="RxY-h4-gMc"/>
+                                            <constraint firstItem="5ox-B8-jAB" firstAttribute="top" secondItem="S1Y-qr-lvg" secondAttribute="top" id="SpQ-gJ-IB9"/>
+                                            <constraint firstItem="N52-0j-XfG" firstAttribute="leading" secondItem="S1Y-qr-lvg" secondAttribute="leading" constant="5" id="bl7-No-qdC"/>
+                                            <constraint firstAttribute="trailing" secondItem="N52-0j-XfG" secondAttribute="trailing" constant="5" id="fUx-dY-KkZ"/>
+                                            <constraint firstAttribute="width" constant="300" id="qnY-6w-s8z"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.002352862057" green="0.0056511614630000003" blue="0.01090872408" alpha="0.31534561259999999" colorSpace="custom" customColorSpace="displayP3"/>
+                                <constraints>
+                                    <constraint firstItem="S1Y-qr-lvg" firstAttribute="centerX" secondItem="P2F-Wy-Szg" secondAttribute="centerX" id="2p8-S7-OQY"/>
+                                    <constraint firstItem="S1Y-qr-lvg" firstAttribute="centerY" secondItem="P2F-Wy-Szg" secondAttribute="centerY" id="geQ-pR-y9f"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dQb-X3-eDK"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="bs6-2p-5YO" firstAttribute="leading" secondItem="dQb-X3-eDK" secondAttribute="leading" id="3GM-F6-MOX"/>
                             <constraint firstItem="dQb-X3-eDK" firstAttribute="bottom" secondItem="g1y-em-SVk" secondAttribute="bottom" id="9sM-3b-FXn"/>
+                            <constraint firstItem="P2F-Wy-Szg" firstAttribute="leading" secondItem="dQb-X3-eDK" secondAttribute="leading" id="DtX-Gp-0l6"/>
                             <constraint firstItem="bs6-2p-5YO" firstAttribute="height" secondItem="K0U-x2-f8u" secondAttribute="height" multiplier="0.0780234" id="FnC-b2-WIA"/>
                             <constraint firstItem="dQb-X3-eDK" firstAttribute="bottom" secondItem="Qgk-DD-OEu" secondAttribute="bottom" id="Hcq-1X-h66"/>
                             <constraint firstItem="bs6-2p-5YO" firstAttribute="top" secondItem="dQb-X3-eDK" secondAttribute="top" id="IHW-nu-Sa2"/>
                             <constraint firstItem="g1y-em-SVk" firstAttribute="top" secondItem="dQb-X3-eDK" secondAttribute="top" id="III-Cs-nHZ"/>
                             <constraint firstItem="g1y-em-SVk" firstAttribute="leading" secondItem="dQb-X3-eDK" secondAttribute="leading" id="O6d-ZN-0kc"/>
                             <constraint firstItem="dQb-X3-eDK" firstAttribute="trailing" secondItem="bs6-2p-5YO" secondAttribute="trailing" id="YU7-xa-qD6"/>
+                            <constraint firstAttribute="bottom" secondItem="P2F-Wy-Szg" secondAttribute="bottom" constant="-100" id="ZN5-DM-bcf"/>
                             <constraint firstItem="dQb-X3-eDK" firstAttribute="trailing" secondItem="Qgk-DD-OEu" secondAttribute="trailing" id="c1i-Vb-ZYe"/>
+                            <constraint firstItem="dQb-X3-eDK" firstAttribute="trailing" secondItem="P2F-Wy-Szg" secondAttribute="trailing" id="lAM-iF-AkZ"/>
                             <constraint firstItem="Qgk-DD-OEu" firstAttribute="leading" secondItem="dQb-X3-eDK" secondAttribute="leading" id="nBA-Ey-R5m"/>
                             <constraint firstItem="Qgk-DD-OEu" firstAttribute="top" secondItem="bs6-2p-5YO" secondAttribute="bottom" id="s00-wj-Dl5"/>
+                            <constraint firstItem="P2F-Wy-Szg" firstAttribute="top" secondItem="dQb-X3-eDK" secondAttribute="top" id="vte-Pr-Wjv"/>
                             <constraint firstItem="dQb-X3-eDK" firstAttribute="trailing" secondItem="g1y-em-SVk" secondAttribute="trailing" id="yem-i5-wpa"/>
                         </constraints>
                     </view>
@@ -3315,10 +3364,12 @@
                         <outlet property="emptyVehicleAnimation" destination="Qpb-ut-NL7" id="xJ7-19-cHG"/>
                         <outlet property="loaderAnimation" destination="hyk-BR-Jai" id="s6L-0Q-F3d"/>
                         <outlet property="loaderView" destination="g1y-em-SVk" id="0Sv-se-HtH"/>
+                        <outlet property="maintenanceView" destination="P2F-Wy-Szg" id="OGU-O0-0vZ"/>
                         <outlet property="memberShipIdLbl" destination="AAT-qu-9EE" id="4jq-JH-qCN"/>
                         <outlet property="myVehicelLbl" destination="9Pc-yp-apH" id="QLm-nY-gWu"/>
                         <outlet property="myVehicleCollectionView" destination="Udz-ox-YI6" id="gJf-Vh-a30"/>
                         <outlet property="profileImage" destination="AYz-X4-iUJ" id="6DC-Io-ZSP"/>
+                        <outlet property="underMaintenance" destination="5ox-B8-jAB" id="Twd-Ln-bKs"/>
                         <outlet property="userNameLbl" destination="ICu-PS-1l5" id="K5U-k7-K83"/>
                         <outlet property="vehicleView" destination="6eV-Rk-9hY" id="CHs-2M-7yo"/>
                         <outlet property="watchSpaceLbl" destination="x4b-BZ-gwJ" id="epA-mU-Omz"/>
@@ -7965,6 +8016,7 @@
         </designable>
         <designable name="38c-cZ-XQ6"/>
         <designable name="3nP-2b-Q43"/>
+        <designable name="5ox-B8-jAB"/>
         <designable name="9XB-qa-8gr"/>
         <designable name="9xs-wq-PtO"/>
         <designable name="Dkp-EB-pmE">
