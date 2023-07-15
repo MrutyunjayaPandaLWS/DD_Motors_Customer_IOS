@@ -21,6 +21,7 @@ class DD_MyOffersVC: BaseViewController, InfoDelegate {
     
     @IBOutlet weak var loaderView: UIView!
     @IBOutlet weak var loaderAnimation: LottieAnimationView!
+    @IBOutlet weak var noDataOffersMessageLbl: UILabel!
     private var loaderAnimationView : LottieAnimationView?
     var unlockedImageArray = [String]()
     var lockedImageArray = [String]()
@@ -40,6 +41,8 @@ class DD_MyOffersVC: BaseViewController, InfoDelegate {
     var startIndex = 1
     var itsEnable = 0
     var filterCategoryListingArray = ["All","Active","Redeemed","Expired"]
+    var imageView = ""
+    var imageView1 = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -167,7 +170,10 @@ class DD_MyOffersVC: BaseViewController, InfoDelegate {
         guard let tappedIndexPath = myOffersListCollectionView.indexPath(for: cell) else{return}
         
         if cell.detailsBtb.tag == tappedIndexPath.row{
-            if self.VM.myOffersListArray1[tappedIndexPath.row].subscriptionStatus ?? "0" == "1" && self.VM.myOffersListArray1[tappedIndexPath.row].is_Gifited ?? 0 == 1{
+            //print(self.VM.myOffersListArray1[tappedIndexPath.row].subscriptionStatus ?? "0")
+            let subscribe = self.VM.myOffersListArray1[tappedIndexPath.row].subscriptionStatus.prefix(1)
+            
+            if subscribe == "1" && self.VM.myOffersListArray1[tappedIndexPath.row].is_Gifited ?? 0 == 1{
                 let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_MyOffersDetailsVC") as! DD_MyOffersDetailsVC
                 vc.cardNumber = Int(self.VM.myOffersListArray1[tappedIndexPath.row].cardNumber ?? "") ?? 0
                 vc.offerId = self.VM.myOffersListArray1[tappedIndexPath.row].offerReferenceID ?? ""
@@ -289,27 +295,39 @@ extension DD_MyOffersVC: UICollectionViewDelegate, UICollectionViewDataSource{
             print(subscriptionStatus)
             let redeemedStatus = String(self.VM.myOffersListArray1[indexPath.row].subscriptionStatus ??  "0").split(separator: "~")
             print(redeemedStatus,"jdhsdk")
+            print(self.VM.myOffersListArray1[indexPath.row].expiry ?? 0,"ikuhuihggiu" )
             if  "\(subscriptionStatus)" == "1"{
                 cell.scratchView.isHidden = false
                 if self.VM.myOffersListArray1[indexPath.row].is_Gifited ?? 0 == 0{
-                    if self.itsEnable == 1{
-                        self.itsEnable = 0
+                    if self.VM.myOffersListArray1[indexPath.row].expiry != 1 {
+                        if self.itsEnable == 1{
+                            self.itsEnable = 0
+                            cell.enableBlueImage.isHidden = true
+                            cell.enableRedImage.isHidden = false
+                            cell.lockedBlueImage.isHidden = true
+                            cell.lockedRedImage.isHidden = true
+                            cell.enableRedImage.image = UIImage(named: "EnableRed")
+                        }else{
+                            self.itsEnable = 1
+                            cell.enableBlueImage.isHidden = false
+                            cell.enableRedImage.isHidden = true
+                            cell.lockedBlueImage.isHidden = true
+                            cell.lockedRedImage.isHidden = true
+                            cell.enableBlueImage.image = UIImage(named: "EnableBlue")
+                        }
+                    }else{
                         cell.enableBlueImage.isHidden = true
                         cell.enableRedImage.isHidden = false
                         cell.lockedBlueImage.isHidden = true
                         cell.lockedRedImage.isHidden = true
-                    }else{
-                        self.itsEnable = 1
-                        cell.enableBlueImage.isHidden = false
-                        cell.enableRedImage.isHidden = true
-                        cell.lockedBlueImage.isHidden = true
-                        cell.lockedRedImage.isHidden = true
+                        cell.enableRedImage.image = UIImage(named: "Group 7276")
+                    
                     }
                     
                 }else{
                     
                     cell.scratchView.borderWidth = 1
-                    cell.scratchView.borderColor = .red
+                    cell.scratchView.borderColor = .white
                     cell.enableRedImage.isHidden = true
                     cell.enableBlueImage.isHidden = true
                     
@@ -326,7 +344,7 @@ extension DD_MyOffersVC: UICollectionViewDelegate, UICollectionViewDataSource{
                     if self.VM.myOffersListArray1[indexPath.row].expiry ?? -1 == 1{
                         cell.expiredLbl.isHidden = false
                         cell.expiredLbl.text = "Expired"
-                        cell.expiredLbl.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                        cell.expiredLbl.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 0.1078313024)
                         cell.bottomSpaceConstraint.constant = 26
                     }else{
                         cell.expiredLbl.isHidden = true
@@ -370,28 +388,44 @@ extension DD_MyOffersVC: UICollectionViewDelegate, UICollectionViewDataSource{
                     self.present(vc, animated: true)
                 }
             }else{
-                let subscriptionStatus = String(self.VM.myOffersListArray1[indexPath.row].subscriptionStatus ??  "0").prefix(1)
+                let subscriptionStatus = String(self.VM.myOffersListArray1[indexPath.row].subscriptionStatus ?? "0").prefix(1)
                 print(subscriptionStatus)
-                if "\(subscriptionStatus)" == "1"{
-                    let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_SuccessPopUp") as! DD_SuccessPopUp
-                    vc.cardNumber = self.VM.myOffersListArray1[indexPath.row].cardNumber ?? ""
-                    vc.offerReferenceID = self.VM.myOffersListArray1[indexPath.row].offerReferenceID ?? ""
-                    vc.selcetedImage = "\(self.VM.myOffersListArray1[indexPath.row].cardImagePath ?? "")"
-                    vc.isGiftID = self.VM.myOffersListArray1[indexPath.row].is_Gifited ?? 0
-                    vc.offerTitle = self.VM.myOffersListArray1[indexPath.row].giftCardTypeName ?? ""
-                    self.cardNumber = Int(self.VM.myOffersListArray1[indexPath.row].cardNumber ?? "") ?? 0
-                    self.offersID = self.VM.myOffersListArray1[indexPath.row].offerReferenceID ?? ""
-                    vc.modalTransitionStyle = .coverVertical
-                    vc.modalPresentationStyle = .overFullScreen
-                    self.present(vc, animated: true)
-                }else{
-                    
-                    let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_SubscribePopUp") as! DD_SubscribePopUp
-                    print(self.VM.myOffersListArray1[indexPath.row].offerImage ?? "")
-                    vc.selectedImage = "\(self.VM.myOffersListArray1[indexPath.row].cardImagePath ?? "")"
-                    vc.modalTransitionStyle = .crossDissolve
-                    vc.modalPresentationStyle = .overFullScreen
-                    self.present(vc, animated: true)
+                if self.VM.myOffersListArray1[indexPath.row].expiry != 1 || self.VM.myOffersListArray1[indexPath.row].expiry == 1 && self.VM.myOffersListArray1[indexPath.row].is_Gifited == 1{
+                    if "\(subscriptionStatus)" == "1"{
+                        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_SuccessPopUp") as! DD_SuccessPopUp
+                        vc.cardNumber = self.VM.myOffersListArray1[indexPath.row].cardNumber ?? ""
+                        vc.offerReferenceID = self.VM.myOffersListArray1[indexPath.row].offerReferenceID ?? ""
+                        vc.selcetedImage = "\(self.VM.myOffersListArray1[indexPath.row].cardImagePath ?? "")"
+                        
+                        if self.VM.myOffersListArray1[indexPath.row].expiry == 1 && self.VM.myOffersListArray1[indexPath.row].is_Gifited == 1{
+                            vc.expiryData = 1
+                        }else{
+                            vc.expiryData = 0
+                        }
+                        let subscriptionStatus = String(self.VM.myOffersListArray1[indexPath.row].subscriptionStatus ?? "0").suffix(1)
+                        if subscriptionStatus == "1" && self.VM.myOffersListArray1[indexPath.row].expiry == 0 && self.VM.myOffersListArray1[indexPath.row].is_Gifited == 1{
+                            vc.redeemData = 1
+                        }else{
+                            vc.redeemData = 0
+                        }
+                        vc.sendImageView = "\(self.itsEnable)"
+                        
+                        vc.isGiftID = self.VM.myOffersListArray1[indexPath.row].is_Gifited ?? 0
+                        vc.offerTitle = self.VM.myOffersListArray1[indexPath.row].giftCardTypeName ?? ""
+                        self.cardNumber = Int(self.VM.myOffersListArray1[indexPath.row].cardNumber ?? "") ?? 0
+                        self.offersID = self.VM.myOffersListArray1[indexPath.row].offerReferenceID ?? ""
+                        vc.modalTransitionStyle = .coverVertical
+                        vc.modalPresentationStyle = .overFullScreen
+                        self.present(vc, animated: true)
+                    }else{
+                        
+                        let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_SubscribePopUp") as! DD_SubscribePopUp
+                        print(self.VM.myOffersListArray1[indexPath.row].offerImage ?? "")
+                        vc.selectedImage = "\(self.VM.myOffersListArray1[indexPath.row].cardImagePath ?? "")"
+                        vc.modalTransitionStyle = .crossDissolve
+                        vc.modalPresentationStyle = .overFullScreen
+                        self.present(vc, animated: true)
+                    }
                 }
             }
         }else if collectionView == categoryCollectionView {
@@ -423,6 +457,7 @@ extension DD_MyOffersVC: UICollectionViewDelegate, UICollectionViewDataSource{
                 // redemed = 3
                 //expired = 2
                 self.VM.myOffersListArray1.removeAll()
+                self.VM.myOffersListArray.removeAll()
                 self.secondCatagoryArray = filterCategoryListingArray[indexPath.row]
                 if secondCatagoryArray == "All" {
                     self.statusId = -1

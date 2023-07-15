@@ -26,7 +26,11 @@ class DD_SuccessPopUp: UIViewController, SRScratchViewDelegate {
     private var animationView: LottieAnimationView?
     private var loaderAnimationView : LottieAnimationView?
     
+    @IBOutlet weak var expiryDetailsConstrain: NSLayoutConstraint!
     @IBOutlet weak var openScratchView: UIButton!
+    
+    @IBOutlet weak var expiredTextLbl: UILabel!
+    @IBOutlet weak var knowMoreOutBTN: UIButton!
     
     let userID = UserDefaults.standard.string(forKey: "UserID") ?? ""
     let loyaltyId = UserDefaults.standard.string(forKey: "LoyaltyId") ?? ""
@@ -38,10 +42,35 @@ class DD_SuccessPopUp: UIViewController, SRScratchViewDelegate {
     var isGiftID = 0
     var selcetedImage = ""
     var VM = DD_ScratchSubmissionVM()
+    var sendImageView = ""
+    var expiryData = 0
+    var redeemData = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         self.VM.VC = self
+        self.expiredTextLbl.isHidden = true
+        if self.expiryData == 1{
+            self.expiredTextLbl.isHidden = false
+            self.expiredTextLbl.text = "Expired"
+            self.expiredTextLbl.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 0.1078313024)
+            self.knowMoreOutBTN.isHidden = true
+            self.expiryDetailsConstrain.constant = 0
+        }else if redeemData == 1{
+            self.expiredTextLbl.isHidden = false
+            self.expiredTextLbl.text = "Redeemed"
+            self.expiredTextLbl.textColor = #colorLiteral(red: 0.2745098174, green: 0.4862745106, blue: 0.1411764771, alpha: 1)
+            self.expiredTextLbl.backgroundColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+            self.knowMoreOutBTN.isHidden = true
+            self.expiryDetailsConstrain.constant = 0
+        }else{
+            self.expiredTextLbl.isHidden = true
+            self.knowMoreOutBTN.isHidden = false
+        }
+        
+        
+        
         print(self.isGiftID,"dkjhdksjhd")
+        print(self.sendImageView)
         if self.isGiftID == 0{
             self.scratchView.isHidden = false
             self.congratulationView.isHidden = true
@@ -54,11 +83,23 @@ class DD_SuccessPopUp: UIViewController, SRScratchViewDelegate {
             self.congratulationView.isHidden = false
         }
         self.loaderView.isHidden = true
+        
+//       self.scratchImageView.image = UIImage(named: "\(sendImageView)")
+//        scratchImageView.kf.setImage(with: sendImageView)
+        if sendImageView == "1"{
+            scratchImageView.image = UIImage(named: "EnableBlue")
+//            scratchImageView.kf.setImage(with: UIImage("EnableBlue"))
+        }else{
+            scratchImageView.image = UIImage(named: "EnableRed")
+//            scratchImageView.kf.setImage(with: UIImage("EnableRed"))
+        }
         let receivedImagePath = URL(string: "\(PROMO_IMG1)\(selcetedImage.dropFirst(2))")
         productImage.kf.setImage(with: receivedImagePath)
         self.successAnimation.isHidden = true
         self.infoLbl.text = self.offerTitle
     //    self.offerIdLbl.text = ""
+        
+        
         print(self.offerReferenceID)
         print(self.cardNumber)
         let attrs1 = [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 14), NSAttributedString.Key.foregroundColor : UIColor.lightGray]

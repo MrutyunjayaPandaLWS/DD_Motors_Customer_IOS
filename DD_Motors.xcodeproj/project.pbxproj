@@ -45,6 +45,7 @@
 		841ADA7E295723A600CA8632 /* DD_MyOffersDetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841ADA7D295723A600CA8632 /* DD_MyOffersDetailsVC.swift */; };
 		841FC68D29D3F05B00765484 /* AccountDeactivatePopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841FC68C29D3F05B00765484 /* AccountDeactivatePopUpVC.swift */; };
 		841FC69029D4009B00765484 /* DeleteAccountModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 841FC68F29D4009B00765484 /* DeleteAccountModels.swift */; };
+		8421D4212A62641A001CA641 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8421D4202A62641A001CA641 /* GoogleService-Info.plist */; };
 		843738A92A36E0DC00CC1F30 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843738A82A36E0DC00CC1F30 /* NotificationService.swift */; };
 		843738AD2A36E0DC00CC1F30 /* NotificationService.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 843738A62A36E0DC00CC1F30 /* NotificationService.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		843FDC0D295DA7D60061B2F5 /* ProfileUpdateModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843FDC0C295DA7D60061B2F5 /* ProfileUpdateModels.swift */; };
@@ -106,8 +107,6 @@
 		8491F61C29726D0A0087926C /* LstGiftCardType1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491F61A29726D0A0087926C /* LstGiftCardType1.swift */; };
 		8491F61D29726D0A0087926C /* MyOffersDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8491F61B29726D0A0087926C /* MyOffersDetailsModel.swift */; };
 		8493F47E297A953C0005D4E0 /* loader.json in Resources */ = {isa = PBXBuildFile; fileRef = 8493F47D297A953C0005D4E0 /* loader.json */; };
-		849580B52A57CFA400D9EBD9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 849580B42A57CFA400D9EBD9 /* GoogleService-Info.plist */; };
-		849580B62A57CFA400D9EBD9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 849580B42A57CFA400D9EBD9 /* GoogleService-Info.plist */; };
 		849580BA2A5829D200D9EBD9 /* LstPushHistoryJson1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849580B82A5829CC00D9EBD9 /* LstPushHistoryJson1.swift */; };
 		849580BB2A5829D200D9EBD9 /* NotificationDeletModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849580B92A5829D200D9EBD9 /* NotificationDeletModels.swift */; };
 		8498EBB429542AC90019A0D5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8498EBB329542AC90019A0D5 /* AppDelegate.swift */; };
@@ -300,6 +299,7 @@
 		841ADA7D295723A600CA8632 /* DD_MyOffersDetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_MyOffersDetailsVC.swift; sourceTree = "<group>"; };
 		841FC68C29D3F05B00765484 /* AccountDeactivatePopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDeactivatePopUpVC.swift; sourceTree = "<group>"; };
 		841FC68F29D4009B00765484 /* DeleteAccountModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeleteAccountModels.swift; sourceTree = "<group>"; };
+		8421D4202A62641A001CA641 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		843738A62A36E0DC00CC1F30 /* NotificationService.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationService.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		843738A82A36E0DC00CC1F30 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		843738AA2A36E0DC00CC1F30 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -369,7 +369,6 @@
 		8491F61A29726D0A0087926C /* LstGiftCardType1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstGiftCardType1.swift; sourceTree = "<group>"; };
 		8491F61B29726D0A0087926C /* MyOffersDetailsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOffersDetailsModel.swift; sourceTree = "<group>"; };
 		8493F47D297A953C0005D4E0 /* loader.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loader.json; sourceTree = "<group>"; };
-		849580B42A57CFA400D9EBD9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		849580B82A5829CC00D9EBD9 /* LstPushHistoryJson1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstPushHistoryJson1.swift; sourceTree = "<group>"; };
 		849580B92A5829D200D9EBD9 /* NotificationDeletModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationDeletModels.swift; sourceTree = "<group>"; };
 		8498EBB029542AC90019A0D5 /* DD_Motors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DD_Motors.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1108,7 +1107,7 @@
 				25A6F6562A3095E5000C7501 /* DD_ComingSoonVC.swift */,
 				8498EBE829542D3E0019A0D5 /* ViewModels */,
 				8498EBBF29542ACB0019A0D5 /* Assets.xcassets */,
-				849580B42A57CFA400D9EBD9 /* GoogleService-Info.plist */,
+				8421D4202A62641A001CA641 /* GoogleService-Info.plist */,
 				8498EBC429542ACB0019A0D5 /* Info.plist */,
 			);
 			path = DD_Motors;
@@ -1763,7 +1762,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				849580B62A57CFA400D9EBD9 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1775,7 +1773,7 @@
 				84F33FE82956CB4300B1E428 /* DD_ServiceHistoryTVC.xib in Resources */,
 				25A6F6592A30982A000C7501 /* coming soon ilustration.json in Resources */,
 				25F1700C298B7A8500A02535 /* 69030-confetti-full-screen.json in Resources */,
-				849580B52A57CFA400D9EBD9 /* GoogleService-Info.plist in Resources */,
+				8421D4212A62641A001CA641 /* GoogleService-Info.plist in Resources */,
 				8498EBC329542ACB0019A0D5 /* LaunchScreen.storyboard in Resources */,
 				84F17D9429557F4700B6B6C7 /* DD_WalletListTVC.xib in Resources */,
 				84B3FC86295C3DF40090563D /* otherInfoTableViewCell.xib in Resources */,
@@ -2118,9 +2116,11 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = NotificationService/NotificationService.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2HG885J5KS;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 69TVG3G3WL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotificationService/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NotificationService;
@@ -2132,9 +2132,10 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.DD-Motors.NotificationService";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.DD-MotorsService.NotificationService";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "DDMotors-NotificationService-AdHoc";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -2147,9 +2148,11 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = NotificationService/NotificationService.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2HG885J5KS;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 69TVG3G3WL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotificationService/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NotificationService;
@@ -2161,9 +2164,10 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.DD-Motors.NotificationService";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.DD-MotorsService.NotificationService";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "DDMotors-NotificationService-AdHoc";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -2294,12 +2298,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DD_Motors/DD_Motors.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2HG885J5KS;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 69TVG3G3WL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DD_Motors/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "DD Motors Club Elite";
+				INFOPLIST_KEY_CFBundleDisplayName = "DD Motors Connect";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Scanning QR Codes requires Camera access for redeeming points.Allow Camera access?";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Lodge Query equires image to be uploaded. Allow";
@@ -2315,9 +2321,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.DD-Motors";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.DD-MotorsService";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = DD_Motors_AdHoc;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2333,12 +2340,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = DD_Motors/DD_Motors.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 2HG885J5KS;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 69TVG3G3WL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = DD_Motors/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "DD Motors Club Elite";
+				INFOPLIST_KEY_CFBundleDisplayName = "DD Motors Connect";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "Scanning QR Codes requires Camera access for redeeming points.Allow Camera access?";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Lodge Query equires image to be uploaded. Allow";
@@ -2354,9 +2363,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.DD-Motors";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.loyaltyWorks.DD-MotorsService";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = DD_Motors_AdHoc;
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

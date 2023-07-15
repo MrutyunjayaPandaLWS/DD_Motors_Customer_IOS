@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>127408014475-acvb9nesrbm2ggeafit7itifrgvvjvpm.apps.googleusercontent.com</string>
+	<string>127408014475-m1jeu7pnsuadqd68214eu60175vil1g2.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.127408014475-acvb9nesrbm2ggeafit7itifrgvvjvpm</string>
+	<string>com.googleusercontent.apps.127408014475-m1jeu7pnsuadqd68214eu60175vil1g2</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDDtNOEC6vVLOfwmpHyuNazZDNZEpPdQp0</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.loyaltyWorks.DD-Motors</string>
+	<string>com.loyaltyWorks.DD-MotorsService</string>
 	<key>PROJECT_ID</key>
 	<string>dd-motors-android</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:127408014475:ios:abbed2c072f7917a82808e</string>
+	<string>1:127408014475:ios:84a11cd629dc7b3582808e</string>
 </dict>
 </plist>
