@@ -53,8 +53,6 @@
 		8451D562296C0BE400208317 /* LstcustomerSubscriptionSources.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8451D560296C0BE400208317 /* LstcustomerSubscriptionSources.swift */; };
 		845B9D89296EC4FD00D8DD04 /* DD_SubscriptionDropDownVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B9D88296EC4FD00D8DD04 /* DD_SubscriptionDropDownVM.swift */; };
 		845B9D8C296ED50F00D8DD04 /* SubscriptionSubmissionModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B9D8B296ED50F00D8DD04 /* SubscriptionSubmissionModels.swift */; };
-		845B9D90296EE11C00D8DD04 /* LstGiftCardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B9D8E296EE11B00D8DD04 /* LstGiftCardType.swift */; };
-		845B9D91296EE11C00D8DD04 /* MyOffersListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B9D8F296EE11C00D8DD04 /* MyOffersListModels.swift */; };
 		845B9D94296EE2CD00D8DD04 /* DD_MyOffersVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B9D93296EE2CD00D8DD04 /* DD_MyOffersVM.swift */; };
 		845B9D96296EE59600D8DD04 /* DD_SubscriptionSubmissionPopUpVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845B9D95296EE59600D8DD04 /* DD_SubscriptionSubmissionPopUpVC.swift */; };
 		845B9D9A296EE93E00D8DD04 /* 33886-check-okey-done.json in Resources */ = {isa = PBXBuildFile; fileRef = 845B9D98296EE93E00D8DD04 /* 33886-check-okey-done.json */; };
@@ -85,6 +83,8 @@
 		84769373295B0858008DD594 /* HelpTopicModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84769371295B0858008DD594 /* HelpTopicModels.swift */; };
 		84769374295B0858008DD594 /* ObjHelpTopicList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84769372295B0858008DD594 /* ObjHelpTopicList.swift */; };
 		84769382295B0FDF008DD594 /* DD_DashBoardVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84769381295B0FDF008DD594 /* DD_DashBoardVM.swift */; };
+		847C546A2A72AB02004EB7A0 /* MyOffersListModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C54682A72AB02004EB7A0 /* MyOffersListModels.swift */; };
+		847C546B2A72AB02004EB7A0 /* LstGiftCardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 847C54692A72AB02004EB7A0 /* LstGiftCardType.swift */; };
 		84804A672A62A4D000AADFBB /* 27592-maintenance.json in Resources */ = {isa = PBXBuildFile; fileRef = 84804A662A62A4D000AADFBB /* 27592-maintenance.json */; };
 		8486BD8E29C9766C0072A1AE /* Payments.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BD8829C9766B0072A1AE /* Payments.swift */; };
 		8486BD8F29C9766C0072A1AE /* Order_meta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8486BD8929C9766B0072A1AE /* Order_meta.swift */; };
@@ -312,8 +312,6 @@
 		845838E02A371C8E005779E1 /* DD_Motors.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = DD_Motors.entitlements; sourceTree = "<group>"; };
 		845B9D88296EC4FD00D8DD04 /* DD_SubscriptionDropDownVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_SubscriptionDropDownVM.swift; sourceTree = "<group>"; };
 		845B9D8B296ED50F00D8DD04 /* SubscriptionSubmissionModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubscriptionSubmissionModels.swift; sourceTree = "<group>"; };
-		845B9D8E296EE11B00D8DD04 /* LstGiftCardType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstGiftCardType.swift; sourceTree = "<group>"; };
-		845B9D8F296EE11C00D8DD04 /* MyOffersListModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOffersListModels.swift; sourceTree = "<group>"; };
 		845B9D93296EE2CD00D8DD04 /* DD_MyOffersVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_MyOffersVM.swift; sourceTree = "<group>"; };
 		845B9D95296EE59600D8DD04 /* DD_SubscriptionSubmissionPopUpVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_SubscriptionSubmissionPopUpVC.swift; sourceTree = "<group>"; };
 		845B9D98296EE93E00D8DD04 /* 33886-check-okey-done.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "33886-check-okey-done.json"; sourceTree = "<group>"; };
@@ -344,6 +342,8 @@
 		84769371295B0858008DD594 /* HelpTopicModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpTopicModels.swift; sourceTree = "<group>"; };
 		84769372295B0858008DD594 /* ObjHelpTopicList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ObjHelpTopicList.swift; sourceTree = "<group>"; };
 		84769381295B0FDF008DD594 /* DD_DashBoardVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DD_DashBoardVM.swift; sourceTree = "<group>"; };
+		847C54682A72AB02004EB7A0 /* MyOffersListModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyOffersListModels.swift; sourceTree = "<group>"; };
+		847C54692A72AB02004EB7A0 /* LstGiftCardType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LstGiftCardType.swift; sourceTree = "<group>"; };
 		84804A662A62A4D000AADFBB /* 27592-maintenance.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "27592-maintenance.json"; sourceTree = "<group>"; };
 		8486BD8829C9766B0072A1AE /* Payments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Payments.swift; sourceTree = "<group>"; };
 		8486BD8929C9766B0072A1AE /* Order_meta.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Order_meta.swift; sourceTree = "<group>"; };
@@ -780,8 +780,8 @@
 		845B9D8D296EE10900D8DD04 /* MyOffersListModels */ = {
 			isa = PBXGroup;
 			children = (
-				845B9D8F296EE11C00D8DD04 /* MyOffersListModels.swift */,
-				845B9D8E296EE11B00D8DD04 /* LstGiftCardType.swift */,
+				847C54682A72AB02004EB7A0 /* MyOffersListModels.swift */,
+				847C54692A72AB02004EB7A0 /* LstGiftCardType.swift */,
 			);
 			path = MyOffersListModels;
 			sourceTree = "<group>";
@@ -1877,6 +1877,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8467E3E52957087400176AAE /* DD_CategoryCVC.swift in Sources */,
+				847C546A2A72AB02004EB7A0 /* MyOffersListModels.swift in Sources */,
 				84EF2458297BAE52006E9EA1 /* LstAttributesDetails21.swift in Sources */,
 				84F21FFF295D8D900040C67F /* DD_SubmitNewQueryVM.swift in Sources */,
 				84BAAC5429C1C10F006DDEE0 /* LstCustomerFeedBackJsonApi.swift in Sources */,
@@ -1912,6 +1913,7 @@
 				8488264B295C778D00A447B5 /* DD_MyProfileVM.swift in Sources */,
 				8498EC19295440200019A0D5 /* DD_TermsandconditionVC.swift in Sources */,
 				8498EBBE29542AC90019A0D5 /* DD_Motors.xcdatamodeld in Sources */,
+				847C546B2A72AB02004EB7A0 /* LstGiftCardType.swift in Sources */,
 				84B3FC81295C3DF40090563D /* senderInfoImageTableViewCell.swift in Sources */,
 				84C1E3EB297573BC00D188C5 /* ServiceHistoryModels.swift in Sources */,
 				84668D7C29547535000491FE /* DD_TabbarVC.swift in Sources */,
@@ -1923,7 +1925,6 @@
 				84A1D3E329C9D46100CBC671 /* DD_PaymentVM.swift in Sources */,
 				840905532959DE6B002DBBEE /* MyCommonFunctionalUtilities.swift in Sources */,
 				840905542959DE6B002DBBEE /* Reachability.swift in Sources */,
-				845B9D91296EE11C00D8DD04 /* MyOffersListModels.swift in Sources */,
 				84769351295A904E008DD594 /* DD_Login_VM.swift in Sources */,
 				8451D561296C0BE400208317 /* SubscriptionHistoryModels.swift in Sources */,
 				8476935B295AC34A008DD594 /* LoginModels.swift in Sources */,
@@ -2029,7 +2030,6 @@
 				8498EC0A29542E010019A0D5 /* CircularProgressBar.swift in Sources */,
 				8498EC0429542E010019A0D5 /* ColorExtension.swift in Sources */,
 				84C95CAC2A4DB7BE00DD3654 /* DD_IOS_Internet_Check.swift in Sources */,
-				845B9D90296EE11C00D8DD04 /* LstGiftCardType.swift in Sources */,
 				8409055B295A0D3E002DBBEE /* TokenModels.swift in Sources */,
 				843FDC0D295DA7D60061B2F5 /* ProfileUpdateModels.swift in Sources */,
 				84F21FFC295D8D180040C67F /* SubmitNewQueryModels.swift in Sources */,
@@ -2122,14 +2122,14 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 69TVG3G3WL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotificationService/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NotificationService;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2143,7 +2143,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -2154,14 +2154,14 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 69TVG3G3WL;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NotificationService/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = NotificationService;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -2175,7 +2175,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -2304,7 +2304,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 69TVG3G3WL;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2329,9 +2329,12 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = DD_Motors_AppStore;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -2346,7 +2349,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 69TVG3G3WL;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2371,10 +2374,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = DD_Motors_AppStore;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -282,7 +282,7 @@ class DD_Login_VM {
                                         DispatchQueue.main.async {
                                             if #available(iOS 13.0, *) {
                                                 UserDefaults.standard.set(true, forKey: "IsloggedIn?")
-                                                let sceneDelegate = self.VC!.view.window!.windowScene!.delegate as! SceneDelegate
+                                                let sceneDelegate = self.VC?.view.window!.windowScene!.delegate as! SceneDelegate
                                                 sceneDelegate.setHomeAsRootViewController()
                                             } else {
                                                 let appDelegate = UIApplication.shared.delegate as! AppDelegate

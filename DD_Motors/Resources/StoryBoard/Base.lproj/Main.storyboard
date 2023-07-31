@@ -94,9 +94,6 @@
                                             <userDefinedRuntimeAttribute type="number" keyPath="pinLength">
                                                 <integer key="value" value="6"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="interSpace">
-                                                <real key="value" value="10"/>
-                                            </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="textColor">
                                                 <color key="value" red="0.058823529411764705" green="0.26666666666666666" blue="0.4823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
@@ -1637,11 +1634,11 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gLI-lW-YyY">
                                                 <rect key="frame" x="0.0" y="0.0" width="333" height="138.33333333333334"/>
                                                 <subviews>
-                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2zY-wh-bFt">
-                                                        <rect key="frame" x="0.0" y="0.0" width="161.66666666666666" height="138.33333333333334"/>
+                                                    <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2zY-wh-bFt">
+                                                        <rect key="frame" x="0.0" y="0.0" width="42" height="138.33333333333334"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8fR-fu-ko2">
-                                                                <rect key="frame" x="8" y="12" width="145.66666666666666" height="20"/>
+                                                                <rect key="frame" x="8" y="12" width="26" height="20"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="selected" translatesAutoresizingMaskIntoConstraints="NO" id="xCB-pk-MgU">
                                                                         <rect key="frame" x="8" y="5" width="10" height="10"/>
@@ -1651,13 +1648,13 @@
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Online Subscription" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RKp-53-ys2">
-                                                                        <rect key="frame" x="26.000000000000007" y="0.0" width="119.66666666666669" height="20"/>
+                                                                        <rect key="frame" x="26" y="0.0" width="0.0" height="20"/>
                                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="13"/>
                                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wNs-Ip-Yi2">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="145.66666666666666" height="20"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="26" height="20"/>
                                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                     </button>
                                                                 </subviews>
@@ -1676,13 +1673,13 @@
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subscribe through online payment gateways like UPI, Credit  card &amp; debit card " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ziB-XW-ouo">
-                                                                <rect key="frame" x="8" y="41.999999999999993" width="145.66666666666666" height="86.333333333333314"/>
+                                                                <rect key="frame" x="8" y="41.999999999999993" width="26" height="86.333333333333314"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="12"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cip-G2-Obj">
-                                                                <rect key="frame" x="0.0" y="0.0" width="161.66666666666666" height="138.33333333333334"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="42" height="138.33333333333334"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 <connections>
                                                                     <action selector="onlineSubscriptionBnt:" destination="aQ0-qv-eku" eventType="touchUpInside" id="Qlf-2g-Sh3"/>
@@ -1717,10 +1714,10 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DJh-8W-dk6">
-                                                        <rect key="frame" x="171.66666666666663" y="0.0" width="161.33333333333337" height="138.33333333333334"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="333" height="138.33333333333334"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aXb-PD-a5A">
-                                                                <rect key="frame" x="8" y="12" width="145.33333333333334" height="20"/>
+                                                                <rect key="frame" x="8" y="12" width="317" height="20"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ellipse 105" translatesAutoresizingMaskIntoConstraints="NO" id="eeF-1I-CjG">
                                                                         <rect key="frame" x="8" y="5" width="10" height="10"/>
@@ -1730,13 +1727,13 @@
                                                                         </constraints>
                                                                     </imageView>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offline Subscription" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="llS-35-BbA">
-                                                                        <rect key="frame" x="25.999999999999993" y="0.0" width="119.33333333333331" height="20"/>
+                                                                        <rect key="frame" x="26" y="0.0" width="291" height="20"/>
                                                                         <fontDescription key="fontDescription" name="AppleSDGothicNeo-SemiBold" family="Apple SD Gothic Neo" pointSize="13"/>
                                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jQz-fc-3rQ">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="145.33333333333334" height="20"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="317" height="20"/>
                                                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                     </button>
                                                                 </subviews>
@@ -1755,13 +1752,13 @@
                                                                 </constraints>
                                                             </view>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subscribe at your nearest showroom" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCM-cw-xZX">
-                                                                <rect key="frame" x="8" y="41.999999999999993" width="145.33333333333334" height="86.333333333333314"/>
+                                                                <rect key="frame" x="8" y="41.999999999999993" width="317" height="86.333333333333314"/>
                                                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="12"/>
                                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ri-p8-Wys">
-                                                                <rect key="frame" x="0.0" y="0.0" width="161.33333333333334" height="138.33333333333334"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="333" height="138.33333333333334"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 <connections>
                                                                     <action selector="offlineSubscriptionBnt:" destination="aQ0-qv-eku" eventType="touchUpInside" id="fin-gJ-rLr"/>
@@ -1800,10 +1797,10 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="gLI-lW-YyY" secondAttribute="trailing" id="DI5-Cs-Czp"/>
                                             <constraint firstItem="gLI-lW-YyY" firstAttribute="top" secondItem="jgF-Kh-Wnh" secondAttribute="top" id="SYE-rL-0k1"/>
-                                            <constraint firstItem="gLI-lW-YyY" firstAttribute="leading" secondItem="jgF-Kh-Wnh" secondAttribute="leading" id="YQx-sp-VVS"/>
                                             <constraint firstAttribute="bottom" secondItem="gLI-lW-YyY" secondAttribute="bottom" id="irh-n7-bxh"/>
+                                            <constraint firstItem="gLI-lW-YyY" firstAttribute="leading" secondItem="jgF-Kh-Wnh" secondAttribute="leading" id="neT-sj-zzC"/>
+                                            <constraint firstAttribute="trailing" secondItem="gLI-lW-YyY" secondAttribute="trailing" id="wTe-mt-Rm6"/>
                                         </constraints>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="ejW-tY-Mby">
@@ -7109,8 +7106,8 @@
                                     <constraint firstAttribute="trailing" secondItem="4DT-so-414" secondAttribute="trailing" id="szz-hL-pX4"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c3W-BB-wcr">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c3W-BB-wcr">
+                                <rect key="frame" x="0.0" y="127" width="393" height="691"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IT0-kM-ALQ" customClass="LottieAnimationView" customModule="Lottie">
                                         <rect key="frame" x="106.66666666666669" y="289.66666666666669" width="180" height="180"/>

@@ -131,7 +131,8 @@ class DD_MyOffersVC: BaseViewController, InfoDelegate {
         }else{
             let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_MyOffersDetailsVC") as! DD_MyOffersDetailsVC
             vc.itsFrom = "SideMenu"
-            vc.cardNumber = Int(self.cardNumber)
+            print(self.cardNumber)
+//            vc.cardNumber = Int(self.cardNumber)
             vc.categoryId = self.categoryId
             vc.offerId = "\(self.offersID)"
             self.navigationController?.pushViewController(vc, animated: true)
@@ -175,7 +176,11 @@ class DD_MyOffersVC: BaseViewController, InfoDelegate {
             
             if subscribe == "1" && self.VM.myOffersListArray1[tappedIndexPath.row].is_Gifited ?? 0 == 1{
                 let vc = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "DD_MyOffersDetailsVC") as! DD_MyOffersDetailsVC
-                vc.cardNumber = Int(self.VM.myOffersListArray1[tappedIndexPath.row].cardNumber ?? "") ?? 0
+                print(self.VM.myOffersListArray1.count)
+                print(self.VM.myOffersListArray1[tappedIndexPath.row].cardNumber ?? "")
+                let cardNumberData = Int(self.VM.myOffersListArray1[tappedIndexPath.row].cardNumber ?? "") ?? 0
+                print(cardNumberData,"sjank")
+//                vc.cardNumber = cardNumberData
                 vc.offerId = self.VM.myOffersListArray1[tappedIndexPath.row].offerReferenceID ?? ""
                 vc.categoryId = self.categoryId
                 self.navigationController?.pushViewController(vc, animated: true)
@@ -403,8 +408,10 @@ extension DD_MyOffersVC: UICollectionViewDelegate, UICollectionViewDataSource{
                             vc.expiryData = 0
                         }
                         let subscriptionStatus = String(self.VM.myOffersListArray1[indexPath.row].subscriptionStatus ?? "0").suffix(1)
-                        if subscriptionStatus == "1" && self.VM.myOffersListArray1[indexPath.row].expiry == 0 && self.VM.myOffersListArray1[indexPath.row].is_Gifited == 1{
+                        if subscriptionStatus == "1" && self.VM.myOffersListArray1[indexPath.row].expiry == 0 && self.VM.myOffersListArray1[indexPath.row].is_Gifited == 1 || subscriptionStatus == "1" && self.VM.myOffersListArray1[indexPath.row].expiry == 2 && self.VM.myOffersListArray1[indexPath.row].is_Gifited == 1{
                             vc.redeemData = 1
+                        }else if subscriptionStatus == "1" && self.VM.myOffersListArray1[indexPath.row].expiry == 0 && self.VM.myOffersListArray1[indexPath.row].is_Gifited == 1{
+                            
                         }else{
                             vc.redeemData = 0
                         }
@@ -413,6 +420,8 @@ extension DD_MyOffersVC: UICollectionViewDelegate, UICollectionViewDataSource{
                         vc.isGiftID = self.VM.myOffersListArray1[indexPath.row].is_Gifited ?? 0
                         vc.offerTitle = self.VM.myOffersListArray1[indexPath.row].giftCardTypeName ?? ""
                         self.cardNumber = Int(self.VM.myOffersListArray1[indexPath.row].cardNumber ?? "") ?? 0
+                        UserDefaults.standard.set(self.VM.myOffersListArray1[indexPath.row].cardNumber ?? "", forKey: "CardNumber")
+                        //UserDefaults.standard.set(self.VM.myOffersListArray1[indexPath.row].cardNumber ?? "", forKey: "CardNumber")
                         self.offersID = self.VM.myOffersListArray1[indexPath.row].offerReferenceID ?? ""
                         vc.modalTransitionStyle = .coverVertical
                         vc.modalPresentationStyle = .overFullScreen

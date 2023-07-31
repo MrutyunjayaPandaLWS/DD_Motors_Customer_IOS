@@ -28,7 +28,7 @@ class DD_MyOffersDetailsVC: BaseViewController {
     
     @IBOutlet weak var offerrefernID: UILabel!
     var VM = DD_MyOffersDetailsVM()
-    var cardNumber = 0
+    var cardNumber = UserDefaults.standard.string(forKey: "CardNumber") ?? ""
     let userID = UserDefaults.standard.string(forKey: "UserID") ?? ""
     let loyaltyId = UserDefaults.standard.string(forKey: "LoyaltyId") ?? ""
     var termsandcondition = ""
@@ -51,6 +51,7 @@ class DD_MyOffersDetailsVC: BaseViewController {
             self.VM.VC = self
             self.loaderView.isHidden = true
             self.itsFrom = "Description"
+            print(cardNumber)
             self.offersDetailsApi(cardNo: "\(cardNumber)")
             self.descriptionBtn.setTitleColor(.white, for: .normal)
             self.descriptionBtn.backgroundColor = UIColor(hexString: "204FA4")

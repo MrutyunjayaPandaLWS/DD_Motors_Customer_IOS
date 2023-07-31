@@ -48,6 +48,7 @@ class DD_SuccessPopUp: UIViewController, SRScratchViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.VM.VC = self
+        print(cardNumber,"fjdnkfdj")
         self.expiredTextLbl.isHidden = true
         if self.expiryData == 1{
             self.expiredTextLbl.isHidden = false

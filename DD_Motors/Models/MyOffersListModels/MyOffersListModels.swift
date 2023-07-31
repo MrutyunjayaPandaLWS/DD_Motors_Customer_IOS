@@ -13,40 +13,40 @@ For support, please feel free to contact me at https://www.linkedin.com/in/syeda
 
 import Foundation
 struct MyOffersListModels : Codable {
-    let lstIssuedGiftCardList : String?
-    let lstGiftCardIssueDetails : String?
-    let lstGiftCardNomineeDetails : String?
-    let lstGiftCardHolderInfoDetails : String?
-    let lstGiftCardType : [LstGiftCardType]?
-    let lstPointbalance : String?
-    let returnValue : Int?
-    let returnMessage : String?
-    let totalRecords : Int?
+	let lstIssuedGiftCardList : String?
+	let lstGiftCardIssueDetails : String?
+	let lstGiftCardNomineeDetails : String?
+	let lstGiftCardHolderInfoDetails : String?
+	let lstGiftCardType : [LstGiftCardType]?
+	let lstPointbalance : String?
+	let returnValue : Int?
+	let returnMessage : String?
+	let totalRecords : Int?
 
-    enum CodingKeys: String, CodingKey {
+	enum CodingKeys: String, CodingKey {
 
-        case lstIssuedGiftCardList = "lstIssuedGiftCardList"
-        case lstGiftCardIssueDetails = "lstGiftCardIssueDetails"
-        case lstGiftCardNomineeDetails = "lstGiftCardNomineeDetails"
-        case lstGiftCardHolderInfoDetails = "lstGiftCardHolderInfoDetails"
-        case lstGiftCardType = "lstGiftCardType"
-        case lstPointbalance = "lstPointbalance"
-        case returnValue = "returnValue"
-        case returnMessage = "returnMessage"
-        case totalRecords = "totalRecords"
-    }
+		case lstIssuedGiftCardList = "lstIssuedGiftCardList"
+		case lstGiftCardIssueDetails = "lstGiftCardIssueDetails"
+		case lstGiftCardNomineeDetails = "lstGiftCardNomineeDetails"
+		case lstGiftCardHolderInfoDetails = "lstGiftCardHolderInfoDetails"
+		case lstGiftCardType = "lstGiftCardType"
+		case lstPointbalance = "lstPointbalance"
+		case returnValue = "returnValue"
+		case returnMessage = "returnMessage"
+		case totalRecords = "totalRecords"
+	}
 
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        lstIssuedGiftCardList = try values.decodeIfPresent(String.self, forKey: .lstIssuedGiftCardList)
-        lstGiftCardIssueDetails = try values.decodeIfPresent(String.self, forKey: .lstGiftCardIssueDetails)
-        lstGiftCardNomineeDetails = try values.decodeIfPresent(String.self, forKey: .lstGiftCardNomineeDetails)
-        lstGiftCardHolderInfoDetails = try values.decodeIfPresent(String.self, forKey: .lstGiftCardHolderInfoDetails)
-        lstGiftCardType = try values.decodeIfPresent([LstGiftCardType].self, forKey: .lstGiftCardType)
-        lstPointbalance = try values.decodeIfPresent(String.self, forKey: .lstPointbalance)
-        returnValue = try values.decodeIfPresent(Int.self, forKey: .returnValue)
-        returnMessage = try values.decodeIfPresent(String.self, forKey: .returnMessage)
-        totalRecords = try values.decodeIfPresent(Int.self, forKey: .totalRecords)
-    }
+	init(from decoder: Decoder) throws {
+		let values = try decoder.container(keyedBy: CodingKeys.self)
+		lstIssuedGiftCardList = try values.decodeIfPresent(String.self, forKey: .lstIssuedGiftCardList)
+		lstGiftCardIssueDetails = try values.decodeIfPresent(String.self, forKey: .lstGiftCardIssueDetails)
+		lstGiftCardNomineeDetails = try values.decodeIfPresent(String.self, forKey: .lstGiftCardNomineeDetails)
+		lstGiftCardHolderInfoDetails = try values.decodeIfPresent(String.self, forKey: .lstGiftCardHolderInfoDetails)
+		lstGiftCardType = try values.decodeIfPresent([LstGiftCardType].self, forKey: .lstGiftCardType)
+		lstPointbalance = try values.decodeIfPresent(String.self, forKey: .lstPointbalance)
+		returnValue = try values.decodeIfPresent(Int.self, forKey: .returnValue)
+		returnMessage = try values.decodeIfPresent(String.self, forKey: .returnMessage)
+		totalRecords = try values.decodeIfPresent(Int.self, forKey: .totalRecords)
+	}
 
 }
