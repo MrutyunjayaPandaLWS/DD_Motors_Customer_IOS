@@ -80,6 +80,11 @@ class DD_MyCashPointVC: BaseViewController, DateSelectedDelegate {
                 self.present(vc, animated: true)
             }
         }else{
+            
+            self.fromDateLbl.text = "From Date"
+            self.fromDateLbl.textColor = .lightGray
+            self.toDateLbl.text = "To Date"
+            self.toDateLbl.textColor = .lightGray
             subView.clipsToBounds = false
             subView.layer.cornerRadius = 36
             subView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
@@ -99,6 +104,13 @@ class DD_MyCashPointVC: BaseViewController, DateSelectedDelegate {
             self.myCashPointListApi(status: "", fromDate: "", toDate: "")
         }
     }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "myCashPoints"{
+//            self.fromDateLbl.text = "From Date"
+//            self.toDateLbl.text = "To Date"
+//        }
+//    }
+    
     
     @IBAction func backBtn(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)

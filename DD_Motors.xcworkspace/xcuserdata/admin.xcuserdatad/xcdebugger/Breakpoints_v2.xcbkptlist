@@ -3,4 +3,246 @@
    uuid = "ED83980F-E7B0-43A0-BA58-51C1DF588FD2"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BFDFE530-64B6-42D4-96BF-9FBE954925BF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DD_Motors/View/Login/DD_LoginVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "submitButton(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BFDFE530-64B6-42D4-96BF-9FBE954925BF - b9070978d23a6905"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DD_Motors.DD_LoginVC.submitButton(Any) -&gt; ()"
+                  moduleName = "DD_Motors"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/LWS_Projects/DD_Motors_Customer_IOS/DD_Motors/View/Login/DD_LoginVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "182"
+                  endingLineNumber = "182"
+                  offsetFromSymbolStart = "6500">
+               </Location>
+               <Location
+                  uuid = "BFDFE530-64B6-42D4-96BF-9FBE954925BF - b9070978d23a6905"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DD_Motors.DD_LoginVC.submitButton(Any) -&gt; ()"
+                  moduleName = "DD_Motors"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/LWS_Projects/DD_Motors_Customer_IOS/DD_Motors/View/Login/DD_LoginVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "182"
+                  endingLineNumber = "182"
+                  offsetFromSymbolStart = "7571">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A7FC75A5-8F8E-488C-8089-F406F42BF279"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DD_Motors/View/Login/DD_LoginVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "submitButton(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A7FC75A5-8F8E-488C-8089-F406F42BF279 - b9070978d23a6fca"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DD_Motors.DD_LoginVC.submitButton(Any) -&gt; ()"
+                  moduleName = "DD_Motors"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/LWS_Projects/DD_Motors_Customer_IOS/DD_Motors/View/Login/DD_LoginVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "165"
+                  endingLineNumber = "165"
+                  offsetFromSymbolStart = "3372">
+               </Location>
+               <Location
+                  uuid = "A7FC75A5-8F8E-488C-8089-F406F42BF279 - b9070978d23a6fca"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DD_Motors.DD_LoginVC.submitButton(Any) -&gt; ()"
+                  moduleName = "DD_Motors"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/LWS_Projects/DD_Motors_Customer_IOS/DD_Motors/View/Login/DD_LoginVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "165"
+                  endingLineNumber = "165"
+                  offsetFromSymbolStart = "3769">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1AD678F4-6B6A-480A-B47B-5357EE99CCC3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DD_Motors/View/Login/DD_LoginVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "173"
+            endingLineNumber = "173"
+            landmarkName = "submitButton(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1AD678F4-6B6A-480A-B47B-5357EE99CCC3 - b9070978d23a6ed2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DD_Motors.DD_LoginVC.submitButton(Any) -&gt; ()"
+                  moduleName = "DD_Motors"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/LWS_Projects/DD_Motors_Customer_IOS/DD_Motors/View/Login/DD_LoginVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "173"
+                  endingLineNumber = "173"
+                  offsetFromSymbolStart = "4500">
+               </Location>
+               <Location
+                  uuid = "1AD678F4-6B6A-480A-B47B-5357EE99CCC3 - b9070978d23a6ed2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DD_Motors.DD_LoginVC.submitButton(Any) -&gt; ()"
+                  moduleName = "DD_Motors"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/LWS_Projects/DD_Motors_Customer_IOS/DD_Motors/View/Login/DD_LoginVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "173"
+                  endingLineNumber = "173"
+                  offsetFromSymbolStart = "5097">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7C63C886-D4ED-47DE-B05A-23D8C7AE3A73"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DD_Motors/View/Login/DD_LoginVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
+            landmarkName = "submitButton(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7C63C886-D4ED-47DE-B05A-23D8C7AE3A73 - b9070978d23a6d9b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DD_Motors.DD_LoginVC.submitButton(Any) -&gt; ()"
+                  moduleName = "DD_Motors"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/LWS_Projects/DD_Motors_Customer_IOS/DD_Motors/View/Login/DD_LoginVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "148"
+                  endingLineNumber = "148"
+                  offsetFromSymbolStart = "336">
+               </Location>
+               <Location
+                  uuid = "7C63C886-D4ED-47DE-B05A-23D8C7AE3A73 - b9070978d23a6d9b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DD_Motors.DD_LoginVC.submitButton(Any) -&gt; ()"
+                  moduleName = "DD_Motors"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/LWS_Projects/DD_Motors_Customer_IOS/DD_Motors/View/Login/DD_LoginVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "148"
+                  endingLineNumber = "148"
+                  offsetFromSymbolStart = "245">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2057540E-F184-4948-9460-0DD98A84CC8C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "DD_Motors/View/Login/DD_LoginVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
+            landmarkName = "submitButton(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2057540E-F184-4948-9460-0DD98A84CC8C - b9070978d23a6966"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DD_Motors.DD_LoginVC.submitButton(Any) -&gt; ()"
+                  moduleName = "DD_Motors"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/LWS_Projects/DD_Motors_Customer_IOS/DD_Motors/View/Login/DD_LoginVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "185"
+                  endingLineNumber = "185"
+                  offsetFromSymbolStart = "6580">
+               </Location>
+               <Location
+                  uuid = "2057540E-F184-4948-9460-0DD98A84CC8C - b9070978d23a6966"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "DD_Motors.DD_LoginVC.submitButton(Any) -&gt; ()"
+                  moduleName = "DD_Motors"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/admin/Documents/LWS_Projects/DD_Motors_Customer_IOS/DD_Motors/View/Login/DD_LoginVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "185"
+                  endingLineNumber = "185"
+                  offsetFromSymbolStart = "7658">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
